@@ -1,0 +1,118 @@
+.section {
+    padding   : 70px 20px;
+    background: #f1f5f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin   : auto;
+}
+
+.header {
+    text-align   : center;
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    color         : #ec4899;
+    font-size     : 13px;
+    font-weight   : 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size  : 36px;
+    font-weight: 700;
+    margin-top : 6px;
+}
+
+.mapWrapper {
+    background   : white;
+    border-radius: 16px;
+    overflow     : hidden;
+    box-shadow   : 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.map {
+    position: relative;
+    height  : 450px;
+}
+
+.iframe {
+    width  : 100%;
+    height : 100%;
+    border : none;
+    filter : grayscale(100%) contrast(1.1);
+    opacity: .9;
+}
+
+.locationCard {
+    position       : absolute;
+    bottom         : 20px;
+    right          : 20px;
+    background     : rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius  : 12px;
+    padding        : 18px;
+    max-width      : 320px;
+    box-shadow     : 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.locationHeader {
+    display    : flex;
+    gap        : 12px;
+    align-items: flex-start;
+}
+
+.iconBox {
+    width          : 44px;
+    height         : 44px;
+    background     : #ec4899;
+    color          : white;
+    border-radius  : 50%;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.locationCard h3 {
+    font-size    : 16px;
+    margin-bottom: 3px;
+}
+
+.locationCard p {
+    font-size: 13px;
+    color    : #64748b;
+}
+
+.button {
+    display        : flex;
+    align-items    : center;
+    gap            : 6px;
+    margin-top     : 12px;
+    padding        : 10px 14px;
+    background     : #ec4899;
+    color          : white;
+    border-radius  : 8px;
+    text-decoration: none;
+    font-weight    : 600;
+}
+
+.button:hover {
+    background: #db2777;
+}
+
+@media(max-width:768px) {
+
+    .map {
+        height: 400px;
+    }
+
+    .locationCard {
+        left     : 20px;
+        right    : 20px;
+        max-width: none;
+    }
+
+}

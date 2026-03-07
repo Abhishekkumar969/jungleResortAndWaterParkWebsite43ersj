@@ -1,0 +1,227 @@
+/* HEADER */
+.navbar-header {
+  position: fixed;
+  top     : 0;
+  width   : 100%;
+  z-index : 1000;
+}
+
+
+
+.nav-logo {
+  padding: 0px;
+  margin : 0px;
+}
+
+.nav-logo img {
+  height    : 70px;
+  width     : auto;
+  object-fit: contain;
+}
+
+/* CONTAINER */
+.navbar-container {
+  max-width: 1200px;
+  margin   : auto;
+  padding  : 0 20px;
+}
+
+/* TOP BAR */
+.navbar-top {
+  background: #144623;
+  color     : white;
+  font-size : 14px;
+}
+
+.navbar-top-inner {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  padding        : 8px 0;
+}
+
+.navbar-contact {
+  display: flex;
+  gap    : 20px;
+}
+
+.navbar-contact a {
+  display        : flex;
+  align-items    : center;
+  gap            : 6px;
+  color          : white;
+  text-decoration: none;
+}
+
+.navbar-contact a:hover {
+  color: #22c55e;
+}
+
+/* MAIN NAVBAR */
+.navbar-main {
+  background   : white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar-inner {
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  height         : 80px;
+}
+
+/* NAV LINKS */
+.navbar-links {
+  display: flex;
+  gap    : 30px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color          : #111827;
+  font-weight    : 500;
+}
+
+.navbar-links a:hover {
+  color: #22c55e;
+}
+
+/* BUTTONS */
+.navbar-buttons {
+  display: flex;
+  gap    : 12px;
+}
+
+.btn-outlines {
+  border         : 2px solid #7f7d75;
+  padding        : 8px 16px;
+  color          : #0f172a;
+  border-radius  : 8px;
+  text-decoration: none;
+}
+
+.btn-outlines:hover {
+  background: #b8870a;
+}
+
+.btn-primarys {
+  background     : #b8870a;
+  padding        : 8px 16px;
+  color          : white;
+  border-radius  : 6px;
+  text-decoration: none;
+}
+
+.btn-primarys:hover {
+  background: #144623;
+}
+
+/* MOBILE BUTTON */
+.mobile-menu-btn {
+  display   : none;
+  background: none;
+  border    : none;
+  cursor    : pointer;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  background: white;
+  padding   : 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobile-menu a {
+  display        : block;
+  padding        : 12px 0;
+  text-decoration: none;
+  color          : #111827;
+  font-weight    : 500;
+}
+
+.mobile-buttons {
+  margin-top    : 15px;
+  display       : flex;
+  flex-direction: column;
+  gap           : 10px;
+}
+
+/* ============================= */
+/* LAPTOP (1200px → 992px) */
+/* ============================= */
+
+@media (max-width: 1200px) {
+
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  .navbar-links {
+    gap: 20px;
+  }
+
+}
+
+/* ============================= */
+/* TABLET (992px → 768px) */
+/* ============================= */
+
+@media (max-width: 992px) {
+
+  .navbar-links,
+  .navbar-buttons {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .navbar-inner {
+    height: 70px;
+  }
+
+}
+
+/* MOBILE (768px and below) */
+
+@media (max-width: 768px) {
+
+  /* TOP BAR MOBILE */
+  .navbar-top-inner {
+    display    : flex;
+    align-items: space-between;
+    height     : 35px;
+  }
+
+  .navbar-contact {
+    display    : flex;
+    gap        : 25px;
+    margin-left: 20px;
+  }
+
+  /* hide text show only icons */
+  .navbar-contact span {
+    display: none;
+  }
+
+  .navbar-open {
+    text-align : center;
+    font-weight: 500;
+  }
+
+  /* MAIN NAVBAR */
+  .navbar-inner {
+    height: 70px;
+  }
+
+  /* navbar height */
+  .navbar-inner {
+    height: 70px;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+}

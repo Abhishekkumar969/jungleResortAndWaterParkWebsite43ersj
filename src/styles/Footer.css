@@ -1,0 +1,155 @@
+/* Footer main */
+.footer {
+  background-color: #144623;
+  color           : white;
+}
+
+/* container */
+.footer-container {
+  max-width: 1200px;
+  margin   : auto;
+  padding  : 60px 20px;
+}
+
+/* grid */
+.footer-grid {
+  display              : grid;
+  grid-template-columns: 1fr;
+  gap                  : 50px;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* brand */
+.footer-brand {
+  display       : flex;
+  flex-direction: column;
+  gap           : 20px;
+}
+
+.footer-logo img {
+  width     : 160px;
+  height    : auto;
+  object-fit: contain;
+}
+
+/* description text */
+.footer-text {
+  font-size  : 14px;
+  opacity    : 0.8;
+  line-height: 1.6;
+}
+
+/* social icons */
+.footer-social {
+  display: flex;
+  gap    : 15px;
+}
+
+.footer-social a {
+  width          : 40px;
+  height         : 40px;
+  background     : rgba(255, 255, 255, 0.1);
+  border-radius  : 50%;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  transition     : all 0.3s ease;
+  color          : aliceblue;
+}
+
+.footer-social a:hover {
+  background: #ad8216;
+  color     : #000;
+}
+
+/* section titles */
+.footer-title {
+  font-size    : 20px;
+  font-weight  : 600;
+  margin-bottom: 20px;
+}
+
+/* links */
+.footer-links {
+  list-style: none;
+  padding   : 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-size      : 14px;
+  opacity        : 0.8;
+  color          : white;
+  transition     : 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color  : #22c55e;
+}
+
+/* contact */
+.footer-contact {
+  list-style: none;
+  padding   : 0;
+}
+
+.footer-contact a {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.footer-contact li {
+  display      : flex;
+  gap          : 10px;
+  margin-bottom: 12px;
+  font-size    : 14px;
+  opacity      : 0.9;
+}
+
+/* bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-bottom-container {
+  max-width      : 1200px;
+  margin         : auto;
+  padding        : 20px;
+  display        : flex;
+  justify-content: space-between;
+  flex-wrap      : wrap;
+  gap            : 15px;
+}
+
+/* policy links */
+.footer-policy {
+  display: flex;
+  gap    : 20px;
+}
+
+.footer-policy a {
+  text-decoration: none;
+  font-size      : 14px;
+  opacity        : 0.8;
+  color          : white;
+}
+
+.footer-policy a:hover {
+  opacity: 1;
+}

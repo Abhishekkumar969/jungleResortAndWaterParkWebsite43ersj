@@ -1,0 +1,193 @@
+.ticketsSection {
+    padding   : 80px 20px;
+    background: #fafafa;
+}
+
+.ticketsContainer {
+    max-width: 1300px;
+    margin   : auto;
+}
+
+.ticketsHeader {
+    text-align   : center;
+    margin-bottom: 50px;
+}
+
+.subtitle {
+    color         : #00a8ff;
+    font-size     : 14px;
+    font-weight   : 600;
+    letter-spacing: 1px;
+}
+
+.ticketsHeader h2 {
+    font-size  : 36px;
+    font-weight: 700;
+    margin     : 10px 0;
+}
+
+.ticketsHeader span {
+    color: #00a8ff;
+}
+
+.ticketsHeader p {
+    color    : #666;
+    max-width: 600px;
+    margin   : auto;
+}
+
+.ticketsGrid {
+    display              : grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap                  : 25px;
+    margin-bottom        : 50px;
+}
+
+.ticketCard {
+    background   : white;
+    border-radius: 16px;
+    padding      : 25px;
+    border       : 1px solid #eee;
+    position     : relative;
+    transition   : .3s;
+}
+
+.ticketCard:hover {
+    transform : translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.popular {
+    border: 2px solid #00a8ff;
+}
+
+.badge {
+    position     : absolute;
+    top          : -12px;
+    left         : 50%;
+    transform    : translateX(-50%);
+    background   : #00a8ff;
+    color        : white;
+    font-size    : 12px;
+    padding      : 4px 10px;
+    border-radius: 20px;
+}
+
+.ticketTop {
+    text-align   : center;
+    margin-bottom: 15px;
+}
+
+.iconBox {
+    width          : 60px;
+    height         : 60px;
+    background     : #eaf8ff;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    border-radius  : 50%;
+    margin         : auto;
+    margin-bottom  : 10px;
+    color          : #00a8ff;
+}
+
+.ticketDesc {
+    font-size: 12px;
+    color    : #777;
+}
+
+.priceBox {
+    text-align   : center;
+    margin-bottom: 15px;
+}
+
+.old {
+    text-decoration: line-through;
+    color          : #999;
+    font-size      : 14px;
+}
+
+.price {
+    font-size  : 28px;
+    font-weight: 700;
+    color      : #00a8ff;
+}
+
+.features {
+    list-style: none;
+    padding   : 0;
+    margin    : 15px 0;
+}
+
+.features li {
+    display      : flex;
+    align-items  : center;
+    gap          : 6px;
+    font-size    : 13px;
+    margin-bottom: 6px;
+    color        : #555;
+}
+
+.qtyBox {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    margin-top     : 10px;
+}
+
+.qtyBox button {
+    width        : 30px;
+    height       : 30px;
+    border       : 1px solid #ddd;
+    background   : white;
+    border-radius: 6px;
+    cursor       : pointer;
+}
+
+.qtyBox span {
+    font-weight: 600;
+}
+
+.cartBox {
+    background   : #00a8ff;
+    color        : white;
+    padding      : 30px;
+    border-radius: 16px;
+    max-width    : 700px;
+    margin       : auto;
+    text-align   : center;
+}
+
+.cartItems {
+    display        : flex;
+    flex-wrap      : wrap;
+    gap            : 10px;
+    justify-content: center;
+    margin-top     : 10px;
+}
+
+.cartItems span {
+    background   : rgba(255, 255, 255, 0.2);
+    padding      : 6px 12px;
+    border-radius: 20px;
+    font-size    : 13px;
+}
+
+.amount {
+    font-size  : 30px;
+    font-weight: 700;
+    margin-top : 5px;
+}
+
+.checkoutBtn {
+    margin-top   : 20px;
+    width        : 100%;
+    padding      : 14px;
+    border       : none;
+    border-radius: 8px;
+    background   : white;
+    color        : #00a8ff;
+    font-weight  : 700;
+    font-size    : 16px;
+    cursor       : pointer;
+}
