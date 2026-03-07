@@ -13,7 +13,7 @@ export default function QuickBookingSection() {
 
           {/* LEFT CONTENT */}
 
-          <div className={styles.bookingContent}>
+          <div className={styles.bookingFormWrapper}>
 
             <span className={styles.bookingLabel}>Book Now</span>
 

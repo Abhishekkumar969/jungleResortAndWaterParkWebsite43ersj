@@ -7,7 +7,6 @@ export default function HeroSection() {
 
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
-
   const [videoSrc, setVideoSrc] = useState("/images/BackgroundVdo.mp4");
   const [muted, setMuted] = useState(true);
 
@@ -78,13 +77,6 @@ export default function HeroSection() {
     return () => observer.disconnect();
 
   }, []);
-
-  // useEffect(() => {
-  //   if (videoRef.current) {
-  //     videoRef.current.load();
-  //     videoRef.current.play().catch(() => { });
-  //   }
-  // }, [videoSrc]);
 
   const toggleSound = () => {
     const video = videoRef.current;

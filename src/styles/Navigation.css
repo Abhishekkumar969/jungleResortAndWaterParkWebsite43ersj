@@ -6,8 +6,6 @@
   z-index : 1000;
 }
 
-
-
 .nav-logo {
   padding: 0px;
   margin : 0px;
@@ -95,25 +93,27 @@
 .btn-outlines {
   border         : 2px solid #7f7d75;
   padding        : 8px 16px;
-  color          : #0f172a;
   border-radius  : 8px;
   text-decoration: none;
+  color          : #111827;
+  font-weight    : 500;
 }
 
 .btn-outlines:hover {
-  background: #b8870a;
+  background: #d49c0f;
 }
 
 .btn-primarys {
-  background     : #b8870a;
+  background     : #38bdf8;
   padding        : 8px 16px;
-  color          : white;
   border-radius  : 6px;
   text-decoration: none;
+  color          : #111827;
+  font-weight    : 500;
 }
 
 .btn-primarys:hover {
-  background: #144623;
+  background: #d49c0f;
 }
 
 /* MOBILE BUTTON */
@@ -133,7 +133,7 @@
 
 .mobile-menu a {
   display        : block;
-  padding        : 12px 0;
+  padding        : 12px 12px;
   text-decoration: none;
   color          : #111827;
   font-weight    : 500;

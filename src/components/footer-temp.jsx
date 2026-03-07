@@ -4,8 +4,6 @@ import "../styles/Footer.css";
 
 export default function Footer() {
 
-  const year = new Date().getFullYear();
-
   return (
     <footer className="footer">
 
@@ -87,7 +85,7 @@ export default function Footer() {
             <ul className="footer-contact">
 
               <li>
-                <MapPin size={18} color="#ad8216" />
+                <MapPin size={38} color="#ad8216" />
                 <span>
                   Jungle Resort & WaterPark, Near Forest Highway,
                   Nature Valley, State - 123456
@@ -127,7 +125,7 @@ export default function Footer() {
         <div className="footer-bottom-container">
 
           <p>
-            © {year} Jungle Resort & Waterpark. All rights reserved.
+            ©2025 Jungle Resort & Waterpark. All rights reserved.
           </p>
 
           <div className="footer-policy">
