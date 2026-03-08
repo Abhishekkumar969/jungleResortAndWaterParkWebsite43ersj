@@ -1,7 +1,6 @@
 .infoSection {
-    padding   : 80px 20px;
-    background: #0099cc;
-    color     : white;
+    padding: 80px 20px;
+    color  : white;
 }
 
 .infoContainer {
@@ -18,6 +17,7 @@
     font-size    : 36px;
     font-weight  : 700;
     margin-bottom: 10px;
+    color        : white;
 }
 
 .infoHeader span {
@@ -25,7 +25,7 @@
 }
 
 .infoHeader p {
-    color    : rgba(255, 255, 255, 0.8);
+    color    : white;
     max-width: 600px;
     margin   : auto;
     font-size: 16px;
@@ -38,7 +38,7 @@
 }
 
 .infoCard {
-    background     : rgba(255, 255, 255, 0.1);
+    background     : #0000004f;
     backdrop-filter: blur(5px);
     padding        : 25px;
     border-radius  : 12px;
@@ -93,4 +93,46 @@
     height       : 6px;
     background   : #ffd700;
     border-radius: 50%;
+}
+
+
+.infoSection {
+    position: relative;
+    padding : 80px 20px;
+    color   : white;
+    overflow: hidden;
+}
+
+/* VIDEO */
+
+.infoVideo {
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+    width     : 100%;
+    height    : 100%;
+    object-fit: cover;
+    z-index   : 0;
+}
+
+/* OVERLAY */
+
+.infoOverlay {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    width   : 100%;
+    height  : 100%;
+
+    background: linear-gradient(rgba(0, 153, 204, 0.6),
+            rgba(0, 0, 0, 0.5));
+
+    z-index: 1;
+}
+
+.infoContainer {
+    max-width: 1200px;
+    margin   : auto;
+    position : relative;
+    z-index  : 2;
 }

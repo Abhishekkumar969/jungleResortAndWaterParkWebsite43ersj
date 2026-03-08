@@ -68,6 +68,20 @@ export default function WaterparkInfo() {
     return (
         <section className={styles.infoSection}>
 
+            {/* Background Video */}
+            <video
+                className={styles.infoVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+            >
+                <source src="/videos/WaveVideo.mp4" type="video/mp4" />
+            </video>
+
+            {/* Overlay */}
+            <div className={styles.infoOverlay}></div>
+
             <div className={styles.infoContainer}>
 
                 <div className={styles.infoHeader}>

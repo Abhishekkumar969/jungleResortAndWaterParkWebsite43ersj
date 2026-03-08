@@ -1,8 +1,52 @@
-.waterparkSection {
+/* .waterparkSection {
     padding   : 100px 20px;
     background: #0ea5e9;
     color     : white;
     overflow  : hidden;
+} */
+
+
+
+.waterparkSection {
+    position  : relative;
+    padding   : 100px 20px;
+    color     : white;
+    overflow  : hidden;
+    min-height: 600px;
+}
+
+/* VIDEO BACKGROUND */
+
+.waterparkVideo {
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+    width     : 100%;
+    height    : 100%;
+    object-fit: cover;
+
+    z-index: 0;
+    /* important */
+}
+
+/* OVERLAY COLOR */
+
+.waterparkOverlay {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    width   : 100%;
+    height  : 100%;
+
+    background: linear-gradient(rgba(31, 175, 242, 0.6),
+            rgba(0, 0, 0, 0.4));
+
+    z-index: 1;
+}
+
+.waterparkGrid {
+    position: relative;
+    z-index : 2;
 }
 
 .waterparkGrid {
@@ -57,10 +101,11 @@
 }
 
 .waterparkPricing {
-    background   : rgba(255, 255, 255, 0.15);
+    background   : rgba(3, 242, 255, 0.332);
     padding      : 20px;
     border-radius: 12px;
     margin-bottom: 30px;
+    border       : 2px solid white;
 }
 
 .pricingGrid {
@@ -103,6 +148,7 @@
     font-weight    : 600;
     text-decoration: none;
     transition     : .3s;
+    border         : 2px solid white;
 }
 
 .waterparkBtn:hover {
@@ -121,6 +167,7 @@
     height       : 320px;
     object-fit   : cover;
     border-radius: 12px;
+    border       : 2px solid white;
 }
 
 .waterparkImgSmall {
@@ -135,6 +182,7 @@
     height       : 150px;
     object-fit   : cover;
     border-radius: 12px;
+    border       : 2px solid white;
 }
 
 .waterparkDecor {

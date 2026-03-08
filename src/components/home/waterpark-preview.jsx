@@ -14,6 +14,20 @@ export default function WaterparkPreview() {
     return (
         <section className={styles.waterparkSection}>
 
+            {/* Background Video */}
+            <video
+                className={styles.waterparkVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+            >
+                <source src="/videos/WaveVideo.mp4" type="video/mp4" />
+            </video>
+
+            {/* Overlay */}
+            <div className={styles.waterparkOverlay}></div>
+
             <div className="container">
 
                 <div className={styles.waterparkGrid}>
@@ -23,7 +37,7 @@ export default function WaterparkPreview() {
                     <div className={styles.waterparkContent}>
 
                         <div className={styles.waterparkBadge}>
-                            <Waves size={16}/>
+                            <Waves size={16} />
                             <span>Waterpark Adventures</span>
                         </div>
 
@@ -45,7 +59,7 @@ export default function WaterparkPreview() {
                                 return (
                                     <div key={i} className={styles.attractionCardHome}>
 
-                                        <Icon size={18}/>
+                                        <Icon size={18} />
 
                                         <span>{item.name}</span>
 
@@ -89,12 +103,12 @@ export default function WaterparkPreview() {
                         <div className={styles.waterparkInfo}>
 
                             <div>
-                                <Clock size={16}/>
+                                <Clock size={16} />
                                 <span>Open 10 AM - 7 PM</span>
                             </div>
 
                             <div>
-                                <Ticket size={16}/>
+                                <Ticket size={16} />
                                 <span>Online Booking Available</span>
                             </div>
 
@@ -104,7 +118,7 @@ export default function WaterparkPreview() {
 
                             Book Waterpark Tickets
 
-                            <ArrowRight size={18}/>
+                            <ArrowRight size={18} />
 
                         </Link>
 
@@ -116,15 +130,15 @@ export default function WaterparkPreview() {
 
                         <div className={styles.waterparkImgLarge}>
 
-                            <img src="/images/waterpark-main.jpg" alt="Waterpark overview"/>
+                            <img src="/images/waterpark-main.jpg" alt="Waterpark overview" />
 
                         </div>
 
                         <div className={styles.waterparkImgSmall}>
 
-                            <img src="/images/waterpark-wave.jpg" alt="Wave pool"/>
+                            <img src="/images/waterpark-wave.jpg" alt="Wave pool" />
 
-                            <img src="/images/waterpark-slides.jpg" alt="Water slides"/>
+                            <img src="/images/waterpark-slides.jpg" alt="Water slides" />
 
                         </div>
 

@@ -7,7 +7,7 @@ const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/venues", label: "VENUES" },
   { href: "/gallery", label: "GALLERY" },
-  { href: "/contact", label: "CONTACT", className: "btn-outlines" }
+  { href: "/contact", label: "ENQUIRY NOW", className: "btn-outlines" }
 ];
 
 export default function Navbar() {
