@@ -1,26 +1,49 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import "../styles/Navigation.css";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/venues", label: "Event Venues" },
-  { href: "/waterpark", label: "Waterpark" },
-  { href: "/birthdays", label: "Birthday Stages" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "HOME" },
+  { href: "/venues", label: "VENUES" },
+  { href: "/gallery", label: "GALLERY" },
+  { href: "/contact", label: "CONTACT", className: "btn-outlines" }
 ];
 
 export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const progress = (scrollTop / docHeight) * 100;
+
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+
+  }, []);
 
   return (
     <header className="navbar-header">
 
       {/* Top Bar */}
-      <div className="navbar-top">
+      <div
+        className="navbar-top"
+        style={{
+          background: `linear-gradient(to right, #1c6031 ${scrollProgress}%, #144623 ${scrollProgress}%)`
+        }}
+      >
         <div className="navbar-container navbar-top-inner">
 
           <div className="navbar-contact">
@@ -60,23 +83,14 @@ export default function Navbar() {
           <div className="navbar-links">
 
             {navLinks.map((link) => (
-              <Link key={link.href} to={link.href}>
+              <Link
+                key={link.href}
+                to={link.href}
+                className={link.className || ""}
+              >
                 {link.label}
               </Link>
             ))}
-
-          </div>
-
-          {/* Buttons */}
-          <div className="navbar-buttons">
-
-            <Link to="/venues" className="btn-outlines">
-              Book Event
-            </Link>
-
-            <Link to="/waterpark" className="btn-primarys">
-              Waterpark Tickets
-            </Link>
 
           </div>
 
@@ -85,43 +99,26 @@ export default function Navbar() {
             className="mobile-menu-btn"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={26} /> : <Menu size={26} />}
+            {isOpen ? <X size={26} color="red" /> : <Menu size={26} color="#0284c7" />}
           </button>
-
         </div>
 
       </nav>
 
       {/* Mobile Menu */}
-      {isOpen && (
+      <div className={`mobile-menu ${isOpen ? "active" : ""}`}>
 
-        <div className="mobile-menu">
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            to={link.href}
+            onClick={() => setIsOpen(false)}
+          >
+            {link.label}
+          </Link>
+        ))}
 
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          <div className="mobile-buttons">
-
-            <Link to="/venues" className="btn-outlines">
-              Book Event
-            </Link>
-
-            <Link to="/waterpark" className="btn-primarys">
-              Waterpark Tickets
-            </Link>
-
-          </div>
-
-        </div>
-
-      )}
+      </div>
 
     </header>
   );

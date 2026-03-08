@@ -4,6 +4,8 @@ import Layout from "./Layout"
 import Home from "./pages/Home"
 
 import ScrollToTop from "./components/ScrollToTop";
+import FloatingContact from "./components/FloatingContact";
+
 import Waterpark from "./pages/waterpark/Waterpark";
 import Birthdays from "./pages/birthdays/Birthdays";
 import Venues from "./pages/venues/Venues";
@@ -24,8 +26,9 @@ function App() {
           <Route path="/Venues" element={<Venues />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Gallery" element={<Gallery />} />
-          
+
         </Routes>
+        <FloatingContact />
       </Layout>
     </Router>
   )

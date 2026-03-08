@@ -15,6 +15,7 @@
   height    : 70px;
   width     : auto;
   object-fit: contain;
+  filter    : drop-shadow(7px 7px 7px rgb(0, 0, 0));
 }
 
 /* CONTAINER */
@@ -70,8 +71,9 @@
 
 /* NAV LINKS */
 .navbar-links {
-  display: flex;
-  gap    : 30px;
+  display    : flex;
+  gap        : 30px;
+  align-items: center;
 }
 
 .navbar-links a {
@@ -91,30 +93,24 @@
 }
 
 .btn-outlines {
-  border         : 2px solid #7f7d75;
-  padding        : 8px 16px;
-  border-radius  : 8px;
+  border         : 2px solid rgb(255, 255, 255);
+  padding        : 10px 17px;
+  border-radius  : 80px;
   text-decoration: none;
-  color          : #111827;
-  font-weight    : 500;
+  color          : #ffffff !important;
+  background     : #fc3939;
+  backdrop-filter: blur(6px);
+  transition     : 0.3s;
+  width          : 100%;
+  box-shadow     : 3px 3px 7px rgb(0, 0, 0);
 }
 
 .btn-outlines:hover {
-  background: #d49c0f;
+  background: white;
+  color     : #0284c7;
+  border    : 2px solid #0284c7;
 }
 
-.btn-primarys {
-  background     : #38bdf8;
-  padding        : 8px 16px;
-  border-radius  : 6px;
-  text-decoration: none;
-  color          : #111827;
-  font-weight    : 500;
-}
-
-.btn-primarys:hover {
-  background: #d49c0f;
-}
 
 /* MOBILE BUTTON */
 .mobile-menu-btn {
@@ -129,21 +125,40 @@
   background: white;
   padding   : 20px;
   border-top: 1px solid #e5e7eb;
+
+  position: absolute;
+  width   : 100%;
+  left    : 0;
+  top     : 100%;
+
+  opacity       : 0;
+  transform     : translateY(-20px);
+  pointer-events: none;
+
+  transition: all 0.35s ease;
+}
+
+.mobile-menu.active {
+  opacity       : 1;
+  transform     : translateY(0);
+  pointer-events: auto;
 }
 
 .mobile-menu a {
   display        : block;
-  padding        : 12px 12px;
+  padding        : 14px 12px;
   text-decoration: none;
   color          : #111827;
   font-weight    : 500;
+
+  opacity   : 0;
+  transform : translateX(-20px);
+  transition: all 0.4s ease;
 }
 
-.mobile-buttons {
-  margin-top    : 15px;
-  display       : flex;
-  flex-direction: column;
-  gap           : 10px;
+.mobile-menu.active a {
+  opacity  : 1;
+  transform: translateX(0);
 }
 
 /* ============================= */
@@ -224,4 +239,102 @@
     display: block;
   }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE MENU */
+
+.mobile-menu {
+  position        : absolute;
+  top             : 100%;
+  left            : 0;
+  width           : 100%;
+  background      : white;
+  border-top      : 1px solid #e5e7eb;
+  overflow        : hidden;
+  transform       : translateY(-20px) scaleY(0.95);
+  transform-origin: top;
+  opacity         : 0;
+  max-height      : 0;
+  backdrop-filter : blur(8px);
+  box-shadow      : 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition      :
+    transform 0.45s cubic-bezier(.22, .68, 0, 1.71),
+    opacity 0.35s ease,
+    max-height 0.5s ease;
+}
+
+.mobile-menu.active {
+  transform : translateY(0) scaleY(1);
+  opacity   : 1;
+  max-height: 500px;
+}
+
+/* MENU LINKS */
+
+.mobile-menu a {
+  display        : block;
+  padding        : 16px 20px;
+  font-weight    : 500;
+  color          : #111827;
+  text-decoration: none;
+  opacity        : 0;
+  transform      : translateY(-10px);
+  transition     :
+    transform 0.4s ease,
+    opacity 0.35s ease,
+    background 0.3s ease;
+}
+
+/* hover */
+
+.mobile-menu a:hover {
+  background: #f0fdf4;
+  color     : #16a34a;
+}
+
+/* stagger animation */
+
+.mobile-menu.active a:nth-child(1) {
+  opacity         : 1;
+  transform       : translateY(0);
+  transition-delay: 0.08s;
+}
+
+.mobile-menu.active a:nth-child(2) {
+  opacity         : 1;
+  transform       : translateY(0);
+  transition-delay: 0.16s;
+}
+
+.mobile-menu.active a:nth-child(3) {
+  opacity         : 1;
+  transform       : translateY(0);
+  transition-delay: 0.24s;
+}
+
+.mobile-menu.active a:nth-child(4) {
+  opacity         : 1;
+  transform       : translateY(0);
+  transition-delay: 0.32s;
+
+
+  border         : 2px solid white;
+  border-radius  : 8px;
+  text-decoration: none;
+  color          : #ffffff !important;
+  background     : #fc3939;
+  transition     : 0.3s;
+  width          : 100%;
 }

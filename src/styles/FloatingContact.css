@@ -1,0 +1,46 @@
+.floating-contact {
+  position       : fixed;
+  bottom         : 10px;
+  width          : 100%;
+  left           : 0;
+  display        : flex;
+  justify-content: space-between;
+  z-index        : 9999;
+}
+
+/* CALL */
+.floating-call {
+  display        : flex;
+  align-items    : center;
+  background     : #0284c7;
+  color          : white;
+  padding        : 12px;
+  border-radius  : 100px;
+  text-decoration: none;
+  font-weight    : 500;
+  box-shadow     : 0 6px 18px rgba(0, 0, 0, 0.2);
+  margin         : 0px 10px;
+  border         : 2px solid white;
+  box-shadow     : 3px 3px 7px rgb(0, 0, 0);
+}
+
+.whatsapp-icon {
+  height       : 52px;
+  width        : 52px;
+  object-fit   : contain;
+  border-radius: 100px;
+}
+
+/* WHATSAPP */
+.floating-whatsapp {
+  display        : flex;
+  align-items    : center;
+  background     : transparent;
+  color          : white;
+  border-radius  : 100px;
+  text-decoration: none;
+  box-shadow     : 0 6px 18px rgba(0, 0, 0, 0.2);
+  margin         : 0px 10px;
+  border         : 2px solid white;
+  box-shadow     : 3px 3px 7px rgb(0, 0, 0);
+}

@@ -98,10 +98,11 @@
     background     : #078a00;
     color          : white;
     padding        : 16px 30px;
-    border-radius  : 8px;
+    border-radius  : 100px;
     font-weight    : 600;
     text-decoration: none;
     transition     : 0.3s;
+    box-shadow     : 3px 3px 7px rgb(0, 0, 0);
 }
 
 .heroBtnPrimary:hover {
@@ -113,13 +114,14 @@
 .heroBtnOutline {
     border         : 2px solid white;
     padding        : 16px 30px;
-    border-radius  : 8px;
+    border-radius  : 100px;
     font-weight    : 600;
     text-decoration: none;
     color          : #ffffff;
     background     : #0284c7;
     backdrop-filter: blur(6px);
     transition     : 0.3s;
+    box-shadow     : 3px 3px 7px rgb(0, 0, 0);
 }
 
 .heroBtnOutline:hover {
@@ -282,16 +284,16 @@
     top          : 110%;
     left         : 0;
     background   : white;
-    border-radius: 10px;
+    border-radius: 25px;
     padding      : 10px 0;
     min-width    : 220px;
-    box-shadow   : 0 10px 30px rgba(0, 0, 0, 0.15);
     z-index      : 9999;
     opacity      : 0;
     visibility   : hidden;
     transform    : translateY(10px);
     transition   : all 0.3s ease;
     text-align   : left;
+    box-shadow   : 3px 3px 7px rgb(0, 0, 0);
 }
 
 .dropdown:hover .dropdownMenu {
@@ -310,10 +312,7 @@
 
 .dropdownItem:hover {
     background: #9efd8d;
-
-
-    border         : 2px solid white;
-    border-radius  : 8px;
+    border-radius  : 80px;
     font-weight    : 600;
     text-decoration: none;
     color          : #ffffff;
