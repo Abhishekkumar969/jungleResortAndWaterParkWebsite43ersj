@@ -101,6 +101,46 @@ export default function HeroSection() {
     { number: "50K+", label: "Happy Visitors" }
   ];
 
+  const heroMenus = [
+    {
+      title: "Book Your Event",
+      items: [
+        { name: "Destination Wedding", link: "/destination-wedding" },
+        { name: "Wedding", link: "/wedding" },
+        { name: "Haldi", link: "/haldi" },
+        { name: "Mehndi", link: "/mehndi" },
+        { name: "Sangeet", link: "/sangeet" },
+        { name: "Receptions", link: "/reception" },
+        { name: "Anniversary", link: "/anniversary" },
+        { name: "Engagement", link: "/engagement" }
+      ]
+    },
+    {
+      title: "Birthday Celebrations",
+      items: [
+        { name: "Birthday Celebration", link: "/birthday" },
+        { name: "Pool Party", link: "/pool-party" },
+        { name: "Get Together", link: "/get-together" },
+        { name: "Kitty Party", link: "/kitty-party" }
+      ]
+    },
+    {
+      title: "Corporate Events",
+      items: [
+        { name: "Corporate Meeting", link: "/corporate-meeting" },
+        { name: "Corporate Party", link: "/corporate-party" },
+        { name: "Corporate Pool Party", link: "/corporate-pool-party" }
+      ]
+    },
+    {
+      title: " WaterPark & FunPark Tickets",
+      items: [
+        { name: "WaterPark Tickets", link: "/waterpark-tickets" },
+        { name: "FunPark Tickets", link: "/funpark-tickets" }
+      ]
+    }
+  ];
+
   return (
     <section ref={sectionRef} className={styles.heroSection}>
 
@@ -153,15 +193,29 @@ export default function HeroSection() {
 
         <div className={styles.heroButtons}>
 
-          <Link to="/venues" className={styles.heroBtnPrimary}>
-            Book Your Event
-          </Link>
+          {heroMenus.map((menu, index) => (
+            <div key={index} className={styles.dropdown}>
 
-          <Link to="/Waterpark" className={styles.heroBtnOutline}>
-            Explore Waterpark
-          </Link>
+              <button
+                className={
+                  menu.title.includes("Tickets")
+                    ? styles.heroBtnOutline
+                    : styles.heroBtnPrimary
+                }
+              >
+                {menu.title} <ChevronDown size={16} style={{ marginLeft: "6px" }} />
+              </button>
 
+              <div className={styles.dropdownMenu}>
+                {menu.items.map((item, i) => (
+                  <Link key={i} to={item.link} className={styles.dropdownItem}>
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
 
+            </div>
+          ))}
 
         </div>
 
