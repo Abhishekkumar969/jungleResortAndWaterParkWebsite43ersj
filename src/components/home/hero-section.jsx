@@ -67,7 +67,7 @@ export default function HeroSection() {
         }
 
       },
-      { threshold: 0.3 }
+      { threshold: 0 }
     );
 
     if (sectionRef.current) {
