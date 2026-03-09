@@ -59,7 +59,7 @@
     line-height  : 1.2;
     margin-bottom: 20px;
 
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    text-shadow: 4px 4px 5px rgb(0, 0, 0);
 }
 
 .heroTitle span {
@@ -344,8 +344,7 @@
     margin-top : 10px;
     color      : #fff;
     font-weight: 500;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
-
+    text-shadow: 4px 4px 5px rgb(0, 0, 0);
 }
 
 .cursor {
@@ -394,19 +393,17 @@
     border    : 2px solid #0284c7;
 }
 
-
 .dropdownMenu {
     min-width: 200px;
     max-width: 90vw;
 }
 
-
 .heroStats {
     display              : grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap                  : 20px;
+    text-shadow          : 4px 4px 5px rgb(0, 0, 0);
 }
-
 
 @media (max-width: 1024px) {
 
@@ -452,7 +449,7 @@
 @media (max-width: 480px) {
 
     .heroSection {
-        min-height    : auto;
+        min-height: auto;
     }
 
 
@@ -468,7 +465,7 @@
     }
 
     .heroSection {
-        padding-top: 120px;
+        padding-top   : 120px;
         padding-bottom: 55px;
     }
 
@@ -486,7 +483,6 @@
     }
 
     .dropdownMenu {
-        left     : 50%;
         transform: translateX(-50%);
     }
 
