@@ -3,12 +3,56 @@ import { Link } from "react-router-dom";
 import { ChevronDown, Sparkles, TreePine, Waves } from "lucide-react";
 import styles from "../../styles/hero-section.module.css";
 
-export default function HeroSection() {
+const texts = [
+  "Destination Wedding in Patna",
+  "Waterpark in Patna"
+];
 
+export default function HeroSection() {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
   const [videoSrc, setVideoSrc] = useState("/images/BackgroundVdo.mp4");
   const [muted, setMuted] = useState(true);
+
+  const [displayText, setDisplayText] = useState("");
+  const [textIndex, setTextIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+
+    const currentText = texts[textIndex];
+
+    const typingSpeed = isDeleting ? 40 : 80;
+
+    const timer = setTimeout(() => {
+
+      if (!isDeleting) {
+
+        setDisplayText(currentText.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+
+        if (charIndex + 1 === currentText.length) {
+          setTimeout(() => setIsDeleting(true), 1200);
+        }
+
+      } else {
+
+        setDisplayText(currentText.substring(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+
+        if (charIndex - 1 === 0) {
+          setIsDeleting(false);
+          setTextIndex((prev) => (prev + 1) % texts.length);
+        }
+
+      }
+
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+
+  }, [charIndex, isDeleting, textIndex]);
 
   useEffect(() => {
 
@@ -86,13 +130,6 @@ export default function HeroSection() {
     video.muted = !video.muted;
     setMuted(video.muted);
   };
-
-  const tags = [
-    "Grand Wedding Venues",
-    "Exciting Waterpark",
-    "Birthday Stages",
-    "Corporate Events"
-  ];
 
   const stats = [
     { number: "5+", label: "Event Venues" },
@@ -179,17 +216,10 @@ export default function HeroSection() {
           <span>Jungle Resort & Waterpark</span>
         </h1>
 
-        <p className={styles.heroDesc}>
-          Experience the perfect harmony of luxury events and thrilling waterpark adventures.
-          From grand weddings to splash-filled birthdays, create unforgettable memories
-          in the heart of nature.
-        </p>
-
-        <div className={styles.heroFeatures}>
-          {tags.map((tag, index) => (
-            <span key={index} className={styles.heroFeature}>{tag}</span>
-          ))}
-        </div>
+        <h2 className={styles.typeWriter}>
+          {displayText}
+          <span className={styles.cursor}>|</span>
+        </h2>
 
         <div className={styles.heroButtons}>
 
@@ -230,9 +260,6 @@ export default function HeroSection() {
 
       </div>
 
-      <div className={styles.heroScroll}>
-        <ChevronDown size={32} />
-      </div>
 
     </section>
   );

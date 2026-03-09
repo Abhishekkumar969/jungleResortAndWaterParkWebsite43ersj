@@ -7,7 +7,7 @@
     text-align     : center;
     overflow       : visible;
     /* CHANGE THIS */
-    padding-top    : 120px;
+    padding-top    : 70px;
     color          : white;
 }
 
@@ -24,15 +24,20 @@
 }
 
 .heroOverlay {
-    position  : absolute;
-    inset     : 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+    position               : absolute;
+    inset                  : 0;
+    backdrop-filter        : blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background             : linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.237),
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.75));
 }
 
 .heroContent {
     position : relative;
-    z-index  : 10;
-    max-width: 900px;
+    z-index  : 5;
+    max-width: fit-content;
     padding  : 0 20px;
 }
 
@@ -53,6 +58,8 @@
     font-weight  : 700;
     line-height  : 1.2;
     margin-bottom: 20px;
+
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .heroTitle span {
@@ -94,10 +101,10 @@
 }
 
 .heroBtnPrimary {
-    border         : 2px solid white;
+    /* border         : 2px solid white; */
     background     : #078a00;
     color          : white;
-    padding        : 16px 30px;
+    padding        : 10px 30px;
     border-radius  : 100px;
     font-weight    : 600;
     text-decoration: none;
@@ -112,8 +119,8 @@
 }
 
 .heroBtnOutline {
-    border         : 2px solid white;
-    padding        : 16px 30px;
+    /* border         : 2px solid white; */
+    padding        : 10px 30px;
     border-radius  : 100px;
     font-weight    : 600;
     text-decoration: none;
@@ -221,33 +228,40 @@
 @media(max-width:500px) {
 
     .heroTitle {
-        font-size: 34px;
+        font-size: 44px;
     }
 
 }
 
 .heroBg {
     position: absolute;
-    top     : 0;
-    left    : 0;
-    width   : 100%;
-    height  : 100%;
-    overflow: hidden;
+    inset   : 0;
+    z-index : 0;
 }
 
 .heroVideo {
-    width     : 100%;
-    height    : 100%;
-    object-fit: cover;
+    width        : 100%;
+    height       : 100%;
+    object-fit   : cover;
+    position     : absolute;
+    inset        : 0;
+    z-index      : 1;
+    border-radius: 80px;
 }
 
 .heroOverlay {
-    position  : absolute;
-    top       : 0;
-    left      : 0;
-    width     : 100%;
-    height    : 100%;
-    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    inset   : 0;
+    z-index : 2;
+
+    backdrop-filter        : blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.75));
+    border-radius: 80px;
 }
 
 .soundBtn {
@@ -270,7 +284,11 @@
 
 
 
-
+.heroBtnPrimary,
+.heroBtnOutline,
+.dropdownItem {
+    text-transform: uppercase;
+}
 
 
 
@@ -311,7 +329,7 @@
 }
 
 .dropdownItem:hover {
-    background: #9efd8d;
+    background     : #9efd8d;
     border-radius  : 80px;
     font-weight    : 600;
     text-decoration: none;
@@ -319,4 +337,166 @@
     background     : #078a00;
     backdrop-filter: blur(6px);
     transition     : 0.3s;
+}
+
+.typeWriter {
+    font-size  : 28px;
+    margin-top : 10px;
+    color      : #fff;
+    font-weight: 500;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
+
+}
+
+.cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+.heroButtons .dropdown:nth-child(odd) button {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+}
+
+.heroButtons .dropdown:nth-child(even) button {
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+}
+
+
+.heroButtons .dropdown:nth-child(odd) button:hover {
+    background: white;
+    color     : #ec4899;
+    border    : 2px solid #ec4899;
+}
+
+.heroButtons .dropdown:nth-child(even) button:hover {
+    background: white;
+    color     : #0284c7;
+    border    : 2px solid #0284c7;
+}
+
+
+.dropdownMenu {
+    min-width: 200px;
+    max-width: 90vw;
+}
+
+
+.heroStats {
+    display              : grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap                  : 20px;
+}
+
+
+@media (max-width: 1024px) {
+
+    .heroButtons {
+        gap: 10px;
+    }
+
+    .heroBtnPrimary,
+    .heroBtnOutline {
+        padding  : 9px 20px;
+        font-size: 13px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .heroVideo {
+        border-radius: 35px;
+    }
+
+    .heroOverlay {
+        border-radius: 35px;
+    }
+
+    .heroSection {
+        padding-top   : 50px;
+        padding-bottom: 0px;
+    }
+
+
+    .heroStats {
+        grid-template-columns: repeat(2, 1fr);
+        gap                  : 18px;
+    }
+
+    .statNumber {
+        font-size: 28px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .heroSection {
+        min-height    : auto;
+    }
+
+
+    .heroContent {
+        position : relative;
+        z-index  : 5;
+        max-width: fit-content;
+        padding  : 10px 20px;
+    }
+
+    .heroTag {
+        display: none;
+    }
+
+    .heroSection {
+        padding-top: 120px;
+        padding-bottom: 55px;
+    }
+
+    .heroButtons {
+        flex-direction: column;
+        align-items   : center;
+    }
+
+    .heroBtnPrimary,
+    .heroBtnOutline {
+        width         : 100%;
+        /* max-width  : 280px; */
+        font-size     : larger;
+        white-space   : nowrap;
+    }
+
+    .dropdownMenu {
+        left     : 50%;
+        transform: translateX(-50%);
+    }
+
+    .heroStats {
+        display              : flex;
+        grid-template-columns: repeat(4, 1fr);
+        gap                  : 10px;
+        border-top           : 1px solid rgba(255, 255, 255, 0.3);
+        padding-top          : 10px;
+        margin-top           : 10px;
+    }
+
 }
