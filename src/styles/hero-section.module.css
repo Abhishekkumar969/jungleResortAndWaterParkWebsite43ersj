@@ -42,15 +42,15 @@
 }
 
 .heroTag {
-    display        : inline-flex;
-    align-items    : center;
-    gap            : 6px;
-    background     : rgba(255, 255, 255, 0.15);
-    padding        : 8px 16px;
-    border-radius  : 50px;
-    margin-bottom  : 20px;
-    font-size      : 14px;
-    backdrop-filter: blur(6px);
+    display           : inline-flex;
+    align-items       : center;
+    gap               : 6px;
+    background        : rgba(255, 255, 255, 0.15);
+    padding           : 8px 16px;
+    border-radius     : 50px;
+    /* margin-bottom  : 20px; */
+    font-size         : 14px;
+    backdrop-filter   : blur(6px);
 }
 
 .heroTitle {
@@ -369,28 +369,41 @@
 
 
 
-
-
-
-.heroButtons .dropdown:nth-child(odd) button {
+.heroButtons .dropdown:nth-child(odd)>button,
+.heroButtons .dropdown:nth-child(odd)>a {
     background: linear-gradient(135deg, #ec4899, #f472b6);
+
 }
 
-.heroButtons .dropdown:nth-child(even) button {
+.heroButtons .dropdown:nth-child(even)>button,
+.heroButtons .dropdown:nth-child(even)>a {
     background: linear-gradient(135deg, #0284c7, #38bdf8);
 }
 
-
-.heroButtons .dropdown:nth-child(odd) button:hover {
-    background: white;
-    color     : #ec4899;
-    border    : 2px solid #ec4899;
+.heroButtons .dropdown a {
+    background-color: white;
 }
 
-.heroButtons .dropdown:nth-child(even) button:hover {
+.heroButtons .dropdown:nth-child(odd) button:hover,
+.heroButtons .dropdown:nth-child(odd) a:hover {
+    background: white;
+    color     : #ec4899;
+}
+
+.heroButtons .dropdown:nth-child(even) button:hover,
+.heroButtons .dropdown:nth-child(even) a:hover {
     background: white;
     color     : #0284c7;
-    border    : 2px solid #0284c7;
+}
+
+.dropdownMenu {
+    background: white;
+}
+
+.dropdownItem {
+    background   : white;
+    color        : #000000;
+    border-radius: 80px;
 }
 
 .dropdownMenu {
@@ -528,11 +541,40 @@
 
 }
 
+.heroButtons .dropdown {
+    display        : flex;
+    justify-content: center;
+}
+
+
+
 @media (max-width:480px) {
 
     .heroButtons .dropdown {
         display        : flex;
         justify-content: center;
+    }
+
+}
+
+.typeWriter {
+    font-size  : 28px;
+    margin-top : 10px;
+    color      : #fff;
+    font-weight: 500;
+    text-shadow: 4px 4px 5px rgb(0, 0, 0);
+
+    max-width    : 100%;
+    word-break   : break-word;
+    overflow-wrap: break-word;
+}
+
+@media (max-width:480px) {
+
+    .typeWriter {
+        font-size  : 23px;
+        line-height: 1.4;
+        padding    : 0 10px;
     }
 
 }
