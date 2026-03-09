@@ -405,6 +405,36 @@
     text-shadow          : 4px 4px 5px rgb(0, 0, 0);
 }
 
+
+.desktopTitle {
+    display: block;
+}
+
+.mobileTitle {
+    display: none;
+}
+
+.andSymbol {
+    display: inline-block;
+}
+
+@media (max-width:480px) {
+
+    .desktopTitle {
+        display: none;
+    }
+
+    .mobileTitle {
+        display: block;
+    }
+
+    .mobileTitle span {
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+    }
+}
+
 @media (max-width: 1024px) {
 
     .heroButtons {
@@ -484,6 +514,7 @@
 
     .dropdownMenu {
         transform: translateX(-50%);
+
     }
 
     .heroStats {
@@ -493,6 +524,15 @@
         border-top           : 1px solid rgba(255, 255, 255, 0.3);
         padding-top          : 10px;
         margin-top           : 10px;
+    }
+
+}
+
+@media (max-width:480px) {
+
+    .heroButtons .dropdown {
+        display        : flex;
+        justify-content: center;
     }
 
 }

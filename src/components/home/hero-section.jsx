@@ -170,11 +170,10 @@ export default function HeroSection() {
       ]
     },
     {
-      title: " WaterPark & FunPark Tickets",
-      items: [
-        { name: "WaterPark Tickets", link: "/waterpark-tickets" },
-        { name: "FunPark Tickets", link: "/funpark-tickets" }
-      ]
+      title: "WaterPark Tickets", link: "/waterpark-tickets"
+    },
+    {
+      title: "FunPark Tickets", link: "/funpark-tickets"
     }
   ];
 
@@ -211,9 +210,18 @@ export default function HeroSection() {
           <span>Where Dreams Meet Nature</span>
         </div>
 
-        <h1 className={styles.heroTitle}>
+        {/* Desktop Title */}
+        <h1 className={`${styles.heroTitle} ${styles.desktopTitle}`}>
           Welcome to <br />
           <span>Jungle Resort & Waterpark</span>
+        </h1>
+
+        {/* Mobile Title */}
+        <h1 className={`${styles.heroTitle} ${styles.mobileTitle}`}>
+          Welcome to <br />
+          <span>
+            Jungle Resort <div className={styles.andSymbol}>&</div> Waterpark
+          </span>
         </h1>
 
         <h2 className={styles.typeWriter}>
@@ -224,27 +232,49 @@ export default function HeroSection() {
         <div className={styles.heroButtons}>
 
           {heroMenus.map((menu, index) => (
+
             <div key={index} className={styles.dropdown}>
 
-              <button
-                className={
-                  menu.title.includes("Tickets")
-                    ? styles.heroBtnOutline
-                    : styles.heroBtnPrimary
-                }
-              >
-                {menu.title} <ChevronDown size={16} style={{ marginLeft: "6px" }} />
-              </button>
+              {menu.items ? (
 
-              <div className={styles.dropdownMenu}>
-                {menu.items.map((item, i) => (
-                  <Link key={i} to={item.link} className={styles.dropdownItem}>
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
+                <>
+                  <button
+                    className={
+                      menu.title.includes("Tickets")
+                        ? styles.heroBtnOutline
+                        : styles.heroBtnPrimary
+                    }
+                  >
+                    {menu.title}
+                    <ChevronDown size={16} style={{ marginLeft: "6px" }} />
+                  </button>
+
+                  <div className={styles.dropdownMenu}>
+                    {menu.items.map((item, i) => (
+                      <Link key={i} to={item.link} className={styles.dropdownItem}>
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+
+              ) : (
+
+                <Link
+                  to={menu.link}
+                  className={
+                    menu.title.includes("Tickets")
+                      ? styles.heroBtnOutline
+                      : styles.heroBtnPrimary
+                  }
+                >
+                  {menu.title}
+                </Link>
+
+              )}
 
             </div>
+
           ))}
 
         </div>

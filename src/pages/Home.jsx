@@ -16,12 +16,12 @@ function HomePage() {
     <main className={styles.homePage}>
       <Navbar />
       <HeroSection />
-      <AboutSection />
       <EventsSection />
+      <AboutSection />
       <WaterparkPreview />
-      <ServicesSection />
-      <TestimonialsSection />
       <QuickBookingSection />
+      <TestimonialsSection />
+      <ServicesSection />
       <Footer />
     </main>
   );
