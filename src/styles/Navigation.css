@@ -15,8 +15,13 @@
   height    : 70px;
   width     : auto;
   object-fit: contain;
-  filter    : drop-shadow(7px 7px 7px rgb(0, 0, 0));
+  filter    : drop-shadow(3px 3px 1px #00000087);
 }
+
+.nav-logo img:hover {
+  transform: scale(1.1);
+}
+
 
 /* CONTAINER */
 .navbar-container {
@@ -27,10 +32,11 @@
 
 /* TOP BAR */
 .navbar-top {
-  background: #144623;
-  color     : white;
-  font-size : 14px;
+  color      : #000000;
+  font-size  : 14px;
+  font-weight: 600;
 }
+
 
 .navbar-top-inner {
   display        : flex;
@@ -48,18 +54,19 @@
   display        : flex;
   align-items    : center;
   gap            : 6px;
-  color          : white;
+  color          : #2f2f2f;
   text-decoration: none;
+  font-weight    : 600;
 }
 
 .navbar-contact a:hover {
-  color: #22c55e;
+  color    : #000000;
+  transform: scale(1.1);
 }
 
 /* MAIN NAVBAR */
 .navbar-main {
-  background   : white;
-  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(to bottom, #00fc6d, #b7ffa4, #ffffff, #ffffffe8, #ffffffaf, #ffffff00);
 }
 
 .navbar-inner {
@@ -78,12 +85,14 @@
 
 .navbar-links a {
   text-decoration: none;
-  color          : #111827;
-  font-weight    : 500;
+  color          : #008f34;
+  font-weight    : 800;
+
 }
 
 .navbar-links a:hover {
-  color: #22c55e;
+  color    : #01712a;
+  transform: scale(1.1);
 }
 
 /* BUTTONS */
@@ -93,22 +102,23 @@
 }
 
 .btn-outlines {
-  border         : 2px solid rgb(255, 255, 255);
   padding        : 10px 17px;
   border-radius  : 80px;
   text-decoration: none;
-  color          : #ffffff !important;
-  background     : #fc3939;
   backdrop-filter: blur(6px);
   transition     : 0.3s;
   width          : 100%;
-  box-shadow     : 3px 3px 7px rgb(0, 0, 0);
+  background     : #ff0000;
+  color          : #ffffff !important;
+  box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345);
+  font-weight    : 800 !important;
 }
 
 .btn-outlines:hover {
-  background: white;
-  color     : #0284c7;
-  border    : 2px solid #0284c7;
+  font-weight: 800 !important;
+  background : #ffffff;
+  color      : #ff0000 !important;
+  box-shadow : inset 3px 3px 1px #ff0000, 3px 3px 1px #000000;
 }
 
 
@@ -268,7 +278,7 @@
   opacity         : 0;
   max-height      : 0;
   backdrop-filter : blur(8px);
-  box-shadow      : 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow      : 5px 5px 3px rgba(0, 0, 0, 0.345);
   transition      :
     transform 0.45s cubic-bezier(.22, .68, 0, 1.71),
     opacity 0.35s ease,
@@ -337,4 +347,23 @@
   background     : #fc3939;
   transition     : 0.3s;
   width          : 100%;
+}
+
+
+
+
+
+
+
+
+
+
+.navbar-main {
+  background: #ffffff;
+  transition: all 0.7 ease-in;
+}
+
+/* Scroll hone ke baad */
+.navbar-blur {
+  background: linear-gradient(to bottom, #ffffff, #ffffff, #ffffffe5, #ffffff00);
 }

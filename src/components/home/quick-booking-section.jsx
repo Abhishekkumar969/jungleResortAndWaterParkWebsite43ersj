@@ -1,6 +1,6 @@
 import React from "react";
 import { Phone, MessageCircle, Clock } from "lucide-react";
-import BookingForm from "../booking-form";
+// import BookingForm from "../booking-form";
 import styles from "../../styles/quick-booking-section.module.css";
 
 export default function QuickBookingSection() {
@@ -81,9 +81,9 @@ export default function QuickBookingSection() {
 
           {/* RIGHT FORM */}
 
-          <div className={styles.bookingFormWrapper}>
+          {/* <div className={styles.bookingFormWrapper}>
             <BookingForm title="Quick Booking Request" />
-          </div>
+          </div> */}
 
         </div>
 

@@ -45,11 +45,6 @@ export default function WaterparkPreview() {
                             Splash Into <span>Endless Fun</span>
                         </h2>
 
-                        <p className={styles.waterparkDesc}>
-                            Dive into excitement at our world-class waterpark featuring thrilling slides,
-                            a massive wave pool, relaxing lazy river, and dedicated kids zones.
-                        </p>
-
                         <div className={styles.waterparkAttractions}>
 
                             {attractions.map((item, i) => {

@@ -8,16 +8,73 @@ const texts = [
   "Waterpark in Patna"
 ];
 
+const stats = [
+  { number: "5+", label: "Event Venues" },
+  { number: "10+", label: "Water Attractions" },
+  { number: "1000+", label: "Events Hosted" },
+  { number: "50K+", label: "Happy Visitors" }
+];
+
 export default function HeroSection() {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
   const [videoSrc, setVideoSrc] = useState("/images/BackgroundVdo.mp4");
   const [muted, setMuted] = useState(true);
-
   const [displayText, setDisplayText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [counts, setCounts] = useState(stats.map(() => 0));
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+
+        if (!entry.isIntersecting) return;
+
+        stats.forEach((stat, index) => {
+
+          let target = stat.number.includes("K")
+            ? parseInt(stat.number) * 1000
+            : parseInt(stat.number);
+
+          const duration = 2000; // total animation time (ms)
+          const startTime = performance.now();
+
+          const animate = (time) => {
+
+            const progress = Math.min((time - startTime) / duration, 1);
+            const value = Math.floor(progress * target);
+
+            setCounts(prev => {
+              const updated = [...prev];
+              updated[index] = value;
+              return updated;
+            });
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+
+          };
+
+          requestAnimationFrame(animate);
+
+        });
+
+        observer.disconnect();
+
+      },
+      { threshold: 0.4 }
+    );
+
+    if (statsRef.current) observer.observe(statsRef.current);
+
+    return () => observer.disconnect();
+
+  }, []);
 
   useEffect(() => {
 
@@ -131,12 +188,6 @@ export default function HeroSection() {
     setMuted(video.muted);
   };
 
-  const stats = [
-    { number: "5+", label: "Event Venues" },
-    { number: "10+", label: "Water Attractions" },
-    { number: "1000+", label: "Events Hosted" },
-    { number: "50K+", label: "Happy Visitors" }
-  ];
 
   const heroMenus = [
     {
@@ -279,17 +330,21 @@ export default function HeroSection() {
 
         </div>
 
-        <div className={styles.heroStats}>
+        <div ref={statsRef} className={styles.heroStats}>
           {stats.map((stat, index) => (
             <div key={index} className={styles.heroStat}>
-              <div className={styles.statNumber}>{stat.number}</div>
+              <div className={styles.statNumber}>
+                {stat.number.includes("K")
+                  ? Math.floor(counts[index] / 1000)
+                  : counts[index]}
+                {stat.number.includes("K") ? "K" : ""}
+                {stat.number.includes("+") ? "+" : ""}
+              </div>
               <div className={styles.statLabels}>{stat.label}</div>
             </div>
           ))}
         </div>
-
       </div>
-
 
     </section>
   );

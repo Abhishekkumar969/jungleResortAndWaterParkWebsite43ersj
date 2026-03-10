@@ -1,13 +1,15 @@
 .quickBookingSection {
-    padding   : 100px 20px;
-    background: #ffffff;
+    padding        : 100px 20px;
+    background     : #ffffff;
+    display        : flex;
+    justify-content: center;
+    align-content  : center;
+
 }
 
 .bookingGrid {
-    display              : grid;
-    grid-template-columns: 1fr 1fr;
-    gap                  : 60px;
-    align-items          : flex-start;
+    max-width: 1200px;
+
 }
 
 .bookingLabel {
@@ -46,15 +48,15 @@
     align-items  : center;
     gap          : 15px;
     border       : 1px solid #e5e7eb;
-    border-radius: 12px;
+    border-radius: 40px;
     padding      : 18px;
     background   : #fafafa;
     transition   : .3s;
+    box-shadow   : 5px 5px 3px rgba(0, 0, 0, 0.345);
 }
 
 .contactCard:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transform : translateY(-3px);
+    transform: translateY(-5px) scale(1.03);
 }
 
 .contactIcon {
@@ -94,8 +96,8 @@
 .bookingFormWrapper {
     background   : #f8fafc;
     padding      : 30px;
-    border-radius: 14px;
-    box-shadow   : 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 40px;
+    box-shadow   : 25px 25px 3px rgba(0, 0, 0, 0.345);
 }
 
 @media(max-width:900px) {

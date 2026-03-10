@@ -1,158 +1,51 @@
-.testimonialsSection {
-    padding   : 100px 20px;
-    background: #f8fafc;
+/* section background */
+.googleReviewsSection {
+    padding      : 40px 20px;
+    /* background: linear-gradient(180deg, #f8fafc, #eef2f7); */
 }
 
-.testimonialsHeader {
-    text-align   : center;
-    max-width    : 700px;
+/* container */
+.googleReviewsContainer {
+    max-width    : 1200px;
     margin       : auto;
-    margin-bottom: 60px;
+    padding      : 40px;
+    background   : #fff;
+    border-radius: 20px;
+    box-shadow   : 0 15px 40px rgba(0, 0, 0, 0.12);
+    transition   : all .4s ease;
 }
 
-.testimonialsLabel {
-    color         : #38bdf8;
-    font-weight   : 600;
-    text-transform: uppercase;
-    font-size     : 14px;
+/* hover animation */
+.googleReviewsContainer:hover {
+    transform : translateY(-6px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
 }
 
-.testimonialsTitle {
-    font-size    : 42px;
-    font-weight  : 700;
-    margin-top   : 10px;
-    margin-bottom: 20px;
-}
+/* responsive */
+@media (max-width:768px) {
 
-.testimonialsTitle span {
-    color: #38bdf8;
-}
-
-.testimonialsDesc {
-    color: #666;
-}
-
-.testimonialWrapper {
-    max-width: 900px;
-    margin   : auto;
-}
-
-.testimonialCard {
-    display              : grid;
-    grid-template-columns: 1fr 1fr;
-    background           : white;
-    border-radius        : 16px;
-    overflow             : hidden;
-    box-shadow           : 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-.testimonialImage img {
-    width     : 100%;
-    height    : 100%;
-    object-fit: cover;
-}
-
-.testimonialContent {
-    padding : 40px;
-    position: relative;
-}
-
-.quoteIcon {
-    position: absolute;
-    top     : 20px;
-    right   : 20px;
-    opacity : 0.1;
-    width   : 50px;
-    height  : 50px;
-}
-
-.testimonialRating {
-    display      : flex;
-    gap          : 5px;
-    margin-bottom: 15px;
-}
-
-.starIcon {
-    color: #facc15;
-    fill : #facc15;
-}
-
-.testimonialText {
-    font-size    : 17px;
-    line-height  : 1.7;
-    margin-bottom: 25px;
-    color        : #333;
-}
-
-.testimonialAuthor {
-    border-top   : 1px solid #eee;
-    padding-top  : 15px;
-    margin-bottom: 20px;
-}
-
-.testimonialAuthor h4 {
-    margin   : 0;
-    font-size: 18px;
-}
-
-.testimonialAuthor p {
-    margin   : 3px 0 0;
-    color    : #38bdf8;
-    font-size: 14px;
-}
-
-.testimonialNav {
-    display    : flex;
-    align-items: center;
-    gap        : 15px;
-}
-
-.navBtn {
-    border         : 1px solid #ddd;
-    background     : white;
-    width          : 40px;
-    height         : 40px;
-    border-radius  : 50%;
-    display        : flex;
-    align-items    : center;
-    justify-content: center;
-    cursor         : pointer;
-    transition     : .3s;
-}
-
-.navBtn:hover {
-    background: #38bdf8;
-    color     : white;
-}
-
-.testimonialDots {
-    display: flex;
-    gap    : 6px;
-}
-
-.dot {
-    width        : 8px;
-    height       : 8px;
-    background   : #ddd;
-    border-radius: 50%;
-    border       : none;
-    cursor       : pointer;
-    transition   : .3s;
-}
-
-.active {
-    background: #38bdf8;
-    width     : 20px;
-}
-
-@media(max-width:900px) {
-
-    .testimonialCard {
-        grid-template-columns: 1fr;
+    .googleReviewsSection {
+        padding: 0px 1px;
     }
 
-    .testimonialsTitle {
-        font-size: 32px;
+    .googleReviewsContainer {
+        padding      : 2px 5px;
+        border-radius: 16px;
     }
 
+}
+
+
+/* hide elfsight branding */
+.elfsight-app-01e88011-40a6-4790-a26b-541d85ac57bb a[href*="elfsight"] {
+    display: none !important;
+}
+
+[class*="elfsight"] a[href*="elfsight"] {
+    display: none !important;
+}
+
+/* hide Free Google Reviews Widget text */
+.eapps-widget-toolbar {
+    display: none !important;
 }

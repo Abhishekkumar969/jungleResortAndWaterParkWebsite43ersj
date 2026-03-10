@@ -14,6 +14,23 @@ export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+
+  }, []);
 
   useEffect(() => {
 
@@ -41,7 +58,10 @@ export default function Navbar() {
       <div
         className="navbar-top"
         style={{
-          background: `linear-gradient(to right, #1c6031 ${scrollProgress}%, #144623 ${scrollProgress}%)`
+          background: `
+            linear-gradient(to top, #ffffff, #aefab4d7, #ffffff00, #fdfcfc00),
+            linear-gradient(to right, #00ff51 ${scrollProgress}%, #02ce3f ${scrollProgress}%)
+          `
         }}
       >
         <div className="navbar-container navbar-top-inner">
@@ -66,7 +86,7 @@ export default function Navbar() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="navbar-main">
+      <nav className={`navbar-main ${isScrolled ? "navbar-blur" : ""}`}>
 
         <div className="navbar-container navbar-inner">
 

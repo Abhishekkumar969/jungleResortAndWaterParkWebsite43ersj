@@ -22,6 +22,10 @@
     gap                  : 20px;
 }
 
+.aboutImages img {
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.345);
+}
+
 .imageColumn {
     display       : flex;
     flex-direction: column;
@@ -54,7 +58,7 @@
     color        : #000;
     padding      : 20px;
     border-radius: 14px;
-    box-shadow   : 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow   : 5px 5px 3px rgba(0, 0, 0, 0.345);
 }
 
 .badgeNumber {
@@ -107,20 +111,21 @@
 }
 
 .featureItem {
-    display    : flex;
-    gap        : 12px;
-    align-items: flex-start;
+    display            : flex;
+    gap                : 12px;
+    align-items        : flex-start;
+    border-radius      : 10px;
 }
 
 .featureIcon {
-    width          : 40px;
-    height         : 40px;
-    background     : #e0f2fe;
-    border-radius  : 10px;
-    display        : flex;
-    align-items    : center;
-    justify-content: center;
-    color          : #000;
+    width             : 40px;
+    height            : 40px;
+    background        : #e0f2fe;
+    border-radius     : 10px;
+    display           : flex;
+    align-items       : center;
+    justify-content   : center;
+    color             : #000;
 }
 
 .featureItem h4 {
@@ -172,7 +177,7 @@
 @media(max-width:600px) {
 
     .aboutSection {
-        padding   :  20px;
+        padding   : 20px;
         background: #ffffff;
     }
 
