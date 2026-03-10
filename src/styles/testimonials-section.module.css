@@ -1,7 +1,7 @@
 /* section background */
 .googleReviewsSection {
-    padding      : 40px 20px;
-    /* background: linear-gradient(180deg, #f8fafc, #eef2f7); */
+    padding   : 80px 20px;
+    background: linear-gradient(180deg, #f8fafc, #eef2f7);
 }
 
 /* container */
@@ -25,27 +25,12 @@
 @media (max-width:768px) {
 
     .googleReviewsSection {
-        padding: 0px 1px;
+        padding: 20px 10px;
     }
 
     .googleReviewsContainer {
-        padding      : 2px 5px;
+        padding      : 10px;
         border-radius: 16px;
     }
 
-}
-
-
-/* hide elfsight branding */
-.elfsight-app-01e88011-40a6-4790-a26b-541d85ac57bb a[href*="elfsight"] {
-    display: none !important;
-}
-
-[class*="elfsight"] a[href*="elfsight"] {
-    display: none !important;
-}
-
-/* hide Free Google Reviews Widget text */
-.eapps-widget-toolbar {
-    display: none !important;
 }
