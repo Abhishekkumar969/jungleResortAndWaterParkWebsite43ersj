@@ -1,0 +1,324 @@
+/* =======================================================
+   EVENT PAGE – CLEAN RESPONSIVE LAYOUT
+======================================================= */
+
+.eventPage {
+    width      : 100%;
+    margin     : 0;
+    padding    : 0;
+    font-family: "Poppins", sans-serif;
+    overflow-x : hidden;
+    margin-top : 70px;
+}
+
+
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.heroSection {
+    position       : relative;
+    width          : 100%;
+    height         : 100vh;
+    overflow       : hidden;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.heroSlider {
+    position: absolute;
+    width   : 100%;
+    height  : 100%;
+    top     : 0;
+    left    : 0;
+}
+
+.heroSlide {
+    position  : absolute;
+    width     : 100%;
+    height    : 100%;
+    opacity   : 0;
+    transition: opacity .8s ease;
+}
+
+.heroSlide.active {
+    opacity: 1;
+}
+
+.heroImage {
+    width     : 100%;
+    height    : 100%;
+    object-fit: cover;
+}
+
+.heroOverlay {
+    position  : absolute;
+    inset     : 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* HERO CONTENT */
+
+.heroContent {
+    position       : relative;
+    z-index        : 2;
+    width          : 90%;
+    max-width      : 1200px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    gap            : 40px;
+}
+
+.heroLeft {
+    flex: 1;
+}
+
+.heroRight {
+    flex           : 1;
+    display        : flex;
+    justify-content: flex-end;
+}
+
+.heroTitle {
+    font-size  : 48px;
+    color      : white;
+    font-weight: 700;
+}
+
+.heroTitle span {
+    color: #38bdf8;
+}
+
+/* ===========================
+   HERO DOTS
+=========================== */
+
+.heroDots {
+    position : absolute;
+    bottom   : 20px;
+    left     : 50%;
+    transform: translateX(-50%);
+    display  : flex;
+    gap      : 10px;
+    z-index  : 3;
+}
+
+.dot {
+    width        : 10px;
+    height       : 10px;
+    border-radius: 50%;
+    border       : none;
+    background   : white;
+    opacity      : .5;
+    cursor       : pointer;
+}
+
+.dot.active {
+    opacity   : 1;
+    background: #38bdf8;
+}
+
+
+/* ===========================
+   GALLERY
+=========================== */
+
+.galleryContent {
+    padding: 90px 5%;
+}
+
+.galleryHeader {
+    text-align   : center;
+    margin-bottom: 40px;
+}
+
+.galleryTitle {
+    font-size  : 38px;
+    font-weight: 700;
+}
+
+.gallerySubtitle {
+    color     : #666;
+    margin-top: 10px;
+}
+
+.galleryFilters {
+    display        : flex;
+    justify-content: center;
+    gap            : 14px;
+    margin-bottom  : 40px;
+}
+
+.galleryFilterBtn {
+    padding      : 10px 20px;
+    border       : none;
+    border-radius: 30px;
+    background   : #eee;
+    font-weight  : 600;
+    cursor       : pointer;
+    transition   : .3s;
+}
+
+.galleryFilterBtn.active {
+    background: #38bdf8;
+    color     : white;
+}
+
+/* GRID */
+
+.galleryGrid {
+    display              : grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap                  : 20px;
+}
+
+.galleryItem {
+    position     : relative;
+    overflow     : hidden;
+    border-radius: 12px;
+    cursor       : pointer;
+}
+
+.galleryImage {
+    width     : 100%;
+    height    : 260px;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.galleryItem:hover .galleryImage {
+    transform: scale(1.08);
+}
+
+.galleryOverlay {
+    position  : absolute;
+    inset     : 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity   : 0;
+    transition: .3s;
+}
+
+.galleryItem:hover .galleryOverlay {
+    opacity: 1;
+}
+
+
+/* PLAY ICON */
+
+.galleryPlay {
+    position       : absolute;
+    top            : 50%;
+    left           : 50%;
+    transform      : translate(-50%, -50%);
+    width          : 32px;
+    height         : 32px;
+    padding        : 12px;
+    border-radius  : 50%;
+    background     : rgba(0, 0, 0, 0.5);
+    color          : white;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    border         : 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow     : 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.galleryItem:hover .galleryPlay {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+/* ===========================
+   FULLSCREEN VIEWER
+=========================== */
+
+.galleryViewer {
+    position       : fixed;
+    inset          : 0;
+    background     : rgba(0, 0, 0, .9);
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    z-index        : 9999;
+}
+
+.galleryViewerContent {
+    width    : 90%;
+    max-width: 900px;
+}
+
+.galleryFullImage {
+    width        : 100%;
+    border-radius: 10px;
+}
+
+.galleryClose {
+    position  : absolute;
+    top       : 25px;
+    right     : 35px;
+    font-size : 30px;
+    background: none;
+    border    : none;
+    color     : white;
+    cursor    : pointer;
+}
+
+
+/* ===========================
+   MOBILE BOOK FORM
+=========================== */
+
+.mobileBook {
+    display: none;
+    padding: 60px 20px;
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width:900px) {
+
+    .heroContent {
+        flex-direction: column;
+        text-align    : center;
+    }
+
+    .heroRight {
+        justify-content: center;
+    }
+
+    .heroTitle {
+        font-size: 38px;
+    }
+
+}
+
+@media (max-width:700px) {
+
+    .heroSection {
+        height : auto;
+        padding: 120px 20px;
+    }
+
+    .heroTitle {
+        font-size: 32px;
+    }
+
+    .galleryImage {
+        height: 200px;
+    }
+
+    .mobileBook {
+        display: block;
+    }
+
+    .heroRight {
+        display: none;
+    }
+
+}

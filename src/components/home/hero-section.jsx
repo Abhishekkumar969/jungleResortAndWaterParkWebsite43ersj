@@ -19,7 +19,6 @@ export default function HeroSection() {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
   const [videoSrc, setVideoSrc] = useState("/images/BackgroundVdo.mp4");
-  const [muted, setMuted] = useState(true);
   const [displayText, setDisplayText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -152,43 +151,6 @@ export default function HeroSection() {
 
   }, []);
 
-  useEffect(() => {
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-
-        const video = videoRef.current;
-
-        if (!video) return;
-
-        if (entry.isIntersecting) {
-          video.play().catch(() => { });
-        } else {
-          video.pause();
-        }
-
-      },
-      { threshold: 0 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-
-  }, []);
-
-  const toggleSound = () => {
-    const video = videoRef.current;
-
-    if (!video) return;
-
-    video.muted = !video.muted;
-    setMuted(video.muted);
-  };
-
-
   const heroMenus = [
     {
       title: "Book Your Event",
@@ -237,7 +199,7 @@ export default function HeroSection() {
           ref={videoRef}
           src={videoSrc}
           autoPlay
-          muted={muted}
+          muted
           loop
           playsInline
           className={styles.heroVideo}
@@ -251,10 +213,6 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className={styles.heroContent}>
-
-        <button onClick={toggleSound} className={styles.soundBtn}>
-          {muted ? "🔇" : "🔊"}
-        </button>
 
         <div className={styles.heroTag}>
           <Sparkles size={16} />

@@ -13,6 +13,9 @@ import Contact from "./pages/contact/Contact";
 import Gallery from "./pages/gallery/Gallery";
 
 
+import WeddingDetails from "./pages/events/WeddingDetails";
+
+
 function App() {
   return (
     <Router>
@@ -26,6 +29,8 @@ function App() {
           <Route path="/Venues" element={<Venues />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Gallery" element={<Gallery />} />
+
+          <Route path="/WeddingDetails" element={<WeddingDetails />} />
 
         </Routes>
         <FloatingContact />

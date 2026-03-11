@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, User, Phone, PartyPopper } from "lucide-react";
-
 import { db } from "../firebaseConfig";
-import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  where,
-  setDoc,
-  serverTimestamp,
-} from "firebase/firestore";
-import "../styles/quick-booking-section.module.css";
+import { collection, doc, getDocs, query, where, setDoc, serverTimestamp, } from "firebase/firestore";
 
-export default function QuickBookForm() {
+import styles from "../styles/quick-booking-section.module.css";
+
+export default function QuickBookForm({ defaultFunctionType = "" }) {
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
-    functionType: "",
+    functionType: defaultFunctionType,
     date: "",
   });
 
   const [functionTypes, setFunctionTypes] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const [message, setMessage] = useState("");
   const [duplicateMessage, setDuplicateMessage] = useState("");
   const [isDuplicate, setIsDuplicate] = useState(false);
-
   const [isCheckingDuplicate, setIsCheckingDuplicate] = useState(false); // ⭐ NEW
+
+  useEffect(() => {
+    if (defaultFunctionType) {
+      setFormData((prev) => ({
+        ...prev,
+        functionType: defaultFunctionType
+      }));
+    }
+  }, [defaultFunctionType]);
 
   // ------------------------------------------------------------
   // LOAD FUNCTION TYPES
@@ -183,15 +182,15 @@ export default function QuickBookForm() {
   };
 
   return (
-    <div className="quick-book">
+    <div className={styles.quickBook}>
       <h3>Book Now</h3>
 
       <form onSubmit={handleSubmit}>
 
         {/* DATE */}
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>EXPECTED DATE</label>
-          <Calendar className="icon" />
+          <Calendar className={styles.icon} />
           <input
             type="date"
             value={formData.date}
@@ -205,9 +204,9 @@ export default function QuickBookForm() {
         </div>
 
         {/* FUNCTION TYPE */}
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>SELECT EVENT TYPE</label>
-          <PartyPopper className="icon" />
+          <PartyPopper className={styles.icon} />
           <select
             value={formData.functionType}
             onChange={(e) => {
@@ -227,9 +226,9 @@ export default function QuickBookForm() {
         </div>
 
         {/* NAME */}
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>Name</label>
-          <User className="icon" />
+          <User className={styles.icon} />
           <input
             type="text"
             placeholder="Enter Your Name"
@@ -242,9 +241,9 @@ export default function QuickBookForm() {
         </div>
 
         {/* MOBILE */}
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>CONTACT NUMBER</label>
-          <Phone className="icon" />
+          <Phone className={styles.icon} />
           <input
             type="text"
             placeholder="Enter 10-digit Number"
@@ -259,14 +258,17 @@ export default function QuickBookForm() {
             }}
             required
           />
+
           {formData.mobile.length > 0 && formData.mobile.length < 10 && (
-            <span className="form-error">Enter valid 10-digit number</span>
+            <span className={styles.formError}>
+              Enter valid 10-digit number
+            </span>
           )}
         </div>
 
         {/* DUPLICATE MESSAGE */}
         {duplicateMessage && (
-          <p className="form-error" style={{ marginTop: "-5px" }}>
+          <p className={styles.formError} style={{ marginTop: "-5px" }}>
             {duplicateMessage}
           </p>
         )}
@@ -275,7 +277,8 @@ export default function QuickBookForm() {
         <button
           type="submit"
           disabled={isSubmitting || isDuplicate || isCheckingDuplicate}
-          style={{ ...buttonStyle, borderRadius: "10px" }}
+          className={styles.submitBtn}
+          style={{ ...buttonStyle }}
         >
           {isCheckingDuplicate
             ? "Checking..."
@@ -286,7 +289,7 @@ export default function QuickBookForm() {
 
         {message && (
           <p
-            className={`form-message ${message.includes("Thank") ? "success" : "error"
+            className={`${styles.formMessage} ${message.includes("Thank") ? styles.success : styles.error
               }`}
           >
             {message}

@@ -6,7 +6,7 @@ const events = [
     {
         title: "WEDDING",
         image: "/images/venue-wedding.jpg",
-        href: "/event/wedding"
+        href: "/WeddingDetails"
     },
     {
         title: "Reception",
