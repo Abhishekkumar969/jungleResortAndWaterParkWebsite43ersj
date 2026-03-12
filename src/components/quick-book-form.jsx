@@ -3,7 +3,7 @@ import { Calendar, User, Phone, PartyPopper } from "lucide-react";
 import { db } from "../firebaseConfig";
 import { collection, doc, getDocs, query, where, setDoc, serverTimestamp, } from "firebase/firestore";
 
-import styles from "../styles/quick-booking-section.module.css";
+import styles from "../styles/quick-book-section.module.css";
 
 export default function QuickBookForm({ defaultFunctionType = "" }) {
   const [formData, setFormData] = useState({

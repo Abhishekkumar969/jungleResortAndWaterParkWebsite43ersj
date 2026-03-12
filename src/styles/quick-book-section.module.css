@@ -1,0 +1,318 @@
+.quickBook {
+    background   : #fcfce193;
+    border       : 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 16px;
+    padding      : 2rem 2rem;
+    width        : 100%;
+    max-width    : 420px;
+    margin       : 0 auto;
+    animation    : fadeInUp 0.8s ease-out;
+    transition   : all 0.4s ease;
+    border-color : #ffc400;
+    margin-top   : 30px;
+}
+
+.quickBook {
+    overflow : visible !important;
+    transform: none !important;
+}
+
+
+.quickBook:hover {
+    border-color: #ffc400;
+    box-shadow  : 0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+/* ------------------------------------
+   Headings
+------------------------------------ */
+.quickBook h3 {
+    font-family  : "Playfair Display", serif;
+    color        : #00336a;
+    font-size    : 1.8rem;
+    font-weight  : 800;
+    margin-bottom: 0.4rem;
+    text-align   : center;
+}
+
+.quickBook p {
+    font-size    : 0.95rem;
+    color        : #000000;
+    margin-bottom: 1.8rem;
+    line-height  : 1.6;
+    text-align   : left;
+
+}
+
+/* ------------------------------------
+   Form Layout
+------------------------------------ */
+.quickBook form {
+    display       : flex;
+    flex-direction: column;
+}
+
+.formGroup {
+    position: relative;
+}
+
+/* Input Fields */
+.formGroup input,
+.formGroup select {
+    width        : 100%;
+    padding      : 0.9rem 0.85rem 0.9rem 2.5rem;
+    border-radius: 8px;
+    border       : 1px solid rgba(212, 175, 55, 0.3);
+    background   : rgb(255, 255, 255);
+    font-family  : "Lora", serif;
+    font-size    : 0.95rem;
+    outline      : none;
+    transition   : all 0.3s ease;
+    color        : #000;
+    margin-bottom: 10px;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+    border-color: #ffc400;
+    box-shadow  : 0 0 10px rgba(212, 175, 55, 0.25);
+}
+
+.formGroup input {
+    width: 87%;
+    color: #000;
+}
+
+/* Icons in inputs */
+.icon {
+    position      : absolute;
+    left          : 0.9rem;
+    top           : 63%;
+    transform     : translateY(-50%);
+    color         : #000000;
+    width         : 18px;
+    height        : 18px;
+    pointer-events: none;
+    opacity       : 0.9;
+}
+
+/* ------------------------------------
+   Button
+------------------------------------ */
+.quickBook button {
+    width        : 100%;
+    padding      : 0.95rem 1rem;
+    border-radius: 30px;
+    background   : #ffc400;
+    color        : #121212;
+    font-family  : "Playfair Display", serif;
+    font-size    : 1rem;
+    font-weight  : 600;
+    border       : none;
+    cursor       : pointer;
+    box-shadow   : 0 6px 18px rgba(212, 175, 55, 0.3);
+    transition   : 0.3s ease;
+}
+
+.quickBook button:hover {
+    transform : translateY(-2px);
+    box-shadow: 0 10px 22px rgba(212, 175, 55, 0.4);
+}
+
+.quickBook button:disabled {
+    opacity: 0.6;
+    cursor : not-allowed;
+}
+
+/* ------------------------------------
+   Messages
+------------------------------------ */
+.formMessage {
+    text-align : center;
+    margin-top : 0.6rem;
+    font-size  : 0.9rem;
+    font-weight: 500;
+}
+
+.formMessage.success {
+    color: #22c55e;
+}
+
+.formMessage.error {
+    color: #ef4444;
+}
+
+/* ------------------------------------
+   Fade Animation
+------------------------------------ */
+@keyframes fadeInUp {
+    from {
+        opacity  : 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity  : 1;
+        transform: translateY(0);
+    }
+}
+
+/* ------------------------------------
+   RESPONSIVE DESIGN
+------------------------------------ */
+
+/* TABLETS (<=768px) */
+@media (max-width: 768px) {
+    .quickBook {
+        padding      : 1.8rem;
+        width        : 75vw;
+        border-radius: 14px;
+    }
+
+    .quickBook h3 {
+        font-size: 1.55rem;
+    }
+
+    .formGroup input,
+    .formGroup select {
+        font-size: 0.9rem;
+    }
+
+    .quickBook button {
+        font-size: 0.95rem;
+    }
+}
+
+/* MOBILES (<=640px) */
+@media (max-width: 640px) {
+    .quickBook {
+        padding      : 1.4rem;
+        width        : 75vw;
+        border-radius: 14px;
+    }
+
+    .quickBook h3 {
+        font-size: 1.45rem;
+    }
+
+    .formGroup input,
+    .formGroup select {
+        padding-left: 2.3rem;
+    }
+
+}
+
+/* SMALL MOBILES (<=480px) */
+@media (max-width: 480px) {
+    .quickBook {
+        width        : 75vw !important;
+        padding      : 1.5rem;
+        margin-bottom: 70px !important;
+    }
+
+    .quickBook h3 {
+        font-size: 1.35rem;
+    }
+
+    .quickBook p {
+        font-size: 0.9rem;
+    }
+
+    .formGroup input,
+    .formGroup select {
+        font-size: 0.85rem;
+    }
+
+    .quickBook button {
+        padding  : 0.85rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ULTRA SMALL DEVICES (<=360px) */
+@media (max-width: 360px) {
+    .quickBook {
+        width  : 92vw;
+        padding: 1.3rem;
+    }
+
+    .quickBook h3 {
+        font-size: 1.2rem;
+    }
+
+    .formGroup input,
+    .formGroup select {
+        font-size   : 0.8rem;
+        padding-left: 2.1rem;
+    }
+
+    .quickBook button {
+        font-size: 0.85rem;
+    }
+}
+
+/* ------------------------------------
+   Remove input spinners
+------------------------------------ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin            : 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ------------------------------------
+   White date icon
+------------------------------------ */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(2);
+    cursor: pointer;
+}
+
+/* Tooltip on date picker */
+input[type="date"]::-webkit-calendar-picker-indicator::after {
+    content      : "Pick Date";
+    position     : absolute;
+    bottom       : 125%;
+    right        : -10px;
+    padding      : 4px 8px;
+    background   : #fff;
+    color        : #000;
+    border-radius: 6px;
+    opacity      : 0;
+    transition   : 0.25s ease;
+    font-size    : 0.75rem;
+    box-shadow   : 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover::after {
+    opacity  : 1;
+    transform: translateY(-4px);
+}
+
+.formGroup label {
+    font-size    : 14px;
+    font-weight  : 600;
+    margin-bottom: 4px;
+    display      : block;
+    color        : #000000;
+    text-align   : left;
+}
+
+input[type="date"] {
+    color: #000 !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter : invert(0) !important;
+    opacity: 0.8;
+}
+
+.formGroup input::placeholder,
+.formGroup select::placeholder {
+    color  : #000 !important;
+    opacity: 1;
+}
