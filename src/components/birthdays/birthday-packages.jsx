@@ -125,9 +125,6 @@ export default function BirthdayPackages() {
                     })}
                 </div>
 
-                <p className={styles.note}>
-                    All prices are exclusive of GST. Custom packages available on request.
-                </p>
             </div>
         </section>
     );

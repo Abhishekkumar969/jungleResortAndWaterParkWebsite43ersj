@@ -5,7 +5,7 @@ import QuickBookForm from "../../components/quick-book-form";
 import { Play } from "lucide-react";
 import styles from "../../styles/eventspages.module.css";
 
-export default function WeddingDetails() {
+export default function AnniversaryDetails() {
 
     const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -77,18 +77,18 @@ export default function WeddingDetails() {
 
                     <div className={styles.heroLeft}>
                         <h1 className={styles.heroTitle}>
-                            Your Dream <span>Wedding</span> Starts Here
+                            Your Dream <span>Anniversary</span> Starts Here
                         </h1>
                     </div>
 
                     <div className={styles.heroRight}>
-                        <QuickBookForm defaultFunctionType="Wedding" />
+                        <QuickBookForm defaultFunctionType="Anniversary" />
                     </div>
                 </div>
             </section>
 
             <section className={styles.mobileBook}>
-                <QuickBookForm defaultFunctionType="Wedding" />
+                <QuickBookForm defaultFunctionType="Anniversary" />
             </section>
 
             {/* GALLERY */}

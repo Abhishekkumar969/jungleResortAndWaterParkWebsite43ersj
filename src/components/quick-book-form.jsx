@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, User, Phone, PartyPopper } from "lucide-react";
 import { db } from "../firebaseConfig";
-import { collection, doc, getDocs, query, where, setDoc, serverTimestamp, } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc, serverTimestamp, } from "firebase/firestore";
 
 import styles from "../styles/quick-book-section.module.css";
 
@@ -13,7 +13,23 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
     date: "",
   });
 
-  const [functionTypes, setFunctionTypes] = useState([]);
+  const [functionTypes] = useState([
+    "Destination Wedding",
+    "Wedding",
+    "Reception",
+    "Anniversary",
+    "Ring Ceremony",
+    "Corporate Event",
+    "Theme Party",
+    "Birthday Party",
+    "Pool Party",
+    "Haldi",
+    "Mehendi",
+    "Sangeet",
+    "Engagement",
+    "Baby Shower"
+  ]);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
   const [duplicateMessage, setDuplicateMessage] = useState("");
@@ -28,30 +44,6 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
       }));
     }
   }, [defaultFunctionType]);
-
-  // ------------------------------------------------------------
-  // LOAD FUNCTION TYPES
-  // ------------------------------------------------------------
-  useEffect(() => {
-    const fetchAccessData = async () => {
-      try {
-        const q = query(
-          collection(db, "usersAccess"),
-          where("accessToApp", "==", "A")
-        );
-        const querySnapshot = await getDocs(q);
-
-        if (!querySnapshot.empty) {
-          const docData = querySnapshot.docs[0].data();
-          setFunctionTypes(docData.functionTypes || []);
-        }
-      } catch (error) {
-        console.error("❌ Error fetching function types:", error);
-      }
-    };
-
-    fetchAccessData();
-  }, []);
 
   // ------------------------------------------------------------
   // 🔍 DUPLICATE CHECKER + BUTTON LOADING CONTROL
@@ -227,7 +219,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
 
         {/* NAME */}
         <div className={styles.formGroup}>
-          <label>Name</label>
+          <label>NAME</label>
           <User className={styles.icon} />
           <input
             type="text"
@@ -275,7 +267,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
 
         {/* SUBMIT */}
         <button
-          type="submit"
+          // type="submit"
           disabled={isSubmitting || isDuplicate || isCheckingDuplicate}
           className={styles.submitBtn}
           style={{ ...buttonStyle }}
@@ -295,6 +287,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
             {message}
           </p>
         )}
+
       </form>
     </div>
   );

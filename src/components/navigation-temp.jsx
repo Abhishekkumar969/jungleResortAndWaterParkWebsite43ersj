@@ -5,6 +5,8 @@ import "../styles/Navigation.css";
 
 const navLinks = [
   { href: "/", label: "HOME" },
+  { href: "/AboutUs", label: "ABOUT US" },
+  { href: "/services", label: "SERVICES" },
   { href: "/venues", label: "VENUES" },
   { href: "/gallery", label: "GALLERY" },
   { href: "/contact", label: "ENQUIRY NOW", className: "btn-outlines" }
@@ -119,10 +121,15 @@ export default function Navbar() {
             className="mobile-menu-btn"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={26} color="red" /> : <Menu size={26} color="#0284c7" />}
+            {isOpen ?
+              <X size={26}
+                color="red" /> :
+              <Menu size={26}
+                color="#0284c7"
+              />
+            }
           </button>
         </div>
-
       </nav>
 
       {/* Mobile Menu */}

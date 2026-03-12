@@ -5,7 +5,6 @@ import Footer from "../../components/footer-temp";
 import VenueHero from "../../components/venues/venue-hero";
 import VenuesList from "../../components/venues/venues-list";
 import VenueFeatures from "../../components/venues/venue-features";
-import VenueBooking from "../../components/venues/venue-booking";
 
 import styles from "../../styles/venues-page.module.css";
 
@@ -17,7 +16,6 @@ export default function VenuesPage() {
             <VenueHero />
             <VenuesList />
             <VenueFeatures />
-            <VenueBooking />
 
             <Footer />
         </main>

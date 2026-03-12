@@ -86,7 +86,8 @@
 .navbar-links a {
   text-decoration: none;
   color          : #008f34;
-  font-weight    : 800;
+  font-weight    : 700;
+  white-space    : nowrap;
 
 }
 
@@ -160,10 +161,10 @@
   text-decoration: none;
   color          : #111827;
   font-weight    : 500;
-
-  opacity   : 0;
-  transform : translateX(-20px);
-  transition: all 0.4s ease;
+  white-space    : nowrap;
+  opacity        : 0;
+  transform      : translateX(-20px);
+  transition     : all 0.4s ease;
 }
 
 .mobile-menu.active a {
@@ -319,34 +320,43 @@
 .mobile-menu.active a:nth-child(1) {
   opacity         : 1;
   transform       : translateY(0);
-  transition-delay: 0.08s;
+  transition-delay: 0.18s;
 }
 
 .mobile-menu.active a:nth-child(2) {
   opacity         : 1;
   transform       : translateY(0);
-  transition-delay: 0.16s;
+  transition-delay: 0.26s;
 }
 
 .mobile-menu.active a:nth-child(3) {
   opacity         : 1;
   transform       : translateY(0);
-  transition-delay: 0.24s;
+  transition-delay: 0.34s;
 }
 
 .mobile-menu.active a:nth-child(4) {
   opacity         : 1;
   transform       : translateY(0);
-  transition-delay: 0.32s;
+  transition-delay: 0.42s;
+}
 
+.mobile-menu.active a:nth-child(5) {
+  opacity         : 1;
+  transform       : translateY(0);
+  transition-delay: 0.60s;
+}
 
-  border         : 2px solid white;
-  border-radius  : 8px;
-  text-decoration: none;
-  color          : #ffffff !important;
-  background     : #fc3939;
-  transition     : 0.3s;
-  width          : 100%;
+.mobile-menu.active a:nth-child(6) {
+  opacity  : 1;
+  transform: translateY(0);
+  border          : 2px solid white;
+  border-radius   : 8px;
+  text-decoration : none;
+  color           : #ffffff !important;
+  background      : #fc3939;
+  width           : 100%;
+  transition-delay: 0.98s;
 }
 
 

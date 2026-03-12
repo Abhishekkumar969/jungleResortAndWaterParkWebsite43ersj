@@ -131,7 +131,7 @@
 }
 
 .dot {
-    width        : 8px;
+    width        : 4px !important;
     height       : 8px;
     background   : #ddd;
     border-radius: 50%;
@@ -142,7 +142,7 @@
 
 .active {
     background: #38bdf8;
-    width     : 20px;
+    width     : 4px !important;
 }
 
 @media(max-width:900px) {

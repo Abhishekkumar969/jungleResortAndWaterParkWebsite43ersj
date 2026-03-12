@@ -288,6 +288,7 @@
 .heroBtnOutline,
 .dropdownItem {
     text-transform: uppercase;
+    font-weight    : 600;
 }
 
 
@@ -326,6 +327,7 @@
     text-decoration: none;
     color          : #333;
     font-size      : 14px;
+    font-weight    : 600;
 }
 
 .dropdownItem:hover {

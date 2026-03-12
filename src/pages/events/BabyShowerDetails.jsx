@@ -5,7 +5,7 @@ import QuickBookForm from "../../components/quick-book-form";
 import { Play } from "lucide-react";
 import styles from "../../styles/eventspages.module.css";
 
-export default function WeddingDetails() {
+export default function BabyShowerDetails() {
 
     const [selectedIndex, setSelectedIndex] = useState(null);
 

@@ -126,21 +126,12 @@
 =========================== */
 
 .galleryContent {
-    padding: 90px 5%;
+    padding: 9px 5%;
 }
 
-.galleryHeader {
-    text-align   : center;
-    margin-bottom: 40px;
-}
-
-.galleryTitle {
-    font-size  : 38px;
-    font-weight: 700;
-}
 
 .gallerySubtitle {
-    color     : #666;
+    color     : #ffffff;
     margin-top: 10px;
 }
 
@@ -170,7 +161,7 @@
 
 .galleryGrid {
     display              : grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     gap                  : 20px;
 }
 
@@ -181,21 +172,24 @@
     cursor       : pointer;
 }
 
-.galleryImage {
-    width     : 100%;
-    height    : 260px;
-    object-fit: cover;
-    transition: .4s;
+.galleryItem:hover {
+    transform: translateY(-5px) scale(1.03);
 }
 
-.galleryItem:hover .galleryImage {
-    transform: scale(1.08);
+
+.galleryImage {
+    width        : 96%;
+    height       : 360px;
+    object-fit   : cover;
+    transition   : .4s;
+    border       : 4px solid white;
+    border-radius: 20px;
 }
 
 .galleryOverlay {
     position  : absolute;
     inset     : 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: transparent;
     opacity   : 0;
     transition: .3s;
 }
@@ -272,10 +266,42 @@
 =========================== */
 
 .mobileBook {
-    display: none;
-    padding: 60px 20px;
+    display       : none;
+    padding       : 40px 20px;
+    padding-bottom: 0px;
 }
 
+.pageBg {
+    position           : fixed;
+    inset              : 0;
+    background-image   : url("../../public/images/banner.jpg");
+    background-size    : cover;
+    background-position: center;
+    z-index            : -2;
+}
+
+.pageOverlay {
+    position  : fixed;
+    inset     : 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index   : -1;
+}
+
+.galleryHeader {
+    text-align   : center;
+    margin-bottom: 40px;
+    color        : #ffff;
+}
+
+.galleryHeader h1 {
+    color: #ffff;
+}
+
+.galleryTitle {
+    font-size  : 38px;
+    font-weight: 700;
+    color      : #ffff;
+}
 
 /* ===========================
    RESPONSIVE
@@ -300,9 +326,18 @@
 
 @media (max-width:700px) {
 
+    .galleryContent {
+        padding: 9px 5%;
+    }
+
     .heroSection {
-        height : auto;
-        padding: 120px 20px;
+        width         : 80%;
+        height        : auto;
+        padding       : 20px 20px;
+        margin        : auto;
+        margin-top    : 30px;
+        margin-bottom : 0px;
+        padding-bottom: 0px;
     }
 
     .heroTitle {
@@ -310,7 +345,7 @@
     }
 
     .galleryImage {
-        height: 200px;
+        height: 300px;
     }
 
     .mobileBook {

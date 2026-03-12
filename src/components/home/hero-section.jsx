@@ -155,7 +155,7 @@ export default function HeroSection() {
     {
       title: "Book Your Event",
       items: [
-        { name: "Destination Wedding", link: "/destination-wedding" },
+        { name: "Destination Wedding", link: "/destinationwedding" },
         { name: "Wedding", link: "/wedding" },
         { name: "Haldi", link: "/haldi" },
         { name: "Mehndi", link: "/mehndi" },
@@ -168,18 +168,18 @@ export default function HeroSection() {
     {
       title: "Birthday Celebrations",
       items: [
-        { name: "Birthday Celebration", link: "/birthday" },
-        { name: "Pool Party", link: "/pool-party" },
-        { name: "Get Together", link: "/get-together" },
-        { name: "Kitty Party", link: "/kitty-party" }
+        { name: "Birthday Celebration", link: "/BirthdayCeremony" },
+        { name: "Pool Party", link: "/poolparty" },
+        { name: "Get Together", link: "/gettogether" },
+        { name: "Kitty Party", link: "/kittyparty" }
       ]
     },
     {
       title: "Corporate Events",
       items: [
-        { name: "Corporate Meeting", link: "/corporate-meeting" },
-        { name: "Corporate Party", link: "/corporate-party" },
-        { name: "Corporate Pool Party", link: "/corporate-pool-party" }
+        { name: "Corporate Meeting", link: "/corporateevents" },
+        { name: "Corporate Party", link: "/corporateparty" },
+        { name: "Corporate Pool Party", link: "/corporatepoolparty" }
       ]
     },
     {

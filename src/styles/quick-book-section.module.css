@@ -207,7 +207,8 @@
     .quickBook {
         width        : 75vw !important;
         padding      : 1.5rem;
-        margin-bottom: 70px !important;
+        margin-bottom: 7px !important;
+        margin-top   : 7px !important;
     }
 
     .quickBook h3 {

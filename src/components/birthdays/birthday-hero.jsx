@@ -21,7 +21,7 @@ export default function BirthdayHero() {
                 </div>
 
                 <h1 className={styles.title}>
-                    Birthday <span>Celebrations</span>
+                    Birthday <span>Ceremony</span>
                 </h1>
 
                 <p className={styles.description}>

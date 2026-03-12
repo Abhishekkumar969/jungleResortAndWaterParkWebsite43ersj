@@ -4,34 +4,47 @@ import styles from "../../styles/events-section.module.css";
 
 const events = [
     {
+        title: "DESTINATION WEDDING",
+        image: "/images/venue-wedding.jpg",
+        href: "/destinationwedding"
+    },
+    {
         title: "WEDDING",
         image: "/images/venue-wedding.jpg",
-        href: "/WeddingDetails"
+        href: "/wedding"
     },
     {
-        title: "Reception",
+        title: "RECEPTION",
         image: "/images/venue-reception.jpg",
-        href: "/event/reception"
+        href: "/reception"
     },
     {
-        title: "Corporate Event",
-        image: "/images/venue-corporate.jpg",
-        href: "/event/corporate-event"
-    },
-    {
-        title: "Birthday",
+        title: "THEME PARTY",
         image: "/images/birthday-stage.jpg",
-        href: "/event/birthday"
+        href: "/themeparty"
     },
     {
-        title: "Ring Ceremony",
-        image: "/images/venue-wedding.jpg",
-        href: "/venues"
+        title: "BIRTHDAY",
+        image: "/images/venue-corporate.jpg",
+        href: "/birthday"
+    }, {
+        title: "ANNIVERSARY",
+        image: "/images/venue-corporate.jpg",
+        href: "/anniversary"
+    }, {
+        title: "RING CEREMONY",
+        image: "/images/venue-corporate.jpg",
+        href: "/ringceremony"
     },
     {
-        title: "Water Park",
-        image: "/images/hero-resort.jpg",
-        href: "/gallery"
+        title: "CORPORATE EVENT",
+        image: "/images/venue-corporate.jpg",
+        href: "/corporate-event"
+    },
+    {
+        title: "POOL PARTY",
+        image: "/images/birthday-stage.jpg",
+        href: "/poolparty"
     }
 ];
 
@@ -45,7 +58,7 @@ export default function EventsSection() {
                     <h2 className={styles.eventsLabel}>Our Events</h2>
 
                     <h2 className={styles.eventsTitle}>
-                        Celebrate Every Moment <span>With Us</span>
+                        Celebrate The Beginning Of <span>Forever</span>
                     </h2>
                 </div>
 
@@ -77,13 +90,9 @@ export default function EventsSection() {
 
                             </Link>
                         );
-
                     })}
-
                 </div>
-
             </div>
-
         </section>
     );
 }
