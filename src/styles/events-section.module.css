@@ -114,6 +114,7 @@
     color      : #144623;
     font-weight: 600;
     font-size  : 20px;
+    white-space    : nowrap;
 
 
     padding        : 7px 17px;

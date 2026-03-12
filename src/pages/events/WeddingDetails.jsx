@@ -63,9 +63,12 @@ export default function WeddingDetails() {
     return (
         <div className={styles.eventPage}>
 
-
             {/* FIXED BACKGROUND */}
-            <div className={styles.pageBg}></div>
+            <div
+                className={styles.pageBg}
+                style={{ backgroundImage: "url(/images/venue-wedding.jpg)" }}
+            ></div>
+
             <div className={styles.pageOverlay}></div>
 
             <Navigation />

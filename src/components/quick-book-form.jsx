@@ -195,28 +195,6 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
           />
         </div>
 
-        {/* FUNCTION TYPE */}
-        <div className={styles.formGroup}>
-          <label>SELECT EVENT TYPE</label>
-          <PartyPopper className={styles.icon} />
-          <select
-            value={formData.functionType}
-            onChange={(e) => {
-              const updated = { ...formData, functionType: e.target.value };
-              setFormData(updated);
-              checkDuplicate(updated.mobile, updated.functionType, updated.date);
-            }}
-            required
-          >
-            <option value="">Select Event Type</option>
-            {functionTypes.map((f, i) => (
-              <option key={i} value={f}>
-                {f}
-              </option>
-            ))}
-          </select>
-        </div>
-
         {/* NAME */}
         <div className={styles.formGroup}>
           <label>NAME</label>
@@ -257,6 +235,29 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
             </span>
           )}
         </div>
+
+        {/* FUNCTION TYPE */}
+        <div className={styles.formGroup}>
+          <label>SELECT EVENT TYPE</label>
+          <PartyPopper className={styles.icon} />
+          <select
+            value={formData.functionType}
+            onChange={(e) => {
+              const updated = { ...formData, functionType: e.target.value };
+              setFormData(updated);
+              checkDuplicate(updated.mobile, updated.functionType, updated.date);
+            }}
+            required
+          >
+            <option value="">Select Event Type</option>
+            {functionTypes.map((f, i) => (
+              <option key={i} value={f}>
+                {f}
+              </option>
+            ))}
+          </select>
+        </div>
+
 
         {/* DUPLICATE MESSAGE */}
         {duplicateMessage && (

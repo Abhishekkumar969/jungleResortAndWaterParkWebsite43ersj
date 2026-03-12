@@ -65,7 +65,10 @@ export default function BirthdayDetails() {
 
 
             {/* FIXED BACKGROUND */}
-            <div className={styles.pageBg}></div>
+            <div
+  className={styles.pageBg}
+  style={{ backgroundImage: "url(/images/banner.jpg)" }}
+></div>
             <div className={styles.pageOverlay}></div>
 
             <Navigation />

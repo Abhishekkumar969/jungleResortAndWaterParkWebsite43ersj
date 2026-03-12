@@ -272,12 +272,11 @@
 }
 
 .pageBg {
-    position           : fixed;
-    inset              : 0;
-    background-image   : url("../../public/images/banner.jpg");
-    background-size    : cover;
+    position: fixed;
+    inset: 0;
+    background-size: cover;
     background-position: center;
-    z-index            : -2;
+    z-index: -2;
 }
 
 .pageOverlay {
