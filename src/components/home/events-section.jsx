@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import styles from "../../styles/events-section.module.css";
 
 const events = [
-    {
-        title: "DESTINATION WEDDING",
-        image: "/images/venue-wedding.jpg",
-        href: "/destinationwedding"
-    },
+    // {
+    //     title: "DESTINATION WEDDING",
+    //     image: "/images/venue-wedding.jpg",
+    //     href: "/destinationwedding"
+    // },
+
     {
         title: "WEDDING",
         image: "/images/venue-wedding.jpg",

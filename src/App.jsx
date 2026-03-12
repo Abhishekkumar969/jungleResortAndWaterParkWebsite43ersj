@@ -35,6 +35,9 @@ import KittyPartyDetails from "./pages/events/KittyPartyDetails";
 import CorporatePartyDetails from "./pages/events/CorporatePartyDetails";
 import CorporatePoolPartyDetails from "./pages/events/CorporatePoolPartyDetails";
 
+import BirthdayExplore from "./components/home/BirthdayExplore";
+import BirthdayExploreBtn from "./components/home/BirthdayExploreBtn";
+
 function App() {
   return (
     <Router>
@@ -58,6 +61,9 @@ function App() {
           <Route path="/reception" element={<ReceptionDetails />} />
           <Route path="/themeparty" element={<ThemePartyDetails />} />
           <Route path="/birthday" element={<BirthdayDetails />} />
+          <Route path="/birthdayexplorebtn" element={<BirthdayExploreBtn />} />
+          <Route path="/birthdayexplore" element={<BirthdayExplore />} />
+
           <Route path="/anniversary" element={<AnniversaryDetails />} />
           <Route path="/ringceremony" element={<RingCeremonyDetails />} />
           <Route path="/corporateevents" element={<CorporateEventsDetails />} />

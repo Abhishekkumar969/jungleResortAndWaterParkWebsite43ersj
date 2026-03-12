@@ -97,7 +97,7 @@
     background   : #f8fafc;
     padding      : 30px;
     border-radius: 40px;
-    box-shadow   : 25px 25px 3px rgba(0, 0, 0, 0.345);
+    box-shadow   : 15px 15px 3px rgba(0, 0, 0, 0.345);
 }
 
 @media(max-width:900px) {
