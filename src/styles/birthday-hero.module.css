@@ -9,6 +9,41 @@
     overflow       : hidden;
 }
 
+.heroBorder {
+    margin       : 10px;
+    border-radius: 40px;
+    position     : relative;
+    padding      : 12px;
+
+    background: linear-gradient(270deg,
+            #ff9421,
+            #ff2d55,
+            #6a5cff,
+            #00d4ff,
+            #00ff95,
+            #ff9421);
+
+    background-size: 400% 400%;
+    animation      : borderMove 20s linear infinite;
+    margin-bottom  : 80px;
+}
+
+.heroBorder>* {
+    background   : white;
+    /* inside content background */
+    border-radius: 40px;
+}
+
+@keyframes borderMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 400% 50%;
+    }
+}
+
 .background {
     position: absolute;
     inset   : 0;
