@@ -21,30 +21,30 @@ const events = [
     },
     {
         title: "THEME PARTY",
-        image: "/images/birthday-stage.jpg",
+        image: "/images/birthday-princess.jpg",
         href: "/themeparty"
     },
     {
         title: "BIRTHDAY",
-        image: "/images/venue-corporate.jpg",
+        image: "/images/birthday-stage.jpg",
         href: "/birthday"
     }, {
         title: "ANNIVERSARY",
-        image: "/images/venue-corporate.jpg",
+        image: "/images/anniversary.png",
         href: "/anniversary"
     }, {
         title: "RING CEREMONY",
-        image: "/images/venue-corporate.jpg",
+        image: "/images/ringceremony.png",
         href: "/ringceremony"
     },
     {
         title: "CORPORATE EVENT",
         image: "/images/venue-corporate.jpg",
-        href: "/corporate-event"
+        href: "/corporateevents"
     },
     {
         title: "POOL PARTY",
-        image: "/images/birthday-stage.jpg",
+        image: "/images/poolparty.png",
         href: "/poolparty"
     }
 ];

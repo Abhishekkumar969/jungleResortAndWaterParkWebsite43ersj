@@ -66,9 +66,10 @@ export default function PoolPartyDetails() {
 
             {/* FIXED BACKGROUND */}
             <div
-  className={styles.pageBg}
-  style={{ backgroundImage: "url(/images/banner.jpg)" }}
-></div>
+                className={styles.pageBg}
+                style={{ backgroundImage: "url(/images/poolparty.png)" }}
+            ></div>
+            
             <div className={styles.pageOverlay}></div>
 
             <Navigation />

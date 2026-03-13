@@ -61,20 +61,19 @@ export default function Navbar() {
         className="navbar-top"
         style={{
           background: `
-            linear-gradient(to top, #ffffff, #aefab4d7, #ffffff00, #fdfcfc00),
-            linear-gradient(to right, #00ff51 ${scrollProgress}%, #02ce3f ${scrollProgress}%)
+            linear-gradient(to right, #0fb400 ${scrollProgress}%, #0c9600 ${scrollProgress}%)
           `
         }}
       >
         <div className="navbar-container navbar-top-inner">
 
           <div className="navbar-contact">
-            <a href="tel:+919876543210">
+            <a href="tel:+919876543210" style={{ color: "white" }}>
               <Phone size={16} />
               <span>+91 98765 43210</span>
             </a>
 
-            <a href="mailto:info@jungleparadise.com">
+            <a href="mailto:info@jungleparadise.com" style={{ color: "white" }}>
               <Mail size={16} />
               <span>info@jungleparadise.com</span>
             </a>

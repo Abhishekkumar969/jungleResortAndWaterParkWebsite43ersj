@@ -16,18 +16,23 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
   const [functionTypes] = useState([
     "Destination Wedding",
     "Wedding",
+    "Haldi",
+    "Mehndi",
+    "Sangeet",
     "Reception",
+    "Engagement",
+    "Baby Shower",
     "Anniversary",
     "Ring Ceremony",
-    "Corporate Event",
+    "FunPark",
+    "Pool Party",
+    "Kitty Party",
     "Theme Party",
     "Birthday Party",
-    "Pool Party",
-    "Haldi",
-    "Mehendi",
-    "Sangeet",
-    "Engagement",
-    "Baby Shower"
+    "Get Together",
+    "Corporate Event",
+    "Corporate Party",
+    "Corporate Pool Party",
   ]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);

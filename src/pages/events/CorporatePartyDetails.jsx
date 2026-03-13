@@ -66,9 +66,9 @@ export default function WeddingDetails() {
 
             {/* FIXED BACKGROUND */}
             <div
-  className={styles.pageBg}
-  style={{ backgroundImage: "url(/images/banner.jpg)" }}
-></div>
+                className={styles.pageBg}
+                style={{ backgroundImage: "url(/images/CorporateParty.jpg)" }}
+            ></div>
             <div className={styles.pageOverlay}></div>
 
             <Navigation />
@@ -80,18 +80,18 @@ export default function WeddingDetails() {
 
                     <div className={styles.heroLeft}>
                         <h1 className={styles.heroTitle}>
-                            Your Dream <span>Wedding</span> Starts Here
+                            Your Dream <span>Corporate Party</span> Starts Here
                         </h1>
                     </div>
 
                     <div className={styles.heroRight}>
-                        <QuickBookForm defaultFunctionType="Wedding" />
+                        <QuickBookForm defaultFunctionType="Corporate Party" />
                     </div>
                 </div>
             </section>
 
             <section className={styles.mobileBook}>
-                <QuickBookForm defaultFunctionType="Wedding" />
+                <QuickBookForm defaultFunctionType="Corporate Party" />
             </section>
 
             {/* GALLERY */}

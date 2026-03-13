@@ -187,6 +187,24 @@
     opacity  : 0.7;
 }
 
+.heroStats {
+    position: relative;
+    z-index : 1;
+}
+
+.dropdownMenu {
+    z-index: 10000;
+}
+
+.dropdown::after {
+    content : "";
+    position: absolute;
+    left    : 0;
+    right   : 0;
+    height  : 10px;
+    top     : 100%;
+}
+
 @keyframes pulse {
     0% {
         opacity: 0.3
@@ -288,7 +306,7 @@
 .heroBtnOutline,
 .dropdownItem {
     text-transform: uppercase;
-    font-weight    : 600;
+    font-weight   : 600;
 }
 
 
@@ -300,11 +318,11 @@
 
 .dropdownMenu {
     position     : absolute;
-    top          : 110%;
+    top          : 0%;
     left         : 0;
     background   : white;
     border-radius: 25px;
-    padding      : 10px 0;
+    padding      : 5px 0;
     min-width    : 220px;
     z-index      : 9999;
     opacity      : 0;
@@ -481,8 +499,9 @@
 
 
     .heroStats {
-        grid-template-columns: repeat(2, 1fr);
-        gap                  : 18px;
+        grid-template-columns: repeat(4, 1fr);
+        gap                  : 10px;
+        padding-bottom       : 30px;
     }
 
     .statNumber {
@@ -538,7 +557,9 @@
         gap                  : 10px;
         border-top           : 1px solid rgba(255, 255, 255, 0.3);
         padding-top          : 10px;
-        margin-top           : 10px;
+        margin-top           : 100px;
+        padding-bottom       : 0px;
+        margin-bottom        : 0px;
     }
 
 }

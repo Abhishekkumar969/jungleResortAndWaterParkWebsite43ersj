@@ -177,16 +177,16 @@ export default function HeroSection() {
     {
       title: "Corporate Events",
       items: [
-        { name: "Corporate Meeting", link: "/corporateevents" },
+        { name: "Corporate Events", link: "/corporateevents" },
         { name: "Corporate Party", link: "/corporateparty" },
         { name: "Corporate Pool Party", link: "/corporatepoolparty" }
       ]
     },
     {
-      title: "WaterPark Tickets", link: "/waterpark-tickets"
+      title: "WaterPark Tickets", link: "/birthdayexplore"
     },
     {
-      title: "FunPark Tickets", link: "/funpark-tickets"
+      title: "FunPark Tickets", link: "/FunPark"
     }
   ];
 

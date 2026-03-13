@@ -67,7 +67,7 @@ export default function AnniversaryDetails() {
             {/* FIXED BACKGROUND */}
             <div
                 className={styles.pageBg}
-                style={{ backgroundImage: "url(/images/banner.jpg)" }}
+                style={{ backgroundImage: "url(/images/anniversary.png)" }}
             ></div>
             <div className={styles.pageOverlay}></div>
 

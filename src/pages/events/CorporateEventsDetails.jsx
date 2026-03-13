@@ -7,7 +7,7 @@ import styles from "../../styles/eventspages.module.css";
 
 export default function CorporateEventsDetails() {
 
-   
+
     const [selectedIndex, setSelectedIndex] = useState(null);
 
     const getYouTubeThumbnail = (url) => {
@@ -67,9 +67,9 @@ export default function CorporateEventsDetails() {
 
             {/* FIXED BACKGROUND */}
             <div
-  className={styles.pageBg}
-  style={{ backgroundImage: "url(/images/banner.jpg)" }}
-></div>
+                className={styles.pageBg}
+                style={{ backgroundImage: "url(/images/venue-corporate.jpg)" }}
+            ></div>
             <div className={styles.pageOverlay}></div>
 
             <Navigation />
