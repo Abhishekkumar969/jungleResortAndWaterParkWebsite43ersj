@@ -13,7 +13,7 @@
     margin       : 10px;
     border-radius: 40px;
     position     : relative;
-    padding      : 12px;
+    padding      : 10px;
 
     background: linear-gradient(270deg,
             #ff9421,
@@ -36,11 +36,11 @@
 
 @keyframes borderMove {
     0% {
-        background-position: 0% 50%;
+        background-position: 400% 50%;
     }
 
     100% {
-        background-position: 400% 50%;
+        background-position: 0% 50%;
     }
 }
 

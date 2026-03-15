@@ -348,8 +348,8 @@
 }
 
 .mobile-menu.active a:nth-child(6) {
-  opacity  : 1;
-  transform: translateY(0);
+  opacity         : 1;
+  transform       : translateY(0);
   border          : 2px solid white;
   border-radius   : 8px;
   text-decoration : none;
@@ -376,4 +376,55 @@
 /* Scroll hone ke baad */
 .navbar-blur {
   background: linear-gradient(to bottom, #ffffff, #ffffff, #ffffffe5, #ffffff00);
+}
+
+.nav-login {
+  display      : flex;
+  align-items  : center;
+  gap          : 6px;
+  padding      : 8px 14px;
+  border-radius: 6px;
+  color        : #333;
+  font-weight  : 500;
+}
+
+.nav-login:hover {
+  background: #f2f2f2;
+}
+
+.nav-signup {
+  padding      : 8px 16px;
+  background   : #0284c7;
+  color        : white;
+  border-radius: 6px;
+  font-weight  : 600;
+}
+
+.nav-signup:hover {
+  background: #0369a1;
+}
+
+.nav-account {
+  display      : flex;
+  align-items  : center;
+  gap          : 6px;
+  padding      : 8px 14px;
+  background   : #1b8511;
+  border-radius: 8px;
+  color        : #ffffff !important;
+  font-weight  : 500;
+}
+
+.nav-logout {
+  padding      : 8px 14px;
+  border-radius: 8px;
+  border       : 1px solid #ef4444;
+  background   : transparent;
+  color        : #ef4444;
+  cursor       : pointer;
+}
+
+.nav-logout:hover {
+  background: #ef4444;
+  color     : white;
 }

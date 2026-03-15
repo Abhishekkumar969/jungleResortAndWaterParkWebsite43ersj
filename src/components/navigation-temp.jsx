@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail } from "lucide-react";
+import { auth } from "../firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
+import { User } from "lucide-react";
 import "../styles/Navigation.css";
 
 const navLinks = [
@@ -13,10 +16,26 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-
+  const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
+
+    });
+
+    return () => unsubscribe();
+
+  }, []);
 
   useEffect(() => {
 
@@ -112,22 +131,46 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ?
-              <X size={26}
-                color="red" /> :
-              <Menu size={26}
-                color="#0284c7"
-              />
-            }
-          </button>
+          <div style={{ display: "flex", gap: "20px" }}>
+
+            <div style={{ textDecoration: "none" }}>
+              {!user ? (
+
+                <Link to="/auth" style={{ textDecoration: "none", color: "white", fontWeightL: 800, backgroundColor: "#0f9f27" }} className="nav-login">
+                  LOGIN
+                </Link>
+
+              ) : (
+
+                <>
+
+                  <Link to="/dashboard" style={{ textDecoration: "none", color: "white", fontWeightL: 800, backgroundColor: "#0f9f27" }} className="nav-account">
+                    <User size={16} />
+                    PROFILE
+                  </Link>
+
+                </>
+
+              )}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="mobile-menu-btn"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ?
+                <X size={26}
+                  color="red" /> :
+                <Menu size={26}
+                  color="#0284c7"
+                />
+              }
+            </button>
+          </div>
+
         </div>
       </nav>
 

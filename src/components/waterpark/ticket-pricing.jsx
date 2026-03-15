@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/tickets.module.css";
 import { Check, Star, Users, Baby, Crown, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const tickets = [
     {
@@ -88,7 +89,7 @@ const tickets = [
 ];
 
 export default function TicketPricing() {
-
+    const navigate = useNavigate();
     const [selectedTickets, setSelectedTickets] = useState({});
 
     const updateQuantity = (id, delta) => {
@@ -213,7 +214,12 @@ export default function TicketPricing() {
                             <div className={styles.amount}>₹ {totalAmount}</div>
                         </div>
 
-                        <button className={styles.checkoutBtn}>
+                        <button
+                            className={styles.checkoutBtn}
+                            onClick={() =>
+                                navigate("/checkout", { state: { selectedTickets, totalAmount } })
+                            }
+                        >
                             Proceed to Checkout
                         </button>
 

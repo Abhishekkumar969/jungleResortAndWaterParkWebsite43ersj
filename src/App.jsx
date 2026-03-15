@@ -3,6 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Layout from "./Layout"
 import Home from "./pages/Home"
 
+import AuthPage from "./pages/AuthPage";
+
+import Checkout from "./pages/Checkout";
+import UserDashboard from "./pages/UserDashboard";
+import MyTickets from "./pages/MyTickets";
+
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingContact from "./components/FloatingContact";
 
@@ -39,7 +45,7 @@ import CorporatePoolPartyDetails from "./pages/events/CorporatePoolPartyDetails"
 
 import BirthdayExplore from "./components/home/BirthdayExplore";
 import BirthdayExploreBtn from "./components/home/BirthdayExploreBtn";
-
+import CompleteProfile from "./pages/CompleteProfile";
 
 function App() {
   return (
@@ -49,6 +55,11 @@ function App() {
         <Routes>
 
           <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<AuthPage />} />
+
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
+          <Route path="/mytickets" element={<MyTickets />} />
 
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Services" element={<Services />} />
@@ -84,7 +95,8 @@ function App() {
           <Route path="/kittyparty" element={<KittyPartyDetails />} />
           <Route path="/corporateparty" element={<CorporatePartyDetails />} />
           <Route path="/corporatepoolparty" element={<CorporatePoolPartyDetails />} />
-
+          
+          <Route path="/complete-profile" element={<CompleteProfile />} />
         </Routes>
         <FloatingContact />
       </Layout>
