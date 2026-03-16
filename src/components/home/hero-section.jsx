@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Sparkles, TreePine, Waves } from "lucide-react";
 import styles from "../../styles/hero-section.module.css";
@@ -8,12 +8,12 @@ const texts = [
   "Waterpark in Patna"
 ];
 
-const stats = [
-  { number: "5+", label: "Event Venues" },
-  { number: "10+", label: "Water Attractions" },
-  { number: "1000+", label: "Events Hosted" },
-  { number: "50K+", label: "Happy Visitors" }
-];
+// const stats = [
+//   { number: "5+", label: "Event Venues" },
+//   { number: "10+", label: "Water Attractions" },
+//   { number: "1000+", label: "Events Hosted" },
+//   { number: "50K+", label: "Happy Visitors" }
+// ];
 
 export default function HeroSection() {
 
@@ -24,53 +24,53 @@ export default function HeroSection() {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const [counts, setCounts] = useState(stats.map(() => 0));
-  const statsRef = useRef(null);
+  // const [counts, setCounts] = useState(stats.map(() => 0));
+  // const statsRef = useRef(null);
 
   /* Stats Counter */
-  useEffect(() => {
+  // useEffect(() => {
 
-    const observer = new IntersectionObserver(([entry]) => {
+  //   const observer = new IntersectionObserver(([entry]) => {
 
-      if (!entry.isIntersecting) return;
+  //     if (!entry.isIntersecting) return;
 
-      stats.forEach((stat, index) => {
+  //     stats.forEach((stat, index) => {
 
-        let target = stat.number.includes("K")
-          ? parseInt(stat.number) * 1000
-          : parseInt(stat.number);
+  //       let target = stat.number.includes("K")
+  //         ? parseInt(stat.number) * 1000
+  //         : parseInt(stat.number);
 
-        const duration = 2000;
-        const startTime = performance.now();
+  //       const duration = 2000;
+  //       const startTime = performance.now();
 
-        const animate = (time) => {
+  //       const animate = (time) => {
 
-          const progress = Math.min((time - startTime) / duration, 1);
-          const value = Math.floor(progress * target);
+  //         const progress = Math.min((time - startTime) / duration, 1);
+  //         const value = Math.floor(progress * target);
 
-          setCounts(prev => {
-            const updated = [...prev];
-            updated[index] = value;
-            return updated;
-          });
+  //         setCounts(prev => {
+  //           const updated = [...prev];
+  //           updated[index] = value;
+  //           return updated;
+  //         });
 
-          if (progress < 1) requestAnimationFrame(animate);
+  //         if (progress < 1) requestAnimationFrame(animate);
 
-        };
+  //       };
 
-        requestAnimationFrame(animate);
+  //       requestAnimationFrame(animate);
 
-      });
+  //     });
 
-      observer.disconnect();
+  //     observer.disconnect();
 
-    }, { threshold: 0.4 });
+  //   }, { threshold: 0.4 });
 
-    if (statsRef.current) observer.observe(statsRef.current);
+  //   if (statsRef.current) observer.observe(statsRef.current);
 
-    return () => observer.disconnect();
+  //   return () => observer.disconnect();
 
-  }, []);
+  // }, []);
 
   /* Typewriter */
   useEffect(() => {
@@ -222,7 +222,7 @@ export default function HeroSection() {
         </div>
 
         {/* Stats */}
-        <div ref={statsRef} className={styles.heroStats}>
+        {/* <div ref={statsRef} className={styles.heroStats}>
           {stats.map((stat, index) => (
             <div key={index} className={styles.heroStat}>
               <div className={styles.statNumber}>
@@ -235,7 +235,7 @@ export default function HeroSection() {
               <div className={styles.statLabels}>{stat.label}</div>
             </div>
           ))}
-        </div>
+        </div> */}
 
       </div>
     </section>

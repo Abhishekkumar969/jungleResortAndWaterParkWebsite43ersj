@@ -33,7 +33,8 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Playfair Display', serif !important;
+  font-family   : 'Playfair Display', serif !important;
+  text-transform: uppercase;
 }
 
 /* SECTION TITLE */

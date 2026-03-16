@@ -3,26 +3,35 @@ import { Link } from "react-router-dom";
 import styles from "../../styles/events-section.module.css";
 
 const events = [
-    // {
-    //     title: "DESTINATION WEDDING",
-    //     image: "/images/venue-wedding.jpg",
-    //     href: "/destinationwedding"
-    // },
-
+    {
+        title: "DESTINATION WEDDING",
+        image: "/images/gallery-1.jpg",
+        href: "/destinationwedding"
+    },
     {
         title: "WEDDING",
         image: "/images/venue-wedding.jpg",
         href: "/wedding"
     },
     {
+        title: "HALDI",
+        image: "/images/haldi.jpg",
+        href: "/HALDI"
+    },
+    {
+        title: "MEHNDI",
+        image: "/images/mehndi.jpg",
+        href: "/MEHNDI"
+    },
+    {
+        title: "SANGEET",
+        image: "/images/sangeet.jpg",
+        href: "/SANGEET"
+    },
+    {
         title: "RECEPTION",
         image: "/images/venue-reception.jpg",
         href: "/reception"
-    },
-    {
-        title: "THEME PARTY",
-        image: "/images/birthday-princess.jpg",
-        href: "/themeparty"
     },
     {
         title: "BIRTHDAY",
@@ -41,6 +50,11 @@ const events = [
         title: "CORPORATE EVENT",
         image: "/images/venue-corporate.jpg",
         href: "/corporateevents"
+    },
+    {
+        title: "THEME PARTY",
+        image: "/images/birthday-princess.jpg",
+        href: "/themeparty"
     },
     {
         title: "POOL PARTY",
