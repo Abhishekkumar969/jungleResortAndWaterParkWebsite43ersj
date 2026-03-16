@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebaseConfig";
 import { Eye, EyeOff } from "lucide-react";
 
-import { signInWithPopup } from "firebase/auth";
-import { googleProvider } from "../firebaseConfig";
-
 import styles from "../styles/loginSignup.module.css";
 
 export default function AuthPage() {
@@ -31,57 +28,6 @@ export default function AuthPage() {
             ...formData,
             [e.target.name]: e.target.value
         });
-    };
-
-    const handleGoogleLogin = async () => {
-
-        try {
-
-            const result = await signInWithPopup(auth, googleProvider);
-
-            const user = result.user;
-
-            const now = new Date();
-
-            const monthNames = [
-                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-            ];
-
-            const monthYear =
-                `${monthNames[now.getMonth()]}${now.getFullYear()}`;
-
-            const docRef = doc(db, "users", monthYear);
-
-            const userData = {
-                name: user.displayName || "",
-                phone: "",
-                email: user.email,
-                createdAt: serverTimestamp()
-            };
-
-            try {
-
-                await updateDoc(docRef, {
-                    [user.uid]: userData
-                });
-
-            } catch {
-
-                await setDoc(docRef, {
-                    [user.uid]: userData
-                });
-
-            }
-
-            navigate("/complete-profile");
-
-        } catch (err) {
-
-            alert(err.message);
-
-        }
-
     };
 
     /* LOGIN */
@@ -358,25 +304,6 @@ export default function AuthPage() {
                 </button>
 
             )}
-
-            <div className={styles.divider}>
-                <span>OR</span>
-            </div>
-
-            <button
-                className={styles.googleBtn}
-                onClick={handleGoogleLogin}
-            >
-
-                <img
-                    src="https://www.svgrepo.com/show/475656/google-color.svg"
-                    width="18"
-                    alt="google-img"
-                />
-
-                Continue with Google
-
-            </button>
 
         </div>
 
