@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { doc, updateDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, updateDoc, setDoc, serverTimestamp, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebaseConfig";
 import { Eye, EyeOff } from "lucide-react";
-
 import { signInWithPopup } from "firebase/auth";
 import { googleProvider } from "../firebaseConfig";
-
 import styles from "../styles/loginSignup.module.css";
 
 export default function AuthPage() {
-
     const [mode, setMode] = useState("login");
     const navigate = useNavigate();
-
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -38,7 +34,6 @@ export default function AuthPage() {
         try {
 
             const result = await signInWithPopup(auth, googleProvider);
-
             const user = result.user;
 
             const now = new Date();
@@ -52,21 +47,28 @@ export default function AuthPage() {
                 `${monthNames[now.getMonth()]}${now.getFullYear()}`;
 
             const docRef = doc(db, "users", monthYear);
+            const snap = await getDoc(docRef);
 
-            const userData = {
+            let userData = {
                 name: user.displayName || "",
                 phone: "",
                 email: user.email,
                 createdAt: serverTimestamp()
             };
 
-            try {
+            if (snap.exists()) {
 
-                await updateDoc(docRef, {
-                    [user.uid]: userData
-                });
+                const data = snap.data();
 
-            } catch {
+                if (!data[user.uid]) {
+
+                    await updateDoc(docRef, {
+                        [user.uid]: userData
+                    });
+
+                }
+
+            } else {
 
                 await setDoc(docRef, {
                     [user.uid]: userData
@@ -74,6 +76,7 @@ export default function AuthPage() {
 
             }
 
+            // ALWAYS open CompleteProfile
             navigate("/complete-profile");
 
         } catch (err) {

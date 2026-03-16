@@ -1,17 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth, db } from "../firebaseConfig";
-import { doc, updateDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, updateDoc, setDoc, serverTimestamp, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/loginSignup.module.css";
 
 export default function CompleteProfile() {
-
     const navigate = useNavigate();
-
-    const user = auth.currentUser;
-
-    const [name, setName] = useState(user?.displayName || "");
+    const [user, setUser] = useState(null);
+    const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
+
+    useEffect(() => {
+
+        const unsubscribe = auth.onAuthStateChanged(async (currentUser) => {
+
+            if (!currentUser) return;
+
+            setUser(currentUser);
+
+            try {
+
+                const now = new Date();
+
+                const monthNames = [
+                    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+                ];
+
+                const monthYear =
+                    `${monthNames[now.getMonth()]}${now.getFullYear()}`;
+
+                const docRef = doc(db, "users", monthYear);
+                const snap = await getDoc(docRef);
+
+                if (!snap.exists()) return;
+
+                const data = snap.data();
+
+                const userData = data[currentUser.uid];
+
+                console.log("Firestore userData:", userData);
+
+                if (userData !== undefined) {
+
+                    setName(userData.name ?? "");
+                    setPhone(userData.phone ?? "");
+
+                }
+
+            } catch (err) {
+
+                console.error("Profile fetch error:", err);
+
+            }
+
+        });
+
+        return () => unsubscribe();
+
+    }, []);
 
     const handleSave = async () => {
 
@@ -21,22 +68,17 @@ export default function CompleteProfile() {
         }
 
         try {
-
             const now = new Date();
-
             const monthNames = [
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun",
                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
             ];
-
             const monthYear =
                 `${monthNames[now.getMonth()]}${now.getFullYear()}`;
-
             const docRef = doc(db, "users", monthYear);
-
             const userData = {
-                name,
-                phone,
+                name: name,
+                phone: phone,
                 email: user.email,
                 createdAt: serverTimestamp()
             };
@@ -48,17 +90,13 @@ export default function CompleteProfile() {
                 });
 
             } catch {
-
                 await setDoc(docRef, {
                     [user.uid]: userData
                 });
-
             }
-
             navigate("/");
 
         } catch (err) {
-
             alert(err.message);
 
         }
@@ -68,13 +106,10 @@ export default function CompleteProfile() {
     return (
 
         <div className={styles.authContainer}>
-
             <h2>Complete Your Profile</h2>
-
             <p className={styles.subtitle}>
                 We need a few more details
             </p>
-
             <div className={styles.formGroup}>
                 <label>Full Name</label>
                 <input
@@ -97,9 +132,6 @@ export default function CompleteProfile() {
             >
                 Save Profile
             </button>
-
         </div>
-
     );
-
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Sparkles, TreePine, Waves } from "lucide-react";
 import styles from "../../styles/hero-section.module.css";
@@ -16,58 +16,55 @@ const stats = [
 ];
 
 export default function HeroSection() {
-  const videoRef = useRef(null);
-  const sectionRef = useRef(null);
-  const [videoSrc, setVideoSrc] = useState("/images/BackgroundVdo.mp4");
+
+  const videoSrc = "/images/BackgroundVdo.mp4";
+
   const [displayText, setDisplayText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+
   const [counts, setCounts] = useState(stats.map(() => 0));
   const statsRef = useRef(null);
 
+  /* Stats Counter */
   useEffect(() => {
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
+    const observer = new IntersectionObserver(([entry]) => {
 
-        if (!entry.isIntersecting) return;
+      if (!entry.isIntersecting) return;
 
-        stats.forEach((stat, index) => {
+      stats.forEach((stat, index) => {
 
-          let target = stat.number.includes("K")
-            ? parseInt(stat.number) * 1000
-            : parseInt(stat.number);
+        let target = stat.number.includes("K")
+          ? parseInt(stat.number) * 1000
+          : parseInt(stat.number);
 
-          const duration = 2000; // total animation time (ms)
-          const startTime = performance.now();
+        const duration = 2000;
+        const startTime = performance.now();
 
-          const animate = (time) => {
+        const animate = (time) => {
 
-            const progress = Math.min((time - startTime) / duration, 1);
-            const value = Math.floor(progress * target);
+          const progress = Math.min((time - startTime) / duration, 1);
+          const value = Math.floor(progress * target);
 
-            setCounts(prev => {
-              const updated = [...prev];
-              updated[index] = value;
-              return updated;
-            });
+          setCounts(prev => {
+            const updated = [...prev];
+            updated[index] = value;
+            return updated;
+          });
 
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
+          if (progress < 1) requestAnimationFrame(animate);
 
-          };
+        };
 
-          requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
 
-        });
+      });
 
-        observer.disconnect();
+      observer.disconnect();
 
-      },
-      { threshold: 0.4 }
-    );
+    }, { threshold: 0.4 });
 
     if (statsRef.current) observer.observe(statsRef.current);
 
@@ -75,10 +72,10 @@ export default function HeroSection() {
 
   }, []);
 
+  /* Typewriter */
   useEffect(() => {
 
     const currentText = texts[textIndex];
-
     const typingSpeed = isDeleting ? 40 : 80;
 
     const timer = setTimeout(() => {
@@ -86,7 +83,7 @@ export default function HeroSection() {
       if (!isDeleting) {
 
         setDisplayText(currentText.substring(0, charIndex + 1));
-        setCharIndex((prev) => prev + 1);
+        setCharIndex(prev => prev + 1);
 
         if (charIndex + 1 === currentText.length) {
           setTimeout(() => setIsDeleting(true), 1200);
@@ -95,11 +92,11 @@ export default function HeroSection() {
       } else {
 
         setDisplayText(currentText.substring(0, charIndex - 1));
-        setCharIndex((prev) => prev - 1);
+        setCharIndex(prev => prev - 1);
 
         if (charIndex - 1 === 0) {
           setIsDeleting(false);
-          setTextIndex((prev) => (prev + 1) % texts.length);
+          setTextIndex(prev => (prev + 1) % texts.length);
         }
 
       }
@@ -109,47 +106,6 @@ export default function HeroSection() {
     return () => clearTimeout(timer);
 
   }, [charIndex, isDeleting, textIndex]);
-
-  useEffect(() => {
-
-    /* detect mobile screen */
-    const updateVideo = () => {
-      if (window.innerWidth <= 768) {
-        setVideoSrc("/images/MobileVdo.mp4");
-      } else {
-        setVideoSrc("/images/BackgroundVdo.mp4");
-      }
-    };
-
-    updateVideo();
-    window.addEventListener("resize", updateVideo);
-
-    const video = videoRef.current;
-
-    /* pause video when not visible */
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (video) {
-          if (entry.isIntersecting) {
-            video.play();
-          } else {
-            video.pause();
-          }
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", updateVideo);
-    };
-
-  }, []);
 
   const heroMenus = [
     {
@@ -182,21 +138,16 @@ export default function HeroSection() {
         { name: "Corporate Pool Party", link: "/corporatepoolparty" }
       ]
     },
-    {
-      title: "WaterPark Tickets", link: "/birthdayexplore"
-    },
-    {
-      title: "FunPark Tickets", link: "/FunPark"
-    }
+    { title: "WaterPark Tickets", link: "/birthdayexplore" },
+    { title: "FunPark Tickets", link: "/FunPark" }
   ];
 
   return (
-    <section ref={sectionRef} className={styles.heroSection}>
+    <section className={styles.heroSection}>
 
       {/* Background */}
       <div className={styles.heroBg}>
         <video
-          ref={videoRef}
           src={videoSrc}
           autoPlay
           muted
@@ -219,13 +170,11 @@ export default function HeroSection() {
           <span>Where Dreams Meet Nature</span>
         </div>
 
-        {/* Desktop Title */}
         <h1 className={`${styles.heroTitle} ${styles.desktopTitle}`}>
           Welcome to <br />
           <span>Jungle Resort & Waterpark</span>
         </h1>
 
-        {/* Mobile Title */}
         <h1 className={`${styles.heroTitle} ${styles.mobileTitle}`}>
           Welcome to <br />
           <span>
@@ -238,6 +187,7 @@ export default function HeroSection() {
           <span className={styles.cursor}>|</span>
         </h2>
 
+        {/* Buttons */}
         <div className={styles.heroButtons}>
 
           {heroMenus.map((menu, index) => (
@@ -245,15 +195,8 @@ export default function HeroSection() {
             <div key={index} className={styles.dropdown}>
 
               {menu.items ? (
-
                 <>
-                  <button
-                    className={
-                      menu.title.includes("Tickets")
-                        ? styles.heroBtnOutline
-                        : styles.heroBtnPrimary
-                    }
-                  >
+                  <button className={styles.heroBtnPrimary}>
                     {menu.title}
                     <ChevronDown size={16} style={{ marginLeft: "6px" }} />
                   </button>
@@ -266,20 +209,10 @@ export default function HeroSection() {
                     ))}
                   </div>
                 </>
-
               ) : (
-
-                <Link
-                  to={menu.link}
-                  className={
-                    menu.title.includes("Tickets")
-                      ? styles.heroBtnOutline
-                      : styles.heroBtnPrimary
-                  }
-                >
+                <Link to={menu.link} className={styles.heroBtnOutline}>
                   {menu.title}
                 </Link>
-
               )}
 
             </div>
@@ -288,6 +221,7 @@ export default function HeroSection() {
 
         </div>
 
+        {/* Stats */}
         <div ref={statsRef} className={styles.heroStats}>
           {stats.map((stat, index) => (
             <div key={index} className={styles.heroStat}>
@@ -302,8 +236,8 @@ export default function HeroSection() {
             </div>
           ))}
         </div>
-      </div>
 
+      </div>
     </section>
   );
 }
