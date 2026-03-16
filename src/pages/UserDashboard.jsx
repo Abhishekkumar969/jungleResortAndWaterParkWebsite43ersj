@@ -26,30 +26,23 @@ export default function UserDashboard() {
     }, []);
 
     return (
-
         <div className={styles.dashboard}>
-
             {/* Header */}
             <div className={styles.header}>
-
                 <div className={styles.userInfo}>
-
                     <div className={styles.avatar}>
                         {user?.displayName?.charAt(0) || "A"}
                     </div>
-
                     <div>
-
                         <h2>
-                            Welcome, {user?.displayName || "User"}! 🌿
+                            Welcome,
                         </h2>
-
-                        <p>{user?.email}</p>
-
+                        <h2>
+                            {user?.displayName || "User"}! 🌿
+                        </h2>
                     </div>
-
                 </div>
-
+                <p>{user?.email}</p>
             </div>
 
             {/* Tabs */}
@@ -70,35 +63,6 @@ export default function UserDashboard() {
                 <button className={styles.tab}>
                     👤 Profile
                 </button>
-
-            </div>
-
-            {/* Stats */}
-            <div className={styles.statsGrid}>
-
-                <div className={styles.card}>
-                    <span>🎟</span>
-                    <h3>1</h3>
-                    <p>Total Bookings</p>
-                </div>
-
-                <div className={styles.card}>
-                    <span>📋</span>
-                    <h3>1</h3>
-                    <p>Enquiries</p>
-                </div>
-
-                <div className={styles.card}>
-                    <span>💰</span>
-                    <h3>₹1,498</h3>
-                    <p>Total Spent</p>
-                </div>
-
-                <div className={styles.card}>
-                    <span>⭐</span>
-                    <h3>14/3/2026</h3>
-                    <p>Member Since</p>
-                </div>
 
             </div>
 
@@ -126,20 +90,24 @@ export default function UserDashboard() {
 
             </div>
 
+            {/* Stats */}
+            <div className={styles.statsGrid}>
+                <div className={styles.card}>
+                    <span>⭐</span>
+                    <h3>14/3/2026</h3>
+                    <p>Member Since</p>
+                </div>
+            </div>
+
             {/* Logout */}
             <div className={styles.logoutSection}>
-
                 <button
                     className={styles.logoutBtn}
                     onClick={handleLogout}
                 >
                     Logout
                 </button>
-
             </div>
-
         </div>
-
     );
-
 }

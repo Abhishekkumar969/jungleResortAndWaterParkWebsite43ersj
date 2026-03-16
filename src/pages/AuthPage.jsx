@@ -367,19 +367,13 @@ export default function AuthPage() {
                 className={styles.googleBtn}
                 onClick={handleGoogleLogin}
             >
-
                 <img
                     src="https://www.svgrepo.com/show/475656/google-color.svg"
                     width="18"
                     alt="google-img"
                 />
-
                 Continue with Google
-
             </button>
-
         </div>
-
     );
-
 }
