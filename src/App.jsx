@@ -3,16 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Layout from "./Layout"
 import Home from "./pages/Home"
 
-import AuthPage from "./pages/AuthPage";
+// import useSecurity from "./components/useSecurity";
 
-import Checkout from "./pages/Checkout";
+import AuthModal from "./components/AuthModal";
+import CompleteProfile from "./pages/CompleteProfile";
+import Cart from "./components/Cart";
+import Checkout from "./components/waterpark/Checkout";
+
 import UserDashboard from "./pages/UserDashboard";
 import MyTickets from "./pages/MyTickets";
 
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingContact from "./components/FloatingContact";
 
-import Venues from "./pages/venues/Venues";
 import Gallery from "./pages/gallery/Gallery";
 import Contact from "./pages/contact/Contact";
 import AboutUs from "./pages/about-section";
@@ -29,7 +32,6 @@ import ThemePartyDetails from "./pages/events/ThemePartyDetails";
 import BirthdayDetails from "./pages/events/BirthdayDetails";
 import AnniversaryDetails from "./pages/events/AnniversaryDetails";
 import RingCeremonyDetails from "./pages/events/RingCeremonyDetails";
-import BabyShowerDetails from "./pages/events/BabyShowerDetails";
 
 import CorporateEventsDetails from "./pages/events/CorporateEventsDetails";
 import PoolPartyDetails from "./pages/events/PoolPartyDetails";
@@ -45,9 +47,11 @@ import CorporatePoolPartyDetails from "./pages/events/CorporatePoolPartyDetails"
 
 import BirthdayExplore from "./components/home/BirthdayExplore";
 import BirthdayExploreBtn from "./components/home/BirthdayExploreBtn";
-import CompleteProfile from "./pages/CompleteProfile";
 
 function App() {
+
+  // useSecurity();
+
   return (
     <Router>
       <Layout>
@@ -55,8 +59,10 @@ function App() {
         <Routes>
 
           <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/auth" element={<AuthModal />} />
+          <Route path="/complete-profile" element={<CompleteProfile />} />
 
+          <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="/mytickets" element={<MyTickets />} />
@@ -68,7 +74,11 @@ function App() {
           <Route path="/FunPark" element={<FunPark />} />
 
           <Route path="/BirthdayCeremony" element={<BirthdayCeremony />} />
-          <Route path="/Venues" element={<Venues />} />
+
+
+          {/* <Route path="/birthday-details" element={<BirthdayDetails />} /> */}
+
+
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Gallery" element={<Gallery />} />
 
@@ -76,7 +86,9 @@ function App() {
           <Route path="/wedding" element={<WeddingDetails />} />
           <Route path="/reception" element={<ReceptionDetails />} />
           <Route path="/themeparty" element={<ThemePartyDetails />} />
+
           <Route path="/birthday" element={<BirthdayDetails />} />
+
           <Route path="/birthdayexplorebtn" element={<BirthdayExploreBtn />} />
           <Route path="/birthdayexplore" element={<BirthdayExplore />} />
 
@@ -90,13 +102,12 @@ function App() {
           <Route path="/mehndi" element={<MehndiDetails />} />
           <Route path="/sangeet" element={<SangeetDetails />} />
           <Route path="/engagement" element={<EngagementDetails />} />
-          <Route path="/babyshower" element={<BabyShowerDetails />} />
+
           <Route path="/gettogether" element={<GetTogetherDetails />} />
           <Route path="/kittyparty" element={<KittyPartyDetails />} />
           <Route path="/corporateparty" element={<CorporatePartyDetails />} />
           <Route path="/corporatepoolparty" element={<CorporatePoolPartyDetails />} />
-          
-          <Route path="/complete-profile" element={<CompleteProfile />} />
+
         </Routes>
         <FloatingContact />
       </Layout>

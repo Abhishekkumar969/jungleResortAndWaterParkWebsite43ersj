@@ -7,7 +7,7 @@
 }
 
 .subtitle {
-    color         : #ec4899;
+    color         : #FF46A2;
     font-size     : 13px;
     font-weight   : 600;
     letter-spacing: 2px;
@@ -42,8 +42,8 @@
 .iconBox {
     width          : 46px;
     height         : 46px;
-    background     : #ec489920;
-    color          : #ec4899;
+    background     : #FF46A220;
+    color          : #FF46A2;
     border-radius  : 50%;
     display        : flex;
     align-items    : center;
@@ -63,7 +63,7 @@
 
 .socialBox {
     margin-top   : 30px;
-    background   : #ec4899;
+    background   : #FF46A2;
     color        : white;
     padding      : 20px;
     border-radius: 12px;

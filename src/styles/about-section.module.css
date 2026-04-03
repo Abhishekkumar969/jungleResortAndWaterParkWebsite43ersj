@@ -191,3 +191,99 @@
         box-shadow   : 5px 5px 3px rgba(0, 0, 0, 0.345);
     }
 }
+
+
+/* ============================= */
+/* ULTRA SMALL DEVICES (300px - 400px) */
+/* ============================= */
+
+@media (max-width: 400px) {
+
+    .aboutSection {
+        padding: 80px 12px;
+    }
+
+    .aboutGrid {
+        gap: 30px;
+    }
+
+    /* IMAGES STACK */
+    .aboutImages {
+        grid-template-columns: 1fr;
+        gap                  : 12px;
+    }
+
+    .imageColumn {
+        gap: 12px;
+    }
+
+    .topSpace {
+        padding-top: 0;
+    }
+
+    .imgLarge {
+        height       : 180px;
+        border-radius: 10px;
+    }
+
+    .imgSmall {
+        height       : 120px;
+        border-radius: 10px;
+    }
+
+    /* BADGE FIX (VERY IMPORTANT) */
+    .aboutBadge {
+        position  : relative;
+        bottom    : 0;
+        right     : 0;
+        margin-top: 10px;
+        padding   : 12px;
+        width     : fit-content;
+    }
+
+    .badgeNumber {
+        font-size: 22px;
+    }
+
+    .badgeText {
+        font-size: 11px;
+    }
+
+    /* CONTENT */
+    .aboutContent {
+        padding-left: 0;
+    }
+
+    .aboutTitles {
+        font-size  : 22px;
+        line-height: 1.3;
+    }
+
+    .aboutTexts {
+        font-size: 13px;
+    }
+
+    .aboutLabel {
+        font-size: 11px;
+    }
+
+    /* FEATURES STACK */
+    .aboutFeatures {
+        grid-template-columns: 1fr;
+        gap                  : 15px;
+    }
+
+    .featureItem h4 {
+        font-size: 14px;
+    }
+
+    .featureItem p {
+        font-size: 12px;
+    }
+
+    .featureIcon {
+        width : 32px;
+        height: 32px;
+    }
+
+}

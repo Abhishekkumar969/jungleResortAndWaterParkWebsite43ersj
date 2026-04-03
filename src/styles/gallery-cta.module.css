@@ -1,6 +1,6 @@
 .section {
     padding   : 80px 20px;
-    background: #ec4899;
+    background: #FF46A2;
 }
 
 .container {
@@ -65,7 +65,7 @@
 
 .secondaryBtn:hover {
     background: white;
-    color     : #ec4899;
+    color     : #FF46A2;
 }
 
 @media(max-width:768px) {

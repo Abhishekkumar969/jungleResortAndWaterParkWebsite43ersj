@@ -14,7 +14,7 @@
 }
 
 .subtitle {
-    color         : #ec4899;
+    color         : #FF46A2;
     font-weight   : 600;
     font-size     : 14px;
     letter-spacing: 2px;
@@ -28,7 +28,7 @@
 }
 
 .title span {
-    color: #ec4899;
+    color: #FF46A2;
 }
 
 .description {
@@ -76,7 +76,7 @@
 .field select:focus,
 .field textarea:focus {
     outline     : none;
-    border-color: #ec4899;
+    border-color: #FF46A2;
 }
 
 .full {

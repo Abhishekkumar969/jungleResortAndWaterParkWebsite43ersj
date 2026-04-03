@@ -17,13 +17,13 @@
 =========================== */
 
 .heroSection {
-    position       : relative;
-    width          : 100%;
-    height         : 100vh;
-    overflow       : hidden;
-    display        : flex;
-    align-items    : center;
-    justify-content: center;
+    /* position       : relative; */
+    width             : 100%;
+    /* height         : 100vh; */
+    overflow          : hidden;
+    display           : flex;
+    align-items       : center;
+    justify-content   : center;
 }
 
 .heroSlider {
@@ -354,6 +354,111 @@
 
     .heroRight {
         display: none;
+    }
+
+}
+
+
+
+
+
+
+
+/* ============================= */
+/* ULTRA SMALL DEVICES (300px - 400px) */
+/* ============================= */
+
+@media (max-width: 400px) {
+
+    .eventPage {
+        margin-top: 60px;
+    }
+
+    /* HERO */
+    .heroSection {
+        width     : 95%;
+        padding   : 10px;
+        margin-top: 20px;
+    }
+
+    .heroContent {
+        gap: 20px;
+    }
+
+    .heroTitle {
+        font-size  : 22px;
+        line-height: 1.3;
+    }
+
+    /* dots */
+    .heroDots {
+        bottom: 10px;
+        gap   : 6px;
+    }
+
+    .dot {
+        width : 8px;
+        height: 8px;
+    }
+
+    /* GALLERY */
+    .galleryContent {
+        padding: 10px 10px;
+    }
+
+    .galleryTitle {
+        font-size: 22px;
+    }
+
+    .galleryHeader {
+        margin-bottom: 20px;
+    }
+
+    /* FILTER BUTTONS STACK */
+    .galleryFilters {
+        flex-wrap: wrap;
+        gap      : 8px;
+    }
+
+    .galleryFilterBtn {
+        padding  : 6px 12px;
+        font-size: 12px;
+    }
+
+    /* GRID FIX (VERY IMPORTANT) */
+    .galleryGrid {
+        grid-template-columns: 1fr;
+        gap                  : 12px;
+    }
+
+    .galleryImage {
+        width           : 92vw;
+        /* height       : 200px; */
+        border-radius   : 12px;
+    }
+
+    /* PLAY ICON */
+    .galleryPlay {
+        width  : 24px;
+        height : 24px;
+        padding: 8px;
+    }
+
+    /* VIEWER */
+    .galleryViewerContent {
+        width: 95%;
+    }
+
+    .galleryClose {
+        top      : 15px;
+        right    : 15px;
+        font-size: 24px;
+    }
+
+    /* MOBILE BOOK */
+    .mobileBook {
+        width  : 90%;
+        padding: 20px 10px;
     }
 
 }

@@ -138,15 +138,12 @@
     padding      : 15px;
     border       : none;
     border-radius: 10px;
-
-    background: linear-gradient(135deg, #00a8ff, #0077ff);
-    color     : white;
-
-    font-size  : 18px;
-    font-weight: 600;
-    cursor     : pointer;
-
-    transition: 0.25s;
+    background   : linear-gradient(185deg, #a7e2ff, #0082c3, #a7e2ff);
+    color        : white;
+    font-size    : 18px;
+    font-weight  : 600;
+    cursor       : pointer;
+    transition   : 0.25s;
 }
 
 .ticketBtn:hover {
@@ -167,11 +164,9 @@
     border-radius: 14px;
     padding      : 50px 30px;
     text-align   : center;
-
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    border    : 1px solid #eee;
-
-    animation: successFade .4s ease;
+    box-shadow   : 0 15px 40px rgba(0, 0, 0, 0.08);
+    border       : 1px solid #eee;
+    animation    : successFade .4s ease;
 }
 
 @keyframes successFade {
@@ -187,21 +182,17 @@
 }
 
 .successIcon {
-    width : 80px;
-    height: 80px;
-
-    background: #eaf8ff;
-    color     : #00a8ff;
-
+    width          : 80px;
+    height         : 80px;
+    background     : #eaf8ff;
+    color          : #00a8ff;
     display        : flex;
     align-items    : center;
     justify-content: center;
-
-    border-radius: 50%;
-    margin       : auto;
-    margin-bottom: 20px;
-
-    box-shadow: 0 8px 20px rgba(0, 168, 255, 0.2);
+    border-radius  : 50%;
+    margin         : auto;
+    margin-bottom  : 20px;
+    box-shadow     : 0 8px 20px rgba(0, 168, 255, 0.2);
 }
 
 .successCard h3 {

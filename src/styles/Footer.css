@@ -1,7 +1,8 @@
 /* Footer main */
 .footer {
-  background-color: #144623;
-  color           : white;
+  background-color: #00a4eb;
+  color           : #ffffff;
+  padding-bottom  : 50px;
 }
 
 /* container */
@@ -41,19 +42,22 @@
   width     : 160px;
   height    : auto;
   object-fit: contain;
+  filter    : drop-shadow(3px 3px 1px #00000087);
 }
 
 /* description text */
 .footer-text {
   font-size  : 14px;
-  opacity    : 0.8;
+  opacity    : 1;
   line-height: 1.6;
+  text-shadow: 1px 1px 1px #000000af;
 }
 
 /* social icons */
 .footer-social {
   display: flex;
   gap    : 15px;
+
 }
 
 .footer-social a {
@@ -65,53 +69,62 @@
   align-items    : center;
   justify-content: center;
   transition     : all 0.3s ease;
-  color          : aliceblue;
+  color          : #ffffff;
+  box-shadow     : 1px 1px 1px #000000af;
 }
 
 .footer-social a:hover {
-  background: #ad8216;
-  color     : #000;
+  background: #FF46A2;
+  color     : #ffffff;
 }
 
 /* section titles */
 .footer-title {
-  font-size    : 20px;
-  font-weight  : 600;
-  margin-bottom: 20px;
+  font-size     : 20px;
+  font-weight   : 600;
+  margin-bottom : 20px;
+  padding-bottom: 5px;
+  text-shadow   : 1px 1px 1px #000000af;
+  border-bottom : 1px solid white;
 }
 
 /* links */
 .footer-links {
-  list-style: none;
-  padding   : 0;
+  list-style : none;
+  padding    : 0;
+  color      : #ffffff;
+  text-shadow: 1px 1px 1px #000000af;
 }
 
 .footer-links li {
   margin-bottom: 10px;
+  color        : #ffffff;
 }
 
 .footer-links a {
   text-decoration: none;
   font-size      : 14px;
-  opacity        : 0.8;
-  color          : white;
+  opacity        : 1;
+  color          : #ffffff;
   transition     : 0.3s;
 }
 
 .footer-links a:hover {
   opacity: 1;
-  color  : #22c55e;
+  color  : #FF46A2;
 }
 
 /* contact */
 .footer-contact {
-  list-style: none;
-  padding   : 0;
+  list-style : none;
+  padding    : 0;
+  text-shadow: 1px 1px 1px #000000af;
 }
 
 .footer-contact a {
-  color: aliceblue;
+  color          : #ffffff;
   text-decoration: none;
+  text-shadow    : 1px 1px 1px #000000af;
 }
 
 .footer-contact li {
@@ -119,7 +132,8 @@
   gap          : 10px;
   margin-bottom: 12px;
   font-size    : 14px;
-  opacity      : 0.9;
+  opacity      : 1;
+  color        : #ffffff;
 }
 
 /* bottom bar */
@@ -129,6 +143,7 @@
 
 .footer-bottom-container {
   max-width      : 1200px;
+  text-shadow    : 1px 1px 1px #000000af;
   margin         : auto;
   padding        : 20px;
   display        : flex;
@@ -146,10 +161,101 @@
 .footer-policy a {
   text-decoration: none;
   font-size      : 14px;
-  opacity        : 0.8;
-  color          : white;
+  opacity        : 1;
+  color          : #ffffff;
 }
 
 .footer-policy a:hover {
   opacity: 1;
+}
+
+.Contact-Seperator {
+  margin-bottom: 20px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.411);
+}
+
+
+/* ============================= */
+/* MOBILE DEVICES (max-width: 500px) */
+/* ============================= */
+
+@media (max-width: 500px) {
+
+  /* CONTAINER */
+  .footer-container {
+    padding: 40px 15px;
+  }
+
+  /* GRID → STACK */
+  .footer-grid {
+    gap: 20px;
+  }
+
+  .footer-logo {
+    display        : "flex";
+    justify-content: center;
+    align-items    : center;
+    margin         : auto;
+  }
+
+  /* LOGO */
+  .footer-logo img {
+    width: 180px;
+  }
+
+  /* TEXT */
+  .footer-text {
+    font-size  : 15px;
+    line-height: 1.5;
+  }
+
+  /* TITLES */
+  .footer-title {
+    font-size    : 18px;
+    margin-bottom: 12px;
+  }
+
+  /* LINKS */
+  .footer-links a,
+  .footer-contact li {
+    font-size: 15px;
+  }
+
+  /* SOCIAL ICONS */
+  .footer-social {
+    display        : "flex";
+    justify-content: center;
+    align-items    : center;
+    margin         : auto;
+    gap            : 10px;
+  }
+
+  .footer-social a {
+    width : 40px;
+    height: 40px;
+  }
+
+  /* CONTACT */
+  .footer-contact li {
+    gap: 8px;
+  }
+
+  /* BOTTOM BAR */
+  .footer-bottom-container {
+    flex-direction: column;
+    text-align    : center;
+    gap           : 10px;
+  }
+
+  /* POLICY LINKS STACK */
+  .footer-policy {
+    flex-wrap      : wrap;
+    justify-content: center;
+    gap            : 10px;
+  }
+
+  .footer-policy a {
+    font-size: 12px;
+  }
+
 }

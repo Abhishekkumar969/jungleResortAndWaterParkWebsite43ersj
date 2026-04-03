@@ -14,7 +14,7 @@
 }
 
 .subtitle {
-    color         : #ec4899;
+    color         : #FF46A2;
     font-size     : 14px;
     font-weight   : 600;
     letter-spacing: 2px;
@@ -28,7 +28,7 @@
 }
 
 .title span {
-    color: #ec4899;
+    color: #FF46A2;
 }
 
 .description {
@@ -136,7 +136,7 @@
 }
 
 .features svg {
-    color: #ec4899;
+    color: #FF46A2;
 }
 
 @media(max-width:900px) {

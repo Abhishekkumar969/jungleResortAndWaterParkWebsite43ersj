@@ -7,7 +7,7 @@
 }
 
 .subtitle {
-    color         : #ec4899;
+    color         : #FF46A2;
     font-size     : 13px;
     font-weight   : 600;
     letter-spacing: 2px;
@@ -64,7 +64,7 @@
 .field select:focus,
 .field textarea:focus {
     outline     : none;
-    border-color: #ec4899;
+    border-color: #FF46A2;
 }
 
 .button {
@@ -72,7 +72,7 @@
     align-items  : center;
     gap          : 8px;
     padding      : 12px 20px;
-    background   : #ec4899;
+    background   : #FF46A2;
     color        : white;
     border       : none;
     border-radius: 8px;

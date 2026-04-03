@@ -14,7 +14,7 @@
 }
 
 .subtitle {
-    color         : #ec4899;
+    color         : #FF46A2;
     font-size     : 13px;
     font-weight   : 600;
     letter-spacing: 2px;
@@ -51,12 +51,12 @@
     position       : absolute;
     bottom         : 20px;
     right          : 20px;
-    background     : rgba(255, 255, 255, 0.95);
+    background     : #fffffff2;
     backdrop-filter: blur(8px);
     border-radius  : 12px;
     padding        : 18px;
     max-width      : 320px;
-    box-shadow     : 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow     : 0 10px 25px #00000026;
 }
 
 .locationHeader {
@@ -68,7 +68,7 @@
 .iconBox {
     width          : 44px;
     height         : 44px;
-    background     : #ec4899;
+    background     : #FF46A2;
     color          : white;
     border-radius  : 50%;
     display        : flex;
@@ -92,7 +92,7 @@
     gap            : 6px;
     margin-top     : 12px;
     padding        : 10px 14px;
-    background     : #ec4899;
+    background     : #FF46A2;
     color          : white;
     border-radius  : 8px;
     text-decoration: none;

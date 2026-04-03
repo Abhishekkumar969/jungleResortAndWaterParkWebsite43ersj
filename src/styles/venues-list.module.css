@@ -19,7 +19,7 @@
 }
 
 .header span {
-    color: #ec4899;
+    color: #FF46A2;
 }
 
 .header p {
@@ -44,9 +44,9 @@
 }
 
 .active {
-    background  : #ec4899;
+    background  : #FF46A2;
     color       : white;
-    border-color: #ec4899;
+    border-color: #FF46A2;
 }
 
 .list {
@@ -101,8 +101,8 @@
 }
 
 .type {
-    border       : 1px solid #ec4899;
-    color        : #ec4899;
+    border       : 1px solid #FF46A2;
+    color        : #FF46A2;
     padding      : 4px 10px;
     border-radius: 20px;
     font-size    : 12px;
@@ -160,7 +160,7 @@
 .price {
     font-size  : 20px;
     font-weight: 700;
-    color      : #ec4899;
+    color      : #FF46A2;
 }
 
 .bookBtn {
@@ -168,7 +168,7 @@
     align-items  : center;
     gap          : 6px;
     padding      : 10px 16px;
-    background   : #ec4899;
+    background   : #FF46A2;
     color        : white;
     border       : none;
     border-radius: 8px;

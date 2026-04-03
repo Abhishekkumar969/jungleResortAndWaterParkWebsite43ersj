@@ -156,3 +156,12 @@
     }
 
 }
+
+
+
+
+@media(max-width:500px) {
+    .testimonialsSection {
+        padding: 20px;
+    }
+}

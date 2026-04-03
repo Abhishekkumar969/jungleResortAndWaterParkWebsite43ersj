@@ -14,7 +14,7 @@
 }
 
 .subtitle {
-    color         : #ec4899;
+    color         : #FF46A2;
     font-size     : 14px;
     font-weight   : 600;
     letter-spacing: 2px;
@@ -28,7 +28,7 @@
 }
 
 .title span {
-    color: #ec4899;
+    color: #FF46A2;
 }
 
 .description {
@@ -51,6 +51,11 @@
     position     : relative;
     transition   : all .3s;
     border       : 1px solid #e5e7eb;
+
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-between;
+    /* 🔥 IMPORTANT */
 }
 
 .card:hover {
@@ -64,7 +69,7 @@
 }
 
 .selected {
-    outline: 3px solid #ec4899;
+    outline: 3px solid #FF46A2;
 }
 
 .popularBadge {
@@ -86,8 +91,8 @@
 .iconBox {
     width          : 70px;
     height         : 70px;
-    background     : #ec489920;
-    color          : #ec4899;
+    background     : #FF46A220;
+    color          : #FF46A2;
     border-radius  : 50%;
     display        : flex;
     align-items    : center;
@@ -118,6 +123,7 @@
     display       : flex;
     flex-direction: column;
     gap           : 10px;
+    flex-grow     : 1;
 }
 
 .feature {
@@ -142,12 +148,12 @@
 }
 
 .primaryBtn {
-    background: #ec4899;
+    background: #00b3ff;
     color     : white;
 }
 
 .primaryBtn:hover {
-    background: #db2777;
+    background: #FF46A2;
 }
 
 .goldBtn {
@@ -169,4 +175,16 @@
     .grid {
         grid-template-columns: 1fr;
     }
+}
+
+.selectedBtn {
+    width        : 100%;
+    padding      : 14px;
+    border       : none;
+    border-radius: 10px;
+    font-weight  : 600;
+    cursor       : pointer;
+
+    background: #FF46A2;
+    color     : white;
 }

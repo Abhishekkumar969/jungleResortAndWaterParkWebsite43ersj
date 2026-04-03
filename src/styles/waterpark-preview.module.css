@@ -95,7 +95,7 @@
 }
 
 .waterparkPricing {
-    background   : rgba(3, 242, 255, 0.332);
+    background   : rgba(1, 132, 139, 0.527);
     padding      : 20px;
     border-radius: 12px;
     margin-bottom: 30px;
@@ -202,6 +202,15 @@
 
     .waterparkTitle {
         font-size: 34px;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .waterparkSection {
+        padding: 20px;
     }
 
 }

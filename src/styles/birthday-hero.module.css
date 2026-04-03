@@ -16,12 +16,22 @@
     padding      : 10px;
 
     background: linear-gradient(270deg,
-            #ff9421,
-            #ff2d55,
-            #6a5cff,
-            #00d4ff,
-            #00ff95,
-            #ff9421);
+            #ffffff,
+
+            #FF46A2,
+            #ffffff,
+
+            #ff9900,
+            #ffffff,
+
+            #00aaff,
+            #ffffff,
+
+            #8800ff,
+            #ffffff,
+
+            #ff0000,
+            #ffffff);
 
     background-size: 400% 400%;
     animation      : borderMove 20s linear infinite;
@@ -60,9 +70,9 @@
     position: absolute;
     inset   : 0;
     background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.4),
-            rgba(0, 0, 0, 0.7));
+            rgba(0, 0, 0, 0.159),
+            rgba(0, 0, 0, 0.407),
+            rgba(0, 0, 0, 0.652));
 }
 
 .content {
@@ -93,7 +103,7 @@
 }
 
 .title span {
-    color: #22c55e;
+    color: #00aaff;
 }
 
 .description {
@@ -116,7 +126,7 @@
     align-items    : center;
     gap            : 8px;
     padding        : 14px 26px;
-    background     : #22c55e;
+    background     : #00aaff;
     border-radius  : 10px;
     color          : white;
     font-weight    : 600;
@@ -124,7 +134,7 @@
 }
 
 .primaryBtn:hover {
-    background: #16a34a;
+    background: #0190d7;
 }
 
 .secondaryBtn {
@@ -149,5 +159,13 @@
 
     .description {
         font-size: 16px;
+    }
+}
+
+
+@media(max-width:500px) {
+
+    .heroBorder {
+        margin-bottom: 20px;
     }
 }

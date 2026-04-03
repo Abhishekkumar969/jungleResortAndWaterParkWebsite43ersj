@@ -187,12 +187,14 @@
 
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
+
 }
 
 .shimmer {
   animation      : shimmer 2s infinite;
   background     : linear-gradient(90deg, #1a1a1a 0%, #d4af37 50%, #1a1a1a 100%);
   background-size: 1000px 100%;
+
 }
 
 /* Scrollbar styling */
@@ -201,16 +203,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #faf8f3;
+  background: #f0f0f0;
+  border    : 1px solid #cccccc;
 }
 
 ::-webkit-scrollbar-thumb {
-  background   : #07ff03;
+  background   : linear-gradient(135deg, #ff00b7, #ffe600, #00c3ff);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0f0f0f;
+  background: linear-gradient(135deg, #00c3ff, #ffe600, #ff00b7);
 }
 
 /* Added custom animations for floating contacts and smooth bounce */
@@ -230,18 +233,19 @@
   animation: bounce-slow 3s infinite ease-in-out;
 }
 
-/* Dark mode scrollbar */
-.dark ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+/* Dark mode scrollbar cart scrollar */
+/* .dark ::-webkit-scrollbar-track {
+  background: #e0e0e0;
 }
 
 .dark ::-webkit-scrollbar-thumb {
   background: #d4af37;
+
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #faf8f3;
-}
+} */
 
 @layer base {
   * {
