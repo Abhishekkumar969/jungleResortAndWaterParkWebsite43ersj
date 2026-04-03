@@ -6,7 +6,6 @@ import { Play } from "lucide-react";
 import styles from "../../styles/eventspages.module.css";
 
 export default function WeddingDetails() {
-
     const [selectedIndex, setSelectedIndex] = useState(null);
 
     const getYouTubeThumbnail = (url) => {
@@ -41,19 +40,21 @@ export default function WeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/images/weddings1.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings2.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings3.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings4.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings5.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/venue-wedding.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/unnamed.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.avif" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.png" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort1.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/unnamjms.png" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.jpg" },
 
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
     ];
 
     const filtered = media;

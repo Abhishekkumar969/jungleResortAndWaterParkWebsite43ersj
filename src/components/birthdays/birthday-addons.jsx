@@ -53,7 +53,17 @@ const addons = [
     },
 ];
 
-export default function BirthdayAddons() {
+export default function BirthdayAddons({ selectedAddons, setSelectedAddons }) {
+    // const [selectedAddons, setSelectedAddons] = useState([]);
+
+    const toggleAddon = (addonName) => {
+        setSelectedAddons((prev) =>
+            prev.includes(addonName)
+                ? prev.filter((item) => item !== addonName) // remove
+                : [...prev, addonName] // add
+        );
+    };
+
     return (
         <section className={styles.section}>
             <div className={styles.container}>
@@ -62,6 +72,7 @@ export default function BirthdayAddons() {
 
                     <h2 className={styles.title}>
                         Make It Extra <span>Special</span>
+                        {selectedAddons.length > 0 && ` (${selectedAddons.length} selected)`}
                     </h2>
 
                     <p className={styles.description}>
@@ -74,14 +85,32 @@ export default function BirthdayAddons() {
                         const Icon = addon.icon;
 
                         return (
-                            <div key={addon.name} className={styles.card}>
+                            <div
+                                key={addon.name}
+                                className={`${styles.card} ${selectedAddons.includes(addon.name) ? styles.selected : ""
+                                    }`}
+                                onClick={() => toggleAddon(addon.name)}
+                                style={{ cursor: "pointer" }}
+                            >
+                                {/* ✅ Selected Tag */}
+
+
                                 <div className={styles.iconBox}>
                                     <Icon size={28} />
                                 </div>
 
                                 <h3>{addon.name}</h3>
+
                                 <p>{addon.description}</p>
-                                <span>{addon.price}</span>
+                                <div className={styles.priceRow}>
+                                    <span>{addon.price}</span>
+
+                                    {selectedAddons.includes(addon.name) && (
+                                        <div className={styles.selectedTagTick}>✓</div>
+                                    )}
+                                </div>
+
+
                             </div>
                         );
                     })}

@@ -1,76 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Sparkles, TreePine, Waves } from "lucide-react";
+import QuickBookForm from "../quick-book-form";
+import { ChevronDown, TreePine, Waves } from "lucide-react";
 import styles from "../../styles/hero-section.module.css";
 
 const texts = [
   "Destination Wedding in Patna",
-  "Waterpark in Patna"
+  "Water park in Patna"
 ];
 
-// const stats = [
-//   { number: "5+", label: "Event Venues" },
-//   { number: "10+", label: "Water Attractions" },
-//   { number: "1000+", label: "Events Hosted" },
-//   { number: "50K+", label: "Happy Visitors" }
-// ];
-
 export default function HeroSection() {
-
-  const videoSrc = "/images/BackgroundVdo.mp4";
 
   const [displayText, setDisplayText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  // const [counts, setCounts] = useState(stats.map(() => 0));
-  // const statsRef = useRef(null);
+  const slides = [
+    { type: "video", src: "/videos/backgroundVdo.mp4" },
+    { type: "video", src: "/videos/WaveVideo.mp4" },
+    { type: "images", src: "/videos/7.jpeg" },
+  ];
 
-  /* Stats Counter */
-  // useEffect(() => {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 10000);
 
-  //   const observer = new IntersectionObserver(([entry]) => {
-
-  //     if (!entry.isIntersecting) return;
-
-  //     stats.forEach((stat, index) => {
-
-  //       let target = stat.number.includes("K")
-  //         ? parseInt(stat.number) * 1000
-  //         : parseInt(stat.number);
-
-  //       const duration = 2000;
-  //       const startTime = performance.now();
-
-  //       const animate = (time) => {
-
-  //         const progress = Math.min((time - startTime) / duration, 1);
-  //         const value = Math.floor(progress * target);
-
-  //         setCounts(prev => {
-  //           const updated = [...prev];
-  //           updated[index] = value;
-  //           return updated;
-  //         });
-
-  //         if (progress < 1) requestAnimationFrame(animate);
-
-  //       };
-
-  //       requestAnimationFrame(animate);
-
-  //     });
-
-  //     observer.disconnect();
-
-  //   }, { threshold: 0.4 });
-
-  //   if (statsRef.current) observer.observe(statsRef.current);
-
-  //   return () => observer.disconnect();
-
-  // }, []);
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
   /* Typewriter */
   useEffect(() => {
@@ -124,7 +84,7 @@ export default function HeroSection() {
     {
       title: "Birthday Celebrations",
       items: [
-        { name: "Birthday Celebration", link: "/BirthdayCeremony" },
+        { name: "Birthday Celebration", link: "/birthday" },
         { name: "Pool Party", link: "/poolparty" },
         { name: "Get Together", link: "/gettogether" },
         { name: "Kitty Party", link: "/kittyparty" }
@@ -138,23 +98,45 @@ export default function HeroSection() {
         { name: "Corporate Pool Party", link: "/corporatepoolparty" }
       ]
     },
-    { title: "WaterPark Tickets", link: "/birthdayexplore" },
+    { title: "WaterPark Tickets", link: "/waterpark" },
     { title: "FunPark Tickets", link: "/FunPark" }
   ];
+
+
 
   return (
     <section className={styles.heroSection}>
 
       {/* Background */}
       <div className={styles.heroBg}>
-        <video
-          src={videoSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className={styles.heroVideo}
-        />
+        <div
+          className={styles.slider}
+          style={{
+            transform: `translateX(-${currentSlide * 100}%)`,
+          }}
+        >
+          {slides.map((slide, index) => (
+            <div className={styles.slide} key={index}>
+              {slide.type === "video" ? (
+                <video
+                  src={slide.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className={styles.heroVideo}
+                />
+              ) : (
+                <img
+                  src={slide.src}
+                  alt="hero"
+                  className={styles.heroVideo}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
         <div className={styles.heroOverlay}></div>
       </div>
 
@@ -163,79 +145,115 @@ export default function HeroSection() {
       <Waves className={styles.heroWaves} />
 
       {/* Content */}
+
       <div className={styles.heroContent}>
+        <div className={styles.heroLeft}>
 
-        <div className={styles.heroTag}>
-          <Sparkles size={16} />
-          <span>Where Dreams Meet Nature</span>
-        </div>
+          {/* Show in desktop view */}
+          <div className={styles.heroName} >
 
-        <h1 className={`${styles.heroTitle} ${styles.desktopTitle}`}>
-          Welcome to <br />
-          <span>Jungle Resort & Waterpark</span>
-        </h1>
+            <h1 className={`${styles.heroTitle}`}>
+              Welcome to <br />
+            </h1>
 
-        <h1 className={`${styles.heroTitle} ${styles.mobileTitle}`}>
-          Welcome to <br />
-          <span>
-            Jungle Resort <div className={styles.andSymbol}>&</div> Waterpark
-          </span>
-        </h1>
+            <h2 className={`${styles.mobileTitle}`}>
+              Jungle Resort <div>&</div> Waterpark
+            </h2>
 
-        <h2 className={styles.typeWriter}>
-          {displayText}
-          <span className={styles.cursor}>|</span>
-        </h2>
+          </div>
 
-        {/* Buttons */}
-        <div className={styles.heroButtons}>
+          {/* Show in mobile view  */}
+          <div style={{ display: "flex", justifyContent: "center", margin: "-8px", width: "100%" }}>
+            <div className={styles.heroForm}>
+              <QuickBookForm />
+            </div>
+          </div>
 
-          {heroMenus.map((menu, index) => (
+          <div className={styles.divtypeWriter}>
+            <h2 className={styles.typeWriter}>
+              {displayText}
+              <span className={styles.cursor}>|</span>
+            </h2>
+          </div>
 
-            <div key={index} className={styles.dropdown}>
+          {/* Buttons */}
+          <div className={styles.heroButtons}>
 
-              {menu.items ? (
-                <>
-                  <button className={styles.heroBtnPrimary}>
+            {heroMenus.map((menu, index) => (
+
+              <div key={index} className={styles.dropdown}>
+
+                {menu.items ? (
+                  <>
+                    <button className={styles.heroBtnPrimary}>
+                      {menu.title}
+                      <ChevronDown size={16} style={{ marginLeft: "6px" }} />
+                    </button>
+
+                    <div className={styles.dropdownMenu}>
+                      {menu.items.map((item, i) => (
+                        <Link key={i} to={item.link} className={styles.dropdownItem}>
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                ) : menu.title === "FunPark Tickets" ? (
+
+                  // ✅ ONLY button (no Link)
+                  <button
+                    className={styles.heroBtnOutline}
+                    onClick={() => setShowPopup(true)}
+                  >
                     {menu.title}
-                    <ChevronDown size={16} style={{ marginLeft: "6px" }} />
                   </button>
 
-                  <div className={styles.dropdownMenu}>
-                    {menu.items.map((item, i) => (
-                      <Link key={i} to={item.link} className={styles.dropdownItem}>
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <Link to={menu.link} className={styles.heroBtnOutline}>
-                  {menu.title}
-                </Link>
-              )}
+                ) : (
 
-            </div>
+                  // ✅ Normal link
+                  <Link to={menu.link} className={styles.heroBtnOutline}>
+                    {menu.title}
+                  </Link>
 
-          ))}
+                )}
+
+              </div>
+
+            ))}
+
+          </div>
 
         </div>
 
-        {/* Stats */}
-        {/* <div ref={statsRef} className={styles.heroStats}>
-          {stats.map((stat, index) => (
-            <div key={index} className={styles.heroStat}>
-              <div className={styles.statNumber}>
-                {stat.number.includes("K")
-                  ? Math.floor(counts[index] / 1000)
-                  : counts[index]}
-                {stat.number.includes("K") ? "K" : ""}
-                {stat.number.includes("+") ? "+" : ""}
-              </div>
-              <div className={styles.statLabels}>{stat.label}</div>
+        <div className={styles.heroRight} style={{ padding: "70px 0px" }}>
+          <QuickBookForm />
+        </div>
+
+        {showPopup && (
+          <div
+            className={styles.popupOverlay}
+            onClick={() => setShowPopup(false)} // outside click close
+          >
+            <div
+              className={styles.popupBox}
+              onClick={(e) => e.stopPropagation()} // prevent close inside click
+            >
+              {/* Close Button */}
+              <button
+                className={styles.popupClose}
+                onClick={() => setShowPopup(false)}
+              >
+                ✕
+              </button>
+
+              {/* Content */}
+              <h2>🎡 FunPark Coming Soon!</h2>
+              <p>
+                Exciting rides, games, and a full entertainment experience are coming very soon 🚀
+              </p>
             </div>
-          ))}
-        </div> */}
+          </div>
+        )}
 
       </div>
     </section>

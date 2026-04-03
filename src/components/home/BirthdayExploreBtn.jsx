@@ -24,7 +24,7 @@ export default function BirthdayHero() {
                     </div>
 
                     <h1 className={styles.title}>
-                        Birthday <span>Ceremony</span>
+                        Birthday <span>celebration</span>
                     </h1>
 
                     <p className={styles.description}>
@@ -33,7 +33,7 @@ export default function BirthdayHero() {
                     </p>
 
                     <div className={styles.buttons}>
-                        <a href="birthdayexplore" className={styles.primaryBtn}>
+                        <a href="birthday" className={styles.primaryBtn}>
                             <Cake size={18} /> EXPLORE MORE
                         </a>
                     </div>

@@ -41,19 +41,21 @@ export default function DestinationWeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/images/weddings1.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings2.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings3.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings4.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings5.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/3f4ce4265b717aacce9b6b8378018292.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/132.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/unnamed.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/image10(57).jpeg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/hero.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/1485498619_595x400.png" },
 
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
     ];
 
     const filtered = media;

@@ -4,7 +4,8 @@ import { doc, updateDoc, setDoc, serverTimestamp, getDoc } from "firebase/firest
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/loginSignup.module.css";
 
-export default function CompleteProfile() {
+export default function CompleteProfile({ isPage = true, onSuccess }) {
+
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [name, setName] = useState("");
@@ -19,7 +20,6 @@ export default function CompleteProfile() {
             setUser(currentUser);
 
             try {
-
                 const now = new Date();
 
                 const monthNames = [
@@ -36,22 +36,15 @@ export default function CompleteProfile() {
                 if (!snap.exists()) return;
 
                 const data = snap.data();
-
                 const userData = data[currentUser.uid];
 
-                console.log("Firestore userData:", userData);
-
-                if (userData !== undefined) {
-
+                if (userData) {
                     setName(userData.name ?? "");
                     setPhone(userData.phone ?? "");
-
                 }
 
             } catch (err) {
-
-                console.error("Profile fetch error:", err);
-
+                console.error(err);
             }
 
         });
@@ -67,71 +60,97 @@ export default function CompleteProfile() {
             return;
         }
 
+        if (!/^\d{10}$/.test(phone)) {
+            alert("Phone number must be exactly 10 digits");
+            return;
+        }
+
         try {
             const now = new Date();
+
             const monthNames = [
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun",
                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
             ];
+
             const monthYear =
                 `${monthNames[now.getMonth()]}${now.getFullYear()}`;
+
             const docRef = doc(db, "users", monthYear);
+
             const userData = {
-                name: name,
-                phone: phone,
+                name,
+                phone,
                 email: user.email,
                 createdAt: serverTimestamp()
             };
 
             try {
-
                 await updateDoc(docRef, {
                     [user.uid]: userData
                 });
-
             } catch {
                 await setDoc(docRef, {
                     [user.uid]: userData
                 });
             }
-            navigate("/");
+
+            // ✅ SMART NAVIGATION
+            if (isPage) {
+                navigate("/");
+            } else {
+                onSuccess && onSuccess(); // 🔥 callback (modal ya parent close)
+            }
 
         } catch (err) {
             alert(err.message);
-
         }
-
     };
 
     return (
 
-        <div className={styles.authContainer}>
-            <h2>Complete Your Profile</h2>
-            <p className={styles.subtitle}>
-                We need a few more details
-            </p>
-            <div className={styles.formGroup}>
-                <label>Full Name</label>
-                <input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-            </div>
+        <div className={isPage ? styles.authContainerBody : ""}>
+            <div className={styles.authContainer}>
 
-            <div className={styles.formGroup}>
-                <label>Phone Number</label>
-                <input
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                />
-            </div>
+                <h2>Complete Your Profile</h2>
+                <p className={styles.subtitle}>
+                    We need a few more details
+                </p>
 
-            <button
-                className={styles.authBtn}
-                onClick={handleSave}
-            >
-                Save Profile
-            </button>
+                <div className={styles.formGroup}>
+                    <label>Full Name</label>
+                    <input
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        style={{ color: "black" }}
+                    />
+                </div>
+
+                <div className={styles.formGroup}>
+                    <label>Phone Number</label>
+                    <input
+                        value={phone}
+                        maxLength={10}
+                        onChange={(e) => {
+                            const value = e.target.value;
+
+                            // 🔥 only numbers allow
+                            if (/^\d*$/.test(value)) {
+                                setPhone(value);
+                            }
+                        }}
+                        style={{ color: "black" }}
+                    />
+                </div>
+
+                <button
+                    className={styles.authBtn}
+                    onClick={handleSave}
+                >
+                    Save Profile
+                </button>
+
+            </div>
         </div>
     );
 }

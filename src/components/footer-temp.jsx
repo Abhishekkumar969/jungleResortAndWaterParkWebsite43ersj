@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Twitter } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Twitter, Hotel } from "lucide-react";
 import "../styles/Footer.css";
 
 export default function Footer() {
@@ -9,7 +9,6 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className="footer-container">
-
         <div className="footer-grid">
 
           {/* Brand */}
@@ -25,31 +24,24 @@ export default function Footer() {
             </p>
 
             <div className="footer-social">
-
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                 <Facebook size={18} />
               </a>
-
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 <Instagram size={18} />
               </a>
-
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
                 <Youtube size={18} />
               </a>
-
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
                 <Twitter size={18} />
               </a>
-
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="footer-section">
-
             <h4 className="footer-title">Quick Links</h4>
-
             <ul className="footer-links">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/venues">Event Venues</Link></li>
@@ -58,86 +50,82 @@ export default function Footer() {
               <li><Link to="/gallery">Gallery</Link></li>
               <li><Link to="/contact">Contact Us</Link></li>
             </ul>
-
           </div>
 
           {/* Our Services */}
           <div className="footer-section">
-
             <h4 className="footer-title">Our Services</h4>
-
             <ul className="footer-links">
-              <li>Wedding Ceremonies</li>
-              <li>Reception Parties</li>
-              <li>Corporate Events</li>
-              <li>Birthday Celebrations</li>
-              <li>Waterpark Tickets</li>
-              <li>Room Bookings</li>
-            </ul>
+              <li><Link to="/wedding">Wedding Ceremonies</Link></li>
 
+              <li><Link to="/reception">Reception Parties</Link></li>
+              <li><Link to="/corporateevents">Corporate Events</Link></li>
+              <li><Link to="/birthday">Birthday Celebrations</Link></li>
+              <li><Link to="/Waterpark">Waterpark Tickets</Link></li>
+              <li><Link to="/">Cottage Bookings</Link></li>
+
+            </ul>
           </div>
 
           {/* Contact Info */}
           <div className="footer-section">
-
             <h4 className="footer-title">Contact Us</h4>
-
             <ul className="footer-contact">
-
               <li>
-                <MapPin size={38} color="#ad8216" />
+                <MapPin size={27} color="#ffffff" />
                 <span>
-                  Jungle Resort & WaterPark, Near Forest Highway,
-                  Nature Valley, State - 123456
+                  Jungle Resort & WaterPark, Bypass Thana, Marcha - Mirchi Road, more, Dharamsala, Patna, Bihar 800009
                 </span>
               </li>
 
+              <div className="Contact-Seperator">
+                <div style={{ marginBottom: "10px" }}> <Hotel size={18} color="#ffffff" style={{ marginRight: "10px" }} />Enquiry for Resort</div>
+                <li>
+                  <Phone size={18} color="#ffffff" />
+                  <a href="tel:+919031080901" style={{ whiteSpace: "nowrap" }}>+91 9031080901</a>,<a style={{ whiteSpace: "nowrap" }} href="tel:+919031080902">+91 9031080902</a>
+                </li>
+              </div>
+
+              <div className="Contact-Seperator">
+                <div style={{ marginBottom: "10px" }}> <Hotel size={18} color="#ffffff" style={{ marginRight: "10px" }} />Enquiry for Waterpark</div>
+                <li>
+                  <Phone size={18} color="#ffffff" />
+                  <a href="tel:+919031080903" style={{ whiteSpace: "nowrap" }}>+91 90 3108 0903</a>,<a style={{ whiteSpace: "nowrap" }} href="tel:+919031080904">+91 90 3108 0904</a>
+                </li>
+              </div>
+
+              <div className="Contact-Seperator">
+                <div style={{ marginBottom: "10px" }}> <Hotel size={18} color="#ffffff" style={{ marginRight: "10px" }} />For Complain & Feedback</div>
+                <li>
+                  <Phone size={18} color="#ffffff" />
+                  <a href="tel:+919065383838" style={{ whiteSpace: "nowrap" }}>+91 9065383838</a>
+                </li>
+              </div>
+
               <li>
-                <Phone size={18} color="#ad8216" />
-                <a href="tel:+919876543210">
-                  +91 98765 43210
+                <Mail size={18} color="#ffffff" />
+                <a href="mailto:jungleresort.patna@gmail.com">
+                  jungleresort.patna@gmail.com
                 </a>
               </li>
 
               <li>
-                <Mail size={18} color="#ad8216" />
-                <a href="mailto:info@jungleparadise.com">
-                  info@jungleresort&waterpark.com
-                </a>
-              </li>
-
-              <li>
-                <Clock size={18} color="#ad8216" />
+                <Clock size={18} color="#ffffff" />
                 <span>Open 24/7</span>
               </li>
-
             </ul>
-
           </div>
-
         </div>
-
       </div>
 
       {/* Bottom Bar */}
       <div className="footer-bottom">
-
         <div className="footer-bottom-container">
-
           <p>
             ©2025 Jungle Resort & Waterpark. All rights reserved.
           </p>
-
-          <div className="footer-policy">
-            <Link to="/">Privacy Policy</Link>
-            <Link to="/">Terms & Conditions</Link>
-            <Link to="/">Refund Policy</Link>
-          </div>
-
         </div>
-
       </div>
-
     </footer>
   );
 }

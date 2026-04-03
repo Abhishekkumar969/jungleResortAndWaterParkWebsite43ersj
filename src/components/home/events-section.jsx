@@ -70,10 +70,10 @@ export default function EventsSection() {
             <div className="container">
 
                 <div className={styles.eventsHeader}>
-                    <h2 className={styles.eventsLabel}>Our Events</h2>
+                    <h2 className={styles.eventsLabel}>EVENTS & CELEBRATIONS</h2>
 
                     <h2 className={styles.eventsTitle}>
-                        Celebrate The Beginning Of <span>Forever</span>
+                        Celebrate The Beginning Of Forever
                     </h2>
                 </div>
 

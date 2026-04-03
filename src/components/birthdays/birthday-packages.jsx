@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../styles/birthday-packages.module.css";
 import { Check, Sparkles, Crown, Star } from "lucide-react";
 
@@ -16,8 +16,7 @@ const packages = [
             "Cake table setup",
             "Photography corner",
             "Complimentary parking"
-        ],
-        popular: false
+        ]
     },
     {
         name: "Gold",
@@ -34,8 +33,7 @@ const packages = [
             "Waterpark access (2 hrs)",
             "Snacks & beverages",
             "Return gifts for kids"
-        ],
-        popular: true
+        ]
     },
     {
         name: "Platinum",
@@ -54,13 +52,12 @@ const packages = [
             "Magic show/games",
             "Personalized invitations",
             "VIP parking"
-        ],
-        popular: false
+        ]
     }
 ];
 
-export default function BirthdayPackages() {
-    const [selectedPackage, setSelectedPackage] = useState(null);
+export default function BirthdayPackages({ selectedPackage, setSelectedPackage }) {
+    // const [selectedPackage, setSelectedPackage] = useState(null);
 
     return (
         <section className={styles.section} id="packages">
@@ -114,12 +111,23 @@ export default function BirthdayPackages() {
                                     ))}
                                 </div>
 
-                                <button
-                                    className={pkg.popular ? styles.goldBtn : styles.primaryBtn}
-                                    onClick={() => setSelectedPackage(pkg.name)}
-                                >
-                                    Select Package
-                                </button>
+                                <div>
+                                    <button
+                                        className={
+                                            selectedPackage === pkg.name
+                                                ? styles.selectedBtn
+                                                : pkg.popular
+                                                    ? styles.goldBtn
+                                                    : styles.primaryBtn
+                                        }
+                                        onClick={() =>
+                                            setSelectedPackage(
+                                                selectedPackage === pkg.name ? null : pkg.name
+                                            )
+                                        }                                    >
+                                        {selectedPackage === pkg.name ? "Selected ✓" : "Select Package"}
+                                    </button>
+                                </div>
                             </div>
                         );
                     })}

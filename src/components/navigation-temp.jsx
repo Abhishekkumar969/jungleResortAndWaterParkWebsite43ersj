@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, Mail } from "lucide-react";
-import { auth } from "../firebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
-import { User } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
+// import AuthModal from "../components/AuthModal";
+import Cart from "./Cart";
 import "../styles/Navigation.css";
 
 const navLinks = [
@@ -15,26 +14,53 @@ const navLinks = [
   { href: "/contact", label: "ENQUIRY NOW", className: "btn-outlines" }
 ];
 
+const waterparkNavLinks = [
+  { href: "/waterpark", label: "WATER PARK", className: "waterpark-btn-outlines" }
+];
+
 export default function Navbar() {
-  const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  // const [openAuth, setOpenAuth] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const [animateCart, setAnimateCart] = useState(false);
 
   useEffect(() => {
+    if (cartCount > 0) {
+      setAnimateCart(true);
 
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setTimeout(() => {
+        setAnimateCart(false);
+      }, 300); // animation duration
+    }
+  }, [cartCount]);
 
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        setUser(null);
-      }
+  useEffect(() => {
+    const updateCartCount = () => {
+      const storedCart = JSON.parse(localStorage.getItem("cart")) || {};
+      const items = storedCart.items || {};
+      const total = Object.values(items).reduce((sum, qty) => sum + qty, 0);
 
-    });
+      setCartCount(total);
+    };
 
-    return () => unsubscribe();
+    updateCartCount();
 
+    // custom event listener
+    window.addEventListener("cartUpdated", updateCartCount);
+
+    return () => window.removeEventListener("cartUpdated", updateCartCount);
+  }, []);
+
+  useEffect(() => {
+    const handleOpenCart = () => {
+      setCartOpen(true);
+    };
+
+    window.addEventListener("openCart", handleOpenCart);
+
+    return () => window.removeEventListener("openCart", handleOpenCart);
   }, []);
 
   useEffect(() => {
@@ -53,57 +79,8 @@ export default function Navbar() {
 
   }, []);
 
-  useEffect(() => {
-
-    const handleScroll = () => {
-
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-      const progress = (scrollTop / docHeight) * 100;
-
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-
-  }, []);
-
   return (
     <header className="navbar-header">
-
-      {/* Top Bar */}
-      <div
-        className="navbar-top"
-        style={{
-          background: `
-            linear-gradient(to right, #0fb400 ${scrollProgress}%, #0c9600 ${scrollProgress}%)
-          `
-        }}
-      >
-        <div className="navbar-container navbar-top-inner">
-
-          <div className="navbar-contact">
-            <a href="tel:+919876543210" style={{ color: "white" }}>
-              <Phone size={16} />
-              <span>+91 98765 43210</span>
-            </a>
-
-            <a href="mailto:info@jungleparadise.com" style={{ color: "white" }}>
-              <Mail size={16} />
-              <span>info@jungleparadise.com</span>
-            </a>
-          </div>
-
-          <div className="navbar-open">
-            Open 24/7 for Bookings
-          </div>
-
-        </div>
-      </div>
 
       {/* Main Navigation */}
       <nav className={`navbar-main ${isScrolled ? "navbar-blur" : ""}`}>
@@ -121,7 +98,6 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="navbar-links">
-
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -133,27 +109,32 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div style={{ display: "flex", gap: "20px" }}>
+          <div className="nav-right">
 
-            <div style={{ textDecoration: "none" }}>
-              {!user ? (
-
-                <Link to="/auth" style={{ textDecoration: "none", color: "white", fontWeightL: 800, backgroundColor: "#0f9f27" }} className="nav-login">
-                  LOGIN
+            {/* Waterpark Button */}
+            <div>
+              {waterparkNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={link.className || ""}
+                >
+                  {link.label}
                 </Link>
+              ))}
+            </div>
 
-              ) : (
+            {/* CART */}
+            <div onClick={() => setCartOpen(true)} className="nav-cart">
+              <div style={{ position: "relative" }}>
+                <ShoppingCart size={25} />
 
-                <>
-
-                  <Link to="/dashboard" style={{ textDecoration: "none", color: "white", fontWeightL: 800, backgroundColor: "#0f9f27" }} className="nav-account">
-                    <User size={16} />
-                    PROFILE
-                  </Link>
-
-                </>
-
-              )}
+                {cartCount > 0 && (
+                  <span className={`cart-badge ${animateCart ? "cart-bounce" : ""}`}>
+                    {cartCount}
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -161,14 +142,13 @@ export default function Navbar() {
               className="mobile-menu-btn"
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ?
-                <X size={26}
-                  color="red" /> :
-                <Menu size={26}
-                  color="#0284c7"
-                />
-              }
+              {isOpen ? (
+                <X size={26} color="red" />
+              ) : (
+                <Menu size={26} />
+              )}
             </button>
+
           </div>
 
         </div>
@@ -188,6 +168,9 @@ export default function Navbar() {
         ))}
 
       </div>
+
+      {/* <AuthModal isOpen={openAuth} onClose={() => setOpenAuth(false)} /> */}
+      <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} />
 
     </header>
   );

@@ -6,7 +6,7 @@ import BirthdayHero from "../../components/birthdays/birthday-hero";
 import BirthdayStages from "../../components/birthdays/birthday-stages";
 import BirthdayPackages from "../../components/birthdays/birthday-packages";
 import BirthdayAddons from "../../components/birthdays/birthday-addons";
-import BirthdayBooking from "../../components/birthdays/birthday-booking";
+// import BirthdayBooking from "../../components/birthdays/birthday-booking";
 
 import styles from "../../styles/birthdays-page.module.css";
 
@@ -19,7 +19,7 @@ export default function BirthdaysPage() {
       <BirthdayStages />
       <BirthdayPackages />
       <BirthdayAddons />
-      <BirthdayBooking />
+      {/* <BirthdayBooking /> */}
 
       <Footer />
     </main>

@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import styles from "../../styles/tickets.module.css";
+import React, { useState, useEffect } from "react";
 import { Check, Star, Users, Baby, Crown, Sparkles } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import styles from "../../styles/tickets.module.css";
 
 const tickets = [
     {
-        id: "adult",
-        name: "Adult Ticket",
-        icon: Users,
-        price: 699,
-        originalPrice: 899,
-        description: "Full day access to all water attractions",
+        id: "kikdsbelow10years",
+        name: "Kikds Below 10 Years",
+        icon: Baby,
+        price: 299,
+        originalPrice: 499,
         features: [
             "All Water Slides",
             "Wave Pool Access",
@@ -21,12 +19,11 @@ const tickets = [
         popular: false
     },
     {
-        id: "child",
-        name: "Child Ticket",
-        icon: Baby,
-        price: 499,
-        originalPrice: 649,
-        description: "For kids below 12 years (height < 4.5 ft)",
+        id: "kikdsabove10years",
+        name: "Kikds Above 10 Years",
+        icon: Users,
+        price: 399,
+        originalPrice: 549,
         features: [
             "Kids Water Zone",
             "Safe Splash Areas",
@@ -37,46 +34,56 @@ const tickets = [
         popular: false
     },
     {
-        id: "family",
-        name: "Family Pack",
+        id: "groupof5",
+        name: "Group Of 5",
         icon: Star,
-        price: 2199,
-        originalPrice: 2799,
-        description: "2 Adults + 2 Children - Best Value!",
+        price: 1600,
+        originalPrice: 2745,
         features: [
             "All Water Attractions",
             "Wave Pool & Lazy River",
             "Family Cabana (2 hrs)",
             "Priority Entry",
             "Free Parking",
-            "Complimentary Snacks"
         ],
-        popular: true
+        popular: false
     },
     {
-        id: "vip",
-        name: "VIP Access",
+        id: "groupof10",
+        name: "Group Of 10",
         icon: Crown,
-        price: 1499,
-        originalPrice: 1999,
-        description: "Premium experience with exclusive perks",
+        price: 3000,
+        originalPrice: 5490,
         features: [
             "All Water Attractions",
             "Private Cabana (Full Day)",
             "Skip-the-Line Access",
             "Complimentary Lunch",
             "Towel & Locker Included",
-            "Personal Attendant"
+        ],
+        popular: true
+    },
+    {
+        id: "groupof15",
+        name: "Group Of 15",
+        icon: Sparkles,
+        price: 4200,
+        originalPrice: 8235,
+        features: [
+            "All Water Attractions",
+            "Private Cabana (4 hrs)",
+            "Couple Photo Session",
+            "Complimentary Drinks",
+            "Premium Locker"
         ],
         popular: false
     },
     {
-        id: "couple",
-        name: "Couple Special",
+        id: "groupof20",
+        name: "Group Of 20",
         icon: Sparkles,
-        price: 1299,
-        originalPrice: 1599,
-        description: "Perfect for a romantic splash date",
+        price: 5000,
+        originalPrice: 10980,
         features: [
             "All Water Attractions",
             "Private Cabana (4 hrs)",
@@ -89,7 +96,6 @@ const tickets = [
 ];
 
 export default function TicketPricing() {
-    const navigate = useNavigate();
     const [selectedTickets, setSelectedTickets] = useState({});
 
     const updateQuantity = (id, delta) => {
@@ -97,19 +103,36 @@ export default function TicketPricing() {
             const newQty = Math.max(0, (prev[id] || 0) + delta);
 
             if (newQty === 0) {
-                const newState = { ...prev };
-                delete newState[id];
-                return newState;
+                const updated = { ...prev };
+                delete updated[id];
+                return updated;
             }
 
             return { ...prev, [id]: newQty };
         });
     };
 
-    const totalAmount = Object.entries(selectedTickets).reduce((sum, [id, qty]) => {
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify({
+            items: selectedTickets
+        }));
+
+        window.dispatchEvent(new Event("cartUpdated"));
+    }, [selectedTickets]);
+
+    useEffect(() => {
+        const storedCart = JSON.parse(localStorage.getItem("cart")) || {};
+        setSelectedTickets(storedCart.items || {});
+    }, []);
+
+    const totalAmount = Object.entries(selectedTickets || {}).reduce((sum, [id, qty]) => {
         const ticket = tickets.find(t => t.id === id);
         return sum + (ticket?.price || 0) * qty;
     }, 0);
+
+    const formatINR = (amount) => {
+        return new Intl.NumberFormat("en-IN").format(amount);
+    };
 
     return (
         <section className={styles.ticketsSection}>
@@ -126,6 +149,7 @@ export default function TicketPricing() {
                         Select from our range of ticket options designed for individuals,
                         families, and groups.
                     </p>
+
                 </div>
 
                 <div className={styles.ticketsGrid}>
@@ -141,20 +165,11 @@ export default function TicketPricing() {
                                 {ticket.popular && <div className={styles.badge}>Best Value</div>}
 
                                 <div className={styles.ticketTop}>
-
-                                    <div className={styles.iconBox}>
-                                        <Icon size={28} />
-                                    </div>
-
-                                    <h3>{ticket.name}</h3>
-
-                                    <p className={styles.ticketDesc}>{ticket.description}</p>
-
+                                    <h3>  <Icon size={28} color="#00bfff" /> {ticket.name}</h3>
                                 </div>
 
                                 <div className={styles.priceBox}>
-                                    <span className={styles.old}>₹ {ticket.originalPrice}</span>
-                                    <div className={styles.price}>₹ {ticket.price}</div>
+                                    <div className={styles.price}> <span className={styles.old}>₹ {ticket.originalPrice}</span> ₹ {ticket.price}</div>
                                 </div>
 
                                 <ul className={styles.features}>
@@ -191,44 +206,93 @@ export default function TicketPricing() {
 
                     <div className={styles.cartBox}>
 
+                        {/* LEFT SIDE */}
                         <div className={styles.cartLeft}>
 
                             <h3>Your Selection</h3>
 
                             <div className={styles.cartItems}>
+
                                 {Object.entries(selectedTickets).map(([id, qty]) => {
                                     const ticket = tickets.find(t => t.id === id);
 
                                     return (
-                                        <span key={id}>
-                                            {ticket?.name} x {qty}
-                                        </span>
+                                        <div key={id} className={styles.cartItemRow}>
+
+                                            {/* NAME + PRICE */}
+                                            <div>
+                                                <strong>{ticket?.name}</strong>
+                                                <p >₹ {formatINR(ticket?.price)} each x {qty} </p>
+                                            </div>
+
+
+                                            {/* ITEM TOTAL */}
+                                            <div className={styles.itemTotal}>
+                                                ₹ {formatINR(ticket?.price * qty)}
+                                            </div>
+
+
+                                            {/* QTY CONTROL */}
+                                            <div className={styles.qtyControl}>
+
+                                                <button
+                                                    onClick={() => updateQuantity(id, -1)}
+                                                >
+                                                    -
+                                                </button>
+
+                                                <span>{qty}</span>
+
+                                                <button
+                                                    onClick={() => updateQuantity(id, 1)}
+                                                >
+                                                    +
+                                                </button>
+
+                                            </div>
+
+                                        </div>
                                     );
                                 })}
+
                             </div>
 
                         </div>
 
+                        {/* RIGHT SIDE */}
+
                         <div className={styles.cartRight}>
-                            <div className={styles.label}>Total Amount</div>
-                            <div className={styles.amount}>₹ {totalAmount}</div>
+
+                            <div>
+                                <div style={{ display: "flex", alignContent: "center", justifyContent: "space-between" }}>
+                                    <div className={styles.label} style={{ placeContent: 'center', color: "#00a8ff", fontSize: "18px", fontWeight: "800" }}>Total Amount</div>
+                                    <div className={styles.amount}>₹ {formatINR(totalAmount)}</div>
+                                </div>
+
+                                <button
+                                    className={styles.checkoutBtn}
+                                    style={{ fontSize: "15px", fontWeight: "800" }}
+                                    onClick={() => {
+
+                                        // ✅ FINAL CART SAVE
+                                        localStorage.setItem("cart", JSON.stringify({
+                                            items: selectedTickets
+                                        }));
+
+                                        // ✅ ADD THIS
+                                        window.dispatchEvent(new Event("openCart"));
+                                        window.dispatchEvent(new Event("cartUpdated"));
+                                    }}
+                                >
+                                    VIEW CART
+                                </button>
+
+                            </div>
                         </div>
 
-                        <button
-                            className={styles.checkoutBtn}
-                            onClick={() =>
-                                navigate("/checkout", { state: { selectedTickets, totalAmount } })
-                            }
-                        >
-                            Proceed to Checkout
-                        </button>
-
                     </div>
-
                 )}
-
             </div>
         </section>
     );
-
 }

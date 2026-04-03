@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { doc, updateDoc, setDoc, serverTimestamp, getDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebaseConfig";
 import { Eye, EyeOff } from "lucide-react";
 import { signInWithPopup } from "firebase/auth";
 import { googleProvider } from "../firebaseConfig";
 import styles from "../styles/loginSignup.module.css";
+import CompleteProfile from "./CompleteProfile";
 
-export default function AuthPage() {
+export default function AuthPage({ onClose }) {
     const [mode, setMode] = useState("login");
-    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -76,8 +76,10 @@ export default function AuthPage() {
 
             }
 
-            // ALWAYS open CompleteProfile
-            navigate("/complete-profile");
+            // navigate("/complete-profile");
+
+            // ✅ replace
+            setShowProfile(true);
 
         } catch (err) {
 
@@ -99,7 +101,8 @@ export default function AuthPage() {
                 formData.password
             );
 
-            navigate("/");
+            // navigate("/");
+            setShowProfile(true);
 
         } catch (err) {
 
@@ -167,7 +170,9 @@ export default function AuthPage() {
 
             }
 
-            navigate("/");
+            // navigate("/");
+
+            setShowProfile(true);
 
         } catch (err) {
 
@@ -204,131 +209,102 @@ export default function AuthPage() {
     };
 
     return (
+
         <div className={styles.authContainerBody}>
-            <div className={styles.authContainer}>
 
-                <h2>Welcome {mode === "login" && (<> Back </>)} !</h2>
-                <p className={styles.subtitle}>
-                    {mode === "login" && (<> Login to </>)} {mode === "signup" && (<> Create </>)} your account
-                </p>
+            {showProfile ? (
 
-                {/* Toggle */}
+                <CompleteProfile
+                    isPage={false}
+                    onSuccess={() => {
+                        setShowProfile(false);
+                        onClose && onClose();
+                    }}
+                />
 
-                <div className={styles.switchTabs}>
+            ) : (
 
-                    <button
-                        className={`${styles.tabBtn} ${mode === "login" ? styles.activeTab : ""}`}
-                        onClick={() => setMode("login")}
-                    >
-                        Login
-                    </button>
+                <div className={styles.authContainer}>
 
-                    <button
-                        className={`${styles.tabBtn} ${mode === "signup" ? styles.activeTab : ""}`}
-                        onClick={() => setMode("signup")}
-                    >
-                        Sign Up
-                    </button>
+                    <h2>Welcome {mode === "login" && (<> Back </>)} !</h2>
+                    <p className={styles.subtitle}>
+                        {mode === "login" && (<> Login to </>)} {mode === "signup" && (<> Create </>)} your account
+                    </p>
 
-                </div>
+                    {/* Toggle */}
 
-                {/* Signup Fields */}
-
-                {mode === "signup" && (
-
-                    <>
-                        <div className={styles.formGroup}>
-                            <label>Full Name</label>
-                            <input
-                                name="name"
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className={styles.formGroup}>
-                            <label>Phone Number</label>
-                            <input
-                                name="phone"
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </>
-
-                )}
-
-                {/* Email */}
-
-                <div className={styles.formGroup}>
-                    <label>Email Address</label>
-                    <input
-                        name="email"
-                        onChange={handleChange}
-                    />
-                </div>
-
-                {/* Password */}
-
-                <div className={styles.formGroup}>
-
-                    <label>Password</label>
-
-                    <div className={styles.passwordField}>
-
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            onChange={handleChange}
-                        />
+                    <div className={styles.switchTabs}>
 
                         <button
-                            type="button"
-                            className={styles.eyeBtn}
-                            onClick={() => setShowPassword(!showPassword)}
+                            className={`${styles.tabBtn} ${mode === "login" ? styles.activeTab : ""}`}
+                            onClick={() => setMode("login")}
                         >
-                            {showPassword
-                                ? <EyeOff size={18} />
-                                : <Eye size={18} />
-                            }
+                            Login
+                        </button>
+
+                        <button
+                            className={`${styles.tabBtn} ${mode === "signup" ? styles.activeTab : ""}`}
+                            onClick={() => setMode("signup")}
+                        >
+                            Sign Up
                         </button>
 
                     </div>
 
-                </div>
+                    {/* Signup Fields */}
 
-                {/* Forgot Password */}
+                    {mode === "signup" && (
 
-                {mode === "login" && (
+                        <>
+                            <div className={styles.formGroup}>
+                                <label>Full Name</label>
+                                <input
+                                    name="name"
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                    <div className={styles.forgotPassword}>
-                        <button onClick={handleForgotPassword}>
-                            Forgot Password?
-                        </button>
+                            <div className={styles.formGroup}>
+                                <label>Phone Number</label>
+                                <input
+                                    name="phone"
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </>
+
+                    )}
+
+                    {/* Email */}
+
+                    <div className={styles.formGroup}>
+                        <label>Email Address</label>
+                        <input
+                            name="email"
+                            onChange={handleChange}
+                        />
                     </div>
 
-                )}
-
-                {/* Confirm Password */}
-
-                {mode === "signup" && (
+                    {/* Password */}
 
                     <div className={styles.formGroup}>
 
-                        <label>Confirm Password</label>
+                        <label>Password</label>
 
                         <div className={styles.passwordField}>
 
                             <input
-                                type={showConfirmPassword ? "text" : "password"}
-                                name="confirmPassword"
+                                type={showPassword ? "text" : "password"}
+                                name="password"
                                 onChange={handleChange}
                             />
 
                             <button
                                 type="button"
                                 className={styles.eyeBtn}
-                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                onClick={() => setShowPassword(!showPassword)}
                             >
-                                {showConfirmPassword
+                                {showPassword
                                     ? <EyeOff size={18} />
                                     : <Eye size={18} />
                                 }
@@ -338,46 +314,93 @@ export default function AuthPage() {
 
                     </div>
 
-                )}
+                    {/* Forgot Password */}
 
-                {/* Button */}
+                    {mode === "login" && (
 
-                {mode === "login" ? (
+                        <div className={styles.forgotPassword}>
+                            <button onClick={handleForgotPassword}>
+                                Forgot Password?
+                            </button>
+                        </div>
+
+                    )}
+
+                    {/* Confirm Password */}
+
+                    {mode === "signup" && (
+
+                        <div className={styles.formGroup}>
+
+                            <label>Confirm Password</label>
+
+                            <div className={styles.passwordField}>
+
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    name="confirmPassword"
+                                    onChange={handleChange}
+                                />
+
+                                <button
+                                    type="button"
+                                    className={styles.eyeBtn}
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                >
+                                    {showConfirmPassword
+                                        ? <EyeOff size={18} />
+                                        : <Eye size={18} />
+                                    }
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    )}
+
+                    {/* Button */}
+
+                    {mode === "login" ? (
+
+                        <button
+                            className={styles.authBtn}
+                            onClick={handleLogin}
+                        >
+                            Login
+                        </button>
+
+                    ) : (
+
+                        <button
+                            className={styles.authBtn}
+                            onClick={handleSignup}
+                        >
+                            Create Account
+                        </button>
+
+                    )}
+
+                    <div className={styles.divider}>
+                        <span>OR</span>
+                    </div>
 
                     <button
-                        className={styles.authBtn}
-                        onClick={handleLogin}
+                        className={styles.googleBtn}
+                        onClick={handleGoogleLogin}
                     >
-                        Login
+                        <img
+                            src="https://www.svgrepo.com/show/475656/google-color.svg"
+                            width="18"
+                            alt="google-img"
+                        />
+                        Continue with Google
                     </button>
-
-                ) : (
-
-                    <button
-                        className={styles.authBtn}
-                        onClick={handleSignup}
-                    >
-                        Create Account
-                    </button>
-
-                )}
-
-                <div className={styles.divider}>
-                    <span>OR</span>
                 </div>
 
-                <button
-                    className={styles.googleBtn}
-                    onClick={handleGoogleLogin}
-                >
-                    <img
-                        src="https://www.svgrepo.com/show/475656/google-color.svg"
-                        width="18"
-                        alt="google-img"
-                    />
-                    Continue with Google
-                </button>
-            </div>
+            )}
+
         </div>
+
     );
 }

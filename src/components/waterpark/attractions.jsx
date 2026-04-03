@@ -4,7 +4,7 @@ import { Waves, Zap, Heart, Baby, Star, Music } from "lucide-react";
 
 const attractions = [
   {
-    name: "Mega Wave Pool",
+    name: "Wave Pool",
     description:
       "Experience ocean-like waves in our massive 20,000 sq ft wave pool with varying intensities.",
     icon: Waves,
@@ -59,7 +59,6 @@ export default function Attractions() {
       <div className="container">
 
         <div className={styles.attractionsHeader}>
-          <span className={styles.subtitle}>Water Attractions</span>
 
           <h2 className={styles.title}>
             Rides & <span>Attractions</span>

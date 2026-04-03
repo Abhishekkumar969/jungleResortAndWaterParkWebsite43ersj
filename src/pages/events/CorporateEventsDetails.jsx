@@ -42,19 +42,14 @@ export default function CorporateEventsDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/images/weddings1.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings2.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings3.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings4.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings5.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings6.jpg" },
-
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event1.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event2.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event3.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event4.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event5.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event7.jpg" },
     ];
 
     const filtered = media;

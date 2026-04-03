@@ -41,19 +41,17 @@ export default function PoolPartyDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/images/weddings1.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings2.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings3.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings4.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings5.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/2.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/3.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/4.jpg" },
 
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/7.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/8.jpg" },
+
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/10.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/11.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/12.jpg" },
     ];
 
     const filtered = media;
@@ -69,7 +67,7 @@ export default function PoolPartyDetails() {
                 className={styles.pageBg}
                 style={{ backgroundImage: "url(/images/poolparty.png)" }}
             ></div>
-            
+
             <div className={styles.pageOverlay}></div>
 
             <Navigation />

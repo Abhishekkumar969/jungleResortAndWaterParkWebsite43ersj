@@ -1,21 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/birthday-booking.module.css";
-import { Calendar, Clock, Users, Cake, Phone, Mail, User } from "lucide-react";
+import { Calendar, Users, Cake, Phone, User } from "lucide-react";
 
-export default function BirthdayBooking() {
+export default function BirthdayBooking({
+    selectedTheme,
+    selectedPackage,
+    selectedAddons
+}) {
     const [formData, setFormData] = useState({
         name: "",
-        email: "",
         phone: "",
         childName: "",
         childAge: "",
         date: "",
-        time: "",
         guests: "",
-        theme: "",
-        package: "",
         message: "",
     });
+
+
+    useEffect(() => {
+        setFormData((prev) => ({
+            ...prev,
+            theme: selectedTheme?.name || "",
+            package: selectedPackage || "",
+            addons: selectedAddons || [],
+        }));
+    }, [selectedTheme, selectedPackage, selectedAddons]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -57,18 +67,6 @@ export default function BirthdayBooking() {
                             />
                         </div>
 
-                        <div className={styles.field}>
-                            <label>
-                                <Mail size={16} /> Email Address
-                            </label>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
 
                         <div className={styles.field}>
                             <label>
@@ -115,17 +113,6 @@ export default function BirthdayBooking() {
                             <input type="date" name="date" onChange={handleChange} required />
                         </div>
 
-                        <div className={styles.field}>
-                            <label>
-                                <Clock size={16} /> Preferred Time
-                            </label>
-                            <select name="time" onChange={handleChange}>
-                                <option value="">Select time</option>
-                                <option value="10am">10:00 AM - 2:00 PM</option>
-                                <option value="2pm">2:00 PM - 6:00 PM</option>
-                                <option value="6pm">6:00 PM - 10:00 PM</option>
-                            </select>
-                        </div>
 
                         <div className={styles.field}>
                             <label>
@@ -144,26 +131,34 @@ export default function BirthdayBooking() {
 
                         <div className={styles.field}>
                             <label>Theme</label>
-                            <select name="theme" onChange={handleChange}>
-                                <option>Select Theme</option>
-                                <option>Superhero</option>
-                                <option>Princess</option>
-                                <option>Jungle</option>
-                                <option>Sports</option>
-                                <option>Unicorn</option>
-                                <option>Custom</option>
+                            <select name="theme" value={formData.theme} onChange={handleChange}>
+                                <option value="">Select Theme</option>
+                                <option value="Superhero Arena">Superhero Arena</option>
+                                <option value="Princess Palace">Princess Palace</option>
+                                <option value="Jungle Safari">Jungle Safari</option>
+                                <option value="Underwater World">Underwater World</option>
+                                <option value="Space Galaxy">Space Galaxy</option>
+                                <option value="Carnival Fiesta">Carnival Fiesta</option>
                             </select>
                         </div>
 
                         <div className={styles.field}>
                             <label>Package</label>
-                            <select name="package" onChange={handleChange}>
-                                <option>Select Package</option>
-                                <option>Silver ₹15,999</option>
-                                <option>Gold ₹29,999</option>
-                                <option>Platinum ₹49,999</option>
-                                <option>Custom Package</option>
+                            <select name="package" value={formData.package} onChange={handleChange}>
+                                <option value="">Select Package</option>
+                                <option value="Silver">Silver ₹15,999</option>
+                                <option value="Gold">Gold ₹29,999</option>
+                                <option value="Platinum">Platinum ₹49,999</option>
                             </select>
+                        </div>
+
+                        <div className={styles.field}>
+                            <label>Add-ons</label>
+                            <input
+                                type="text"
+                                value={formData.addons.join(", ")}
+                                readOnly
+                            />
                         </div>
 
                         <div className={`${styles.field} ${styles.full}`}>

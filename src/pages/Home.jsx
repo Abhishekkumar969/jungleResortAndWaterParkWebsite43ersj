@@ -7,7 +7,7 @@ import EventsSection from "../components/home/events-section";
 import BirthdayExploreBtn from "../components/home/BirthdayExploreBtn";
 import WaterparkPreview from "../components/home/waterpark-preview";
 import TestimonialsSection from "../components/home/testimonials-section";
-import QuickBookingSection from "../components/home/quick-booking-section";
+
 import styles from "../styles/home-page.module.css";
 
 function HomePage() {
@@ -19,7 +19,6 @@ function HomePage() {
       <EventsSection />
       <BirthdayExploreBtn />
       <WaterparkPreview />
-      <QuickBookingSection />
       <TestimonialsSection />
       <Footer />
     </main>

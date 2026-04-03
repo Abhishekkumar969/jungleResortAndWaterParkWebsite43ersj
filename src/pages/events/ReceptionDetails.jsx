@@ -41,19 +41,22 @@ export default function ReceptionDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/images/weddings1.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings2.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings3.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings4.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings5.jpg" },
-        { type: "image", category: "Photos", url: "/images/weddings6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 2.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 3.jpg" },
+        
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 4.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 5.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 7.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 8.jpg" },
 
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
-        { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
     ];
 
     const filtered = media;

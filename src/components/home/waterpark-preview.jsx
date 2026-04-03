@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Waves, ArrowRight, Ticket, Clock, Users, Star } from "lucide-react";
+import { Waves, ArrowRight, Ticket, Users, Star } from "lucide-react";
 import styles from "../../styles/waterpark-preview.module.css";
 
 const attractions = [
@@ -72,35 +72,39 @@ export default function WaterparkPreview() {
                             <div className={styles.pricingGrid}>
 
                                 <div>
-                                    <span>Adults</span>
-                                    <b>Rs. 699</b>
+                                    <span>Kikds Below 10 Years</span>
+                                    <b>Rs. 299</b>
                                 </div>
 
                                 <div>
-                                    <span>Children</span>
-                                    <b>Rs. 499</b>
+                                    <span>Kikds Above 10 Years</span>
+                                    <b>Rs. 399</b>
                                 </div>
 
                                 <div>
-                                    <span>Family Pack</span>
-                                    <b>Rs. 2199</b>
+                                    <span>Group Of 5</span>
+                                    <b>Rs. 1,600</b>
                                 </div>
 
                                 <div>
-                                    <span>VIP Access</span>
-                                    <b>Rs. 1499</b>
+                                    <span>Group Of 10</span>
+                                    <b>Rs. 3,000</b>
                                 </div>
 
+                                <div>
+                                    <span>Group Of 15</span>
+                                    <b>Rs. 4,200</b>
+                                </div>
+
+                                <div>
+                                    <span>Group Of 20</span>
+                                    <b>Rs. 5,000</b>
+                                </div>
                             </div>
 
                         </div>
 
                         <div className={styles.waterparkInfo}>
-
-                            <div>
-                                <Clock size={16} />
-                                <span>Open 10 AM - 7 PM</span>
-                            </div>
 
                             <div>
                                 <Ticket size={16} />

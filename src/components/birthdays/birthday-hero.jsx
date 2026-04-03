@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/birthday-hero.module.css";
-import { Cake, PartyPopper } from "lucide-react";
+import { PartyPopper } from "lucide-react";
 
 export default function BirthdayHero() {
     return (
@@ -21,7 +21,7 @@ export default function BirthdayHero() {
                 </div>
 
                 <h1 className={styles.title}>
-                    Birthday <span>Ceremony</span>
+                    Birthday <span>celebration</span>
                 </h1>
 
                 <p className={styles.description}>
@@ -30,9 +30,9 @@ export default function BirthdayHero() {
                 </p>
 
                 <div className={styles.buttons}>
-                    <a href="#packages" className={styles.primaryBtn}>
+                    {/* <a href="#packages" className={styles.primaryBtn}>
                         <Cake size={18} /> View Packages
-                    </a>
+                    </a> */}
 
                     <a href="#stages" className={styles.secondaryBtn}>
                         Explore Stages
