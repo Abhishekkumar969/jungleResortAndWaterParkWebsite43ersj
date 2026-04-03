@@ -19,9 +19,11 @@ export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
+    { type: "images", src: "/videos/4.jpeg" },
+    { type: "images", src: "/videos/3.jpeg" },
+    { type: "images", src: "/videos/6.jpeg" },
+    { type: "video", src: "/videos/5.mp4" },
     { type: "video", src: "/videos/backgroundVdo.mp4" },
-    { type: "video", src: "/videos/WaveVideo.mp4" },
-    { type: "images", src: "/videos/7.jpeg" },
   ];
 
   useEffect(() => {
