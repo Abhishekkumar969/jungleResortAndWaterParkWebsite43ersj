@@ -612,10 +612,10 @@
   }
 
   .nav-right {
-    display        : flex;
-    align-items    : center;
-    justify-content: space-between;
-    gap            : 6px;
+    display           : flex;
+    align-items       : center;
+    justify-content   : space-between;
+    /* gap            : 6px; */
   }
 
 }
@@ -631,34 +631,35 @@
   /* HEADER HEIGHT FIX */
   .navbar-inner {
     height : 80px;
-    padding: 0 6px;
+    padding: 0 2px;
   }
 
   /* LOGO SMALL */
   .nav-logo img {
-    height: 65px;
+    height: 55px;
   }
 
   /* RIGHT SECTION FIX */
   .nav-right {
-    gap: 12px;
+    display        : flex;
+    justify-content: space-between;
   }
 
   /* WATERPARK BUTTON SMALL */
   .waterpark-btn-outlines {
-    padding      : 8px;
-    font-size    : 16px;
+    padding      : 8px 6px;
+    font-size    : 14px;
     border-radius: 20px;
   }
 
   /* CART SMALL */
   .nav-cart {
-    padding: 5px 8px;
+    padding: 6px 8px;
   }
 
   .nav-cart svg {
-    width : 22px;
-    height: 22px;
+    width : 18px;
+    height: 18px;
   }
 
   .cart-badge {
@@ -670,12 +671,12 @@
 
   /* MOBILE MENU BUTTON */
   .mobile-menu-btn {
-    padding: 5px 6px;
+    padding: 6px 8px;
   }
 
   .mobile-menu-btn svg {
-    width : 22px;
-    height: 22px;
+    width : 18px;
+    height: 18px;
   }
 
   /* MOBILE MENU LINKS */

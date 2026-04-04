@@ -56,14 +56,14 @@
     border-radius: 50px;
     margin-bottom: 20px;
     font-size    : 14px;
-    box-shadow   : 5px 5px 3px rgba(0, 0, 0, 0.345);
+    box-shadow   : 3px 3px 3px rgba(0, 0, 0, 0.345);
 }
 
 .waterparkTitle {
     font-size    : 42px;
     font-weight  : 700;
     margin-bottom: 20px;
-    text-shadow  : 5px 5px 3px rgba(0, 0, 0, 0.345);
+    text-shadow  : 1px 1px 3px rgba(0, 0, 0, 0.345);
 }
 
 .waterparkTitle span {
@@ -91,7 +91,7 @@
     padding      : 10px;
     border-radius: 8px;
     color        : #0c4f00;
-    box-shadow   : 5px 5px 3px rgba(0, 0, 0, 0.345);
+    box-shadow   : 2px 2px 3px rgba(0, 0, 0, 0.345);
 }
 
 .waterparkPricing {
@@ -100,7 +100,7 @@
     border-radius: 12px;
     margin-bottom: 30px;
     border       : 2px solid white;
-    box-shadow   : 5px 5px 3px rgba(0, 0, 0, 0.345);
+    box-shadow   : 2px 2px 3px rgba(0, 0, 0, 0.345);
 }
 
 .pricingGrid {
@@ -144,7 +144,7 @@
     text-decoration: none;
     transition     : .3s;
     border         : 2px solid white;
-    box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345);
+    box-shadow     : 2px 2px 3px rgba(0, 0, 0, 0.345);
 }
 
 .waterparkBtn:hover {
@@ -160,11 +160,11 @@
 
 .waterparkImgLarge img {
     width        : 100%;
-    height       : 320px;
+    height       : 100%;
     object-fit   : cover;
     border-radius: 12px;
     border       : 2px solid white;
-    box-shadow   : 5px 5px 3px rgba(0, 0, 0, 0.345);
+    box-shadow   : 2px 2px 3px rgba(0, 0, 0, 0.345);
 }
 
 .waterparkImgSmall {
@@ -176,11 +176,11 @@
 
 .waterparkImgSmall img {
     width        : 100%;
-    height       : 150px;
+    height       : 100%;
     object-fit   : cover;
     border-radius: 12px;
     border       : 2px solid white;
-    box-shadow   : 5px 5px 3px rgba(0, 0, 0, 0.345);
+    box-shadow   : 2px 2px 3px rgba(0, 0, 0, 0.345);
 }
 
 .waterparkDecor {

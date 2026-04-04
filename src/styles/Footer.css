@@ -257,5 +257,27 @@
   .footer-policy a {
     font-size: 12px;
   }
+}
 
+.install-btn {
+  background     : transparent;
+  color          : #fff;
+  padding        : 10px 15px;
+  border-radius  : 5px;
+  border         : none;
+  cursor         : pointer;
+  font-size      : 18px;
+  font-weight    : 800;
+  border         : 1px solid #ffffff69;
+  border-radius  : 30px;
+  text-shadow    : 1px 1px 1px #414141;
+  box-shadow     : inset 1px 1px 3px #e2e2e2, 1px 1px 3px #414141;
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  gap            : 10px;
+}
+
+.install-btn:hover {
+  transform: scale(1.05);
 }

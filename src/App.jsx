@@ -48,6 +48,14 @@ import CorporatePoolPartyDetails from "./pages/events/CorporatePoolPartyDetails"
 import BirthdayExplore from "./components/home/BirthdayExplore";
 import BirthdayExploreBtn from "./components/home/BirthdayExploreBtn";
 
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js")
+      .then(() => console.log("PWA Ready 🔥"))
+      .catch((err) => console.log(err));
+  });
+}
+
 function App() {
 
   // useSecurity();

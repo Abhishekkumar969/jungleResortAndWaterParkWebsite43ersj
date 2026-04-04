@@ -38,12 +38,10 @@
 }
 
 .testimonialCard {
-    display              : grid;
-    grid-template-columns: 1fr 1fr;
-    background           : white;
-    border-radius        : 16px;
-    overflow             : hidden;
-    box-shadow           : 0 15px 35px rgba(0, 0, 0, 0.1);
+    background   : white;
+    border-radius: 16px;
+    overflow     : hidden;
+    box-shadow   : 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .testimonialImage img {
@@ -102,9 +100,10 @@
 }
 
 .testimonialNav {
-    display    : flex;
-    align-items: center;
-    gap        : 15px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    gap            : 15px;
 }
 
 .navBtn {

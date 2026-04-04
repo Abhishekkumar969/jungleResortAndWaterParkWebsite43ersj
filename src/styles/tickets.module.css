@@ -46,7 +46,7 @@
 }
 
 .ticketsHeader span {
-    color: #ff00e1;
+    color: #00a8ff;
 }
 
 .ticketsHeader p {
@@ -90,6 +90,7 @@
     font-size    : 12px;
     padding      : 4px 10px;
     border-radius: 20px;
+    white-space  : nowrap;
 }
 
 .ticketTop {
@@ -493,4 +494,36 @@
     .amount {
         font-size: 20px;
     }
+}
+
+
+
+
+
+.ticketCard {
+    background   : white;
+    border-radius: 16px;
+    padding      : 10px;
+    border       : 1px solid #eee;
+    position     : relative;
+    transition   : .3s;
+
+    display       : flex;
+    flex-direction: column;
+}
+
+.features {
+    list-style: none;
+    padding   : 0;
+    margin    : 15px 0;
+    flex-grow : 1;
+}
+
+.qtyBox {
+    margin-top     : auto;
+    /* 🔥 magic line */
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    gap            : 30px;
 }
