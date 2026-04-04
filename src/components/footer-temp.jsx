@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Twitter, Hotel } from "lucide-react";
 import "../styles/Footer.css";
-import { MdInstallMobile } from "react-icons/md";
 
 export default function Footer() {
   const [promptEvent, setPromptEvent] = useState(null);
@@ -141,7 +140,7 @@ export default function Footer() {
             © 2025 Jungle Resort Patna – Best Wedding Venue & Waterpark
           </p>
           <button onClick={handleInstall} className="install-btn">
-            Install App <MdInstallMobile size={'24px'} />
+            Install App
           </button>
         </div>
       </div>
