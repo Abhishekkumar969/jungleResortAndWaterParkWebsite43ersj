@@ -4,32 +4,30 @@ import styles from "../../styles/tickets.module.css";
 
 const tickets = [
     {
-        id: "kikdsbelow10years",
-        name: "Kikds Below 10 Years",
+        id: "kidsbelow10years",
+        name: "Kids Below 10 Years",
         icon: Baby,
         price: 299,
         originalPrice: 499,
         features: [
-            "All Water Slides",
-            "Wave Pool Access",
-            "Lazy River",
-            "Locker Room Access",
-            "Free Parking"
+            "Wave Pool",
+            "Rain Dance",
+            "DJ",
+            "Water Slides"
         ],
         popular: false
     },
     {
-        id: "kikdsabove10years",
-        name: "Kikds Above 10 Years",
+        id: "above10years",
+        name: "Above 10 Years",
         icon: Users,
         price: 399,
         originalPrice: 549,
         features: [
-            "Kids Water Zone",
-            "Safe Splash Areas",
-            "Mini Slides",
-            "Shallow Pools",
-            "Free Parking"
+            "Wave Pool",
+            "Rain Dance",
+            "DJ",
+            "Water Slides"
         ],
         popular: false
     },
@@ -40,11 +38,10 @@ const tickets = [
         price: 1600,
         originalPrice: 2745,
         features: [
-            "All Water Attractions",
-            "Wave Pool & Lazy River",
-            "Family Cabana (2 hrs)",
-            "Priority Entry",
-            "Free Parking",
+            "Wave Pool",
+            "Rain Dance",
+            "DJ",
+            "Water Slides"
         ],
         popular: false
     },
@@ -55,11 +52,10 @@ const tickets = [
         price: 3000,
         originalPrice: 5490,
         features: [
-            "All Water Attractions",
-            "Private Cabana (Full Day)",
-            "Skip-the-Line Access",
-            "Complimentary Lunch",
-            "Towel & Locker Included",
+            "Wave Pool",
+            "Rain Dance",
+            "DJ",
+            "Water Slides"
         ],
         popular: true
     },
@@ -70,11 +66,10 @@ const tickets = [
         price: 4200,
         originalPrice: 8235,
         features: [
-            "All Water Attractions",
-            "Private Cabana (4 hrs)",
-            "Couple Photo Session",
-            "Complimentary Drinks",
-            "Premium Locker"
+            "Wave Pool",
+            "Rain Dance",
+            "DJ",
+            "Water Slides"
         ],
         popular: false
     },
@@ -85,11 +80,10 @@ const tickets = [
         price: 5000,
         originalPrice: 10980,
         features: [
-            "All Water Attractions",
-            "Private Cabana (4 hrs)",
-            "Couple Photo Session",
-            "Complimentary Drinks",
-            "Premium Locker"
+            "Wave Pool",
+            "Rain Dance",
+            "DJ",
+            "Water Slides"
         ],
         popular: false
     }
@@ -139,15 +133,14 @@ export default function TicketPricing() {
             <div className={styles.ticketsContainer}>
 
                 <div className={styles.ticketsHeader}>
-                    <span className={styles.subtitle}>Ticket Pricing</span>
+                    <div style={{ marginTop: "50px" }}></div>
 
                     <h2>
-                        Choose Your <span>Adventure</span>
+                        Choose Your <span>Water Park Tickets</span>
                     </h2>
 
                     <p>
-                        Select from our range of ticket options designed for individuals,
-                        families, and groups.
+                        Select ticket options designed for individuals, groups, and families.
                     </p>
 
                 </div>

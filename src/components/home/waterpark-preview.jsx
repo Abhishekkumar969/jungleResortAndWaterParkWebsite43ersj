@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Waves, ArrowRight, Ticket, Users, Star } from "lucide-react";
+import { WavesLadder, ArrowRight, Ticket, PlaneLanding, CloudRainWind, Speaker } from "lucide-react";
 import styles from "../../styles/waterpark-preview.module.css";
 
 const attractions = [
-    { name: "Wave Pool", icon: Waves },
-    { name: "Spiral Slides", icon: Star },
-    { name: "Lazy River", icon: Waves },
-    { name: "Kids Zone", icon: Users }
+    { name: "Wave Pool", icon: WavesLadder },
+    { name: "Rain Dance", icon: CloudRainWind },
+    { name: "DJ", icon: Speaker },
+    { name: "Water Slides", icon: PlaneLanding }
 ];
 
 export default function WaterparkPreview() {
@@ -27,17 +27,15 @@ export default function WaterparkPreview() {
 
             {/* Overlay */}
             <div className={styles.waterparkOverlay}></div>
-
             <div className="container">
 
                 <div className={styles.waterparkGrid}>
 
                     {/* LEFT CONTENT */}
-
                     <div className={styles.waterparkContent}>
 
                         <div className={styles.waterparkBadge}>
-                            <Waves size={16} />
+                            <WavesLadder size={16} />
                             <span>Waterpark Adventures</span>
                         </div>
 
@@ -72,12 +70,12 @@ export default function WaterparkPreview() {
                             <div className={styles.pricingGrid}>
 
                                 <div>
-                                    <span>Kikds Below 10 Years</span>
+                                    <span>Kids Below 10 Years</span>
                                     <b>Rs. 299</b>
                                 </div>
 
                                 <div>
-                                    <span>Kikds Above 10 Years</span>
+                                    <span>Above 10 Years</span>
                                     <b>Rs. 399</b>
                                 </div>
 
@@ -124,31 +122,19 @@ export default function WaterparkPreview() {
                     </div>
 
                     {/* RIGHT IMAGES */}
-
                     <div className={styles.waterparkImages}>
-
                         <div className={styles.waterparkImgLarge}>
-
-                            <img src="/images/waterpark-main.jpg" alt="Waterpark overview" />
-
+                            <img src="/WaterParkAds/6.jpeg" alt="Waterpark overview" />
                         </div>
-
                         <div className={styles.waterparkImgSmall}>
-
-                            <img src="/images/waterpark-wave.jpg" alt="Wave pool" />
-
-                            <img src="/images/waterpark-slides.jpg" alt="Water slides" />
-
+                            <img src="/WaterParkAds/1.jpeg" alt="Wave pool" />
+                            <img src="/WaterParkAds/2.jpeg" alt="Water slides" />
                         </div>
-
                         <div className={styles.waterparkDecor}></div>
-
                     </div>
 
                 </div>
-
             </div>
-
         </section>
     );
 }

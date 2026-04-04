@@ -1,8 +1,24 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Twitter, Hotel } from "lucide-react";
 import "../styles/Footer.css";
+import { MdInstallMobile } from "react-icons/md";
 
 export default function Footer() {
+  const [promptEvent, setPromptEvent] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      setPromptEvent(e);
+    });
+  }, []);
+
+  const handleInstall = () => {
+    if (promptEvent) {
+      promptEvent.prompt();
+    }
+  };
 
   return (
     <footer className="footer">
@@ -124,8 +140,12 @@ export default function Footer() {
           <p>
             ©2025 Jungle Resort & Waterpark. All rights reserved.
           </p>
+          <button onClick={handleInstall} className="install-btn">
+            Install App <MdInstallMobile size={'24px'} />
+          </button>
         </div>
       </div>
+
     </footer>
   );
 }

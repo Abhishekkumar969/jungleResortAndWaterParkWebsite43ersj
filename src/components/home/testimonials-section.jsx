@@ -7,28 +7,24 @@ const testimonials = [
         name: "Priya & Rahul Sharma",
         event: "Wedding Ceremony",
         rating: 5,
-        image: "/images/venue-wedding.jpg",
         text: "Our wedding at Jungle Paradise was absolutely magical! The venue was breathtaking, the staff was incredibly attentive, and every detail was perfect."
     },
     {
         name: "Amit Patel",
         event: "Corporate Conference",
         rating: 5,
-        image: "/images/venue-corporate.jpg",
         text: "We hosted our annual company conference here and it exceeded all expectations. The professional setup and seamless coordination made it a huge success."
     },
     {
         name: "Sunita Verma",
         event: "Birthday Celebration",
         rating: 5,
-        image: "/images/birthday-stage.jpg",
         text: "My son's birthday party at the waterpark was the best decision! The kids had an amazing time on the rides."
     },
     {
         name: "Rajesh & Family",
         event: "Waterpark Visit",
         rating: 5,
-        image: "/images/waterpark-main.jpg",
         text: "A perfect family day out! The wave pool was fantastic, kids loved the slides, and the food was delicious."
     }
 ];
@@ -68,14 +64,14 @@ export default function TestimonialsSection() {
 
                     <div className={styles.testimonialCard}>
 
-                        <div className={styles.testimonialImage}>
+                        {/* <div className={styles.testimonialImage}>
 
                             <img
                                 src={testimonials[current].image}
                                 alt={testimonials[current].event}
                             />
 
-                        </div>
+                        </div> */}
 
                         <div className={styles.testimonialContent}>
 

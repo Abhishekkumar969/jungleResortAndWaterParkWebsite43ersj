@@ -4,8 +4,8 @@ import { getDoc, doc, setDoc } from "firebase/firestore";
 import styles from "../../styles/Checkout.module.css";
 
 const ticketNames = {
-    kikdsbelow10years: { name: "Kids Below 10 Years", price: 299 },
-    kikdsabove10years: { name: "Kids Above 10 Years", price: 399 },
+    kidsbelow10years: { name: "Kids Below 10 Years", price: 299 },
+    above10years: { name: "Above 10 Years", price: 399 },
     groupof5: { name: "Group Of 5", price: 1600 },
     groupof10: { name: "Group Of 10", price: 3000 },
     groupof15: { name: "Group Of 15", price: 4200 },

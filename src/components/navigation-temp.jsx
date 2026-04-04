@@ -15,7 +15,7 @@ const navLinks = [
 ];
 
 const waterparkNavLinks = [
-  { href: "/waterpark", label: "WATER PARK", className: "waterpark-btn-outlines" }
+  { href: "/waterpark", label: "WATER PARK TICKETS", className: "waterpark-btn-outlines" }
 ];
 
 export default function Navbar() {

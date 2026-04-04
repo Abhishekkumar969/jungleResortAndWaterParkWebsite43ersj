@@ -12,9 +12,7 @@ export default function WaterparkPage() {
     return (
         <main className={styles.waterparkPage}>
             <Navbar />
-            {/* <WaterparkHero /> */}
             <TicketPricing />
-            {/* <TicketBooking /> */}
             <Attractions />
             <WaterparkInfo />
             <Footer />

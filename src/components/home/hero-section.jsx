@@ -22,7 +22,6 @@ export default function HeroSection() {
     { type: "images", src: "/videos/4.jpeg" },
     { type: "images", src: "/videos/3.jpeg" },
     { type: "images", src: "/videos/6.jpeg" },
-    // { type: "video", src: "/videos/5.mp4" },
     { type: "video", src: "/videos/backgroundVdo.mp4" },
   ];
 
@@ -104,8 +103,6 @@ export default function HeroSection() {
     { title: "FunPark Tickets", link: "/FunPark" }
   ];
 
-
-
   return (
     <section className={styles.heroSection}>
 
@@ -147,7 +144,6 @@ export default function HeroSection() {
       <Waves className={styles.heroWaves} />
 
       {/* Content */}
-
       <div className={styles.heroContent}>
         <div className={styles.heroLeft}>
 
@@ -258,6 +254,7 @@ export default function HeroSection() {
         )}
 
       </div>
+
     </section>
   );
 }
