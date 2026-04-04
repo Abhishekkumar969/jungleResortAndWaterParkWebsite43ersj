@@ -138,7 +138,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="footer-bottom-container">
           <p>
-            ©2025 Jungle Resort & Waterpark. All rights reserved.
+            © 2025 Jungle Resort Patna – Best Wedding Venue & Waterpark
           </p>
           <button onClick={handleInstall} className="install-btn">
             Install App <MdInstallMobile size={'24px'} />

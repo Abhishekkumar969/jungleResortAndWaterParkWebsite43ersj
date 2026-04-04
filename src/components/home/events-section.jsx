@@ -16,17 +16,17 @@ const events = [
     {
         title: "HALDI",
         image: "/eventPics/Haldi/3.jpeg",
-        href: "/HALDI"
+        href: "/haldi"
     },
     {
         title: "MEHNDI",
         image: "/images/mehndi.jpg",
-        href: "/MEHNDI"
+        href: "/mehndi"
     },
     {
         title: "SANGEET",
         image: "/images/sangeet.jpg",
-        href: "/SANGEET"
+        href: "/sangeet"
     },
     {
         title: "RECEPTION",
