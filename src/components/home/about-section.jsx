@@ -1,10 +1,7 @@
 import React from "react";
 import { TreePine, Heart, Sparkles, Award } from "lucide-react";
 
-import Navbar from "../components/navigation-temp";
-import Footer from "../components/footer-temp";
-import styles from "../styles/about-section.module.css";
-import Contact from "./contact/Contact"
+import styles from "../../styles/about-section.module.css";
 
 const features = [
   { icon: Heart, title: "Personalized Service", desc: "Tailored to your needs" },
@@ -16,7 +13,6 @@ const features = [
 export default function AboutSection() {
   return (
     <>
-      <Navbar />
       <section className={styles.aboutSection}>
         <div className={styles.container}>
 
@@ -26,7 +22,7 @@ export default function AboutSection() {
 
               <div className={styles.aboutLabel}>
                 <TreePine size={20} />
-                <span>About Us</span>
+                <span>About Jungle Resort & Water Park</span>
               </div>
 
               <h2 className={styles.aboutTitles}>
@@ -70,12 +66,12 @@ export default function AboutSection() {
 
               <div className={styles.imageColumn}>
                 <img src="/images/venue-wedding.jpg" alt="Wedding venue" className={styles.imgLarge} />
-                <img src="/images/waterpark-main.jpg" alt="Waterpark" className={styles.imgSmall} />
+                <img src="/eventPics/Pool Party/waterparkjungleresort.jpeg" alt="Waterpark" className={styles.imgSmall} />
               </div>
 
               <div className={`${styles.imageColumn} ${styles.topSpace}`}>
                 <img src="/images/birthday-stage.jpg" alt="Birthday celebration" className={styles.imgSmall} />
-                <img src="/images/venue-reception.jpg" alt="Reception hall" className={styles.imgLarge} />
+                <img src="/eventPics/Corporate Event/Corporate Event5.jpg" alt="Reception hall" className={styles.imgLarge} />
               </div>
 
             </div>
@@ -84,10 +80,6 @@ export default function AboutSection() {
 
         </div>
       </section>
-
-      <Contact />
-
-      <Footer />
     </>
   );
 }

@@ -5,27 +5,28 @@ import { X } from "lucide-react";
 const categories = ["All", "Weddings", "Waterpark", "Birthdays", "Corporate", "Resort"];
 
 const galleryImages = [
-    { src: "/images/venue-wedding.jpg", category: "Weddings", title: "Garden Wedding Ceremony" },
-    { src: "/images/waterpark-main.jpg", category: "Waterpark", title: "Main Waterpark Area" },
-    { src: "/images/gallery-1.jpg", category: "Weddings", title: "Traditional Wedding Setup" },
-    { src: "/images/gallery-2.jpg", category: "Waterpark", title: "Family Fun Day" },
-    { src: "/images/venue-reception.jpg", category: "Weddings", title: "Reception Dinner" },
+    { src: "/eventPics/Wed/jungle-resort-kumhrar-patna.jpg", category: "Weddings", title: "Garden Wedding Ceremony" },
+    { src: "/eventPics/Pool Party/waterparkjungleresort.jpeg", category: "Waterpark", title: "Main Waterpark Area" },
+    { src: "/eventPics/Wed/venue-wedding.jpg", category: "Weddings", title: "Traditional Wedding Setup" },
+    // { src: "/eventPics/Pool Party/waterparkjungleresort.jpeg", category: "Waterpark", title: "Family Fun Day" },
+    { src: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.avif", category: "Weddings", title: "Reception Dinner" },
     { src: "/images/birthday-stage.jpg", category: "Birthdays", title: "Birthday Stage Decor" },
-    { src: "/images/gallery-3.jpg", category: "Weddings", title: "Elegant Reception Hall" },
-    { src: "/images/waterpark-wave.jpg", category: "Waterpark", title: "Wave Pool Fun" },
-    { src: "/images/birthday-superhero.jpg", category: "Birthdays", title: "Superhero Theme Party" },
-    { src: "/images/gallery-5.jpg", category: "Corporate", title: "Corporate Conference" },
-    { src: "/images/waterpark-slides.jpg", category: "Waterpark", title: "Thrilling Water Slides" },
+    { src: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.png", category: "Weddings", title: "Elegant Reception Hall" },
+    // { src: "/images/waterpark-wave.jpg", category: "Waterpark", title: "Wave Pool Fun" },
+    // { src: "/images/birthday-superhero.jpg", category: "Birthdays", title: "Superhero Theme Party" },
+    { src: "/images/CorporateEvent7.jpg", category: "Corporate", title: "Corporate Conference" },
+    // { src: "/images/waterpark-slides.jpg", category: "Waterpark", title: "Thrilling Water Slides" },
     { src: "/images/birthday-princess.jpg", category: "Birthdays", title: "Princess Theme Party" },
-    { src: "/images/gallery-4.jpg", category: "Birthdays", title: "Kids Birthday Celebration" },
-    { src: "/images/venue-corporate.jpg", category: "Corporate", title: "Business Event Setup" },
-    { src: "/images/gallery-6.jpg", category: "Waterpark", title: "Lazy River Experience" },
-    { src: "/images/hero-resort.jpg", category: "Resort", title: "Resort Aerial View" },
+    // { src: "/images/gallery-4.jpg", category: "Birthdays", title: "Kids Birthday Celebration" },
+    { src: "/images/CorporateEvent8.jpg", category: "Corporate", title: "Business Event Setup" },
+    // { src: "/images/gallery-6.jpg", category: "Waterpark", title: "Lazy River Experience" },
     { src: "/images/birthday-jungle.jpg", category: "Birthdays", title: "Jungle Safari Theme" },
+    { src: "/images/jungle-resort-kumhrar-patna.jpg", category: "Resort", title: "Resort Aerial View" },
+    { src: "/images/3.jpeg", category: "Resort", title: "Resort Water Park View" },
 ];
 
 export default function GalleryGrid() {
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [activeCategory, setActiveCategory] = useState("Weddings");
     const [lightboxImage, setLightboxImage] = useState(null);
 
     const filteredImages =
@@ -36,6 +37,16 @@ export default function GalleryGrid() {
     return (
         <section className={styles.section}>
             <div className={styles.container}>
+
+                <div className={styles.contentdiv}>
+                    <div className={styles.content}>
+
+                        <span className={styles.subtitle}>Our Memories</span>
+
+                        <h1 className={styles.title}>Photo Gallery</h1>
+
+                    </div>
+                </div>
 
                 {/* Category Filters */}
                 <div className={styles.filters}>

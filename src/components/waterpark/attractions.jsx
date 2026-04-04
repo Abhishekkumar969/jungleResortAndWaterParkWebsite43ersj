@@ -3,21 +3,26 @@ import styles from "../../styles/attractions.module.css";
 
 const attractions = [
   {
+    name: "WaterParkAds1",
     image: "/WaterParkAds/1.jpeg",
   },
   {
+    name: "WaterParkAds2",
     image: "/WaterParkAds/2.jpeg",
   }
 ];
 
 const attractions2 = [
   {
+    name: "WaterParkAds3",
     image: "/WaterParkAds/6.jpeg",
   },
   {
+    name: "WaterParkAds4",
     image: "/WaterParkAds/7.jpeg",
   },
   {
+    name: "WaterParkAds5",
     image: "/WaterParkAds/4.jpeg",
   },
 

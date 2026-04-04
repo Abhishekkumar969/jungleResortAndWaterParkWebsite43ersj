@@ -111,12 +111,9 @@ export default function WaterparkPreview() {
 
                         </div>
 
-                        <Link to="/waterpark" className={styles.waterparkBtn}>
-
+                        <Link to="/waterpark-in-patna" className={styles.waterparkBtn}>
                             Book Waterpark Tickets
-
                             <ArrowRight size={18} />
-
                         </Link>
 
                     </div>

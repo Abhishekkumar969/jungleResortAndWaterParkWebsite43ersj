@@ -99,7 +99,7 @@ export default function HeroSection() {
         { name: "Corporate Pool Party", link: "/corporatepoolparty" }
       ]
     },
-    { title: "WaterPark Tickets", link: "/waterpark" },
+    { title: "WaterPark Tickets", link: "/waterpark-in-patna" },
     { title: "FunPark Tickets", link: "/FunPark" }
   ];
 
@@ -152,11 +152,8 @@ export default function HeroSection() {
 
             <h1 className={`${styles.heroTitle}`}>
               Welcome to <br />
+              <span className={`${styles.mobileTitle}`}> Jungle Resort <div>&</div> Waterpark </span>
             </h1>
-
-            <h2 className={`${styles.mobileTitle}`}>
-              Jungle Resort <div>&</div> Waterpark
-            </h2>
 
           </div>
 

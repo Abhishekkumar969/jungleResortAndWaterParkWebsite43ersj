@@ -4,6 +4,7 @@ import Footer from "../../components/footer-temp";
 import QuickBookForm from "../../components/quick-book-form";
 import { Play } from "lucide-react";
 import styles from "../../styles/eventspages.module.css";
+import { Helmet } from "react-helmet";
 
 export default function BirthdayDetails() {
 
@@ -41,14 +42,18 @@ export default function BirthdayDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/10.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/1.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday6.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/7.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/10.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/1.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday6.jpg" },
         { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/2.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/2.jpg" },
         { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday8.jpg" },
+
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-jungle.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-princess.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-stage.jpg" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
@@ -63,115 +68,159 @@ export default function BirthdayDetails() {
     const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
 
     return (
-        <div className={styles.eventPage}>
+        <>
+            <Helmet>
+                <title>Best Birthday Party Place in Patna | Jungle Resort</title>
+
+                <meta
+                    name="description"
+                    content="Celebrate unforgettable birthday parties at Jungle Resort Patna with decoration, DJ, pool party & fun activities. Book now for best birthday venue in Patna."
+                />
+                <meta
+                    name="keywords"
+                    content="Birthday party place Patna, Kids birthday venue Patna, Birthday celebration Patna, Pool party Patna, Theme birthday party Patna, Jungle Resort birthday" />
+
+                <meta property="og:title" content="Best Birthday Party Place in Patna | Jungle Resort" />
+                <meta property="og:description" content="Celebrate birthday with DJ, pool party & decoration at Jungle Resort Patna." />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Birthday/7.jpg" />
+                <meta property="og:url" content="https://jungleresortpatna.in/birthday" />
+                <meta property="og:type" content="website" />
+                <link rel="canonical" href="https://jungleresortpatna.in/birthday" />
+
+                <script type="application/ld+json">
+                    {`
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Jungle Resort Birthday Party",
+  "image": "https://jungleresortpatna.in/eventPics/Birthday/7.jpg",
+  "url": "https://jungleresortpatna.in/birthday",
+  "telephone": "+91-9065383838",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
+    "addressLocality": "Patna",
+    "addressRegion": "Bihar",
+    "postalCode": "800009",
+    "addressCountry": "India"
+  },
+  "description": "Best birthday party place in Patna with DJ, pool party & decoration at Jungle Resort."
+}
+`}
+                </script>
+
+            </Helmet>
+
+            <div className={styles.eventPage}>
 
 
-            {/* FIXED BACKGROUND */}
-            <div
-                className={styles.pageBg}
-                style={{ backgroundImage: "url(/images/birthday-stage.jpg)" }}
-            ></div>
-            <div className={styles.pageOverlay}></div>
+                {/* FIXED BACKGROUND */}
+                <div
+                    className={styles.pageBg}
+                    style={{ backgroundImage: "url(/images/birthday-stage.jpg)" }}
+                ></div>
+                <div className={styles.pageOverlay}></div>
 
-            <Navigation />
+                <Navigation />
 
-            {/* HERO */}
-            <section className={styles.heroSection}>
+                {/* HERO */}
+                <section className={styles.heroSection}>
 
-                <div className={styles.heroContent}>
+                    <div className={styles.heroContent}>
 
-                    <div className={styles.heroLeft}>
-                        <h1 className={styles.heroTitle}>
-                            Your Dream <span>Birthday Party</span> Starts Here
-                        </h1>
+                        <div className={styles.heroLeft}>
+                            <h1 className={styles.heroTitle}>
+                                Best <span>Birthday Party</span> Place in Patna
+                            </h1>
+                        </div>
+
+                        <div className={styles.heroRight}>
+                            <QuickBookForm defaultFunctionType="Birthday Party" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className={styles.mobileBook}>
+                    <QuickBookForm defaultFunctionType="Birthday Party" />
+                </section>
+
+                {/* GALLERY */}
+
+                <div className={styles.galleryContent}>
+
+                    <div className={styles.galleryHeader}>
+                        <h1 className={styles.galleryTitle}>Gallery</h1>
                     </div>
 
-                    <div className={styles.heroRight}>
-                        <QuickBookForm defaultFunctionType="Birthday Party" />
+                    <div className={styles.galleryGrid}>
+
+                        {media.map((item, i) => (
+
+                            <div
+                                key={i}
+                                ref={(el) => (itemRefs.current[i] = el)}
+                                className={`${styles.galleryItem} ${styles.animateItem}`}
+                                onClick={() => setSelectedIndex(i)}
+                            >
+
+                                {item.type === "image" ? (
+                                    <>
+                                        <img src={item.url} alt="Birthday Party Decoration Jungle Resort Patna" className={styles.galleryImage} />
+                                        <div className={styles.galleryOverlay}></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img
+                                            src={getYouTubeThumbnail(item.url)}
+                                            alt="Birthday Party Decoration Jungle Resort Patna"
+                                            className={styles.galleryImage}
+                                        />
+                                        <div className={styles.galleryOverlay}></div>
+                                        <Play className={styles.galleryPlay} />
+                                    </>
+                                )}
+
+                            </div>
+
+                        ))}
+
                     </div>
-                </div>
-            </section>
 
-            <section className={styles.mobileBook}>
-                <QuickBookForm defaultFunctionType="Birthday Party" />
-            </section>
-
-            {/* GALLERY */}
-
-            <div className={styles.galleryContent}>
-
-                <div className={styles.galleryHeader}>
-                    <h1 className={styles.galleryTitle}>Gallery</h1>
                 </div>
 
-                <div className={styles.galleryGrid}>
+                {selectedMedia && (
 
-                    {media.map((item, i) => (
+                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
+
+                        <button className={styles.galleryClose}>✕</button>
 
                         <div
-                            key={i}
-                            ref={(el) => (itemRefs.current[i] = el)}
-                            className={`${styles.galleryItem} ${styles.animateItem}`}
-                            onClick={() => setSelectedIndex(i)}
+                            className={styles.galleryViewerContent}
+                            onClick={(e) => e.stopPropagation()}
                         >
 
-                            {item.type === "image" ? (
-                                <>
-                                    <img src={item.url} alt="" className={styles.galleryImage} />
-                                    <div className={styles.galleryOverlay}></div>
-                                </>
+                            {selectedMedia.type === "image" ? (
+                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="Birthday Party Decoration Jungle Resort Patna" />
                             ) : (
-                                <>
-                                    <img
-                                        src={getYouTubeThumbnail(item.url)}
-                                        alt=""
-                                        className={styles.galleryImage}
-                                    />
-                                    <div className={styles.galleryOverlay}></div>
-                                    <Play className={styles.galleryPlay} />
-                                </>
+                                <iframe
+                                    src={selectedMedia.url}
+                                    width="100%"
+                                    height="600"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    title="video"
+                                />
                             )}
 
                         </div>
 
-                    ))}
-
-                </div>
-
-            </div>
-
-            {selectedMedia && (
-
-                <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
-
-                    <button className={styles.galleryClose}>✕</button>
-
-                    <div
-                        className={styles.galleryViewerContent}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-
-                        {selectedMedia.type === "image" ? (
-                            <img src={selectedMedia.url} className={styles.galleryFullImage} alt="" />
-                        ) : (
-                            <iframe
-                                src={selectedMedia.url}
-                                width="100%"
-                                height="600"
-                                frameBorder="0"
-                                allowFullScreen
-                                title="video"
-                            />
-                        )}
-
                     </div>
 
-                </div>
+                )}
 
-            )}
+                <Footer />
 
-            <Footer />
-
-        </div>
+            </div>
+        </>
     );
 }

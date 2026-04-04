@@ -4,6 +4,7 @@ import Footer from "../../components/footer-temp";
 import QuickBookForm from "../../components/quick-book-form";
 import { Play } from "lucide-react";
 import styles from "../../styles/eventspages.module.css";
+import { Helmet } from "react-helmet";
 
 export default function WeddingDetails() {
 
@@ -45,13 +46,14 @@ export default function WeddingDetails() {
 
         { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 5.jpg" },
         { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 8.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 7.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 8.jpg" },
 
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/1aeeba6687b67e0795cb6543f33dcffd.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/e0aae3b40c464678197025282445e212.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/1aeeba6687b67e0795cb6543f33dcffd.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 5.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/e0aae3b40c464678197025282445e212.jpg" },
         { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 2.jpg" },
+
         // { type: "image", category: "Photos", url: "/images/weddings1.jpg" },
         // { type: "image", category: "Photos", url: "/images/weddings2.jpg" },
         // { type: "image", category: "Photos", url: "/images/weddings3.jpg" },
@@ -72,115 +74,164 @@ export default function WeddingDetails() {
     const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
 
     return (
-        <div className={styles.eventPage}>
+        <>
+            <Helmet>
+                <title>Best Sangeet Ceremony Venue in Patna | Jungle Resort</title>
+
+                <meta
+                    name="description"
+                    content="Celebrate your Sangeet ceremony at Jungle Resort Patna with music, dance, DJ, lighting & vibrant ambiance. Book best Sangeet venue today!"
+                />
+
+                <meta
+                    name="keywords"
+                    content="Sangeet ceremony Patna, Sangeet function venue Patna, Wedding Sangeet Patna, Jungle Resort Sangeet"
+                />
+
+                {/* OG TAGS */}
+                <meta property="og:title" content="Best Sangeet Ceremony Venue in Patna | Jungle Resort" />
+                <meta property="og:description" content="Celebrate your Sangeet night with DJ, music & lighting at Jungle Resort Patna." />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/sangeet.jpg" />
+                <meta property="og:url" content="https://jungleresortpatna.in/sangeet" />
+                <meta property="og:type" content="website" />
+
+                {/* CANONICAL */}
+                <link rel="canonical" href="https://jungleresortpatna.in/sangeet" />
+
+                {/* SCHEMA */}
+                <script type="application/ld+json">
+                    {`
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Jungle Resort Sangeet Ceremony Venue",
+  "image": "https://jungleresortpatna.in/images/sangeet.jpg",
+  "url": "https://jungleresortpatna.in/sangeet",
+  "telephone": "+91-9065383838",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
+    "addressLocality": "Patna",
+    "addressRegion": "Bihar",
+    "postalCode": "800009",
+    "addressCountry": "India"
+  },
+  "description": "Best Sangeet ceremony venue in Patna with DJ, music & lighting at Jungle Resort."
+}
+`}
+                </script>
+            </Helmet>
+
+            <div className={styles.eventPage}>
 
 
-            {/* FIXED BACKGROUND */}
-            <div
-                className={styles.pageBg}
-                style={{ backgroundImage: "url(/images/sangeet.jpg)" }}
-            ></div>
-            <div className={styles.pageOverlay}></div>
+                {/* FIXED BACKGROUND */}
+                <div
+                    className={styles.pageBg}
+                    style={{ backgroundImage: "url(/images/sangeet.jpg)" }}
+                ></div>
+                <div className={styles.pageOverlay}></div>
 
-            <Navigation />
+                <Navigation />
 
-            {/* HERO */}
-            <section className={styles.heroSection}>
+                {/* HERO */}
+                <section className={styles.heroSection}>
 
-                <div className={styles.heroContent}>
+                    <div className={styles.heroContent}>
 
-                    <div className={styles.heroLeft}>
-                        <h1 className={styles.heroTitle}>
-                            Your Dream <span>Sangeet</span> Starts Here
-                        </h1>
+                        <div className={styles.heroLeft}>
+                            <h1 className={styles.heroTitle}>
+                                Best <span>Sangeet Ceremony</span> Venue in Patna
+                            </h1>
+                        </div>
+
+                        <div className={styles.heroRight}>
+                            <QuickBookForm defaultFunctionType="Sangeet" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className={styles.mobileBook}>
+                    <QuickBookForm defaultFunctionType="Sangeet" />
+                </section>
+
+                {/* GALLERY */}
+
+                <div className={styles.galleryContent}>
+
+                    <div className={styles.galleryHeader}>
+                        <h1 className={styles.galleryTitle}>Gallery</h1>
                     </div>
 
-                    <div className={styles.heroRight}>
-                        <QuickBookForm defaultFunctionType="Sangeet" />
+                    <div className={styles.galleryGrid}>
+
+                        {media.map((item, i) => (
+
+                            <div
+                                key={i}
+                                ref={(el) => (itemRefs.current[i] = el)}
+                                className={`${styles.galleryItem} ${styles.animateItem}`}
+                                onClick={() => setSelectedIndex(i)}
+                            >
+
+                                {item.type === "image" ? (
+                                    <>
+                                        <img src={item.url} alt="Sangeet Ceremony Jungle Resort Patna" className={styles.galleryImage} />
+                                        <div className={styles.galleryOverlay}></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img
+                                            src={getYouTubeThumbnail(item.url)}
+                                            alt="Sangeet Ceremony Jungle Resort Patna"
+                                            className={styles.galleryImage}
+                                        />
+                                        <div className={styles.galleryOverlay}></div>
+                                        <Play className={styles.galleryPlay} />
+                                    </>
+                                )}
+
+                            </div>
+
+                        ))}
+
                     </div>
-                </div>
-            </section>
 
-            <section className={styles.mobileBook}>
-                <QuickBookForm defaultFunctionType="Sangeet" />
-            </section>
-
-            {/* GALLERY */}
-
-            <div className={styles.galleryContent}>
-
-                <div className={styles.galleryHeader}>
-                    <h1 className={styles.galleryTitle}>Gallery</h1>
                 </div>
 
-                <div className={styles.galleryGrid}>
+                {selectedMedia && (
 
-                    {media.map((item, i) => (
+                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
+
+                        <button className={styles.galleryClose}>✕</button>
 
                         <div
-                            key={i}
-                            ref={(el) => (itemRefs.current[i] = el)}
-                            className={`${styles.galleryItem} ${styles.animateItem}`}
-                            onClick={() => setSelectedIndex(i)}
+                            className={styles.galleryViewerContent}
+                            onClick={(e) => e.stopPropagation()}
                         >
 
-                            {item.type === "image" ? (
-                                <>
-                                    <img src={item.url} alt="" className={styles.galleryImage} />
-                                    <div className={styles.galleryOverlay}></div>
-                                </>
+                            {selectedMedia.type === "image" ? (
+                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="Sangeet Ceremony Jungle Resort Patna" />
                             ) : (
-                                <>
-                                    <img
-                                        src={getYouTubeThumbnail(item.url)}
-                                        alt=""
-                                        className={styles.galleryImage}
-                                    />
-                                    <div className={styles.galleryOverlay}></div>
-                                    <Play className={styles.galleryPlay} />
-                                </>
+                                <iframe
+                                    src={selectedMedia.url}
+                                    width="100%"
+                                    height="600"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    title="video"
+                                />
                             )}
 
                         </div>
 
-                    ))}
-
-                </div>
-
-            </div>
-
-            {selectedMedia && (
-
-                <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
-
-                    <button className={styles.galleryClose}>✕</button>
-
-                    <div
-                        className={styles.galleryViewerContent}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-
-                        {selectedMedia.type === "image" ? (
-                            <img src={selectedMedia.url} className={styles.galleryFullImage} alt="" />
-                        ) : (
-                            <iframe
-                                src={selectedMedia.url}
-                                width="100%"
-                                height="600"
-                                frameBorder="0"
-                                allowFullScreen
-                                title="video"
-                            />
-                        )}
-
                     </div>
 
-                </div>
+                )}
 
-            )}
+                <Footer />
 
-            <Footer />
-
-        </div>
+            </div>
+        </>
     );
 }

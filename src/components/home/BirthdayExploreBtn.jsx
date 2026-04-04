@@ -27,6 +27,8 @@ export default function BirthdayHero() {
                         Birthday <span>celebration</span>
                     </h1>
 
+                    <h2>Best Place for Birthday Party in Patna</h2>
+
                     <p className={styles.description}>
                         Make every birthday unforgettable with our themed stages, waterpark
                         access, and complete party packages designed for all ages!

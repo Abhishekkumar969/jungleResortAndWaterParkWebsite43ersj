@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Check, Star, Users, Baby, Crown, Sparkles } from "lucide-react";
 import styles from "../../styles/tickets.module.css";
+import { Helmet } from "react-helmet";
 
 const tickets = [
     {
@@ -129,163 +130,173 @@ export default function TicketPricing() {
     };
 
     return (
-        <section className={styles.ticketsSection}>
-            <div className={styles.ticketsContainer}>
+        <>
+            <Helmet>
+                <title>Best Waterpark in Patna | Jungle Resort</title>
+                <meta
+                    name="description"
+                    content="Enjoy best waterpark in Patna with slides, rain dance & family fun at Jungle Resort."
+                />
+            </Helmet>
 
-                <div className={styles.ticketsHeader}>
-                    <div style={{ marginTop: "50px" }}></div>
+            <section className={styles.ticketsSection}>
+                <div className={styles.ticketsContainer}>
 
-                    <h2>
-                        Choose Your <span>Water Park Tickets</span>
-                    </h2>
+                    <div className={styles.ticketsHeader}>
+                        <div style={{ marginTop: "50px" }}></div>
 
-                    <p>
-                        Select ticket options designed for individuals, groups, and families.
-                    </p>
+                        <h2>
+                            Choose Your <span>Water Park Tickets</span>
+                        </h2>
 
-                </div>
-
-                <div className={styles.ticketsGrid}>
-                    {tickets.map(ticket => {
-                        const Icon = ticket.icon;
-
-                        return (
-                            <div
-                                key={ticket.id}
-                                className={`${styles.ticketCard} ${ticket.popular ? styles.popular : ""}`}
-                            >
-
-                                {ticket.popular && <div className={styles.badge}>Best Value</div>}
-
-                                <div className={styles.ticketTop}>
-                                    <h3>  <Icon size={28} color="#00bfff" /> {ticket.name}</h3>
-                                </div>
-
-                                <div className={styles.priceBox}>
-                                    <div className={styles.price}> <span className={styles.old}>₹ {ticket.originalPrice}</span> ₹ {ticket.price}</div>
-                                </div>
-
-                                <ul className={styles.features}>
-                                    {ticket.features.map(feature => (
-                                        <li key={feature}>
-                                            <Check size={16} /> {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <div className={styles.qtyBox}>
-
-                                    <button
-                                        onClick={() => updateQuantity(ticket.id, -1)}
-                                        disabled={!selectedTickets[ticket.id]}
-                                    >
-                                        -
-                                    </button>
-
-                                    <span>{selectedTickets[ticket.id] || 0}</span>
-
-                                    <button onClick={() => updateQuantity(ticket.id, 1)}>
-                                        +
-                                    </button>
-
-                                </div>
-
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {totalAmount > 0 && (
-
-                    <div className={styles.cartBox}>
-
-                        {/* LEFT SIDE */}
-                        <div className={styles.cartLeft}>
-
-                            <h3>Your Selection</h3>
-
-                            <div className={styles.cartItems}>
-
-                                {Object.entries(selectedTickets).map(([id, qty]) => {
-                                    const ticket = tickets.find(t => t.id === id);
-
-                                    return (
-                                        <div key={id} className={styles.cartItemRow}>
-
-                                            {/* NAME + PRICE */}
-                                            <div>
-                                                <strong>{ticket?.name}</strong>
-                                                <p >₹ {formatINR(ticket?.price)} each x {qty} </p>
-                                            </div>
-
-
-                                            {/* ITEM TOTAL */}
-                                            <div className={styles.itemTotal}>
-                                                ₹ {formatINR(ticket?.price * qty)}
-                                            </div>
-
-
-                                            {/* QTY CONTROL */}
-                                            <div className={styles.qtyControl}>
-
-                                                <button
-                                                    onClick={() => updateQuantity(id, -1)}
-                                                >
-                                                    -
-                                                </button>
-
-                                                <span>{qty}</span>
-
-                                                <button
-                                                    onClick={() => updateQuantity(id, 1)}
-                                                >
-                                                    +
-                                                </button>
-
-                                            </div>
-
-                                        </div>
-                                    );
-                                })}
-
-                            </div>
-
-                        </div>
-
-                        {/* RIGHT SIDE */}
-
-                        <div className={styles.cartRight}>
-
-                            <div>
-                                <div style={{ display: "flex", alignContent: "center", justifyContent: "space-between" }}>
-                                    <div className={styles.label} style={{ placeContent: 'center', color: "#00a8ff", fontSize: "18px", fontWeight: "800" }}>Total Amount</div>
-                                    <div className={styles.amount}>₹ {formatINR(totalAmount)}</div>
-                                </div>
-
-                                <button
-                                    className={styles.checkoutBtn}
-                                    style={{ fontSize: "15px", fontWeight: "800" }}
-                                    onClick={() => {
-
-                                        // ✅ FINAL CART SAVE
-                                        localStorage.setItem("cart", JSON.stringify({
-                                            items: selectedTickets
-                                        }));
-
-                                        // ✅ ADD THIS
-                                        window.dispatchEvent(new Event("openCart"));
-                                        window.dispatchEvent(new Event("cartUpdated"));
-                                    }}
-                                >
-                                    VIEW CART
-                                </button>
-
-                            </div>
-                        </div>
+                        <p>
+                            Select ticket options designed for individuals, groups, and families.
+                        </p>
 
                     </div>
-                )}
-            </div>
-        </section>
+
+                    <div className={styles.ticketsGrid}>
+                        {tickets.map(ticket => {
+                            const Icon = ticket.icon;
+
+                            return (
+                                <div
+                                    key={ticket.id}
+                                    className={`${styles.ticketCard} ${ticket.popular ? styles.popular : ""}`}
+                                >
+
+                                    {ticket.popular && <div className={styles.badge}>Best Value</div>}
+
+                                    <div className={styles.ticketTop}>
+                                        <h3>  <Icon size={28} color="#00bfff" /> {ticket.name}</h3>
+                                    </div>
+
+                                    <div className={styles.priceBox}>
+                                        <div className={styles.price}> <span className={styles.old}>₹ {ticket.originalPrice}</span> ₹ {ticket.price}</div>
+                                    </div>
+
+                                    <ul className={styles.features}>
+                                        {ticket.features.map(feature => (
+                                            <li key={feature}>
+                                                <Check size={16} /> {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div className={styles.qtyBox}>
+
+                                        <button
+                                            onClick={() => updateQuantity(ticket.id, -1)}
+                                            disabled={!selectedTickets[ticket.id]}
+                                        >
+                                            -
+                                        </button>
+
+                                        <span>{selectedTickets[ticket.id] || 0}</span>
+
+                                        <button onClick={() => updateQuantity(ticket.id, 1)}>
+                                            +
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {totalAmount > 0 && (
+
+                        <div className={styles.cartBox}>
+
+                            {/* LEFT SIDE */}
+                            <div className={styles.cartLeft}>
+
+                                <h3>Your Selection</h3>
+
+                                <div className={styles.cartItems}>
+
+                                    {Object.entries(selectedTickets).map(([id, qty]) => {
+                                        const ticket = tickets.find(t => t.id === id);
+
+                                        return (
+                                            <div key={id} className={styles.cartItemRow}>
+
+                                                {/* NAME + PRICE */}
+                                                <div>
+                                                    <strong>{ticket?.name}</strong>
+                                                    <p >₹ {formatINR(ticket?.price)} each x {qty} </p>
+                                                </div>
+
+
+                                                {/* ITEM TOTAL */}
+                                                <div className={styles.itemTotal}>
+                                                    ₹ {formatINR(ticket?.price * qty)}
+                                                </div>
+
+
+                                                {/* QTY CONTROL */}
+                                                <div className={styles.qtyControl}>
+
+                                                    <button
+                                                        onClick={() => updateQuantity(id, -1)}
+                                                    >
+                                                        -
+                                                    </button>
+
+                                                    <span>{qty}</span>
+
+                                                    <button
+                                                        onClick={() => updateQuantity(id, 1)}
+                                                    >
+                                                        +
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+                                        );
+                                    })}
+
+                                </div>
+
+                            </div>
+
+                            {/* RIGHT SIDE */}
+
+                            <div className={styles.cartRight}>
+
+                                <div>
+                                    <div style={{ display: "flex", alignContent: "center", justifyContent: "space-between" }}>
+                                        <div className={styles.label} style={{ placeContent: 'center', color: "#00a8ff", fontSize: "18px", fontWeight: "800" }}>Total Amount</div>
+                                        <div className={styles.amount}>₹ {formatINR(totalAmount)}</div>
+                                    </div>
+
+                                    <button
+                                        className={styles.checkoutBtn}
+                                        style={{ fontSize: "15px", fontWeight: "800" }}
+                                        onClick={() => {
+
+                                            // ✅ FINAL CART SAVE
+                                            localStorage.setItem("cart", JSON.stringify({
+                                                items: selectedTickets
+                                            }));
+
+                                            // ✅ ADD THIS
+                                            window.dispatchEvent(new Event("openCart"));
+                                            window.dispatchEvent(new Event("cartUpdated"));
+                                        }}
+                                    >
+                                        VIEW CART
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    )}
+                </div>
+            </section>
+        </>
     );
 }

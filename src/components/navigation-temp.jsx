@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, Phone } from "lucide-react";
 // import AuthModal from "../components/AuthModal";
 import Cart from "./Cart";
 import "../styles/Navigation.css";
@@ -9,19 +9,23 @@ const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/AboutUs", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
-  { href: "/venues", label: "VENUES" },
   { href: "/gallery", label: "GALLERY" },
-  { href: "/contact", label: "ENQUIRY NOW", className: "btn-outlines" }
+  {
+    href: "tel:9065383838",
+    label: "ENQUIRY NOW",
+    className: "btn-outlines",
+    isExternal: true,
+    isCall: true
+  }
 ];
 
 const waterparkNavLinks = [
-  { href: "/waterpark", label: "WATER PARK TICKETS", className: "waterpark-btn-outlines" }
+  { href: "/waterpark-in-patna", label: "WATER PARK TICKETS", className: "waterpark-btn-outlines" }
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  // const [openAuth, setOpenAuth] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [animateCart, setAnimateCart] = useState(false);
@@ -98,15 +102,27 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="navbar-links">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={link.className || ""}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.isExternal ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={link.className || ""}
+                  style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                >
+                  {link.label}
+                  {link.isCall && <Phone size={18} style={{ marginLeft: "10px" }} />}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={link.className || ""}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
 
           <div className="nav-right">
@@ -157,15 +173,26 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isOpen ? "active" : ""}`}>
 
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            to={link.href}
-            onClick={() => setIsOpen(false)}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {navLinks.map((link) =>
+          link.isExternal ? (
+            <a
+              className={link.className}
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+            >
+              {link.label}
+            </a>
+          ) : (
+            <Link
+              key={link.href}
+              to={link.href}
+              onClick={() => setIsOpen(false)}
+            >
+              {link.label}
+            </Link>
+          )
+        )}
 
       </div>
 

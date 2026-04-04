@@ -16,8 +16,8 @@ export default function ContactMap() {
 
                     <div className={styles.map}>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076794379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle%20NYC!5e0!3m2!1sen!2sus!4v1636482239079!5m2!1sen!2sus"
-                            title="Jungle Paradise Resort Location"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.439826921119!2d85.21905797517599!3d25.557029977481115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f2a1e767ace26f%3A0xb3f6b632f1f03148!2sJungle%20Resort%20and%20Waterpark!5e0!3m2!1sen!2sin!4v1775307406413!5m2!1sen!2sin"
+                            title="Jungle Resort & Water Park Location"
                             loading="lazy"
                             className={styles.iframe}
                         ></iframe>
@@ -25,21 +25,27 @@ export default function ContactMap() {
                         {/* Location Card */}
                         <div className={styles.locationCard}>
                             <div className={styles.locationHeader}>
-                                <div className={styles.iconBox}>
-                                    <MapPin size={22} />
-                                </div>
+
 
                                 <div>
-                                    <h3>Jungle Paradise Resort</h3>
+                                    <h3 style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                        <span className={styles.iconBox}>
+                                            <MapPin size={22} />
+                                        </span>
+                                        <span>
+                                            Jungle Resort & Water Park
+                                        </span>
+                                    </h3>
                                     <p>
-                                        NH-44, Near City Bypass Road <br />
-                                        District Center, State - 123456
+                                        Jungle Resort & WaterPark, Bypass Thana,
+                                        Marcha - Mirchi Road, more, Dharamsala,
+                                        Patna, Bihar 800009
                                     </p>
                                 </div>
                             </div>
 
                             <a
-                                href="https://www.google.com/maps"
+                                href="https://www.google.com/maps?q=Jungle+Resort+and+Waterpark+Patna"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.button}

@@ -15,7 +15,7 @@ const events = [
     },
     {
         title: "HALDI",
-        image: "/images/haldi.jpg",
+        image: "/eventPics/Haldi/3.jpeg",
         href: "/HALDI"
     },
     {
@@ -30,7 +30,7 @@ const events = [
     },
     {
         title: "RECEPTION",
-        image: "/images/venue-reception.jpg",
+        image: "/images/Receptionimages8kforopenlawn4.jpg",
         href: "/reception"
     },
     {
@@ -39,7 +39,7 @@ const events = [
         href: "/birthday"
     }, {
         title: "ANNIVERSARY",
-        image: "/images/anniversary.png",
+        image: "/eventPics/Anniversary/Anniversary7.jpg",
         href: "/anniversary"
     }, {
         title: "RING CEREMONY",
@@ -48,7 +48,7 @@ const events = [
     },
     {
         title: "CORPORATE EVENT",
-        image: "/images/venue-corporate.jpg",
+        image: "/images/CorporateEvent7.jpg",
         href: "/corporateevents"
     },
     {
@@ -58,7 +58,7 @@ const events = [
     },
     {
         title: "POOL PARTY",
-        image: "/images/poolparty.png",
+        image: "/eventPics/Pool Party/waterparkjungleresort.jpeg",
         href: "/poolparty"
     }
 ];
@@ -73,7 +73,7 @@ export default function EventsSection() {
                     <h2 className={styles.eventsLabel}>EVENTS & CELEBRATIONS</h2>
 
                     <h2 className={styles.eventsTitle}>
-                        Celebrate The Beginning Of Forever
+                        Wedding Venue & Banquet Hall in Patna
                     </h2>
                 </div>
 

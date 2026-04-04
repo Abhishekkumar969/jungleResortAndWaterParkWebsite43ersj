@@ -4,6 +4,7 @@ import Footer from "../../components/footer-temp";
 import QuickBookForm from "../../components/quick-book-form";
 import { Play } from "lucide-react";
 import styles from "../../styles/eventspages.module.css";
+import { Helmet } from "react-helmet";
 
 export default function AnniversaryDetails() {
 
@@ -42,11 +43,11 @@ export default function AnniversaryDetails() {
 
     const media = [
         { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary3.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary2.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary3.jpg" },
         { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary4.jpg" },
         { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.jpg" },
         { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary7.jpg" },
         { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary8.jpg" },
 
@@ -63,115 +64,161 @@ export default function AnniversaryDetails() {
     const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
 
     return (
-        <div className={styles.eventPage}>
+        <>
+            <Helmet>
+                <title>Best Anniversary Celebration Place in Patna | Jungle Resort</title>
 
+                <meta
+                    name="description"
+                    content="Celebrate your anniversary in style at Jungle Resort Patna with decoration, DJ, pool party & romantic ambiance. Book best anniversary venue today!"
+                />
 
-            {/* FIXED BACKGROUND */}
-            <div
-                className={styles.pageBg}
-                style={{ backgroundImage: "url(/images/anniversary.png)" }}
-            ></div>
-            <div className={styles.pageOverlay}></div>
+                <meta
+                    name="keywords"
+                    content="Anniversary celebration Patna, Anniversary party venue Patna, Romantic resort Patna, Anniversary dinner Patna, Couple celebration Patna, Jungle Resort anniversary" />
 
-            <Navigation />
+                {/* OG TAGS */}
+                <meta property="og:title" content="Best Anniversary Celebration Place in Patna | Jungle Resort" />
+                <meta property="og:description" content="Celebrate your anniversary with DJ, pool & decoration at Jungle Resort Patna." />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Anniversary/Anniversary.jpg" />
+                <meta property="og:url" content="https://jungleresortpatna.in/anniversary" />
+                <meta property="og:type" content="website" />
 
-            {/* HERO */}
-            <section className={styles.heroSection}>
+                {/* CANONICAL */}
+                <link rel="canonical" href="https://jungleresortpatna.in/anniversary" />
 
-                <div className={styles.heroContent}>
+                {/* SCHEMA */}
+                <script type="application/ld+json">
+                    {`
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Jungle Resort Anniversary Celebration",
+  "image": "https://jungleresortpatna.in/eventPics/Anniversary/Anniversary.jpg",
+  "url": "https://jungleresortpatna.in/anniversary",
+  "telephone": "+91-9065383838",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
+    "addressLocality": "Patna",
+    "addressRegion": "Bihar",
+    "postalCode": "800009",
+    "addressCountry": "India"
+  },
+  "description": "Best anniversary celebration place in Patna with DJ, pool party & romantic decoration at Jungle Resort."
+}
+`}
+                </script>
+            </Helmet>
 
-                    <div className={styles.heroLeft}>
-                        <h1 className={styles.heroTitle}>
-                            Your Dream <span>Anniversary</span> Starts Here
-                        </h1>
+            <div className={styles.eventPage}>
+
+                {/* FIXED BACKGROUND */}
+                <div
+                    className={styles.pageBg}
+                    style={{ backgroundImage: "url(/eventPics/Anniversary/Anniversary7.jpg)" }}
+                ></div>
+                <div className={styles.pageOverlay}></div>
+
+                <Navigation />
+
+                {/* HERO */}
+                <section className={styles.heroSection}>
+
+                    <div className={styles.heroContent}>
+
+                        <div className={styles.heroLeft}>
+                            <h1 className={styles.heroTitle}>
+                                Best <span>Anniversary Celebration</span> Place in Patna                            </h1>
+                        </div>
+
+                        <div className={styles.heroRight}>
+                            <QuickBookForm defaultFunctionType="Anniversary" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className={styles.mobileBook}>
+                    <QuickBookForm defaultFunctionType="Anniversary" />
+                </section>
+
+                {/* GALLERY */}
+
+                <div className={styles.galleryContent}>
+
+                    <div className={styles.galleryHeader}>
+                        <h1 className={styles.galleryTitle}>Gallery</h1>
                     </div>
 
-                    <div className={styles.heroRight}>
-                        <QuickBookForm defaultFunctionType="Anniversary" />
+                    <div className={styles.galleryGrid}>
+
+                        {media.map((item, i) => (
+
+                            <div
+                                key={i}
+                                ref={(el) => (itemRefs.current[i] = el)}
+                                className={`${styles.galleryItem} ${styles.animateItem}`}
+                                onClick={() => setSelectedIndex(i)}
+                            >
+
+                                {item.type === "image" ? (
+                                    <>
+                                        <img src={item.url} alt="Anniversary Decoration Jungle Resort Patna" className={styles.galleryImage} />
+                                        <div className={styles.galleryOverlay}></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img
+                                            src={getYouTubeThumbnail(item.url)}
+                                            alt="Anniversary Decoration Jungle Resort Patna"
+                                            className={styles.galleryImage}
+                                        />
+                                        <div className={styles.galleryOverlay}></div>
+                                        <Play className={styles.galleryPlay} />
+                                    </>
+                                )}
+
+                            </div>
+
+                        ))}
+
                     </div>
-                </div>
-            </section>
 
-            <section className={styles.mobileBook}>
-                <QuickBookForm defaultFunctionType="Anniversary" />
-            </section>
-
-            {/* GALLERY */}
-
-            <div className={styles.galleryContent}>
-
-                <div className={styles.galleryHeader}>
-                    <h1 className={styles.galleryTitle}>Gallery</h1>
                 </div>
 
-                <div className={styles.galleryGrid}>
+                {selectedMedia && (
 
-                    {media.map((item, i) => (
+                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
+
+                        <button className={styles.galleryClose}>✕</button>
 
                         <div
-                            key={i}
-                            ref={(el) => (itemRefs.current[i] = el)}
-                            className={`${styles.galleryItem} ${styles.animateItem}`}
-                            onClick={() => setSelectedIndex(i)}
+                            className={styles.galleryViewerContent}
+                            onClick={(e) => e.stopPropagation()}
                         >
 
-                            {item.type === "image" ? (
-                                <>
-                                    <img src={item.url} alt="" className={styles.galleryImage} />
-                                    <div className={styles.galleryOverlay}></div>
-                                </>
+                            {selectedMedia.type === "image" ? (
+                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="Anniversary Decoration Jungle Resort Patna" />
                             ) : (
-                                <>
-                                    <img
-                                        src={getYouTubeThumbnail(item.url)}
-                                        alt=""
-                                        className={styles.galleryImage}
-                                    />
-                                    <div className={styles.galleryOverlay}></div>
-                                    <Play className={styles.galleryPlay} />
-                                </>
+                                <iframe
+                                    src={selectedMedia.url}
+                                    width="100%"
+                                    height="600"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    title="video"
+                                />
                             )}
 
                         </div>
 
-                    ))}
-
-                </div>
-
-            </div>
-
-            {selectedMedia && (
-
-                <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
-
-                    <button className={styles.galleryClose}>✕</button>
-
-                    <div
-                        className={styles.galleryViewerContent}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-
-                        {selectedMedia.type === "image" ? (
-                            <img src={selectedMedia.url} className={styles.galleryFullImage} alt="" />
-                        ) : (
-                            <iframe
-                                src={selectedMedia.url}
-                                width="100%"
-                                height="600"
-                                frameBorder="0"
-                                allowFullScreen
-                                title="video"
-                            />
-                        )}
-
                     </div>
 
-                </div>
+                )}
 
-            )}
+                <Footer />
 
-            <Footer />
-
-        </div>
+            </div>
+        </>
     );
 }
