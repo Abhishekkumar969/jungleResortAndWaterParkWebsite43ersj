@@ -78,7 +78,7 @@ function App() {
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Services" element={<Services />} />
 
-          <Route path="/Waterpark" element={<Waterpark />} />
+          <Route path="/waterpark-in-patna" element={<Waterpark />} />
           <Route path="/FunPark" element={<FunPark />} />
 
           <Route path="/BirthdayCeremony" element={<BirthdayCeremony />} />

@@ -1,3 +1,71 @@
+.hero {
+    position       : relative;
+    height         : 50vh;
+    min-height     : 400px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    overflow       : hidden;
+}
+
+.image {
+    position  : absolute;
+    width     : 100%;
+    height    : 100%;
+    object-fit: cover;
+}
+
+
+
+.content {
+    position  : relative;
+    z-index   : 2;
+    text-align: center;
+    padding   : 0 20px;
+    max-width : 800px;
+}
+
+.contentdiv {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    margin-bottom  : 30px;
+}
+
+.subtitle {
+    color         : #22c55e;
+    font-size     : 14px;
+    font-weight   : 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size  : 56px;
+    font-weight: 700;
+    color      : #03b8ff;
+    margin     : 16px 0;
+}
+
+.description {
+    font-size: 20px;
+    color    : #03b8ff;
+    max-width: 650px;
+    margin   : auto;
+}
+
+@media(max-width:768px) {
+
+    .title {
+        font-size: 36px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+}
+
 .section {
     padding   : 80px 20px;
     background: #ffffff;
@@ -80,12 +148,8 @@
     padding   : 12px;
     background: linear-gradient(to top, rgba(0, 0, 0, .7), transparent);
     color     : white;
-    opacity   : 0;
+    opacity   : 1;
     transition: .3s;
-}
-
-.card:hover .overlay {
-    opacity: 1;
 }
 
 .overlay span {
