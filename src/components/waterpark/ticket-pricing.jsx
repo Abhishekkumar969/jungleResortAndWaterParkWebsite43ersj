@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Check, Star, Users, Baby, Crown, Sparkles } from "lucide-react";
 import styles from "../../styles/tickets.module.css";
 import { Helmet } from "react-helmet";
+import TicketSearch from "../TicketSearch";
 
 const tickets = [
     {
@@ -152,7 +153,7 @@ export default function TicketPricing() {
                         <p>
                             Select ticket options designed for individuals, groups, and families.
                         </p>
-
+                        <TicketSearch />
                     </div>
 
                     <div className={styles.ticketsGrid}>

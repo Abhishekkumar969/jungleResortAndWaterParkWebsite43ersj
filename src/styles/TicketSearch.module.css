@@ -1,0 +1,249 @@
+/* Container */
+.container {
+    max-width    : 420px;
+    margin       : 40px auto;
+    padding      : 25px;
+    border-radius: 12px;
+    background   : #ffffff;
+    box-shadow   : 0 10px 25px rgba(0, 0, 0, 0.08);
+    font-family  : "Segoe UI", sans-serif;
+}
+
+/* Title */
+.title {
+    text-align   : center;
+    margin-bottom: 20px;
+    font-size    : 22px;
+    font-weight  : 600;
+    color        : #222;
+}
+
+/* Input */
+.input {
+    width        : 92%;
+    padding      : 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border       : 1px solid #ddd;
+    outline      : none;
+    font-size    : 14px;
+    transition   : 0.2s;
+}
+
+.input:focus {
+    border-color: #00a4eb;
+    box-shadow  : 0 0 0 2px rgba(0, 164, 235, 0.1);
+}
+
+/* Button */
+.button {
+    width        : 100%;
+    padding      : 12px;
+    background   : linear-gradient(135deg, #00a4eb, #0077ff);
+    color        : #fff;
+    border       : none;
+    border-radius: 8px;
+    font-weight  : 600;
+    cursor       : pointer;
+    transition   : 0.3s;
+}
+
+.button:hover {
+    transform : translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0, 164, 235, 0.3);
+}
+
+/* Card */
+.card {
+    margin-top   : 15px;
+    padding      : 15px;
+    border-radius: 10px;
+    background   : #f9fbfd;
+    border       : 1px solid #e6e6e6;
+    transition   : 0.2s;
+}
+
+.card p {
+    display        : flex;
+    align-items    : center;
+    justify-content: left;
+    margin-top     : 2px;
+    color          : #00a6ff;
+}
+
+.card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* Text */
+.text {
+    margin   : 4px 0;
+    font-size: 14px;
+    color    : #333;
+}
+
+/* Status */
+.status {
+    font-weight: 600;
+}
+
+.success {
+    color: #16a34a;
+    /* green */
+}
+
+.cancelled {
+    color: #dc2626;
+    /* red */
+}
+
+/* Loader */
+.loading {
+    text-align: center;
+    margin-top: 10px;
+    font-size : 14px;
+    color     : #666;
+}
+
+/* No Result */
+.noData {
+    text-align: center;
+    margin-top: 15px;
+    color     : #888;
+    font-size : 14px;
+}
+
+
+/* Download Button */
+.downloadBtn {
+    padding      : 12px 20px;
+    background   : linear-gradient(135deg, #ff7a18, #ff3d00);
+    color        : #fff;
+    border       : none;
+    border-radius: 8px;
+    font-weight  : 600;
+    cursor       : pointer;
+    margin       : 20px auto;
+    display      : block;
+    transition   : 0.3s;
+}
+
+.downloadBtn:hover {
+    transform : translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 61, 0, 0.3);
+}
+
+/* Overlay */
+.overlay {
+    position       : fixed;
+    top            : 0;
+    left           : 0;
+    width          : 100%;
+    height         : 100%;
+    background     : rgba(0, 0, 0, 0.65);
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    z-index        : 999;
+}
+
+/* Modal Box */
+.modal {
+    position : relative;
+    width    : 90%;
+    max-width: 450px;
+    animation: popupFade 0.3s ease;
+}
+
+/* Close Button */
+.closeBtn {
+    background   : #ff0000;
+    color        : #e6e6e6;
+    border       : none;
+    border-radius: 50%;
+    width        : 30px;
+    height       : 30px;
+    cursor       : pointer;
+    font-weight  : 800;
+}
+
+/* Animation */
+@keyframes popupFade {
+    from {
+        transform: scale(0.8);
+        opacity  : 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity  : 1;
+    }
+}
+
+
+
+
+
+
+/* No Data Box */
+.noDataBox {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.noDataBox p {
+    color: #0077ff;
+}
+
+
+/* Help Text */
+.helpText {
+    font-size    : 13px;
+    color        : #666;
+    margin-top   : 5px;
+    margin-bottom: 10px;
+}
+
+/* Call Buttons Wrapper */
+.callBtns {
+    margin-top     : 15px;
+    display        : flex;
+    gap            : 10px;
+    justify-content: center;
+    flex-wrap      : wrap;
+}
+
+/* Call Button */
+.callBtn {
+    padding        : 10px 14px;
+    background     : linear-gradient(135deg, #16a34a, #22c55e);
+    color          : #fff;
+    border-radius  : 6px;
+    text-decoration: none;
+    font-size      : 13px;
+    font-weight    : 600;
+    transition     : 0.3s;
+}
+
+.callBtn:hover {
+    transform : translateY(-1px);
+    box-shadow: 0 5px 12px rgba(34, 197, 94, 0.3);
+}
+
+
+
+/* Field wrapper */
+.field {
+    display       : flex;
+    flex-direction: column;
+    margin-bottom : 12px;
+}
+
+/* Label */
+.label {
+    font-size    : 15px;
+    font-weight  : 600;
+    color        : #008bc7;
+    margin-bottom: 4px;
+    text-align   : left;
+}
