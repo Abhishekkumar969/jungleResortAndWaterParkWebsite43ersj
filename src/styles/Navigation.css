@@ -122,24 +122,24 @@
 
 
 .waterpark-btn-outlines {
-  width          : fit-content !important;
-  white-space    : nowrap !important;
-  padding        : 10px 17px;
-  border-radius  : 80px;
-  text-decoration: none;
-  backdrop-filter: blur(6px);
-  transition     : 0.3s;
-  width          : 100%;
-  background     : #00aaff;
-  color          : #ffffff !important;
-  box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345);
-  font-weight    : 800 !important;
+  width             : fit-content !important;
+  white-space       : nowrap !important;
+  padding           : 10px 17px;
+  border-radius     : 80px;
+  text-decoration   : none;
+  backdrop-filter   : blur(6px);
+  transition        : 0.3s;
+  width             : 100%;
+  /* background     : #00aaff; */
+  color             : #ffffff !important;
+  box-shadow        : 5px 5px 3px rgba(0, 0, 0, 0.345);
+  font-weight       : 800 !important;
 }
 
 .waterpark-btn-outlines:hover {
-  font-weight: 800 !important;
-  background : #00aaff;
-  color      : #fffdfd !important;
+  font-weight   : 800 !important;
+  /* background : #00aaff; */
+  color         : #fffdfd !important;
 }
 
 /* MOBILE BUTTON */
@@ -227,19 +227,19 @@
   }
 
   .waterpark-btn-outlines {
-    width          : fit-content !important;
-    white-space    : nowrap !important;
-    padding        : 10px 7px;
-    border-radius  : 80px;
-    text-decoration: none;
-    backdrop-filter: blur(6px);
-    transition     : 0.3s;
-    width          : 100%;
-    background     : #00aaff;
-    color          : #ffffff !important;
-    box-shadow     : 5px 5px 3px #00000058;
-    font-weight    : 800 !important;
-    text-shadow    : 1px 1px 1px #00000058;
+    width             : fit-content !important;
+    white-space       : nowrap !important;
+    padding           : 10px 7px;
+    border-radius     : 80px;
+    text-decoration   : none;
+    backdrop-filter   : blur(6px);
+    transition        : 0.3s;
+    width             : 100%;
+    /* background     : #00aaff; */
+    color             : #ffffff !important;
+    box-shadow        : 5px 5px 3px #00000058;
+    font-weight       : 800 !important;
+    text-shadow       : 1px 1px 1px #00000058;
   }
 
   .navbar-inner {
@@ -591,19 +591,19 @@
   }
 
   .waterpark-btn-outlines {
-    width          : fit-content !important;
-    white-space    : nowrap !important;
-    padding        : 10px 7px;
-    border-radius  : 80px;
-    text-decoration: none;
-    backdrop-filter: blur(6px);
-    transition     : 0.3s;
-    width          : 100%;
-    background     : #00aaff;
-    color          : #ffffff !important;
-    box-shadow     : 5px 5px 3px #00000058;
-    font-weight    : 600 !important;
-    text-shadow    : 1px 1px 1px #00000058;
+    width             : fit-content !important;
+    white-space       : nowrap !important;
+    padding           : 10px 7px;
+    border-radius     : 80px;
+    text-decoration   : none;
+    backdrop-filter   : blur(6px);
+    transition        : 0.3s;
+    width             : 100%;
+    /* background     : #00aaff; */
+    color             : #ffffff !important;
+    box-shadow        : 5px 5px 3px #00000058;
+    font-weight       : 600 !important;
+    text-shadow       : 1px 1px 1px #00000058;
   }
 
   .navbar-container {
@@ -647,8 +647,9 @@
 
   /* WATERPARK BUTTON SMALL */
   .waterpark-btn-outlines {
-    padding      : 8px 6px;
-    font-size    : 14px;
+    padding  : 8px 6px;
+    font-size: 14px;
+
     border-radius: 20px;
   }
 
@@ -685,4 +686,95 @@
     padding  : 12px 10px;
   }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.waterpark-btn-outlines {
+  position     : relative;
+  z-index      : 1;
+  overflow     : hidden;
+  border-radius: 80px;
+}
+
+/* glowing animated border */
+.waterpark-btn-outlines::before {
+  content      : "";
+  position     : absolute;
+  inset        : 2px;
+  border-radius: inherit;
+  background   : linear-gradient(120deg,
+      #00aaff,
+      #ff00c3,
+      #00aaff);
+  background-size: 300% 300%;
+  animation      : borderGlow 3s linear infinite;
+  z-index        : -1;
+}
+
+/* inner background (actual button) */
+.waterpark-btn-outlines::after {
+  content         : "";
+  position        : absolute;
+  inset           : 2px;
+  /* background   : #00aaff; */
+  border-radius   : inherit;
+  z-index         : -1;
+}
+
+/* animation */
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+.waterpark-btn-outlines {
+  display    : inline-block;
+  will-change: transform;
+  animation  : pulseSoft 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseSoft {
+  0% {
+    transform : scale(1);
+    box-shadow: 0 0 0px #00aaff;
+  }
+
+  50% {
+    transform : scale(1.06);
+    box-shadow: 1px 1px 2px #000000;
+  }
+
+  100% {
+    transform : scale(1);
+    box-shadow: 0 0 0px #00aaff;
+  }
 }

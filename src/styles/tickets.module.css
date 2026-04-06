@@ -527,3 +527,66 @@
     align-items    : center;
     gap            : 30px;
 }
+
+
+
+
+
+
+
+
+
+/* ROW AS TABLE */
+.cartItemRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* 3 columns */
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dotted rgba(255,255,255,0.5);
+}
+
+/* COLUMN 1 → LEFT */
+.col1 {
+  text-align: left;
+}
+
+.col1 strong {
+  display: block;
+  font-size: 14px;
+}
+
+.col1 p {
+  font-size: 12px;
+  opacity: 0.9;
+  margin: 2px 0 0;
+}
+
+/* COLUMN 2 → RIGHT */
+.col2 {
+  text-align: right;
+  font-weight: 600;
+}
+
+/* COLUMN 3 → RIGHT */
+.col3 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+/* BUTTON STYLE */
+.col3 button {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: white;
+  color: #00a8ff;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.col3 button:hover {
+  transform: scale(1.1);
+}

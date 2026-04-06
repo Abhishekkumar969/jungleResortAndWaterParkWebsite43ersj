@@ -1,7 +1,7 @@
 /* Download Button */
 .downloadBtn {
     padding         : 14px 26px;
-    background      : linear-gradient(135deg, #ff7a18, #ff3d00);
+    background      : linear-gradient(0deg, #ff56aa, #ff0080, #ff0080, #ff56aa);
     color           : #fff;
     border          : none;
     border-radius   : 8px;
@@ -486,4 +486,6 @@
 
 .termsList li {
     margin-bottom: 2px;
+    color        : #d94c4c;
+    font-weight  : 400;
 }
