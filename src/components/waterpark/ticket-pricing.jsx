@@ -37,7 +37,7 @@ const tickets = [
         id: "groupof5",
         name: "Group Of 5",
         icon: Star,
-        price: 1600,
+        price: 1849,
         originalPrice: 2745,
         features: [
             "Wave Pool",
@@ -51,7 +51,7 @@ const tickets = [
         id: "groupof10",
         name: "Group Of 10",
         icon: Crown,
-        price: 3000,
+        price: 3250,
         originalPrice: 5490,
         features: [
             "Wave Pool",
@@ -65,7 +65,7 @@ const tickets = [
         id: "groupof15",
         name: "Group Of 15",
         icon: Sparkles,
-        price: 4200,
+        price: 4500,
         originalPrice: 8235,
         features: [
             "Wave Pool",
@@ -79,7 +79,7 @@ const tickets = [
         id: "groupof20",
         name: "Group Of 20",
         icon: Sparkles,
-        price: 5000,
+        price: 5500,
         originalPrice: 10980,
         features: [
             "Wave Pool",

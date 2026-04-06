@@ -5,10 +5,10 @@ import Checkout from "./waterpark/Checkout";
 const ticketMap = {
     kidsbelow10years: { name: "Kids Below 10 Years", price: 299 },
     above10years: { name: "Above 10 Years", price: 399 },
-    groupof5: { name: "Group Of 5", price: 1600 },
-    groupof10: { name: "Group Of 10", price: 3000 },
-    groupof15: { name: "Group Of 15", price: 4200 },
-    groupof20: { name: "Group Of 20", price: 5000 }
+    groupof5: { name: "Group Of 5", price: 1849 },
+    groupof10: { name: "Group Of 10", price: 3250 },
+    groupof15: { name: "Group Of 15", price: 4500 },
+    groupof20: { name: "Group Of 20", price: 5500 }
 };
 
 export default function Cart({ isOpen, onClose }) {

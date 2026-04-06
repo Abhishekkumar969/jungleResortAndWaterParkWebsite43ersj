@@ -76,15 +76,11 @@ export default function TicketSearch() {
                 <div className={styles.overlay}>
                     <div className={styles.modal}>
 
-                        {/* CLOSE BUTTON */}
-
-
                         {/* 🔥 TERA EXISTING CODE */}
                         <div className={styles.container}>
 
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
                                 <h3 className={styles.title}>Search Ticket</h3>
-
                                 <button
                                     className={styles.closeBtn}
                                     onClick={() => setOpen(false)}
@@ -143,13 +139,15 @@ export default function TicketSearch() {
                             {searched && results.map((r, i) => (
                                 <div key={i} className={styles.card}>
                                     <p className={styles.text}><b>Name:</b> {r.name}</p>
+
                                     <p className={styles.text}><b>Phone:</b> {r.phone}</p>
+
                                     <p className={styles.text}>
                                         <b>Visit Date:</b>{" "}
                                         {r.visitDate
                                             ? new Date(r.visitDate)
                                                 .toLocaleDateString("en-GB")
-                                                .replace(/\//g, "-")
+                                                .replace(/\//g, "/")
                                             : ""}
                                     </p>
 
@@ -187,13 +185,11 @@ export default function TicketSearch() {
 
                                 </div>
                             ))}
-                        </div>
 
+                        </div>
                     </div>
                 </div >
-            )
-            }
-
+            )}
         </>
     );
 }

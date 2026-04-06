@@ -71,32 +71,32 @@ export default function WaterparkPreview() {
 
                                 <div>
                                     <span>Kids Below 10 Years</span>
-                                    <b>Rs. 299</b>
+                                    <b>₹299</b>
                                 </div>
 
                                 <div>
                                     <span>Above 10 Years</span>
-                                    <b>Rs. 399</b>
+                                    <b>₹399</b>
                                 </div>
 
                                 <div>
                                     <span>Group Of 5</span>
-                                    <b>Rs. 1,600</b>
+                                    <b>₹1,849</b>
                                 </div>
 
                                 <div>
                                     <span>Group Of 10</span>
-                                    <b>Rs. 3,000</b>
+                                    <b>₹3,250</b>
                                 </div>
 
                                 <div>
                                     <span>Group Of 15</span>
-                                    <b>Rs. 4,200</b>
+                                    <b>₹4,500</b>
                                 </div>
 
                                 <div>
                                     <span>Group Of 20</span>
-                                    <b>Rs. 5,000</b>
+                                    <b>₹5,500</b>
                                 </div>
                             </div>
 
