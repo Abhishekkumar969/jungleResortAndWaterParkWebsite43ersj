@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Check, Star, Users, Baby, Crown, Sparkles } from "lucide-react";
 import styles from "../../styles/tickets.module.css";
-import { Helmet } from "react-helmet";
 import TicketSearch from "../TicketSearch";
 
 const tickets = [
@@ -132,14 +131,6 @@ export default function TicketPricing() {
 
     return (
         <>
-            <Helmet>
-                <title>Best Waterpark in Patna | Jungle Resort</title>
-                <meta
-                    name="description"
-                    content="Enjoy best waterpark in Patna with slides, rain dance & family fun at Jungle Resort."
-                />
-            </Helmet>
-
             <section className={styles.ticketsSection}>
                 <div className={styles.ticketsContainer}>
 
@@ -219,49 +210,33 @@ export default function TicketPricing() {
                                 <h3>Your Selection</h3>
 
                                 <div className={styles.cartItems}>
-
                                     {Object.entries(selectedTickets).map(([id, qty]) => {
                                         const ticket = tickets.find(t => t.id === id);
 
                                         return (
                                             <div key={id} className={styles.cartItemRow}>
 
-                                                {/* NAME + PRICE */}
-                                                <div>
+                                                {/* COLUMN 1 */}
+                                                <div className={styles.col1}>
                                                     <strong>{ticket?.name}</strong>
-                                                    <p >₹ {formatINR(ticket?.price)} each x {qty} </p>
+                                                    <p>₹ {formatINR(ticket?.price)} × {qty}</p>
                                                 </div>
 
-
-                                                {/* ITEM TOTAL */}
-                                                <div className={styles.itemTotal}>
+                                                {/* COLUMN 2 */}
+                                                <div className={styles.col2}>
                                                     ₹ {formatINR(ticket?.price * qty)}
                                                 </div>
 
-
-                                                {/* QTY CONTROL */}
-                                                <div className={styles.qtyControl}>
-
-                                                    <button
-                                                        onClick={() => updateQuantity(id, -1)}
-                                                    >
-                                                        -
-                                                    </button>
-
+                                                {/* COLUMN 3 */}
+                                                <div className={styles.col3}>
+                                                    <button onClick={() => updateQuantity(id, -1)}>-</button>
                                                     <span>{qty}</span>
-
-                                                    <button
-                                                        onClick={() => updateQuantity(id, 1)}
-                                                    >
-                                                        +
-                                                    </button>
-
+                                                    <button onClick={() => updateQuantity(id, 1)}>+</button>
                                                 </div>
 
                                             </div>
                                         );
                                     })}
-
                                 </div>
 
                             </div>
