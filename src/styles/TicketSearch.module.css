@@ -116,16 +116,18 @@
 
 /* Download Button */
 .downloadBtn {
-    padding      : 12px 20px;
-    background   : linear-gradient(135deg, #ff7a18, #ff3d00);
-    color        : #fff;
-    border       : none;
-    border-radius: 8px;
-    font-weight  : 600;
-    cursor       : pointer;
-    margin       : 20px auto;
-    display      : block;
-    transition   : 0.3s;
+    padding         : 14px 26px;
+    background      : linear-gradient(135deg, #ff7a18, #ff3d00);
+    color           : #fff;
+    border          : none;
+    border-radius   : 8px;
+    font-weight     : 600;
+    cursor          : pointer;
+    /* margin       : 0px auto; */
+    display         : block;
+    transition      : 0.3s;
+    border          : 2px solid white;
+    box-shadow      : 2px 2px 3px rgba(0, 0, 0, 0.345);
 }
 
 .downloadBtn:hover {
@@ -150,9 +152,8 @@
 /* Modal Box */
 .modal {
     position : relative;
-    width    : 90%;
+    width    : 100%;
     max-width: 450px;
-    animation: popupFade 0.3s ease;
 }
 
 /* Close Button */

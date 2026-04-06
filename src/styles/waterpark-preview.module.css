@@ -116,7 +116,8 @@
 }
 
 .pricingGrid b {
-    color: #facc15;
+    color      : #ffcc00;
+    white-space: nowrap;
 }
 
 .waterparkInfo {
@@ -144,6 +145,7 @@
     text-decoration: none;
     transition     : .3s;
     border         : 2px solid white;
+    width          : fit-content;
     box-shadow     : 2px 2px 3px rgba(0, 0, 0, 0.345);
 }
 
@@ -213,4 +215,69 @@
         padding: 20px;
     }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* BUTTON + SEARCH WRAPPER */
+.waterparkActions {
+    display       : flex;
+    flex-direction: row;
+    gap           : 20px;
+    margin-top    : 10px;
+}
+
+/* DESKTOP SIDE-BY-SIDE OPTION (optional) */
+.waterparkActionsRow {
+    display    : flex;
+    align-items: center;
+    gap        : 20px;
+    flex-wrap  : wrap;
+}
+
+/* MOBILE FIX */
+@media(max-width: 600px) {
+    .waterparkActions {
+        gap           : 15px;
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+    }
+}
+
+
+@media(max-width: 500px) {
+    .pricingGrid {
+        display: block;
+    }
+
+    .pricingGrid div {
+        margin-bottom: 7px;
+    }
+
+    .waterparkImages {
+        position: relative;
+        display : block;
+    }
+
+    .waterparkGrid {
+        gap: 10px;
+    }
+
+    .waterparkImgLarge {
+        padding-top: 10px;
+    }
+
+    .waterparkImgSmall {
+        padding-top: 10px;
+    }
 }

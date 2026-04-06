@@ -112,7 +112,6 @@
     width     : 100%;
     height    : 100%;
     object-fit: cover;
-    z-index   : 0;
 }
 
 /* OVERLAY */
@@ -124,12 +123,10 @@
     width     : 100%;
     height    : 100%;
     background: linear-gradient(rgba(66, 208, 255, 0.6), #0099cc99);
-    z-index   : 1;
 }
 
 .infoContainer {
     max-width: 1200px;
     margin   : auto;
     position : relative;
-    z-index  : 2;
 }
