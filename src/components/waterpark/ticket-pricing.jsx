@@ -153,7 +153,10 @@ export default function TicketPricing() {
                         <p>
                             Select ticket options designed for individuals, groups, and families.
                         </p>
-                        <TicketSearch />
+
+                        <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
+                            <TicketSearch />
+                        </div>
                     </div>
 
                     <div className={styles.ticketsGrid}>

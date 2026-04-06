@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { WavesLadder, ArrowRight, Ticket, PlaneLanding, CloudRainWind, Speaker } from "lucide-react";
 import styles from "../../styles/waterpark-preview.module.css";
+import TicketSearch from "../TicketSearch";
 
 const attractions = [
     { name: "Wave Pool", icon: WavesLadder },
@@ -111,10 +112,19 @@ export default function WaterparkPreview() {
 
                         </div>
 
-                        <Link to="/waterpark-in-patna" className={styles.waterparkBtn}>
-                            Book Waterpark Tickets
-                            <ArrowRight size={18} />
-                        </Link>
+
+                        <div className={styles.waterparkActions}>
+
+                            <Link to="/waterpark-in-patna" className={styles.waterparkBtn}>
+                                Book Waterpark Tickets
+                                <ArrowRight size={18} />
+                            </Link>
+
+                            <div className={styles.ticketSearchBox}>
+                                <TicketSearch />
+                            </div>
+
+                        </div>
 
                     </div>
 
