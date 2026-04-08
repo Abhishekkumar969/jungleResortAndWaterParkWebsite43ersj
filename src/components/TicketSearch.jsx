@@ -93,23 +93,23 @@ export default function TicketSearch() {
         }
     };
 
-    const generateQRData = (r) => {
-        return `
-Jungle Resort Waterpark Ticket
+    //     const generateQRData = (r) => {
+    //         return `
+    // Jungle Resort Waterpark Ticket
 
-Name: ${r.name}
-Phone: ${r.phone}
-Visit Date: ${r.visitDate}
+    // Name: ${r.name}
+    // Phone: ${r.phone}
+    // Visit Date: ${r.visitDate}
 
-${Object.entries(r.tickets || {})
-                .map(([k, v]) => `${k}: ${v}`)
-                .join("\n")}
+    // ${Object.entries(r.tickets || {})
+    //                 .map(([k, v]) => `${k}: ${v}`)
+    //                 .join("\n")}
 
-Total: ₹${r.total}
-Status: ${r.paymentStatus || ""}
-Booked On: ${r.createdAt || ""}
-    `;
-    };
+    // Total: ₹${r.total}
+    // Status: ${r.paymentStatus || ""}
+    // Booked On: ${r.createdAt || ""}
+    //     `;
+    //     };
 
     useEffect(() => {
         if (open || resultOpen) {
@@ -326,8 +326,12 @@ Booked On: ${r.createdAt || ""}
                                                     </div>
                                                 </div>
 
+
+
                                                 <div className={styles.qrBox}>
-                                                    <QRCodeCanvas value={generateQRData(r)} size={140} />
+                                                    <QRCodeCanvas value={JSON.stringify({
+                                                        ticketId: r.uid
+                                                    })} size={140} />
                                                 </div>
 
                                                 <p style={{ fontSize: "12px" }}>
@@ -351,6 +355,10 @@ Booked On: ${r.createdAt || ""}
                                                         </ul>
                                                     </div>
                                                 </div>
+                                                <p style={{ fontSize: "7px" }}>
+                                                    ID: {r.uid}
+                                                </p>
+
                                             </div>
 
                                         </div>
