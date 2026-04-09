@@ -33,7 +33,6 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
     "Baby Shower",
     "Anniversary",
     "Ring Ceremony",
-    "FunPark",
     "Pool Party",
     "Kitty Party",
     "Theme Party",
