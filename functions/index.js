@@ -5,17 +5,18 @@ const { onRequest } = require("firebase-functions/v2/https");
 const razorpayKey = defineSecret("RAZORPAY_KEY");
 const razorpaySecret = defineSecret("RAZORPAY_SECRET");
 
-
 exports.createRazorpayOrder = onRequest(
   {
     secrets: ["RAZORPAY_KEY", "RAZORPAY_SECRET"],
   },
   async (req, res) => {
 
+    // ✅ CORS headers (FIRST THING)
     res.set("Access-Control-Allow-Origin", "*");
-    res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
+    // ✅ HANDLE PREFLIGHT
     if (req.method === "OPTIONS") {
       return res.status(204).send("");
     }
@@ -34,10 +35,7 @@ exports.createRazorpayOrder = onRequest(
       const { amount } = body;
 
       console.log("FINAL BODY:", body);
-
-      console.log("AMOUNT:", amount); // 🔥 DEBUG
-      console.log("KEY:", razorpayKey.value());
-      console.log("SECRET:", razorpaySecret.value());
+      console.log("AMOUNT:", amount);
 
       if (!amount) {
         return res.status(400).json({ error: "Amount required" });
