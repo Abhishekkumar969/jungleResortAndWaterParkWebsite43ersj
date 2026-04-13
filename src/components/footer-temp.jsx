@@ -34,8 +34,9 @@ export default function Footer() {
             </div>
 
             <p className="footer-text">
-              Experience the perfect blend of luxury events and thrilling
-              waterpark adventures, all surrounded by the serene beauty of nature.
+              Jungle Resort Patna is the best destination for wedding venues, banquet halls,
+              and waterpark fun in Patna, Bihar. Explore our gallery, book waterpark tickets,
+              and enjoy premium resort experiences.
             </p>
 
             <div className="footer-social">
@@ -58,12 +59,12 @@ export default function Footer() {
           <div className="footer-section">
             <h4 className="footer-title">Quick Links</h4>
             <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/venues">Event Venues</Link></li>
-              <li><Link to="/waterpark-in-patna">Waterpark</Link></li>
-              <li><Link to="/birthdays">Birthday Stages</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
+              <li><Link to="/">Jungle Resort Patna Home</Link></li>
+              <li><Link to="/venues">Best Banquet Hall in Patna</Link></li>
+              <li><Link to="/waterpark-in-patna">Best Waterpark in Patna</Link></li>
+              <li><Link to="/birthdays">Birthday Party Venue in Patna</Link></li>
+              <li><Link to="/gallery">Jungle Resort Patna Gallery</Link></li>
+              <li><Link to="/contact">Contact Jungle Resort Patna</Link></li>
             </ul>
           </div>
 
@@ -71,13 +72,28 @@ export default function Footer() {
           <div className="footer-section">
             <h4 className="footer-title">Our Services</h4>
             <ul className="footer-links">
-              <li><Link to="/wedding">Wedding Ceremonies</Link></li>
 
-              <li><Link to="/reception">Reception Parties</Link></li>
-              <li><Link to="/corporateevents">Corporate Events</Link></li>
-              <li><Link to="/birthday">Birthday Celebrations</Link></li>
-              <li><Link to="/Waterpark">Waterpark Tickets</Link></li>
-              <li><Link to="/">Cottage Bookings</Link></li>
+              <li>
+                <Link to="/wedding">Wedding Venue in Patna</Link>
+              </li>
+
+              <li>
+                <Link to="/reception">Reception Party Venue in Patna</Link>
+              </li>
+
+              <li>
+                <Link to="/corporateevents">Corporate Event Venue in Patna</Link>
+              </li>
+
+              <li>
+                <Link to="/birthday">Birthday Party Venue in Patna</Link>
+              </li>
+
+              <li>
+                <Link to="/waterpark-in-patna">Best Waterpark in Patna</Link>
+              </li>
+
+              <li> <Link to="/">Resort Cottage Booking in Patna</Link> </li>
 
             </ul>
           </div>
