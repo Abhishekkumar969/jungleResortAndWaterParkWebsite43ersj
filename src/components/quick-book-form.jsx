@@ -33,6 +33,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
     "Baby Shower",
     "Anniversary",
     "Ring Ceremony",
+    // "FunPark",
     "Pool Party",
     "Kitty Party",
     "Theme Party",
@@ -296,7 +297,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
               }`}
             style={{ marginTop: "5px", whiteSpace: "nowrap" }}
           >
-            Single Day Booking
+            Single Day
           </button>
 
           <button
@@ -306,7 +307,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
               }`}
             style={{ marginTop: "5px", whiteSpace: "nowrap" }}
           >
-            Multi Day Booking
+            Multi Day / Multi Functions
           </button>
 
         </div>

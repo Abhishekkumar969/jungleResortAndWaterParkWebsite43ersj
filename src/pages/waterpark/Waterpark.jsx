@@ -40,30 +40,47 @@ export default function WaterparkPage() {
                 <script type="application/ld+json">
                     {`
 {
-  "@context": "https://schema.org",
-  "@type": "TouristAttraction",
-  "name": "Jungle Resort Water Park",
-  "image": "https://jungleresortpatna.in/WaterParkAds/6.jpeg",
-  "url": "https://jungleresortpatna.in/waterpark-in-patna",
-  "telephone": "+91-9031080903",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
-    "addressLocality": "Patna",
-    "addressRegion": "Bihar",
-    "postalCode": "800009",
-    "addressCountry": "India"
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://jungleresortpatna.in/"
   },
-  "description": "Best water park in Patna with wave pool, rain dance, DJ, slides and family fun activities at Jungle Resort."
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Waterpark",
+   "item": "https://jungleresortpatna.in/waterpark-in-patna"
+  }
+ ]
 }
 `}
                 </script>
 
             </Helmet>
 
-
             <Navbar />
+
+
+
             <TicketPricing />
+
+            <div style={{ display: "flex", justifyContent: "center", color: "#0290d2" }}>
+                <h1>Best Waterpark in Patna</h1>
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "center", color: "#ff00e6", margin: "auto 20px" }}>
+                <p>
+                    Jungle Resort Waterpark is the best waterpark in Patna offering exciting water slides, wave pool,
+                    rain dance, DJ music, and family entertainment. Located in Patna, Bihar, it is the perfect place
+                    for weekend fun, birthday parties, and group outings. Book your tickets online and enjoy the most
+                    thrilling water park experience in Patna.
+                </p>
+            </div>
+
             <Attractions />
             <WaterparkInfo />
             <Footer />

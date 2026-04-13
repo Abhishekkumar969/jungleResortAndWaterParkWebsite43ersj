@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Layout from "./Layout"
 import Home from "./pages/Home"
 
-// import useSecurity from "./components/useSecurity";
+import useSecurity from "./components/useSecurity";
 
 import AuthModal from "./components/AuthModal";
 import CompleteProfile from "./pages/CompleteProfile";
@@ -58,7 +58,7 @@ if ("serviceWorker" in navigator) {
 
 function App() {
 
-  // useSecurity();
+  useSecurity();
 
   return (
     <Router>
