@@ -146,6 +146,9 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+          <button onClick={handleInstall} className="install-btn">
+            Install App
+          </button>
         </div>
       </div>
 
@@ -155,12 +158,12 @@ export default function Footer() {
           <p>
             © 2025 Jungle Resort Patna – Best Wedding Venue & Waterpark
           </p>
-          <button onClick={handleInstall} className="install-btn">
-            Install App
-          </button>
+          <p style={{ fontSize: "18px" }}>
+            This website is designed by -
+            <a style={{ color: "#ff00e1" }} href="https://devservicetech.com"> DevServiceTech</a>
+          </p>
         </div>
       </div>
-
     </footer>
   );
 }
