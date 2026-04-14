@@ -52,8 +52,7 @@ import FloatingContact from "./components/FloatingContact";
 // import BirthdayExploreBtn from "./components/home/BirthdayExploreBtn";
 
 
-import Home from "./pages/Home";
-
+const Home = lazy(() => import("./pages/Home"));
 
 const AuthModal = lazy(() => import("./components/AuthModal"));
 const CompleteProfile = lazy(() => import("./pages/CompleteProfile"));
@@ -119,10 +118,9 @@ function App() {
         <ScrollToTop />
 
 
-
         <Routes>
 
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Suspense fallback={<Loader />}>  <Home /> </Suspense>} />
 
           <Route path="/auth" element={<AuthModal />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
