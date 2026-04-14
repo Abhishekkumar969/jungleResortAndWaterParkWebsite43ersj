@@ -160,7 +160,7 @@ export default function Footer() {
           </p>
           <p style={{ fontSize: "18px" }}>
             This website is designed by -
-            <a style={{ color: "#ff0000", textShadow: "none" }} href="https://devservicetech.com"> DevServiceTech</a>
+            <a style={{ color: "#ffffff", textShadow: "none" }} href="https://devservicetech.com"> DevServiceTech</a>
           </p>
         </div>
       </div>
