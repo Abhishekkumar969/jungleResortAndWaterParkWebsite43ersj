@@ -95,7 +95,7 @@ export default function Navbar() {
           <Link to="/">
 
             <div className="nav-logo">
-              <img src="/images/logo.webp" alt="Jungle Resort Logo" />
+              <img src="/images/logo.webp" alt="Jungle Resort Logo" width={34} height={34} />
             </div>
 
           </Link>
