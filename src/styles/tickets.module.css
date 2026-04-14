@@ -9,7 +9,7 @@
     content   : "";
     position  : absolute;
     inset     : 0;
-    background: url("/public/images/waterpark-main.jpg");
+    background: url("/public/images/waterpark-main.webp");
     z-index   : -2;
 }
 
