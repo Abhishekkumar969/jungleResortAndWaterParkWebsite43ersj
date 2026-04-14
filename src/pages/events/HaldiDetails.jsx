@@ -12,7 +12,7 @@ export default function WeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,16 +42,16 @@ export default function WeddingDetails() {
     }, []);
 
     const media = [
-        // { type: "image", category: "Photos", url: "/eventPics/Haldi/1aeeba6687b67e0795cb6543f33dcffd.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 5.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/1aeeba6687b67e0795cb6543f33dcffd.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 5.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Haldi/3.jpeg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Haldi/jungleresort2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 2.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/jungleresort2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 2.webp" },
 
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 3.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/e0aae3b40c464678197025282445e212.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Haldi/e0aae3b40c464678197025282445e212.webp" },
 
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
@@ -84,7 +84,7 @@ export default function WeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Haldi Ceremony Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Celebrate colorful Haldi ceremony with decoration & fun at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/haldi.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/haldi.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/haldi" />
                 <meta property="og:type" content="website" />
 
@@ -98,7 +98,7 @@ export default function WeddingDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Haldi Ceremony Venue",
-  "image": "https://jungleresortpatna.in/images/haldi.jpg",
+  "image": "https://jungleresortpatna.in/images/haldi.webp",
   "url": "https://jungleresortpatna.in/haldi",
   "telephone": "+91-9065383838",
   "address": {

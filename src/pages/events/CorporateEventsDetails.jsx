@@ -13,7 +13,7 @@ export default function CorporateEventsDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -43,13 +43,13 @@ export default function CorporateEventsDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event1.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event2.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event3.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event7.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event1.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event2.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event7.webp" },
     ];
 
     const filtered = media;
@@ -73,7 +73,7 @@ export default function CorporateEventsDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Corporate Event Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Plan corporate events, meetings & team outings at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/corporateevents" />
                 <meta property="og:type" content="website" />
 
@@ -87,7 +87,7 @@ export default function CorporateEventsDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Corporate Event Venue",
-  "image": "https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.jpg",
+  "image": "https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.webp",
   "url": "https://jungleresortpatna.in/corporateevents",
   "telephone": "+91-9065383838",
   "address": {
@@ -109,7 +109,7 @@ export default function CorporateEventsDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/CorporateEvent7.jpg)" }}
+                    style={{ backgroundImage: "url(/images/CorporateEvent7.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="footer-brand">
 
             <div className="footer-logo">
-              <img src="/images/logo.png" alt="Jungle Resort Logo" />
+              <img src="/images/logo.webp" alt="Jungle Resort Logo" />
             </div>
 
             <p className="footer-text">

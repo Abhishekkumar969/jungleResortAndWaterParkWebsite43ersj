@@ -12,7 +12,7 @@ export default function RingCeremonyDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,14 +42,14 @@ export default function RingCeremonyDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Theme Party/birthday-princess.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Theme Party/birthday-jungle.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party3.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party4.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party6.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Theme Party/birthday-princess.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Theme Party/birthday-jungle.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party3.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party4.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party7.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Theme Party/Theme Party6.webp" },
     ];
 
     const filtered = media;
@@ -75,7 +75,7 @@ export default function RingCeremonyDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Theme Party Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Enjoy creative theme parties with decoration & fun at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/birthday-princess.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/birthday-princess.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/themeparty" />
                 <meta property="og:type" content="website" />
 
@@ -89,7 +89,7 @@ export default function RingCeremonyDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Theme Party Venue",
-  "image": "https://jungleresortpatna.in/images/birthday-princess.jpg",
+  "image": "https://jungleresortpatna.in/images/birthday-princess.webp",
   "url": "https://jungleresortpatna.in/themeparty",
   "telephone": "+91-9065383838",
   "address": {
@@ -112,7 +112,7 @@ export default function RingCeremonyDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/birthday-princess.jpg)" }}
+                    style={{ backgroundImage: "url(/images/birthday-princess.webp)" }}
                 ></div>
 
                 <div className={styles.pageOverlay}></div>

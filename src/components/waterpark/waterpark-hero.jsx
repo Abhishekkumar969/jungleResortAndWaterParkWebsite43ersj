@@ -8,7 +8,7 @@ export default function WaterparkHero() {
 
             <div className={styles.heroBg}>
                 <img
-                    src="/images/waterpark-main.jpg"
+                    src="/images/waterpark-main.webp"
                     alt="Jungle Paradise Waterpark"
                 />
                 <div className={styles.heroOverlay}></div>

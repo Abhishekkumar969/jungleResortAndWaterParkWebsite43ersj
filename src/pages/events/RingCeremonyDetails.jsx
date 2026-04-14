@@ -12,7 +12,7 @@ export default function RingCeremonyDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,14 +42,14 @@ export default function RingCeremonyDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary3.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary5.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary8.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary5.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary7.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary8.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },

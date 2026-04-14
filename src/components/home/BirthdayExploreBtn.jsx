@@ -10,7 +10,7 @@ export default function BirthdayHero() {
             <div className={styles.hero}>
                 <div className={styles.background}>
                     <img
-                        src="/images/birthday-stage.jpg"
+                        src="/images/birthday-stage.webp"
                         alt="Birthday celebration"
                         className={styles.image}
                     />

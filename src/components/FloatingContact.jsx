@@ -15,7 +15,7 @@ export default function FloatingContact() {
                 rel="noopener noreferrer"
                 className="floating-whatsapp"
             >
-                <img src="/images/whatsapp.png" alt="WhatsApp" className="whatsapp-icon" />
+                <img src="/images/whatsapp.webp" alt="WhatsApp" className="whatsapp-icon" />
             </a>
 
         </div>

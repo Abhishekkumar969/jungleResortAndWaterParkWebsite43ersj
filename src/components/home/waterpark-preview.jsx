@@ -16,15 +16,12 @@ export default function WaterparkPreview() {
         <section className={styles.waterparkSection}>
 
             {/* Background Video */}
-            <video
+            <img
+                src="/WaterParkAds/1.webp"
+                alt="Waterpark Background"
                 className={styles.waterparkVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-            >
-                <source src="/videos/WaveVideo.mp4" type="video/mp4" />
-            </video>
+                loading="eager"
+            />
 
             {/* Overlay */}
             <div className={styles.waterparkOverlay}></div>
@@ -131,11 +128,11 @@ export default function WaterparkPreview() {
                     {/* RIGHT IMAGES */}
                     <div className={styles.waterparkImages}>
                         <div className={styles.waterparkImgLarge}>
-                            <img src="/WaterParkAds/6.jpeg" alt="Waterpark overview" />
+                            <img src="/WaterParkAds/6.webp" alt="Waterpark overview" />
                         </div>
                         <div className={styles.waterparkImgSmall}>
-                            <img src="/WaterParkAds/1.jpeg" alt="Wave pool" />
-                            <img src="/WaterParkAds/2.jpeg" alt="Water slides" />
+                            <img src="/WaterParkAds/1.webp" alt="Wave pool" />
+                            <img src="/WaterParkAds/2.webp" alt="Water slides" />
                         </div>
                         <div className={styles.waterparkDecor}></div>
                     </div>

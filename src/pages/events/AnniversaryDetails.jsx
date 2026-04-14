@@ -12,7 +12,7 @@ export default function AnniversaryDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,14 +42,14 @@ export default function AnniversaryDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary2.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary3.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary5.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary8.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary2.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary5.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary7.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary8.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
@@ -80,7 +80,7 @@ export default function AnniversaryDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Anniversary Celebration Place in Patna | Jungle Resort" />
                 <meta property="og:description" content="Celebrate your anniversary with DJ, pool & decoration at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Anniversary/Anniversary.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Anniversary/Anniversary.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/anniversary" />
                 <meta property="og:type" content="website" />
 
@@ -94,7 +94,7 @@ export default function AnniversaryDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Anniversary Celebration",
-  "image": "https://jungleresortpatna.in/eventPics/Anniversary/Anniversary.jpg",
+  "image": "https://jungleresortpatna.in/eventPics/Anniversary/Anniversary.webp",
   "url": "https://jungleresortpatna.in/anniversary",
   "telephone": "+91-9065383838",
   "address": {
@@ -116,7 +116,7 @@ export default function AnniversaryDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/eventPics/Anniversary/Anniversary7.jpg)" }}
+                    style={{ backgroundImage: "url(/eventPics/Anniversary/Anniversary7.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

@@ -5,7 +5,7 @@ export default function ContactHero() {
     return (
         <section className={styles.hero}>
             <img
-                src="/images/hero-resort.jpg"
+                src="/images/hero-resort.webp"
                 alt="Contact Jungle Paradise"
                 className={styles.image}
             />

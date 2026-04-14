@@ -12,7 +12,7 @@ export default function PoolPartyDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -43,16 +43,16 @@ export default function PoolPartyDetails() {
 
     const media = [
         { type: "image", category: "Photos", url: "/eventPics/Pool Party/waterparkjungleresort.jpeg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/3.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/4.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/3.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/4.webp" },
 
-        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/6.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/7.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/8.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/6.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/7.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/8.webp" },
 
-        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/10.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/11.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/12.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/10.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/11.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/12.webp" },
     ];
 
     const filtered = media;

@@ -12,7 +12,7 @@ export default function WeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,11 +42,11 @@ export default function WeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort1.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort1.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/unnamjms.png" },
-        { type: "image", category: "Photos", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.webp" },
         { type: "image", category: "Photos", url: "/eventPics/DestWed/image10(57).jpeg" },
         { type: "image", category: "Photos", url: "/eventPics/DestWed/hero.webp" },
         { type: "image", category: "Photos", url: "/eventPics/DestWed/1485498619_595x400.png" },
@@ -74,7 +74,7 @@ export default function WeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Get Together Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Enjoy get together party with DJ, pool & fun at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/gettogether.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/gettogether.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/gettogether" />
                 <meta property="og:type" content="website" />
 
@@ -88,7 +88,7 @@ export default function WeddingDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Get Together Venue",
-  "image": "https://jungleresortpatna.in/images/gettogether.jpg",
+  "image": "https://jungleresortpatna.in/images/gettogether.webp",
   "url": "https://jungleresortpatna.in/gettogether",
   "telephone": "+91-9065383838",
   "address": {
@@ -110,7 +110,7 @@ export default function WeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/gettogether.jpg)" }}
+                    style={{ backgroundImage: "url(/images/gettogether.webp)" }}
                 ></div>
 
                 <div className={styles.pageOverlay}></div>

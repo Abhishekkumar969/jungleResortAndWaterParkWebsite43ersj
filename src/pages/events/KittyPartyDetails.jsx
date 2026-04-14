@@ -12,7 +12,7 @@ export default function WeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,14 +42,14 @@ export default function WeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party1.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party3.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party7.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party1.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Kitty Party/Kitty Party7.webp" },
 
     ];
 
@@ -75,7 +75,7 @@ export default function WeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Kitty Party Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Plan your kitty party with DJ, pool & fun at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/kittyparty.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/kittyparty.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/kittyparty" />
                 <meta property="og:type" content="website" />
 
@@ -89,7 +89,7 @@ export default function WeddingDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Kitty Party Venue",
-  "image": "https://jungleresortpatna.in/images/kittyparty.jpg",
+  "image": "https://jungleresortpatna.in/images/kittyparty.webp",
   "url": "https://jungleresortpatna.in/kittyparty",
   "telephone": "+91-9065383838",
   "address": {
@@ -112,7 +112,7 @@ export default function WeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/kittyparty.jpg)" }}
+                    style={{ backgroundImage: "url(/images/kittyparty.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

@@ -12,22 +12,22 @@ export default function EventsCategorySection() {
                 <div className="event-cards-grid">
                     {[
                         {
-                            img: "/images/weddings4.jpg",
+                            img: "/images/weddings4.webp",
                             title: "Wedding",
                             url: "/event/wedding"
                         },
                         {
-                            img: "/images/reception2-300x300.png",
+                            img: "/images/reception2-300x300.webp",
                             title: "Reception",
                             url: "/event/reception"
                         },
                         {
-                            img: "/images/b1-300x300.png",
+                            img: "/images/b1-300x300.webp",
                             title: "Birthday",
                             url: "/event/birthday"
                         },
                         {
-                            img: "/images/corporate-2.png",
+                            img: "/images/corporate-2.webp",
                             title: "Corporate Event",
                             url: "/event/corporate-event"
                         }
@@ -51,18 +51,18 @@ export default function EventsCategorySection() {
                 <div className="event-cards-grid">
                     {[
                         {
-                            img: "/images/New-Project-300x300.png",
+                            img: "/images/New-Project-300x300.webp",
                             title: "Baby Shower",
                             url: "/event/BabyShowerDetails",
                             type: "explore"
                         },
                         {
-                            img: "/images/New-Project-1-300x300.png",
+                            img: "/images/New-Project-1-300x300.webp",
                             title: "Ring Ceremony",
                             type: "phone"
                         },
                         {
-                            img: "/images/New-Project-2-300x300.png",
+                            img: "/images/New-Project-2-300x300.webp",
                             title: "Photography",
                             type: "phone"
                         }

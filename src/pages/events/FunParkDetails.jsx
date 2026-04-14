@@ -12,7 +12,7 @@ export default function DestinationWeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,15 +42,15 @@ export default function DestinationWeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/3.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/8.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/10.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/11.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/12.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/7.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/8.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/10.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/11.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/12.webp" },
     ];
 
     const filtered = media;
@@ -75,7 +75,7 @@ export default function DestinationWeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Fun Park in Patna | Jungle Resort & Waterpark" />
                 <meta property="og:description" content="Enjoy fun rides, water park & DJ at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/funpark.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/funpark.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/funpark" />
                 <meta property="og:type" content="website" />
 
@@ -89,7 +89,7 @@ export default function DestinationWeddingDetails() {
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
   "name": "Jungle Resort Fun Park",
-  "image": "https://jungleresortpatna.in/images/funpark.jpg",
+  "image": "https://jungleresortpatna.in/images/funpark.webp",
   "url": "https://jungleresortpatna.in/funpark",
   "telephone": "+91-9065383838",
   "address": {
@@ -112,7 +112,7 @@ export default function DestinationWeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/funpark.jpg)" }}
+                    style={{ backgroundImage: "url(/images/funpark.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

@@ -69,13 +69,13 @@ export default function AboutSection() {
             <div className={styles.aboutImages}>
 
               <div className={styles.imageColumn}>
-                <img src="/images/venue-wedding.jpg" alt="Wedding venue" className={styles.imgLarge} />
-                <img src="/images/waterpark-main.jpg" alt="Waterpark" className={styles.imgSmall} />
+                <img src="/images/venue-wedding.webp" alt="Wedding venue" className={styles.imgLarge} />
+                <img src="/images/waterpark-main.webp" alt="Waterpark" className={styles.imgSmall} />
               </div>
 
               <div className={`${styles.imageColumn} ${styles.topSpace}`}>
-                <img src="/images/birthday-stage.jpg" alt="Birthday celebration" className={styles.imgSmall} />
-                <img src="/images/venue-reception.jpg" alt="Reception hall" className={styles.imgLarge} />
+                <img src="/images/birthday-stage.webp" alt="Birthday celebration" className={styles.imgSmall} />
+                <img src="/images/venue-reception.webp" alt="Reception hall" className={styles.imgLarge} />
               </div>
 
             </div>

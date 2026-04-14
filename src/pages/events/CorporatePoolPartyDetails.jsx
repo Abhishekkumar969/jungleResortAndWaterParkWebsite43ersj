@@ -12,7 +12,7 @@ export default function WeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,14 +42,14 @@ export default function WeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party3.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party1.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party7.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/Pool Party1.webp" },
     ];
 
     const filtered = media;
@@ -74,7 +74,7 @@ export default function WeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Corporate Pool Party Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Enjoy pool party with DJ, rain dance & team fun at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Pool Party/Pool Party.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Pool Party/Pool Party.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/corporatepoolparty" />
                 <meta property="og:type" content="website" />
 
@@ -88,7 +88,7 @@ export default function WeddingDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Corporate Pool Party",
-  "image": "https://jungleresortpatna.in/eventPics/Pool Party/Pool Party.jpg",
+  "image": "https://jungleresortpatna.in/eventPics/Pool Party/Pool Party.webp",
   "url": "https://jungleresortpatna.in/corporatepoolparty",
   "telephone": "+91-9065383838",
   "address": {
@@ -111,7 +111,7 @@ export default function WeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/PoolParty6.jpg)" }}
+                    style={{ backgroundImage: "url(/images/PoolParty6.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

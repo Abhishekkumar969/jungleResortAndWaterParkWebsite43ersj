@@ -6,7 +6,7 @@ const stages = [
     {
         name: "Superhero Arena",
         theme: "Action & Adventure",
-        image: "/images/birthday-superhero.jpg",
+        image: "/images/birthday-superhero.webp",
         description:
             "Action-packed superhero themed stage with comic book backdrops, photo booths, and hero activities!",
         popular: true,
@@ -14,7 +14,7 @@ const stages = [
     {
         name: "Princess Palace",
         theme: "Fairy Tale Magic",
-        image: "/images/birthday-princess.jpg",
+        image: "/images/birthday-princess.webp",
         description:
             "Magical princess themed stage with castle decorations, tiaras, and royal activities!",
         popular: true,
@@ -22,7 +22,7 @@ const stages = [
     {
         name: "Jungle Safari",
         theme: "Wild Adventure",
-        image: "/images/birthday-jungle.jpg",
+        image: "/images/birthday-jungle.webp",
         description:
             "Adventure-filled jungle themed stage with animal decorations and safari activities!",
         popular: false,
@@ -30,7 +30,7 @@ const stages = [
     {
         name: "Underwater World",
         theme: "Ocean Adventure",
-        image: "/images/waterpark-wave.jpg",
+        image: "/images/waterpark-wave.webp",
         description:
             "Dive into fun with our ocean-themed stage featuring sea creatures and marine decor!",
         popular: false,
@@ -38,7 +38,7 @@ const stages = [
     {
         name: "Space Galaxy",
         theme: "Cosmic Fun",
-        image: "/images/birthday-stage.jpg",
+        image: "/images/birthday-stage.webp",
         description:
             "Blast off to fun with our space-themed stage featuring planets, rockets, and stars!",
         popular: false,
@@ -46,7 +46,7 @@ const stages = [
     {
         name: "Carnival Fiesta",
         theme: "Festival Fun",
-        image: "/images/birthday-stage.jpg",
+        image: "/images/birthday-stage.webp",
         description:
             "Colorful carnival themed stage with games, prizes, and festive decorations!",
         popular: true,

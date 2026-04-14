@@ -12,7 +12,7 @@ export default function DestinationWeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,11 +42,11 @@ export default function DestinationWeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/3f4ce4265b717aacce9b6b8378018292.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/132.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/unnamed.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/3f4ce4265b717aacce9b6b8378018292.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/132.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/unnamed.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.webp" },
         { type: "image", category: "Photos", url: "/eventPics/DestWed/image10(57).jpeg" },
         { type: "image", category: "Photos", url: "/eventPics/DestWed/hero.webp" },
         { type: "image", category: "Photos", url: "/eventPics/DestWed/1485498619_595x400.png" },
@@ -118,7 +118,7 @@ export default function DestinationWeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/gallery-1.jpg)" }}
+                    style={{ backgroundImage: "url(/images/gallery-1.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

@@ -12,7 +12,7 @@ export default function WeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,14 +42,14 @@ export default function WeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event6.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event3.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event1.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event2.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event6.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event7.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event1.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event2.webp" },
     ];
 
     const filtered = media;
@@ -73,7 +73,7 @@ export default function WeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Corporate Party Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Plan your corporate party with DJ, pool & premium setup at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/corporateparty" />
                 <meta property="og:type" content="website" />
 
@@ -87,7 +87,7 @@ export default function WeddingDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Corporate Party Venue",
-  "image": "https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.jpg",
+  "image": "https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.webp",
   "url": "https://jungleresortpatna.in/corporateparty",
   "telephone": "+91-9065383838",
   "address": {
@@ -109,7 +109,7 @@ export default function WeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/CorporateParty.jpg)" }}
+                    style={{ backgroundImage: "url(/images/CorporateParty.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

@@ -5,60 +5,60 @@ import styles from "../../styles/events-section.module.css";
 const events = [
     {
         title: "DESTINATION WEDDING",
-        image: "/images/gallery-1.jpg",
+        image: "/images/gallery-1.webp",
         href: "/destinationwedding"
     },
     {
         title: "WEDDING",
-        image: "/images/venue-wedding.jpg",
+        image: "/images/venue-wedding.webp",
         href: "/wedding"
     },
     {
         title: "HALDI",
-        image: "/eventPics/Haldi/3.jpeg",
+        image: "/eventPics/Haldi/3.webp",
         href: "/haldi"
     },
     {
         title: "MEHNDI",
-        image: "/images/mehndi.jpg",
+        image: "/images/mehndi.webp",
         href: "/mehndi"
     },
     {
         title: "SANGEET",
-        image: "/images/sangeet.jpg",
+        image: "/images/sangeet.webp",
         href: "/sangeet"
     },
     {
         title: "RECEPTION",
-        image: "/images/Receptionimages8kforopenlawn4.jpg",
+        image: "/images/Receptionimages8kforopenlawn4.webp",
         href: "/reception"
     },
     {
         title: "BIRTHDAY",
-        image: "/images/birthday-stage.jpg",
+        image: "/images/birthday-stage.webp",
         href: "/birthday"
     }, {
         title: "ANNIVERSARY",
-        image: "/eventPics/Anniversary/Anniversary7.jpg",
+        image: "/eventPics/Anniversary/Anniversary7.webp",
         href: "/anniversary"
     }, {
         title: "RING CEREMONY",
-        image: "/images/ringceremony.png",
+        image: "/images/ringceremony.webp",
         href: "/ringceremony"
     },
     {
         title: "CORPORATE EVENT",
-        image: "/images/CorporateEvent7.jpg",
+        image: "/images/CorporateEvent7.webp",
         href: "/corporateevents"
     },
     {
         title: "THEME PARTY",
-        image: "/images/birthday-princess.jpg",
+        image: "/images/birthday-princess.webp",
         href: "/themeparty"
     },
     {
         title: "POOL PARTY",
-        image: "/eventPics/Pool Party/waterparkjungleresort.jpeg",
+        image: "/eventPics/Pool Party/waterparkjungleresort.webp",
         href: "/poolparty"
     }
 ];

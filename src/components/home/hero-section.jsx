@@ -19,10 +19,9 @@ export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { type: "images", src: "/videos/4.jpeg" },
-    { type: "images", src: "/videos/3.jpeg" },
-    { type: "images", src: "/videos/6.jpeg" },
-    { type: "video", src: "/videos/backgroundVdo.mp4" },
+    { src: "/videos/hero.webp" },
+    { src: "/videos/hero3.webp" },
+    { src: "/videos/hero6.webp" }
   ];
 
   useEffect(() => {
@@ -116,22 +115,12 @@ export default function HeroSection() {
         >
           {slides.map((slide, index) => (
             <div className={styles.slide} key={index}>
-              {slide.type === "video" ? (
-                <video
-                  src={slide.src}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className={styles.heroVideo}
-                />
-              ) : (
-                <img
-                  src={slide.src}
-                  alt="hero"
-                  className={styles.heroVideo}
-                />
-              )}
+              <img
+                src={slide.src}
+                alt="hero"
+                className={styles.heroVideo}
+                loading={index === 0 ? "eager" : "lazy"} // 🔥 important
+              />
             </div>
           ))}
         </div>

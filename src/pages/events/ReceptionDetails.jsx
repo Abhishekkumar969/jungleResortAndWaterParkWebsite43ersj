@@ -12,7 +12,7 @@ export default function ReceptionDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,15 +42,15 @@ export default function ReceptionDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 3.jpg" },
-// /eventPics/Reception/Reception images 8k for open lawn 4.jpg
-        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 7.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 8.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 3.webp" },
+// /eventPics/Reception/Reception images 8k for open lawn 4.webp
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 7.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Reception/Reception images 8k for open lawn 8.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
@@ -82,7 +82,7 @@ export default function ReceptionDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Wedding Reception Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Celebrate your wedding reception with luxury setup & lawn at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/venue-reception.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/venue-reception.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/reception" />
                 <meta property="og:type" content="website" />
 
@@ -96,7 +96,7 @@ export default function ReceptionDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Reception Venue",
-  "image": "https://jungleresortpatna.in/images/venue-reception.jpg",
+  "image": "https://jungleresortpatna.in/images/venue-reception.webp",
   "url": "https://jungleresortpatna.in/reception",
   "telephone": "+91-9065383838",
   "address": {
@@ -118,7 +118,7 @@ export default function ReceptionDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/Receptionimages8kforopenlawn4.jpg)" }}
+                    style={{ backgroundImage: "url(/images/Receptionimages8kforopenlawn4.webp)" }}
                 ></div>
 
                 <div className={styles.pageOverlay}></div>

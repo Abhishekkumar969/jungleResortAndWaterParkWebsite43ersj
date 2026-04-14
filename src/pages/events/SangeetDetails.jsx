@@ -12,7 +12,7 @@ export default function WeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -44,22 +44,22 @@ export default function WeddingDetails() {
     const media = [
 
 
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 6.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 7.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 8.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 6.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 7.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 8.webp" },
 
-        // { type: "image", category: "Photos", url: "/eventPics/Haldi/1aeeba6687b67e0795cb6543f33dcffd.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 5.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Haldi/e0aae3b40c464678197025282445e212.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 2.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/1aeeba6687b67e0795cb6543f33dcffd.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 5.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/e0aae3b40c464678197025282445e212.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 2.webp" },
 
-        // { type: "image", category: "Photos", url: "/images/weddings1.jpg" },
-        // { type: "image", category: "Photos", url: "/images/weddings2.jpg" },
-        // { type: "image", category: "Photos", url: "/images/weddings3.jpg" },
-        // { type: "image", category: "Photos", url: "/images/weddings4.jpg" },
-        // { type: "image", category: "Photos", url: "/images/weddings5.jpg" },
-        // { type: "image", category: "Photos", url: "/images/weddings6.jpg" },
+        // { type: "image", category: "Photos", url: "/images/weddings1.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings2.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings3.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings4.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings5.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings6.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
@@ -91,7 +91,7 @@ export default function WeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Sangeet Ceremony Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Celebrate your Sangeet night with DJ, music & lighting at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/sangeet.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/sangeet.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/sangeet" />
                 <meta property="og:type" content="website" />
 
@@ -105,7 +105,7 @@ export default function WeddingDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Sangeet Ceremony Venue",
-  "image": "https://jungleresortpatna.in/images/sangeet.jpg",
+  "image": "https://jungleresortpatna.in/images/sangeet.webp",
   "url": "https://jungleresortpatna.in/sangeet",
   "telephone": "+91-9065383838",
   "address": {
@@ -128,7 +128,7 @@ export default function WeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/sangeet.jpg)" }}
+                    style={{ backgroundImage: "url(/images/sangeet.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

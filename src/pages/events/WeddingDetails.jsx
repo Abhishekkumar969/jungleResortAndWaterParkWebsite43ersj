@@ -11,7 +11,7 @@ export default function WeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -41,14 +41,14 @@ export default function WeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Wed/venue-wedding.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/venue-wedding.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/unnamed.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.avif" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.png" },
-        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort1.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort1.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/unnamjms.png" },
-        { type: "image", category: "Photos", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
@@ -80,7 +80,7 @@ export default function WeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Wedding Venue in Patna | Jungle Resort & Banquet Hall" />
                 <meta property="og:description" content="Celebrate your wedding with luxury lawn & banquet hall at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Wed/venue-wedding.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/wedding" />
                 <meta property="og:type" content="website" />
 
@@ -94,7 +94,7 @@ export default function WeddingDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Wedding Venue",
-  "image": "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.jpg",
+  "image": "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
   "url": "https://jungleresortpatna.in/wedding",
   "telephone": "+91-9065383838",
   "address": {
@@ -116,7 +116,7 @@ export default function WeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/venue-wedding.jpg)" }}
+                    style={{ backgroundImage: "url(/images/venue-wedding.webp)" }}
                 ></div>
 
                 <div className={styles.pageOverlay}></div>

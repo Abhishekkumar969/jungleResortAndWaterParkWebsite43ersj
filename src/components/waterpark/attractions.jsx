@@ -4,26 +4,26 @@ import styles from "../../styles/attractions.module.css";
 const attractions = [
   {
     name: "WaterParkAds1",
-    image: "/WaterParkAds/1.jpeg",
+    image: "/WaterParkAds/1.webp",
   },
   {
     name: "WaterParkAds2",
-    image: "/WaterParkAds/2.jpeg",
+    image: "/WaterParkAds/2.webp",
   }
 ];
 
 const attractions2 = [
   {
     name: "WaterParkAds3",
-    image: "/WaterParkAds/6.jpeg",
+    image: "/WaterParkAds/6.webp",
   },
   {
     name: "WaterParkAds4",
-    image: "/WaterParkAds/7.jpeg",
+    image: "/WaterParkAds/7.webp",
   },
   {
     name: "WaterParkAds5",
-    image: "/WaterParkAds/4.jpeg",
+    image: "/WaterParkAds/4.webp",
   },
 
 ];

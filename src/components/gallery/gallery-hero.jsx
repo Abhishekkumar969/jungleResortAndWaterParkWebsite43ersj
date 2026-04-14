@@ -5,7 +5,7 @@ export default function GalleryHero() {
     return (
         <section className={styles.hero}>
             <img
-                src="/eventPics/Wed/jungle-resort-kumhrar-patna.jpg"
+                src="/eventPics/Wed/jungle-resort-kumhrar-patna.webp"
                 alt="Jungle Paradise Gallery"
                 className={styles.image}
             />

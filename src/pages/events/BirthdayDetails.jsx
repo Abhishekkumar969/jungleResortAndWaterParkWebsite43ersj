@@ -12,7 +12,7 @@ export default function BirthdayDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,18 +42,18 @@ export default function BirthdayDetails() {
     }, []);
 
     const media = [
-        // { type: "image", category: "Photos", url: "/eventPics/Birthday/7.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Birthday/10.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Birthday/1.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday7.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Birthday/2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday8.jpg" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/7.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/10.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/1.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday7.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday8.webp" },
 
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-jungle.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-princess.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-stage.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-jungle.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-princess.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-stage.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
@@ -82,7 +82,7 @@ export default function BirthdayDetails() {
 
                 <meta property="og:title" content="Best Birthday Party Place in Patna | Jungle Resort" />
                 <meta property="og:description" content="Celebrate birthday with DJ, pool party & decoration at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Birthday/7.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Birthday/7.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/birthday" />
                 <meta property="og:type" content="website" />
                 <link rel="canonical" href="https://jungleresortpatna.in/birthday" />
@@ -93,7 +93,7 @@ export default function BirthdayDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Birthday Party",
-  "image": "https://jungleresortpatna.in/eventPics/Birthday/7.jpg",
+  "image": "https://jungleresortpatna.in/eventPics/Birthday/7.webp",
   "url": "https://jungleresortpatna.in/birthday",
   "telephone": "+91-9065383838",
   "address": {
@@ -117,7 +117,7 @@ export default function BirthdayDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/birthday-stage.jpg)" }}
+                    style={{ backgroundImage: "url(/images/birthday-stage.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

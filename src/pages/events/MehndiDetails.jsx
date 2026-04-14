@@ -12,7 +12,7 @@ export default function WeddingDetails() {
 
     const getYouTubeThumbnail = (url) => {
         const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
     };
 
     const itemRefs = useRef([]);
@@ -42,14 +42,14 @@ export default function WeddingDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 2.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 3.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 4.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 5.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 6.jpg" },
-        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 7.jpg" },
-        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 8.jpg" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 3.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 7.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 8.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
@@ -81,7 +81,7 @@ export default function WeddingDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Mehndi Ceremony Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Celebrate colorful Mehndi ceremony with music & decoration at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/mehndi.jpg" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/mehndi.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/mehndi" />
                 <meta property="og:type" content="website" />
 
@@ -95,7 +95,7 @@ export default function WeddingDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Mehndi Ceremony Venue",
-  "image": "https://jungleresortpatna.in/images/mehndi.jpg",
+  "image": "https://jungleresortpatna.in/images/mehndi.webp",
   "url": "https://jungleresortpatna.in/mehndi",
   "telephone": "+91-9065383838",
   "address": {
@@ -120,7 +120,7 @@ export default function WeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/mehndi.jpg)" }}
+                    style={{ backgroundImage: "url(/images/mehndi.webp)" }}
                 ></div>
                 <div className={styles.pageOverlay}></div>
 

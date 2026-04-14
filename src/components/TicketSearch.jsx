@@ -312,7 +312,7 @@ export default function TicketSearch() {
                                         <div className={styles.ticketContent}>
 
                                             <div className={styles.ticketlogo}>
-                                                <img src="../../images/logo.png" alt="Jungle Resort Logo" />
+                                                <img src="../../images/logo.webp" alt="Jungle Resort Logo" />
                                             </div>
 
                                             <div className={styles.ticketCardDetails}>
