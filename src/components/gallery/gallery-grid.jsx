@@ -9,7 +9,7 @@ const galleryImages = [
     { src: "/eventPics/Pool Party/waterparkjungleresort.webp", category: "Waterpark", title: "Main Waterpark Area" },
     { src: "/eventPics/Wed/venue-wedding.webp", category: "Weddings", title: "Traditional Wedding Setup" },
     // { src: "/eventPics/Pool Party/waterparkjungleresort.webp", category: "Waterpark", title: "Family Fun Day" },
-    { src: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.avif", category: "Weddings", title: "Reception Dinner" },
+    { src: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp", category: "Weddings", title: "Reception Dinner" },
     { src: "/images/birthday-stage.webp", category: "Birthdays", title: "Birthday Stage Decor" },
     { src: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.webp", category: "Weddings", title: "Elegant Reception Hall" },
     // { src: "/images/waterpark-wave.webp", category: "Waterpark", title: "Wave Pool Fun" },

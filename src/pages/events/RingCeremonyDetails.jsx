@@ -81,7 +81,7 @@ export default function RingCeremonyDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Ring Ceremony Venue in Patna | Jungle Resort" />
                 <meta property="og:description" content="Celebrate your ring ceremony with luxury setup & decoration at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/ringceremony.png" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/ringceremony.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/ringceremony" />
                 <meta property="og:type" content="website" />
 
@@ -95,7 +95,7 @@ export default function RingCeremonyDetails() {
   "@context": "https://schema.org",
   "@type": "EventVenue",
   "name": "Jungle Resort Ring Ceremony Venue",
-  "image": "https://jungleresortpatna.in/images/ringceremony.png",
+  "image": "https://jungleresortpatna.in/images/ringceremony.webp",
   "url": "https://jungleresortpatna.in/ringceremony",
   "telephone": "+91-9065383838",
   "address": {
@@ -118,7 +118,7 @@ export default function RingCeremonyDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/ringceremony.png)" }}
+                    style={{ backgroundImage: "url(/images/ringceremony.webp)" }}
                 ></div>
 
                 <div className={styles.pageOverlay}></div>

@@ -135,20 +135,6 @@ export default function WeddingDetails() {
                             <h1 className={styles.heroTitle}>
                                 Best <span>Mehndi Ceremony</span> Venue in Patna
                             </h1>
-
-                            <h2>Celebrate Mehndi Ceremony at Jungle Resort Patna</h2>
-
-                            <p>
-                                Jungle Resort Patna offers the best Mehndi ceremony venue in Patna with vibrant
-                                decorations, music, dance, and a joyful atmosphere. Our spacious banquet halls
-                                and open lawn areas are perfect for hosting traditional Mehndi functions.
-                            </p>
-
-                            <p>
-                                We provide complete event planning including Mehndi decor, catering services,
-                                DJ music, and customized themes. Whether it’s an intimate gathering or a grand
-                                celebration, Jungle Resort ensures a memorable Mehndi experience in Patna.
-                            </p>
                         </div>
 
                         <div className={styles.heroRight}>

@@ -44,7 +44,7 @@ export default function WeddingDetails() {
     const media = [
         // { type: "image", category: "Photos", url: "/eventPics/Haldi/1aeeba6687b67e0795cb6543f33dcffd.webp" },
         // { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 5.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/Haldi/3.jpeg" },
+        { type: "image", category: "Photos", url: "/eventPics/Haldi/3.webp" },
         // { type: "image", category: "Photos", url: "/eventPics/Haldi/jungleresort2.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 2.webp" },
@@ -120,7 +120,7 @@ export default function WeddingDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/eventPics/Haldi/3.jpeg)" }}
+                    style={{ backgroundImage: "url(/eventPics/Haldi/3.webp)" }}
                 ></div>
                 
                 <div className={styles.pageOverlay}></div>

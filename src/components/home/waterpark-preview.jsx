@@ -15,16 +15,13 @@ export default function WaterparkPreview() {
     return (
         <section className={styles.waterparkSection}>
 
-            {/* Background Video */}
-            <video
+            {/* Background Img */}
+            <img
+                src="/videos/waterWave.webp"
+                alt="Water Wave"
                 className={styles.waterparkVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-            >
-                <source src="/videos/WaveVideo.mp4" type="video/mp4" />
-            </video>
+                loading="eager"
+            />
 
             {/* Overlay */}
             <div className={styles.waterparkOverlay}></div>

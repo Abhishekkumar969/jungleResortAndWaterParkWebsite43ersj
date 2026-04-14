@@ -958,7 +958,6 @@ const blogs = [
 `
     },
 
-
     {
         slug: "best-resort-in-patna",
         title: "Best Resort in Patna (2026 Guide) | Jungle Resort & Water Park",
@@ -1560,7 +1559,6 @@ const blogs = [
 `
     },
 
-
     {
         slug: "luxury-wedding-in-patna",
         title: "Luxury Wedding in Patna (2026 Guide)",
@@ -1694,7 +1692,6 @@ const blogs = [
   <p><strong>Jungle Resort & Water Park</strong> is top choice.</p>
   `
     },
-
 
     {
         slug: "wedding-decoration-in-patna",

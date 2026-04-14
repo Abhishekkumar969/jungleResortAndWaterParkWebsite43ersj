@@ -37,11 +37,13 @@ const events = [
         title: "BIRTHDAY",
         image: "/images/birthday-stage.webp",
         href: "/birthday"
-    }, {
+    },
+    {
         title: "ANNIVERSARY",
         image: "/eventPics/Anniversary/Anniversary7.webp",
         href: "/anniversary"
-    }, {
+    },
+    {
         title: "RING CEREMONY",
         image: "/images/ringceremony.webp",
         href: "/ringceremony"

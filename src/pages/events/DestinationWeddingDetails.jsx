@@ -47,9 +47,9 @@ export default function DestinationWeddingDetails() {
         { type: "image", category: "Photos", url: "/eventPics/DestWed/unnamed.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.webp" },
         { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/image10(57).jpeg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/image10(57).webp" },
         { type: "image", category: "Photos", url: "/eventPics/DestWed/hero.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/1485498619_595x400.png" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/1485498619_595x400.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },

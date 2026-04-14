@@ -42,7 +42,7 @@ export default function PoolPartyDetails() {
     }, []);
 
     const media = [
-        { type: "image", category: "Photos", url: "/eventPics/Pool Party/waterparkjungleresort.jpeg" },
+        { type: "image", category: "Photos", url: "/eventPics/Pool Party/waterparkjungleresort.webp" },
         // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/3.webp" },
         // { type: "image", category: "Photos", url: "/eventPics/Pool Party/New/4.webp" },
 
@@ -77,7 +77,7 @@ export default function PoolPartyDetails() {
                 {/* OG TAGS */}
                 <meta property="og:title" content="Best Pool Party Venue in Patna | Jungle Resort & Waterpark" />
                 <meta property="og:description" content="Enjoy pool party with DJ, rain dance & fun at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/poolparty.png" />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/poolparty.webp" />
                 <meta property="og:url" content="https://jungleresortpatna.in/poolparty" />
                 <meta property="og:type" content="website" />
 
@@ -114,7 +114,7 @@ export default function PoolPartyDetails() {
                 {/* FIXED BACKGROUND */}
                 <div
                     className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/waterparkjungleresort.jpeg)" }}
+                    style={{ backgroundImage: "url(/images/waterparkjungleresort.webp)" }}
                 ></div>
 
                 <div className={styles.pageOverlay}></div>

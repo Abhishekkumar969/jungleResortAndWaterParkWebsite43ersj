@@ -43,11 +43,11 @@ export default function WeddingDetails() {
     const media = [
         { type: "image", category: "Photos", url: "/eventPics/Wed/venue-wedding.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/unnamed.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.avif" },
-        { type: "image", category: "Photos", url: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.png" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort1.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/Wed/unnamjms.png" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/unnamjms.webp" },
         { type: "image", category: "Photos", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp" },
 
         // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
