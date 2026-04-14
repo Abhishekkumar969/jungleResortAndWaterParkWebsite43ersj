@@ -283,7 +283,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
 
   return (
     <div className={styles.quickBook}>
-      <h1>Check - Avalibility</h1>
+      <h3>Check - Avalibility</h3>
 
       <form onSubmit={handleSubmit}>
 
