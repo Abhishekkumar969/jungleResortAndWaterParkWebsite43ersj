@@ -43,7 +43,7 @@ export default function GalleryGrid() {
 
                         <span className={styles.subtitle}>Our Memories</span>
 
-                        <h1 className={styles.title}>Photo Gallery</h1>
+                        <h2 className={styles.title}>Photo Gallery</h2>
 
                     </div>
                 </div>

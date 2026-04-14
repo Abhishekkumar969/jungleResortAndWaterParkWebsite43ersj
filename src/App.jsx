@@ -50,6 +50,8 @@ import FloatingContact from "./components/FloatingContact";
 
 // import BirthdayExplore from "./components/home/BirthdayExplore";
 // import BirthdayExploreBtn from "./components/home/BirthdayExploreBtn";
+import Blog from "./pages/Blog";
+import BlogDetails from "./pages/BlogDetails";
 
 
 const Home = lazy(() => import("./pages/Home"));
@@ -93,6 +95,8 @@ const CorporatePoolPartyDetails = lazy(() => import("./pages/events/CorporatePoo
 
 const BirthdayExplore = lazy(() => import("./components/home/BirthdayExplore"));
 const BirthdayExploreBtn = lazy(() => import("./components/home/BirthdayExploreBtn"));
+
+
 
 // const ScrollToTop = lazy(() => import("./components/ScrollToTop"));
 // const FloatingContact = lazy(() => import("./components/FloatingContact"));
@@ -170,6 +174,9 @@ function App() {
           <Route path="/kittyparty" element={<Suspense fallback={<Loader />}>  <KittyPartyDetails /> </Suspense>} />
           <Route path="/corporateparty" element={<Suspense fallback={<Loader />}>  <CorporatePartyDetails /> </Suspense>} />
           <Route path="/corporatepoolparty" element={<Suspense fallback={<Loader />}>  <CorporatePoolPartyDetails /> </Suspense>} />
+
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetails />} />
 
         </Routes>
 

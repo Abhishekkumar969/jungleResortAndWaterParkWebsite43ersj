@@ -41,6 +41,7 @@ function HomePage() {
       <AboutJungleResortPatna />
       <TestimonialsSection />
       <Contact />
+
       <Footer />
     </main>
   );

@@ -23,9 +23,9 @@ export default function BirthdayHero() {
                         <span>Multiple Themed Stages</span>
                     </div>
 
-                    <h1 className={styles.title}>
+                    <h2 className={styles.title}>
                         Birthday <span>celebration</span>
-                    </h1>
+                    </h2>
 
                     <h2>Best Place for Birthday Party in Patna</h2>
 

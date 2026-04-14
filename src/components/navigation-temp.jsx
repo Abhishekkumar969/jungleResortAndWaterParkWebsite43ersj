@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/AboutUs", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
   { href: "/gallery", label: "GALLERY" },
+  { href: "/blog", label: "BLOG" },
   {
     href: "tel:9065383838",
     label: "ENQUIRY NOW",
