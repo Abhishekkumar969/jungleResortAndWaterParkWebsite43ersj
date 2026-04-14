@@ -112,3 +112,40 @@
         padding: 20px;
     }
 }
+
+
+.servicesSeoContent {
+    margin-top : 40px;
+    line-height: 1.8;
+    font-size  : 16px;
+    color      : #000000;
+}
+
+.servicesSeoContent p {
+    margin-bottom: 18px;
+}
+
+/* 🔥 Bold keywords highlight */
+.servicesSeoContent strong {
+    color      : #000000;
+    font-weight: 600;
+}
+
+/* 🔥 Italic styling */
+.servicesSeoContent i {
+    color: #000000;
+}
+
+/* 🔥 Mobile optimization */
+@media (max-width: 768px) {
+    .servicesSeoContent {
+        font-size  : 15px;
+        line-height: 1.7;
+    }
+}
+
+
+.hiddenSeo {
+    position: absolute;
+    left    : -9999px;
+}
