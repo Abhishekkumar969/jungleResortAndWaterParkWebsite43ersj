@@ -158,10 +158,6 @@ export default function Footer() {
           <p>
             © 2025 Jungle Resort Patna – Best Wedding Venue & Waterpark
           </p>
-          <p style={{ fontSize: "18px" }}>
-            This website is designed by -
-            <a style={{ color: "#ffffff", textShadow: "none" }} href="https://devservicetech.com"> DevServiceTech</a>
-          </p>
         </div>
       </div>
     </footer>
