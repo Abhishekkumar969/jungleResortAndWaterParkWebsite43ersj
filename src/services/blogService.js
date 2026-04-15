@@ -1,9 +1,14 @@
 import { db } from "../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
-// ✅ All blogs
+// ✅ Only published blogs
 export const getAllBlogs = async () => {
-    const snapshot = await getDocs(collection(db, "blogs"));
+    const q = query(
+        collection(db, "blogs"),
+        where("status", "==", "published")
+    );
+
+    const snapshot = await getDocs(q);
 
     return snapshot.docs.map(doc => ({
         id: doc.id,
