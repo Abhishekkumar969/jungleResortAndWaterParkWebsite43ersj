@@ -455,7 +455,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
 
         {/* MOBILE */}
         <div className={styles.formGroup}>
-          <label> MOBILE </label>
+          <label> WHAT'S APP NUMBER </label>
 
           <Phone className={styles.icon} />
           <input
