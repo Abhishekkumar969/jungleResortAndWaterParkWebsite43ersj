@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/navigation-temp";
 import Footer from "../components/footer-temp";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getBlogBySlug } from "../services/blogService";
 import styles from "../styles/blog.module.css";
 
@@ -64,14 +64,19 @@ export default function BlogDetails() {
                 <hr className={styles.blogDivider} />
 
                 <div className={styles.blogCTA}>
-                    Looking for the <strong>best wedding venue in Patna</strong>? Visit{" "}
-                    <Link to="/services">
-                        Jungle Resort & Water Park Services
-                    </Link>
+                    Looking For The <strong>Best Wedding Venue In Patna</strong>? Visit{" "}
+                    <a href="https://www.jungleresortpatna.in/">
+                        Jungle Resort & Water Park
+                    </a>
                 </div>
 
+                <div className={styles.blogCTA}>
+                    Looking For The <strong>Best Water Park In Patna</strong>? Visit{" "}
+                    <a href="https://www.jungleresortpatna.in/waterpark-in-patna">
+                        Jungle Resort & Water Park
+                    </a>
+                </div>
             </div>
-
             <Footer />
         </>
     );

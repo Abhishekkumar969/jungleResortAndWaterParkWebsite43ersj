@@ -6,17 +6,36 @@ export default function BlogCard({ blog }) {
     return (
         <div className={styles.blogCard}>
 
-            <div className={styles.blogCardHead}>
-                <h2>{blog.title}</h2>
-            </div>
+            <Link style={{textDecoration:"none"}}
+                to={`/blog/${blog.slug}`} className={styles.blogCardContent}>
 
-            <p>{blog.metaDescription}</p>
+                {/* LEFT TEXT */}
+                <div className={styles.blogText}>
+                    <div className={styles.blogCardHead}>
+                        <h2>{blog.title}</h2>
+                    </div>
 
-            <Link
-                to={`/blog/${blog.slug}`}
-                className={styles.readMore}
-            >
-                Read More →
+                    <p>{blog.metaDescription}</p>
+
+                    <Link
+                        to={`/blog/${blog.slug}`}
+                        className={styles.readMore}
+                    >
+                        Read More →
+                    </Link>
+                </div>
+
+                {/* RIGHT IMAGE */}
+                {blog.image && (
+                    <div className={styles.blogImageWrapper}>
+                        <img
+                            src={blog.image}
+                            alt={blog.title}
+                            className={styles.blogCardImage}
+                        />
+                    </div>
+                )}
+
             </Link>
 
         </div>
