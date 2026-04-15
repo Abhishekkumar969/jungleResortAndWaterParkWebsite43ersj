@@ -1,16 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navigation-temp";
 import Footer from "../components/footer-temp";
 import { useParams, Link } from "react-router-dom";
-import blogs from "../data/blogData";
+import { getBlogBySlug } from "../services/blogService";
 import styles from "../styles/blog.module.css";
 
 export default function BlogDetails() {
+
     const { slug } = useParams();
+    const [blog, setBlog] = useState(null);
 
-    const blog = blogs.find((b) => b.slug === slug);
+    useEffect(() => {
+        const fetchBlog = async () => {
+            const data = await getBlogBySlug(slug);
+            setBlog(data);
+        };
 
-    if (!blog) return <h2>Blog not found</h2>;
+        fetchBlog();
+    }, [slug]);
+
+    // ✅ SEO
+    useEffect(() => {
+        if (blog) {
+            document.title = blog.metaTitle || blog.title;
+
+            const meta = document.querySelector("meta[name='description']");
+            if (meta) {
+                meta.setAttribute("content", blog.metaDescription || "");
+            }
+        }
+    }, [blog]);
+
+    if (!blog) return <h2>Loading...</h2>;
 
     return (
         <>
@@ -23,8 +44,17 @@ export default function BlogDetails() {
                 </h1>
 
                 <p className={styles.blogDetailsDesc}>
-                    {blog.description}
+                    {blog.metaDescription}
                 </p>
+
+                {/* 🔥 Image from Firestore */}
+                {blog.image && (
+                    <img
+                        src={blog.image}
+                        alt={blog.title}
+                        className={styles.blogImage}
+                    />
+                )}
 
                 <div
                     className={styles.blogContent}
@@ -33,7 +63,6 @@ export default function BlogDetails() {
 
                 <hr className={styles.blogDivider} />
 
-                {/* 🔥 Internal Linking CTA */}
                 <div className={styles.blogCTA}>
                     Looking for the <strong>best wedding venue in Patna</strong>? Visit{" "}
                     <Link to="/services">
@@ -42,7 +71,6 @@ export default function BlogDetails() {
                 </div>
 
             </div>
-
 
             <Footer />
         </>

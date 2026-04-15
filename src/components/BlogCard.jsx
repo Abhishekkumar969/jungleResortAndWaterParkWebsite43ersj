@@ -10,7 +10,7 @@ export default function BlogCard({ blog }) {
                 <h2>{blog.title}</h2>
             </div>
 
-            <p>{blog.description}</p>
+            <p>{blog.metaDescription}</p>
 
             <Link
                 to={`/blog/${blog.slug}`}
