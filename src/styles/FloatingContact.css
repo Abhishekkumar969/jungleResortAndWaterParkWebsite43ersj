@@ -45,3 +45,103 @@
   border         : 2px solid white;
   box-shadow     : 3px 3px 7px rgb(0, 0, 0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav {
+  position       : fixed;
+  bottom         : 0;
+  left           : 0;
+  width          : 100%;
+  background     : #f2f2f2;
+  border-top     : 1px solid #ddd;
+  display        : flex;
+  justify-content: space-around;
+  align-items    : center;
+  padding        : 6px 0;
+  z-index        : 9999;
+  box-shadow     : 0 -2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== ITEMS ===== */
+.bottom-item {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  text-decoration: none;
+  font-size      : 12px;
+  color          : #ff0080;
+  transition     : 0.3s;
+}
+
+/* ICONS */
+.bottom-item svg {
+  margin-bottom: 3px;
+}
+
+/* WHATSAPP IMAGE FIX */
+.bottom-item img {
+  height       : 30px;
+  width        : 30px;
+  object-fit   : contain;
+  margin-bottom: 3px;
+  border-radius: 60px;
+}
+
+
+
+/* circle icon */
+/* .bottom-item.center svg {
+  background: #e91e63;
+  color     : #fff;
+
+  padding      : 10px;
+  border-radius: 50%;
+
+  box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+} */
+
+
+/* label spacing */
+.bottom-item.center span {
+  margin-top: 2px;
+}
+
+
+
+/* ===== REMOVE OLD FLOATING BUTTONS ===== */
+.floating-contact,
+.floating-call,
+.floating-whatsapp {
+  display: none !important;
+}
+
+.bottom-nav {
+  display              : grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bottom-item i {
+  font-size    : 22px;
+  margin-bottom: 3px;
+}

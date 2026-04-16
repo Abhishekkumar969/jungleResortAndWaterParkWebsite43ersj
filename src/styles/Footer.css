@@ -1,6 +1,6 @@
 /* Footer main */
 .footer {
-  background-color: #00a4eb;
+  background-color: #005477;
   color           : #ffffff;
   padding-bottom  : 50px;
 }
@@ -50,7 +50,6 @@
   font-size  : 14px;
   opacity    : 1;
   line-height: 1.6;
-  text-shadow: 1px 1px 1px #000000af;
 }
 
 /* social icons */
@@ -84,7 +83,6 @@
   font-weight   : 600;
   margin-bottom : 20px;
   padding-bottom: 5px;
-  text-shadow   : 1px 1px 1px #000000af;
   border-bottom : 1px solid white;
 }
 
@@ -93,7 +91,6 @@
   list-style : none;
   padding    : 0;
   color      : #ffffff;
-  text-shadow: 1px 1px 1px #000000af;
 }
 
 .footer-links li {
@@ -118,13 +115,11 @@
 .footer-contact {
   list-style : none;
   padding    : 0;
-  text-shadow: 1px 1px 1px #000000af;
 }
 
 .footer-contact a {
   color          : #ffffff;
   text-decoration: none;
-  text-shadow    : 1px 1px 1px #000000af;
 }
 
 .footer-contact li {
@@ -143,7 +138,6 @@
 
 .footer-bottom-container {
   max-width      : 1200px;
-  text-shadow    : 1px 1px 1px #000000af;
   margin         : auto;
   padding        : 20px;
   display        : flex;
@@ -270,7 +264,6 @@
   font-weight    : 800;
   border         : 1px solid #ffffff69;
   border-radius  : 30px;
-  text-shadow    : 1px 1px 1px #414141;
   box-shadow     : inset 1px 1px 3px #e2e2e2, 1px 1px 3px #414141;
   display        : flex;
   justify-content: space-between;

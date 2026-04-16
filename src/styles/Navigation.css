@@ -12,10 +12,10 @@
 }
 
 .nav-logo img {
-  height    : 70px;
-  width     : auto;
-  object-fit: contain;
-  filter    : drop-shadow(3px 3px 1px #00000087);
+  height       : 70px;
+  width        : auto;
+  object-fit   : contain;
+  /* filter    : drop-shadow(3px 3px 1px #00000087); */
 }
 
 .nav-logo img:hover {
@@ -102,16 +102,16 @@
 }
 
 .btn-outlines {
-  padding        : 10px 17px;
-  border-radius  : 80px;
-  text-decoration: none;
-  backdrop-filter: blur(6px);
-  transition     : 0.3s;
-  width          : 100%;
-  background     : #FF46A2;
-  color          : #ffffff !important;
-  box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345);
-  font-weight    : 800 !important;
+  padding           : 10px 17px;
+  border-radius     : 80px;
+  text-decoration   : none;
+  backdrop-filter   : blur(6px);
+  transition        : 0.3s;
+  width             : 100%;
+  background        : #FF46A2;
+  color             : #ffffff !important;
+  /* box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345); */
+  font-weight       : 800 !important;
 }
 
 .btn-outlines:hover {
@@ -122,18 +122,18 @@
 
 
 .waterpark-btn-outlines {
-  width             : fit-content !important;
-  white-space       : nowrap !important;
-  padding           : 10px 17px;
-  border-radius     : 80px;
-  text-decoration   : none;
-  backdrop-filter   : blur(6px);
-  transition        : 0.3s;
-  width             : 100%;
-  /* background     : #00aaff; */
-  color             : #ffffff !important;
-  box-shadow        : 5px 5px 3px rgba(0, 0, 0, 0.345);
-  font-weight       : 800 !important;
+  width                : fit-content !important;
+  white-space          : nowrap !important;
+  padding              : 10px 17px;
+  border-radius        : 80px;
+  text-decoration      : none;
+  backdrop-filter      : blur(6px);
+  transition           : 0.3s;
+  width                : 100%;
+  /* background        : #00aaff; */
+  color                : #ffffff !important;
+  /* box-shadow        : 5px 5px 3px rgba(0, 0, 0, 0.345); */
+  font-weight          : 800 !important;
 }
 
 .waterpark-btn-outlines:hover {
@@ -227,19 +227,19 @@
   }
 
   .waterpark-btn-outlines {
-    width             : fit-content !important;
-    white-space       : nowrap !important;
-    padding           : 10px 7px;
-    border-radius     : 80px;
-    text-decoration   : none;
-    backdrop-filter   : blur(6px);
-    transition        : 0.3s;
-    width             : 100%;
-    /* background     : #00aaff; */
-    color             : #ffffff !important;
-    box-shadow        : 5px 5px 3px #00000058;
-    font-weight       : 800 !important;
-    text-shadow       : 1px 1px 1px #00000058;
+    width                : fit-content !important;
+    white-space          : nowrap !important;
+    padding              : 10px 7px;
+    border-radius        : 80px;
+    text-decoration      : none;
+    backdrop-filter      : blur(6px);
+    transition           : 0.3s;
+    width                : 100%;
+    /* background        : #00aaff; */
+    color                : #ffffff !important;
+    /* box-shadow        : 5px 5px 3px #00000058; */
+    font-weight          : 800 !important;
+    /* text-shadow       : 1px 1px 1px #00000058; */
   }
 
   .navbar-inner {
@@ -264,20 +264,20 @@
 /* MOBILE MENU */
 
 .mobile-menu {
-  position        : absolute;
-  top             : 100%;
-  left            : 0;
-  width           : 100%;
-  background      : white;
-  border-top      : 1px solid #e5e7eb;
-  overflow        : hidden;
-  transform       : translateY(-20px) scaleY(0.95);
-  transform-origin: top;
-  opacity         : 0;
-  max-height      : 0;
-  backdrop-filter : blur(8px);
-  box-shadow      : 5px 5px 3px rgba(0, 0, 0, 0.345);
-  transition      :
+  position           : absolute;
+  top                : 100%;
+  left               : 0;
+  width              : 100%;
+  background         : white;
+  border-top         : 1px solid #e5e7eb;
+  overflow           : hidden;
+  transform          : translateY(-20px) scaleY(0.95);
+  transform-origin   : top;
+  opacity            : 0;
+  max-height         : 0;
+  backdrop-filter    : blur(8px);
+  /* box-shadow      : 5px 5px 3px rgba(0, 0, 0, 0.345); */
+  transition         :
     transform 0.45s cubic-bezier(.22, .68, 0, 1.71),
     opacity 0.35s ease,
     max-height 0.5s ease;
@@ -462,18 +462,18 @@
 
 
 .nav-cart {
-  cursor         : pointer;
-  width          : fit-content !important;
-  padding        : 6px 10px;
-  border-radius  : 80px;
-  text-decoration: none;
-  backdrop-filter: blur(6px);
-  transition     : 0.3s;
-  width          : 100%;
-  background     : #00aaff;
-  color          : #ffffff !important;
-  box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345);
-  font-weight    : 800 !important;
+  cursor            : pointer;
+  width             : fit-content !important;
+  padding           : 6px 10px;
+  border-radius     : 80px;
+  text-decoration   : none;
+  backdrop-filter   : blur(6px);
+  transition        : 0.3s;
+  width             : 100%;
+  background        : #00aaff;
+  color             : #ffffff !important;
+  /* box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345); */
+  font-weight       : 800 !important;
 }
 
 .cart-badge {
@@ -558,10 +558,10 @@
 
 
   .nav-logo img {
-    height    : 70px;
-    width     : auto;
-    object-fit: contain;
-    filter    : drop-shadow(3px 3px 1px #00000087);
+    height       : 70px;
+    width        : auto;
+    object-fit   : contain;
+    /* filter    : drop-shadow(3px 3px 1px #00000087); */
   }
 
   /* navbar height */
@@ -573,17 +573,17 @@
   }
 
   .mobile-menu-btn {
-    display        : block;
-    padding        : 6px 8px;
-    border-radius  : 80px;
-    text-decoration: none;
-    backdrop-filter: blur(6px);
-    transition     : 0.3s;
-    width          : 100%;
-    background     : #00aaff;
-    color          : #ffffff !important;
-    box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345);
-    font-weight    : 800 !important;
+    display           : block;
+    padding           : 6px 8px;
+    border-radius     : 80px;
+    text-decoration   : none;
+    backdrop-filter   : blur(6px);
+    transition        : 0.3s;
+    width             : 100%;
+    background        : #00aaff;
+    color             : #ffffff !important;
+    /* box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345); */
+    font-weight       : 800 !important;
   }
 
   .navbar-main {
@@ -601,9 +601,9 @@
     width             : 100%;
     /* background     : #00aaff; */
     color             : #ffffff !important;
-    box-shadow        : 5px 5px 3px #00000058;
+    /* box-shadow        : 5px 5px 3px #00000058; */
     font-weight       : 600 !important;
-    text-shadow       : 1px 1px 1px #00000058;
+    /* text-shadow       : 1px 1px 1px #00000058; */
   }
 
   .navbar-container {
