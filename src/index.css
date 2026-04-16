@@ -13,21 +13,6 @@ code {
 }
 
 
-
-/* h1,
-h2,
-h3,
-h4,
-h5,
-p,
-span,
-a,
-div,
-link,
-button {
-  font-family: 'Playfair Display', serif !important;
-} */
-
 h1,
 h2,
 h3,
@@ -35,6 +20,17 @@ h4,
 h5 {
   font-family   : 'Playfair Display', serif;
   text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+p,
+span,
+a,
+div,
+link,
+button {
+  ont-family: 'Playfair Display', serif;
 }
 
 /* SECTION TITLE */

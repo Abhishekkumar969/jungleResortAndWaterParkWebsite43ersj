@@ -281,6 +281,9 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
     return days;
   };
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   return (
     <div className={styles.quickBook}>
       <h3>Check - Avalibility</h3>
@@ -321,6 +324,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
             <input
               type="date"
               value={formData.date}
+              min={new Date().toISOString().split("T")[0]}
               onChange={(e) =>
                 setFormData({ ...formData, date: e.target.value })
               }
@@ -397,6 +401,8 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
                               date > range.start &&
                               date < range.end;
 
+                            const isPast = date < today;
+
                             return (
                               <div
                                 key={i}
@@ -404,6 +410,7 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
                   ${isStart ? styles.start : ""}
                   ${isEnd ? styles.end : ""}
                   ${inRange ? styles.inRange : ""}
+                    ${isPast ? styles.disabled : ""}  
                 `}
                                 onClick={() => {
                                   if (selecting === "start") {
