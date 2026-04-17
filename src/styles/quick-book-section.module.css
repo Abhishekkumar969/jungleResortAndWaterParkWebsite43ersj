@@ -1,7 +1,7 @@
 .quickBook {
     border       : 2px solid rgb(0, 255, 230);
     border-radius: 16px;
-    padding      : 1rem 2rem;
+    padding      : 1rem 1rem;
     width        : 100%;
     max-width    : 420px;
     margin       : 0 auto;
@@ -65,19 +65,18 @@
     font-size    : 0.95rem;
     outline      : none;
     transition   : all 0.3s ease;
-    color        : #000;
+    color        : #005cad;
     margin-bottom: 10px;
 }
 
 .formGroup input:focus,
 .formGroup select:focus {
-    border-color: #ffc400;
-    box-shadow  : 0 0 10px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
 }
 
 .formGroup input {
     width: 87%;
-    color: #000;
+    color: #005cad;
 }
 
 /* Icons in inputs */
@@ -86,7 +85,7 @@
     left          : 0.9rem;
     top           : 63%;
     transform     : translateY(-50%);
-    color         : #000000;
+    color         : #005cad;
     width         : 18px;
     height        : 18px;
     pointer-events: none;
@@ -163,7 +162,7 @@
 @media (max-width: 768px) {
 
     .quickBook {
-        margin-top        : 80px;
+        margin-top        : 0px;
         justify-content   : center;
         align-items       : center;
         /* border         : none; */
@@ -186,11 +185,11 @@
 /* MOBILES (<=640px) */
 @media (max-width: 640px) {
     .quickBook {
-        margin            : 0px;
-        width             : 85% !important;
-        justify-content   : center;
-        align-items       : center;
-        /* border         : none; */
+        margin               : 0px;
+        /* width             : 85% !important; */
+        justify-content      : center;
+        align-items          : center;
+        /* border            : none; */
     }
 
     .quickBook h3 {
@@ -207,12 +206,13 @@
 /* SMALL MOBILES (<=480px) */
 @media (max-width: 480px) {
     .quickBook {
-        margin: 0px;
-        width : 80% !important;
+        margin   : 0px;
+        /* width : 100% !important; */
     }
 
     .quickBook h3 {
-        font-size: 1.75rem;
+        font-size     : 1.5rem;
+        letter-spacing: 0px;
     }
 
     .quickBook p {
@@ -227,6 +227,11 @@
     .quickBook button {
         padding  : 0.85rem;
         font-size: 0.9rem;
+    }
+
+    .quickBook {
+        width : 100%;
+        margin: 0 20px;
     }
 }
 
@@ -275,7 +280,7 @@ input[type="date"]::-webkit-calendar-picker-indicator::after {
     right        : -10px;
     padding      : 4px 8px;
     background   : #fff;
-    color        : #000;
+    color        : #000000;
     border-radius: 6px;
     opacity      : 0;
     transition   : 0.25s ease;
@@ -293,12 +298,12 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover::after {
     font-weight  : 600;
     margin-bottom: 4px;
     display      : block;
-    color        : #000000;
+    color        : #005cad;
     text-align   : left;
 }
 
 input[type="date"] {
-    color: #000 !important;
+    color: #005cad !important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -415,7 +420,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right        : 0;
     margin-top   : 8px;
     background   : #fff;
-    color        : #000;
+    color        : #005cad;
     padding      : 20px 24px;
     border-radius: 12px;
     box-shadow   : 0 15px 40px rgba(0, 0, 0, 0.2);
@@ -484,7 +489,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size  : 12px;
     font-weight: 600;
     text-align : center;
-    color      : #070707;
+    color      : #005cad;
 }
 
 /* DAY */
@@ -656,7 +661,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 @media (max-width: 400px) {
 
     .quickBook {
-        width        : 95% !important;
+        width        : 85% !important;
         padding      : 1.2rem 1rem;
         border-radius: 12px;
     }

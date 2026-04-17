@@ -95,13 +95,13 @@
 }
 
 .eventContent h3 {
-    font-size         : 20px;
-    margin-bottom     : 8px;
-    display           : flex;
-    justify-content   : center;
-    text-transform    : uppercase;
-    color             : #FF46A2;
-    font-weight       : 800;
+    font-size      : 20px;
+    margin-bottom  : 8px;
+    display        : flex;
+    justify-content: center;
+    text-transform : uppercase;
+    color          : #FF46A2;
+    font-weight    : 800;
 }
 
 .eventBtn {
@@ -143,6 +143,12 @@
     .eventsTitle {
         font-size: 30px;
     }
+
+    .eventContent h3 {
+        font-size: 17px;
+        letter-spacing: 1px;
+    }
+
 
 }
 

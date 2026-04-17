@@ -591,18 +591,18 @@
   }
 
   .waterpark-btn-outlines {
-    width             : fit-content !important;
-    white-space       : nowrap !important;
-    padding           : 10px 7px;
-    border-radius     : 80px;
-    text-decoration   : none;
-    backdrop-filter   : blur(6px);
-    transition        : 0.3s;
-    width             : 100%;
-    /* background     : #00aaff; */
-    color             : #ffffff !important;
+    width                : fit-content !important;
+    white-space          : nowrap !important;
+    padding              : 10px 7px;
+    border-radius        : 80px;
+    text-decoration      : none;
+    backdrop-filter      : blur(6px);
+    transition           : 0.3s;
+    width                : 100%;
+    /* background        : #00aaff; */
+    color                : #ffffff !important;
     /* box-shadow        : 5px 5px 3px #00000058; */
-    font-weight       : 600 !important;
+    font-weight          : 600 !important;
     /* text-shadow       : 1px 1px 1px #00000058; */
   }
 
@@ -620,8 +620,6 @@
 
 }
 
-
-
 /* ============================= */
 /* ULTRA SMALL DEVICES (300px - 400px) */
 /* ============================= */
@@ -631,7 +629,7 @@
   /* HEADER HEIGHT FIX */
   .navbar-inner {
     height : 80px;
-    padding: 0 2px;
+    padding: 0px;
   }
 
   /* LOGO SMALL */

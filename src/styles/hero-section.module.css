@@ -800,16 +800,15 @@
     }
 
     .heroForm {
-        margin-right: 10px;
-        margin      : 5px;
-        padding     : 0px;
-        width       : 100%;
-        display     : block;
+        width          : 100%;
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
     }
 
     .heroLeft {
-        width    : 100%;
-        max-width: 400px !important;
+        width       : 100%;
+        /* max-width: 400px !important; */
     }
 
 }
@@ -824,18 +823,6 @@
     .heroSection {
         padding-top   : 100px;
         padding-bottom: 40px;
-    }
-
-    /* CONTENT */
-    .heroContent {
-        padding       : 0 10px;
-        gap           : 15px;
-        position      : relative;
-        z-index       : 5;
-        left          : -2px;
-        margin        : 0px 15px;
-        /* max-width  : 400px; */
-        padding-top   : 0px !important;
     }
 
     /* TITLE FIX */
