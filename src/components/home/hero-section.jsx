@@ -19,9 +19,8 @@ export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { src: "/videos/3.webp" },
-    { src: "/videos/6.webp" },
-    { src: "/videos/3.webp" }
+    { src: "/videos/hero.png" },
+    { src: "/videos/hero3.png" },
   ];
 
   useEffect(() => {

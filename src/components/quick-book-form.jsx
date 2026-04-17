@@ -4,7 +4,7 @@ import { db } from "../firebaseConfig";
 import { collection, doc, getDocs, setDoc, serverTimestamp, } from "firebase/firestore";
 import styles from "../styles/quick-book-section.module.css";
 
-export default function QuickBookForm({ defaultFunctionType = "" }) {
+export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
@@ -235,6 +235,10 @@ export default function QuickBookForm({ defaultFunctionType = "" }) {
       await setDoc(monthDocRef, { [fieldId]: data }, { merge: true });
 
       setMessage("✅ Thank you! Your enquiry has been submitted successfully.");
+
+      setTimeout(() => {
+        onClose && onClose();
+      }, 1200);
 
       setFormData({
         name: "",

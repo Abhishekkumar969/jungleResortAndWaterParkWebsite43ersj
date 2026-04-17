@@ -7,7 +7,7 @@ const testimonials = [
         name: "Priya & Rahul Sharma",
         event: "Wedding Ceremony",
         rating: 5,
-        text: "Our wedding at Jungle Paradise was absolutely magical! The venue was breathtaking, the staff was incredibly attentive, and every detail was perfect."
+        text: "Our wedding at Jungle Resort & Water Park was absolutely magical! The venue was breathtaking, the staff was incredibly attentive, and every detail was perfect."
     },
     {
         name: "Amit Patel",

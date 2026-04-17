@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X, ShoppingCart, Phone } from "lucide-react";
-// import AuthModal from "../components/AuthModal";
 import Cart from "./Cart";
 import "../styles/Navigation.css";
 

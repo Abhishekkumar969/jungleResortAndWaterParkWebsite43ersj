@@ -5,6 +5,13 @@ import "../styles/FloatingContact.css";
 export default function FloatingContact() {
     const location = useLocation();
 
+    const handleBookNow = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
     return (
         <div className="bottom-nav">
 
@@ -13,7 +20,12 @@ export default function FloatingContact() {
                 <span>Home</span>
             </Link>
 
-            <Link to="/booking" className={`bottom-item center ${location.pathname === "/booking" ? "active" : ""}`}>
+            {/* 🔥 FIX */}
+            <Link
+                to="/"
+                onClick={handleBookNow}
+                className="bottom-item center"
+            >
                 <CalendarDays size={22} />
                 <span>Book Now</span>
             </Link>
