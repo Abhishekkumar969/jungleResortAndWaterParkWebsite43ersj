@@ -31,7 +31,7 @@ export default function FloatingContact() {
             </Link>
 
             <a
-                href="https://wa.me/919065383838"
+                href="https://wa.me/919031080903"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bottom-item"
@@ -40,7 +40,7 @@ export default function FloatingContact() {
                 <span>WhatsApp</span>
             </a>
 
-            <a href="tel:+919065383838" className="bottom-item">
+            <a href="tel:+919031080903" className="bottom-item">
                 <Phone size={22} />
                 <span>Call</span>
             </a>

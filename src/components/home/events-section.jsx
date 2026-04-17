@@ -74,6 +74,10 @@ export default function EventsSection() {
                 <div className={styles.eventsHeader}>
                     <h2 className={styles.eventsLabel}>EVENTS & CELEBRATIONS</h2>
 
+                    <div className={styles.eventsLabelDivider}>
+                        <img src="images/divider.webp" alt="EVENTS & CELEBRATIONS" />
+                    </div>
+
                     <h2 className={styles.eventsTitle}>
                         Wedding Venue & Banquet Hall in Patna
                     </h2>

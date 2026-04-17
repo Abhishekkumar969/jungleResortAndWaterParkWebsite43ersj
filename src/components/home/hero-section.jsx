@@ -4,22 +4,22 @@ import QuickBookForm from "../quick-book-form";
 import { ChevronDown, TreePine, Waves } from "lucide-react";
 import styles from "../../styles/hero-section.module.css";
 
-const texts = [
-  "Destination Wedding in Patna",
-  "Water park in Patna"
-];
+// const texts = [
+//   "Destination Wedding in Patna",
+//   "Water park in Patna"
+// ];
 
 export default function HeroSection() {
 
-  const [displayText, setDisplayText] = useState("");
-  const [textIndex, setTextIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  // const [displayText, setDisplayText] = useState("");
+  // const [textIndex, setTextIndex] = useState(0);
+  // const [charIndex, setCharIndex] = useState(0);
+  // const [isDeleting, setIsDeleting] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { src: "/videos/hero.png" },
+    // { src: "/videos/hero.png" },
     { src: "/videos/hero3.png" },
   ];
 
@@ -32,39 +32,39 @@ export default function HeroSection() {
   }, [slides.length]);
 
   /* Typewriter */
-  useEffect(() => {
+  // useEffect(() => {
 
-    const currentText = texts[textIndex];
-    const typingSpeed = isDeleting ? 40 : 80;
+  //   const currentText = texts[textIndex];
+  //   const typingSpeed = isDeleting ? 40 : 80;
 
-    const timer = setTimeout(() => {
+  //   const timer = setTimeout(() => {
 
-      if (!isDeleting) {
+  //     if (!isDeleting) {
 
-        setDisplayText(currentText.substring(0, charIndex + 1));
-        setCharIndex(prev => prev + 1);
+  //       setDisplayText(currentText.substring(0, charIndex + 1));
+  //       setCharIndex(prev => prev + 1);
 
-        if (charIndex + 1 === currentText.length) {
-          setTimeout(() => setIsDeleting(true), 1200);
-        }
+  //       if (charIndex + 1 === currentText.length) {
+  //         setTimeout(() => setIsDeleting(true), 1200);
+  //       }
 
-      } else {
+  //     } else {
 
-        setDisplayText(currentText.substring(0, charIndex - 1));
-        setCharIndex(prev => prev - 1);
+  //       setDisplayText(currentText.substring(0, charIndex - 1));
+  //       setCharIndex(prev => prev - 1);
 
-        if (charIndex - 1 === 0) {
-          setIsDeleting(false);
-          setTextIndex(prev => (prev + 1) % texts.length);
-        }
+  //       if (charIndex - 1 === 0) {
+  //         setIsDeleting(false);
+  //         setTextIndex(prev => (prev + 1) % texts.length);
+  //       }
 
-      }
+  //     }
 
-    }, typingSpeed);
+  //   }, typingSpeed);
 
-    return () => clearTimeout(timer);
+  //   return () => clearTimeout(timer);
 
-  }, [charIndex, isDeleting, textIndex]);
+  // }, [charIndex, isDeleting, textIndex]);
 
   const heroMenus = [
     {
@@ -102,114 +102,127 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className={styles.heroSection}>
+    <>
+      <section className={styles.heroSection}>
 
-      {/* Background */}
-      <div className={styles.heroBg}>
-        <div
-          className={styles.slider}
-          style={{
-            transform: `translateX(-${currentSlide * 100}%)`,
-          }}
-        >
-          {slides.map((slide, index) => (
-            <div className={styles.slide} key={index}>
-              <img
-                src={slide.src}
-                alt="hero"
-                className={styles.heroVideo}
-                loading={index === 0 ? "eager" : "lazy"} // 🔥 important
-              />
-            </div>
-          ))}
+        {/* Background */}
+        <div className={styles.heroBg}>
+          <div
+            className={styles.slider}
+            style={{
+              transform: `translateX(-${currentSlide * 100}%)`,
+            }}
+          >
+            {slides.map((slide, index) => (
+              <div className={styles.slide} key={index}>
+                <img
+                  src={slide.src}
+                  alt="hero"
+                  className={styles.heroVideo}
+                  loading={index === 0 ? "eager" : "lazy"} // 🔥 important
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.heroOverlay}></div>
         </div>
 
-        <div className={styles.heroOverlay}></div>
-      </div>
+        {/* Decorative Icons */}
+        <TreePine className={styles.heroTree} />
+        <Waves className={styles.heroWaves} />
 
-      {/* Decorative Icons */}
-      <TreePine className={styles.heroTree} />
-      <Waves className={styles.heroWaves} />
+        {/* Content */}
+        <div className={styles.heroContent}>
+          <div className={styles.heroLeft}>
 
-      {/* Content */}
-      <div className={styles.heroContent}>
-        <div className={styles.heroLeft}>
+            {/* Show in desktop view */}
+            <div className={styles.heroName} >
 
-          {/* Show in desktop view */}
-          <div className={styles.heroName} >
+              <h1 className={`${styles.heroTitle}`}>
+                Welcome to <br />
+                <span className={`${styles.mobileTitle}`}> Jungle Resort <div>&</div> Waterpark </span>
+              </h1>
 
-            <h1 className={`${styles.heroTitle}`}>
-              Welcome to <br />
-              <span className={`${styles.mobileTitle}`}> Jungle Resort <div>&</div> Waterpark </span>
-            </h1>
-
-          </div>
-
-          {/* Show in mobile view  */}
-          <div style={{ display: "flex", justifyContent: "center", margin: "-8px", width: "100%" }}>
-            <div className={styles.heroForm}>
-              <QuickBookForm />
             </div>
-          </div>
 
-          <div className={styles.divtypeWriter}>
+            {/* Show in mobile view  */}
+            <div style={{ display: "flex", justifyContent: "center", margin: "-8px", width: "100%" }}>
+              <div className={styles.heroForm}>
+                <QuickBookForm />
+              </div>
+            </div>
+
+            {/* <div className={styles.divtypeWriter}>
             <h2 className={styles.typeWriter}>
               {displayText}
               <span className={styles.cursor}>|</span>
             </h2>
-          </div>
+          </div> */}
 
-          {/* Buttons */}
-          <div className={styles.heroButtons}>
 
-            {heroMenus.map((menu, index) => (
-
-              <div key={index} className={styles.dropdown}>
-
-                {menu.items ? (
-                  <>
-                    <button className={styles.heroBtnPrimary}>
-                      {menu.title}
-                      <ChevronDown size={16} style={{ marginLeft: "6px" }} />
-                    </button>
-
-                    <div className={styles.dropdownMenu}>
-                      {menu.items.map((item, i) => (
-                        <Link key={i} to={item.link} className={styles.dropdownItem}>
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </>
-                ) : menu.title === "FunPark Tickets" ? (
-
-                  // ✅ ONLY button (no Link)
-                  <button
-                    className={styles.heroBtnOutline}
-                    onClick={() => setShowPopup(true)}
-                  >
-                    {menu.title}
-                  </button>
-
-                ) : (
-
-                  // ✅ Normal link
-                  <Link to={menu.link} className={styles.heroBtnOutline}>
-                    {menu.title}
-                  </Link>
-
-                )}
-
-              </div>
-
-            ))}
 
           </div>
+
+
+
+          <div className={styles.heroRight} style={{ padding: "70px 0px" }}>
+            <QuickBookForm />
+          </div>
+
+
+
 
         </div>
 
-        <div className={styles.heroRight} style={{ padding: "70px 0px" }}>
-          <QuickBookForm />
+      </section>
+
+      <div style={{ marginTop: "20px" }}>
+        {/* Buttons */}
+        <div className={styles.heroButtons}>
+
+          {heroMenus.map((menu, index) => (
+
+            <div key={index} className={styles.dropdown}>
+
+              {menu.items ? (
+                <>
+                  <button className={styles.heroBtnPrimary}>
+                    {menu.title}
+                    <ChevronDown size={16} style={{ marginLeft: "6px" }} />
+                  </button>
+
+                  <div className={styles.dropdownMenu}>
+                    {menu.items.map((item, i) => (
+                      <Link key={i} to={item.link} className={styles.dropdownItem}>
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : menu.title === "FunPark Tickets" ? (
+
+                // ✅ ONLY button (no Link)
+                <button
+                  className={styles.heroBtnOutline}
+                  onClick={() => setShowPopup(true)}
+                >
+                  {menu.title}
+                </button>
+
+              ) : (
+
+                // ✅ Normal link
+                <Link to={menu.link} className={styles.heroBtnOutline}>
+                  {menu.title}
+                </Link>
+
+              )}
+
+            </div>
+
+          ))}
+
         </div>
 
         {showPopup && (
@@ -240,6 +253,6 @@ export default function HeroSection() {
 
       </div>
 
-    </section>
+    </>
   );
 }

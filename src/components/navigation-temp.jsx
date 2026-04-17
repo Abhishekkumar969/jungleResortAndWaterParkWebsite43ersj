@@ -93,11 +93,9 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/">
-
             <div className="nav-logo">
-              <img src="/images/logo.webp" alt="Jungle Resort Logo" width={34} height={34} />
+              <img src="/images/jungle-reosrt.png" alt="Jungle Resort Logo" width={34} height={34} />
             </div>
-
           </Link>
 
           {/* Desktop Menu */}
@@ -159,7 +157,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? (
-                <X size={26} color="red" />
+                <X size={26} color="white" />
               ) : (
                 <Menu size={26} />
               )}

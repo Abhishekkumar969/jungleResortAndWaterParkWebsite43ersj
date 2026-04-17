@@ -234,7 +234,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
       const monthDocRef = doc(db, "enquiry", monthYear);
       await setDoc(monthDocRef, { [fieldId]: data }, { merge: true });
 
-      setMessage("✅ Thank you! Your enquiry has been submitted successfully.");
+      setMessage("✅ Our Representative Will Call You Shortly.");
 
       setTimeout(() => {
         onClose && onClose();
@@ -290,7 +290,9 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
 
   return (
     <div className={styles.quickBook}>
-      <h3>Check - Avalibility</h3>
+      {/* <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <h3>Check  Availability</h3>
+      </div> */}
 
       <form onSubmit={handleSubmit}>
 
@@ -304,7 +306,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
               }`}
             style={{ marginTop: "5px", whiteSpace: "nowrap" }}
           >
-            Single Day
+            SINGLE DAY
           </button>
 
           <button
@@ -314,10 +316,80 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
               }`}
             style={{ marginTop: "5px", whiteSpace: "nowrap" }}
           >
-            Multi Day / Multi Functions
+            MULTI DAY
           </button>
 
         </div>
+
+        {/* FUNCTION TYPE */}
+        {bookingType === "single" ? (
+
+          // ✅ SINGLE DAY (max 2)
+          <>
+            {[0].map((index) => (
+              <div key={index} className={styles.formGroup}>
+                <label>SELECT EVENT TYPE</label>
+                <PartyPopper className={styles.icon} />
+
+                <select
+                  value={formData.functionTypes[index] || ""}
+                  onChange={(e) => {
+                    const updated = [...formData.functionTypes];
+                    updated[index] = e.target.value;
+
+                    setFormData({
+                      ...formData,
+                      functionTypes: updated.slice(0) // 🔥 limit 2
+                    });
+                  }}
+                  required={index === 0}
+                >
+                  <option value=""></option>
+                  {functionTypes.map((f, i) => (
+                    <option key={i} value={f}>
+                      {f}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
+          </>
+
+        ) : (
+          // ✅ MULTI DAY (unlimited - existing logic)
+          formData.functionTypes.map((type, index) => (
+            <div key={index} className={styles.formGroup}>
+              <label>SELECT EVENT TYPE {index + 1}</label>
+              <PartyPopper className={styles.icon} />
+
+              <select
+                value={type}
+                onChange={(e) => {
+                  const updated = [...formData.functionTypes];
+                  updated[index] = e.target.value;
+
+                  if (
+                    index === formData.functionTypes.length - 1 &&
+                    e.target.value !== ""
+                  ) {
+                    updated.push("");
+                  }
+
+                  setFormData({ ...formData, functionTypes: updated });
+                }}
+                required={index === 0}
+              >
+                <option value=""></option>
+                {functionTypes.map((f, i) => (
+                  <option key={i} value={f}>
+                    {f}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))
+
+        )}
 
         {/* DATE */}
         {bookingType === "single" ? (
@@ -466,7 +538,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
 
         {/* MOBILE */}
         <div className={styles.formGroup}>
-          <label> WHAT'S APP NUMBER </label>
+          <label> MOBILE NUMBER </label>
 
           <Phone className={styles.icon} />
           <input
@@ -489,75 +561,6 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
           />
         </div>
 
-        {/* FUNCTION TYPE */}
-        {bookingType === "single" ? (
-
-          // ✅ SINGLE DAY (max 2)
-          <>
-            {[0].map((index) => (
-              <div key={index} className={styles.formGroup}>
-                <label>SELECT EVENT TYPE</label>
-                <PartyPopper className={styles.icon} />
-
-                <select
-                  value={formData.functionTypes[index] || ""}
-                  onChange={(e) => {
-                    const updated = [...formData.functionTypes];
-                    updated[index] = e.target.value;
-
-                    setFormData({
-                      ...formData,
-                      functionTypes: updated.slice(0) // 🔥 limit 2
-                    });
-                  }}
-                  required={index === 0}
-                >
-                  <option value=""></option>
-                  {functionTypes.map((f, i) => (
-                    <option key={i} value={f}>
-                      {f}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            ))}
-          </>
-
-        ) : (
-          // ✅ MULTI DAY (unlimited - existing logic)
-          formData.functionTypes.map((type, index) => (
-            <div key={index} className={styles.formGroup}>
-              <label>SELECT EVENT TYPE {index + 1}</label>
-              <PartyPopper className={styles.icon} />
-
-              <select
-                value={type}
-                onChange={(e) => {
-                  const updated = [...formData.functionTypes];
-                  updated[index] = e.target.value;
-
-                  if (
-                    index === formData.functionTypes.length - 1 &&
-                    e.target.value !== ""
-                  ) {
-                    updated.push("");
-                  }
-
-                  setFormData({ ...formData, functionTypes: updated });
-                }}
-                required={index === 0}
-              >
-                <option value=""></option>
-                {functionTypes.map((f, i) => (
-                  <option key={i} value={f}>
-                    {f}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))
-
-        )}
 
         {/* DUPLICATE MESSAGE */}
         {duplicateMessage && (
@@ -577,7 +580,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
             ? "Checking..."
             : isSubmitting
               ? "Submitting..."
-              : "Proceed"}
+              : "CHECK  AVAILABILITY"}
         </button>
 
         {message && (
