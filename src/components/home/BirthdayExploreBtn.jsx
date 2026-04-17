@@ -8,13 +8,15 @@ export default function BirthdayHero() {
             className={styles.heroBorder}
         >
             <div className={styles.hero}>
-                <div className={styles.background}>
-                    <img
-                        src="/images/birthday-stage.webp"
-                        alt="Birthday celebration"
-                        className={styles.image}
-                    />
-                    <div className={styles.overlay}></div>
+                <div className={styles.heroCenter}>
+                    <div className={styles.background}>
+                        <img
+                            src="/images/birthday-stage.webp"
+                            alt="Birthday celebration"
+                            className={styles.image}
+                        />
+                        <div className={styles.overlay}></div>
+                    </div>
                 </div>
 
                 <div className={styles.content}>
