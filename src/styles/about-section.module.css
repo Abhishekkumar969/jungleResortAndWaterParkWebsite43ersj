@@ -79,7 +79,7 @@
     display       : flex;
     align-items   : center;
     gap           : 8px;
-    color         : #03a3ff;
+    color         : #e72e77;
     font-weight   : 600;
     margin-bottom : 15px;
     text-transform: uppercase;
@@ -95,7 +95,7 @@
 }
 
 .aboutTitles span {
-    color: #03a3ff;
+    color: #e72e77;
 }
 
 .aboutTexts {
@@ -164,7 +164,7 @@
 @media(max-width:600px) {
 
     .aboutSection {
-        padding   : 130px 20px;
+        padding   : 30px 20px;
         background: #ffffff;
     }
 
@@ -286,4 +286,110 @@
         height: 32px;
     }
 
+}
+
+
+
+
+.faqItem {
+    border-bottom: 1px solid #ddd;
+    padding      : 10px 0;
+}
+
+.faqQuestion {
+    font-weight    : 700;
+    cursor         : pointer;
+    color          : #e72e77;
+    display        : flex;
+    justify-content: space-between;
+}
+
+.faqAnswer {
+    margin-top : 8px;
+    font-size  : 14px;
+    color      : #555;
+    line-height: 1.6;
+}
+
+/* FAQ SECTION */
+.faqSection {
+    margin-top: 40px;
+}
+
+/* EACH CARD */
+.faqItem {
+    background   : #ffffff;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    box-shadow   : 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow     : hidden;
+    transition   : 0.3s ease;
+}
+
+/* QUESTION */
+.faqQuestion {
+    padding    : 16px 18px;
+    font-weight: 600;
+    font-size  : 15px;
+    color      : #333;
+    cursor     : pointer;
+
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+}
+
+/* ICON */
+.icon {
+    font-size : 18px;
+    transition: transform 0.3s ease;
+}
+
+/* ACTIVE STATE */
+.active .icon {
+    transform: rotate(180deg);
+}
+
+/* ANSWER */
+.faqAnswer {
+    padding    : 0 18px 16px;
+    font-size  : 14px;
+    color      : #666;
+    line-height: 1.6;
+    animation  : fadeIn 0.3s ease;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity  : 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity  : 1;
+        transform: translateY(0);
+    }
+}
+
+/* HOVER EFFECT */
+.faqItem:hover {
+    transform: translateY(-2px);
+}
+
+/* .faqQuestion {
+  background: #fafafa;
+} */
+
+.active .faqQuestion {
+    color: #e72e77;
+}
+
+.icon {
+    transition: transform 0.3s ease;
+}
+
+/* rotate when open */
+.rotate {
+    transform: rotate(180deg);
 }
