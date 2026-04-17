@@ -36,8 +36,8 @@ function HomePage() {
       <HeroSection />
       <EventsSection />
       <BirthdayExploreBtn />
-      <TestimonialsSection />
       <GalleryGrid />
+      <TestimonialsSection />
       <WaterparkPreview />
       <AboutJungleResortPatna />
       <Contact />
