@@ -168,4 +168,9 @@
     .heroBorder {
         margin-bottom: 20px;
     }
+
+    .hero {
+        height: 80vh;
+    }
+
 }
