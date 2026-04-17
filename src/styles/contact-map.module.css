@@ -14,7 +14,7 @@
 }
 
 .subtitle {
-    color         : #FF46A2;
+    color         : #e72e77;
     font-size     : 13px;
     font-weight   : 600;
     letter-spacing: 2px;
@@ -25,14 +25,14 @@
     font-size  : 36px;
     font-weight: 700;
     margin-top : 6px;
-    color      : #0187fd;
+    color      : #e72e77;
 }
 
 .mapWrapper {
-    background   : white;
-    border-radius: 16px;
-    overflow     : hidden;
-    box-shadow   : 0 15px 40px rgba(0, 0, 0, 0.878);
+    background      : white;
+    border-radius   : 16px;
+    overflow        : hidden;
+    /* box-shadow   : 0 15px 40px rgba(0, 0, 0, 0.878); */
 }
 
 .map {
@@ -48,15 +48,15 @@
 }
 
 .locationCard {
-    position       : absolute;
-    bottom         : 20px;
-    right          : 20px;
-    background     : #fffffff2;
-    backdrop-filter: blur(8px);
-    border-radius  : 12px;
-    padding        : 18px;
-    max-width      : 320px;
-    box-shadow     : 0 10px 25px #00000026;
+    position          : absolute;
+    bottom            : 20px;
+    right             : 20px;
+    background        : #fffffff2;
+    backdrop-filter   : blur(8px);
+    border-radius     : 12px;
+    padding           : 18px;
+    max-width         : 320px;
+    /* box-shadow     : 0 10px 25px #00000026; */
 }
 
 .locationHeader {
@@ -68,7 +68,7 @@
 .iconBox {
     width          : 34px;
     height         : 34px;
-    background     : #FF46A2;
+    background     : #e72e77;
     color          : white;
     border-radius  : 50%;
     display        : flex;
@@ -95,7 +95,7 @@
     gap            : 6px;
     margin-top     : 12px;
     padding        : 10px 14px;
-    background     : #FF46A2;
+    background     : #e72e77;
     color          : white;
     border-radius  : 8px;
     text-decoration: none;

@@ -14,28 +14,6 @@
     border-radius: 40px;
     position     : relative;
     padding      : 10px;
-
-    background: linear-gradient(270deg,
-            #ffffff,
-
-            #FF46A2,
-            #ffffff,
-
-            #ff9900,
-            #ffffff,
-
-            #00aaff,
-            #ffffff,
-
-            #8800ff,
-            #ffffff,
-
-            #ff0000,
-            #ffffff);
-
-    background-size: 400% 400%;
-    animation      : borderMove 20s linear infinite;
-    margin-bottom  : 80px;
 }
 
 .heroBorder>* {
@@ -88,7 +66,7 @@
     display        : inline-flex;
     align-items    : center;
     gap            : 6px;
-    background     : rgba(255, 255, 255, 0.15);
+    background     : rgba(255, 255, 255, 0.053);
     backdrop-filter: blur(6px);
     padding        : 8px 16px;
     border-radius  : 30px;
@@ -103,7 +81,7 @@
 }
 
 .title span {
-    color: #00aaff;
+    color: #ffc7dd;
 }
 
 .description {
@@ -126,7 +104,7 @@
     align-items    : center;
     gap            : 8px;
     padding        : 14px 26px;
-    background     : #00aaff;
+    background     : #e72e77;
     border-radius  : 10px;
     color          : white;
     font-weight    : 600;
@@ -134,7 +112,7 @@
 }
 
 .primaryBtn:hover {
-    background: #0190d7;
+    background: #ff066a;
 }
 
 .secondaryBtn {

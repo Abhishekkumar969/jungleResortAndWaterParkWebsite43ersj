@@ -42,7 +42,7 @@
     top       : 0;
     left      : 0;
     width     : 100%;
-    height    : 100%;
+    height    : 95%;
     background: rgba(0, 0, 0, 0.4);
 }
 
@@ -54,7 +54,7 @@
 
 .heroBg img {
     width     : 100%;
-    height    : 100%;
+    height    : 95%;
     object-fit: cover;
 }
 
@@ -102,8 +102,8 @@
     font-weight: 700;
     line-height: 1.2;
     margin     : 0px;
-    color      : #00b3ff;
-    text-shadow: 1px 1px 3px rgb(0, 0, 0);
+    color      : #ffffff;
+    text-shadow: 1px 1px 3px rgb(11, 11, 11);
 }
 
 .heroDesc {
@@ -141,8 +141,6 @@
 }
 
 .heroBtnPrimary {
-    /* border         : 2px solid white; */
-    background     : #078a00;
     color          : white;
     padding        : 10px 30px;
     border-radius  : 100px;
@@ -150,25 +148,27 @@
     text-decoration: none;
     transition     : 0.3s;
     box-shadow     : 1px 1px 7px rgb(0, 0, 0);
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
 }
 
 .heroBtnPrimary:hover {
     background: #ffffff;
-    color     : #078a00;
-    border    : 2px solid #078a00;
 }
 
 .heroBtnOutline {
-    /* border         : 2px solid white; */
+    border         : 2px solid white !important;
     padding        : 10px 30px;
     border-radius  : 100px;
     font-weight    : 600;
     text-decoration: none;
     color          : #ffffff;
-    background     : #0284c7;
+    background     : #e72e77;
     backdrop-filter: blur(6px);
     transition     : 0.3s;
     box-shadow     : 1px 1px 7px rgb(0, 0, 0);
+    text-align     : center;
 }
 
 .heroBtnOutline:hover {
@@ -367,7 +367,7 @@
 
 .dropdownMenu {
     position     : absolute;
-    top          : 0%;
+    top          : 100%;
     left         : 0;
     background   : white;
     border-radius: 25px;
@@ -440,12 +440,14 @@
 
 .heroButtons .dropdown:nth-child(odd)>button,
 .heroButtons .dropdown:nth-child(odd)>a {
-    background: #FF46A2;
+    background: #e72e77;
+    border    : 2px solid white !important;
 }
 
 .heroButtons .dropdown:nth-child(even)>button,
 .heroButtons .dropdown:nth-child(even)>a {
-    background: #00aaff;
+    background: #e72e77;
+    border    : 2px solid white !important;
 }
 
 .heroButtons .dropdown a {
@@ -455,13 +457,13 @@
 .heroButtons .dropdown:nth-child(odd) button:hover,
 .heroButtons .dropdown:nth-child(odd) a:hover {
     background: white;
-    color     : #FF46A2;
+    color     : #e72e77;
 }
 
 .heroButtons .dropdown:nth-child(even) button:hover,
 .heroButtons .dropdown:nth-child(even) a:hover {
     background: white;
-    color     : #00aaff;
+    color     : #e72e77;
 }
 
 .dropdownMenu {
@@ -542,6 +544,8 @@
     .statNumber {
         font-size: 28px;
     }
+
+
 
 }
 
@@ -777,10 +781,10 @@
 
     .heroBtnPrimary,
     .heroBtnOutline {
-        width         : 100%;
-        /* max-width  : 280px; */
-        font-size     : larger;
-        white-space   : nowrap;
+        width      : 100%;
+        padding    : 18px 12px;
+        font-size  : larger;
+        white-space: nowrap;
     }
 
     .dropdownMenu {
@@ -859,7 +863,7 @@
     /* BUTTONS STACK */
     .heroButtons {
         flex-direction: column;
-        gap           : 10px;
+        gap           : 12px;
     }
 
     .heroBtnPrimary,
@@ -867,7 +871,7 @@
         width      : 100%;
         font-size  : 16px;
         font-weight: 800;
-        padding    : 8px 12px;
+        padding    : 18px 12px;
     }
 
     /* DROPDOWN FIX */
@@ -912,3 +916,36 @@
     }
 
 }
+
+/* @media (max-width: 400px) {
+
+    .heroSection {
+        margin: 20px;
+    }
+
+} */
+
+
+
+
+/* @media (max-width: 480px) {
+
+  .heroButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroButtons .dropdown {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .heroBtnPrimary,
+  .heroBtnOutline {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+
+} */

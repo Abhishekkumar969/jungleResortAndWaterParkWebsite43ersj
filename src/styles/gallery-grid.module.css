@@ -33,7 +33,7 @@
 }
 
 .subtitle {
-    color         : #22c55e;
+    color         : #e72e77;
     font-size     : 14px;
     font-weight   : 600;
     letter-spacing: 2px;
@@ -43,13 +43,13 @@
 .title {
     font-size  : 56px;
     font-weight: 700;
-    color      : #03b8ff;
+    color      : #e72e77;
     margin     : 16px 0;
 }
 
 .description {
     font-size: 20px;
-    color    : #03b8ff;
+    color    : #e72e77;
     max-width: 650px;
     margin   : auto;
 }
@@ -94,7 +94,7 @@
 }
 
 .active {
-    background: #FF46A2;
+    background: #e72e77;
     color     : white;
 }
 

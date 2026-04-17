@@ -25,9 +25,10 @@
 
 /* CONTAINER */
 .navbar-container {
-  max-width: 1200px;
-  margin   : auto;
-  padding  : 0 20px;
+  max-width       : 1200px;
+  margin          : auto;
+  padding         : 0 20px;
+  background-color: #e72e77;
 }
 
 /* TOP BAR */
@@ -66,7 +67,7 @@
 
 /* MAIN NAVBAR */
 .navbar-main {
-  background: linear-gradient(to bottom, #00fc6d, #b7ffa4, #ffffff, #ffffffe8, #ffffffaf, #ffffff00);
+  background: linear-gradient(to bottom, #e72e77, #e72e77, #e72e77, #e72e77, #e72e77, #e72e77);
 }
 
 .navbar-inner {
@@ -85,13 +86,13 @@
 
 .navbar-links a {
   text-decoration: none;
-  color          : #00aaff;
+  color          : #ffffff;
   font-weight    : 700;
   white-space    : nowrap;
 }
 
 .navbar-links a:hover {
-  color    : #00aaff;
+  color    : #e72e77;
   transform: scale(1.1);
 }
 
@@ -108,7 +109,7 @@
   backdrop-filter   : blur(6px);
   transition        : 0.3s;
   width             : 100%;
-  background        : #FF46A2;
+  background        : #b4245d;
   color             : #ffffff !important;
   /* box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345); */
   font-weight       : 800 !important;
@@ -116,7 +117,7 @@
 
 .btn-outlines:hover {
   font-weight: 800 !important;
-  background : #FF46A2;
+  background : #e72e77;
   color      : #fffdfd !important;
 }
 
@@ -130,15 +131,14 @@
   backdrop-filter      : blur(6px);
   transition           : 0.3s;
   width                : 100%;
-  /* background        : #00aaff; */
+  /* background        : #e72e77; */
   color                : #ffffff !important;
-  /* box-shadow        : 5px 5px 3px rgba(0, 0, 0, 0.345); */
   font-weight          : 800 !important;
 }
 
 .waterpark-btn-outlines:hover {
   font-weight   : 800 !important;
-  /* background : #00aaff; */
+  /* background : #e72e77; */
   color         : #fffdfd !important;
 }
 
@@ -175,7 +175,7 @@
   display        : block;
   padding        : 14px 12px;
   text-decoration: none;
-  color          : #111827;
+  color          : #e72e77;
   font-weight    : 500;
   white-space    : nowrap;
   opacity        : 0;
@@ -235,7 +235,7 @@
     backdrop-filter      : blur(6px);
     transition           : 0.3s;
     width                : 100%;
-    /* background        : #00aaff; */
+    /* background        : #e72e77; */
     color                : #ffffff !important;
     /* box-shadow        : 5px 5px 3px #00000058; */
     font-weight          : 800 !important;
@@ -295,7 +295,7 @@
   display        : block;
   padding        : 16px 20px;
   font-weight    : 500;
-  color          : #111827;
+  color          : #e72e77;
   text-decoration: none;
   opacity        : 0;
   transform      : translateY(-10px);
@@ -309,7 +309,7 @@
 
 .mobile-menu a:hover {
   background: #f0fdf4;
-  color     : #16a34a;
+  color     : #e72e77;
 }
 
 /* stagger animation */
@@ -368,7 +368,7 @@
   opacity         : 1;
   transform       : translateY(0);
   color           : #ffffff !important;
-  background      : #FF46A2;
+  background      : #e72e77;
   border          : 2px solid white;
   border-radius   : 8px;
   text-decoration : none;
@@ -383,7 +383,7 @@
   border-radius   : 8px;
   text-decoration : none;
   color           : #ffffff !important;
-  background      : #00aaff;
+  background      : #e72e77;
   transition-delay: 0.98s;
   width           : 88%;
 }
@@ -397,14 +397,13 @@
 
 
 .navbar-main {
-  background   : linear-gradient(to bottom, #ffffff, #ffffff, #ffffffcd, #ffffff00);
+  background   : #e72e77;
   transition   : all 0.7 ease-in;
-  border-radius: 0px 0px 70px 70px;
+  border-radius: 0px !important;
 }
 
-/* Scroll hone ke baad */
 .navbar-blur {
-  background: linear-gradient(to bottom, #ffffff, #ffffff, #ffffffe5, #ffffff00);
+  background: #e72e77;
 }
 
 .nav-login {
@@ -423,14 +422,14 @@
 
 .nav-signup {
   padding      : 8px 16px;
-  background   : #00aaff;
+  background   : #e72e77;
   color        : white;
   border-radius: 6px;
   font-weight  : 600;
 }
 
 .nav-signup:hover {
-  background: #007cbb;
+  background: #e72e77;
 }
 
 .nav-account {
@@ -438,7 +437,7 @@
   align-items  : center;
   gap          : 6px;
   padding      : 8px 14px;
-  background   : #1b8511;
+  background   : #e72e77;
   border-radius: 8px;
   color        : #ffffff !important;
   font-weight  : 500;
@@ -447,14 +446,14 @@
 .nav-logout {
   padding      : 8px 14px;
   border-radius: 8px;
-  border       : 1px solid #FF46A2;
+  border       : 1px solid #e72e77;
   background   : transparent;
-  color        : #FF46A2;
+  color        : #e72e77;
   cursor       : pointer;
 }
 
 .nav-logout:hover {
-  background: #FF46A2;
+  background: #e72e77;
   color     : white;
 }
 
@@ -470,7 +469,7 @@
   backdrop-filter   : blur(6px);
   transition        : 0.3s;
   width             : 100%;
-  background        : #00aaff;
+  background        : #e72e77;
   color             : #ffffff !important;
   /* box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345); */
   font-weight       : 800 !important;
@@ -480,7 +479,7 @@
   position     : absolute;
   top          : -12px;
   right        : -12px;
-  background   : #FF46A2;
+  background   : #e72e77;
   color        : #fbfbfb;
   font-size    : 11px;
   font-weight  : bold;
@@ -580,7 +579,6 @@
     backdrop-filter   : blur(6px);
     transition        : 0.3s;
     width             : 100%;
-    background        : #00aaff;
     color             : #ffffff !important;
     /* box-shadow     : 5px 5px 3px rgba(0, 0, 0, 0.345); */
     font-weight       : 800 !important;
@@ -599,7 +597,7 @@
     backdrop-filter      : blur(6px);
     transition           : 0.3s;
     width                : 100%;
-    /* background        : #00aaff; */
+    /* background        : #e72e77; */
     color                : #ffffff !important;
     /* box-shadow        : 5px 5px 3px #00000058; */
     font-weight          : 600 !important;
@@ -634,7 +632,7 @@
 
   /* LOGO SMALL */
   .nav-logo img {
-    height: 55px;
+    height: 70px;
   }
 
   /* RIGHT SECTION FIX */
@@ -725,9 +723,9 @@
   inset        : 2px;
   border-radius: inherit;
   background   : linear-gradient(120deg,
-      #00aaff,
-      #ff00c3,
-      #00aaff);
+      #b4245d,
+      #eb005e,
+      #b4245d);
   background-size: 300% 300%;
   animation      : borderGlow 3s linear infinite;
   z-index        : -1;
@@ -738,7 +736,7 @@
   content         : "";
   position        : absolute;
   inset           : 2px;
-  /* background   : #00aaff; */
+  /* background   : #e72e77; */
   border-radius   : inherit;
   z-index         : -1;
 }
@@ -763,7 +761,7 @@
 @keyframes pulseSoft {
   0% {
     transform : scale(1);
-    box-shadow: 0 0 0px #00aaff;
+    box-shadow: 0 0 0px #e72e77;
   }
 
   50% {
@@ -773,6 +771,6 @@
 
   100% {
     transform : scale(1);
-    box-shadow: 0 0 0px #00aaff;
+    box-shadow: 0 0 0px #e72e77;
   }
 }

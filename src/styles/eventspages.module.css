@@ -87,8 +87,10 @@
 }
 
 .heroTitle span {
-    color         : #38bdf8;
+    color         : #e72e77;
     /* white-space: nowrap; */
+    font-weight   : 800;
+    text-shadow   : 1.5px 1.5px 2px black;
 }
 
 /* ===========================
@@ -117,7 +119,7 @@
 
 .dot.active {
     opacity   : 1;
-    background: #38bdf8;
+    background: #e72e77;
 }
 
 
@@ -153,7 +155,7 @@
 }
 
 .galleryFilterBtn.active {
-    background: #38bdf8;
+    background: #e72e77;
     color     : white;
 }
 

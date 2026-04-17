@@ -1,6 +1,6 @@
 /* Footer main */
 .footer {
-  background-color: #005477;
+  background-color: #bd1a5b;
   color           : #ffffff;
   padding-bottom  : 50px;
 }
@@ -39,10 +39,10 @@
 }
 
 .footer-logo img {
-  width     : 160px;
-  height    : auto;
-  object-fit: contain;
-  filter    : drop-shadow(3px 3px 1px #00000087);
+  width        : 160px;
+  height       : auto;
+  object-fit   : contain;
+  /* filter    : drop-shadow(3px 3px 1px #00000087); */
 }
 
 /* description text */
@@ -88,9 +88,9 @@
 
 /* links */
 .footer-links {
-  list-style : none;
-  padding    : 0;
-  color      : #ffffff;
+  list-style: none;
+  padding   : 0;
+  color     : #ffffff;
 }
 
 .footer-links li {
@@ -113,8 +113,8 @@
 
 /* contact */
 .footer-contact {
-  list-style : none;
-  padding    : 0;
+  list-style: none;
+  padding   : 0;
 }
 
 .footer-contact a {
