@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Layout from "./Layout"
 import { lazy, Suspense } from "react";
@@ -112,9 +112,35 @@ if ("serviceWorker" in navigator) {
   });
 }
 
+
 function App() {
 
   // useSecurity();
+
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (
+        (e.ctrlKey && (e.key === "+" || e.key === "-" || e.key === "=")) ||
+        (e.ctrlKey && e.key === "0")
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <Router>
