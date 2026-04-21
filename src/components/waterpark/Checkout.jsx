@@ -459,7 +459,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                                 />
                                 {errors.visitDate && <p className={styles.error}>{errors.visitDate}</p>}
 
-                                <label>Full Name</label>
+                                <div> <label>Full Name</label> </div>
                                 <input
                                     name="name"
                                     placeholder="Enter your full name"
