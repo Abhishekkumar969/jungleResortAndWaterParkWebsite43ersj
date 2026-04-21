@@ -3,98 +3,122 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a5c2a" />
+
+  <!-- Favicon & PWA -->
   <link rel="icon" href="%PUBLIC_URL%/logo-red-yellow.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <!-- IMPORTANT -->
-  <meta name="theme-color" content="#000000" />
-
-  <!-- 🔥 SEO START -->
-  <!-- <title>Jungle Resort Patna - Waterpark, Banquet Hall & Wedding Venue</title> -->
-
-  <title>Jungle Resort Patna - Best Banquet hall in Patna, Best Resort in Patna, Best Water Park in Patna, Banquet hall
-    near me, Water Park near me, Resort near me </title>
-
-  <meta name="description" content="Jungle Resort & Waterpark in Patna offers best wedding venue, banquet hall, birthday party packages 
-    & water rides. Book now for unforgettable experience." />
-
-  <meta name="keywords" content="
-    Best Banquet hall in Patna, 
-    Best Resort in Patna, 
-    Best Water Park in Patna, 
-    Banquet hall near me, 
-    Water Park near me, 
-    Resort near me 
-    Palace near me,
-    Resort near me,
-    Best Banquet hall in Patna,
-    Jungle Resort Patna,
-    Banquet hall in Patna,
-    Best banquet hall in Patna,
-    Luxury banquet hall in Patna,
-    Premium banquet hall in Patna,
-    Wedding venue in Patna,
-    Best wedding venue in Patna,
-    Marriage hall in Patna,
-    Wedding resort in Patna,
-    Destination wedding in Patna,
-    Luxury wedding resort in Patna,
-    Wedding lawn in Patna,
-    Open lawn wedding venue Patna,
-    Banquet hall in Kankarbagh,
-    Banquet hall near me,
-    Wedding venue near me,
-    Resort near Patna for wedding,
-    Birthday party venue in Patna,
-    Kids birthday party venue Patna,
-    Anniversary celebration venue Patna,
-    Engagement venue in Patna,
-    Ring ceremony venue Patna,
-    Corporate event venue in Patna,
-    Corporate party venue Patna,
-    Conference hall in Patna,
-    Kitty party hall in Patna,
-    Resort for party in Patna,
-    Resort booking in Patna,
-    Banquet hall booking in Patna,
-    Wedding packages in Patna resort,
-    Banquet hall cost in Patna,
-    Waterpark in Patna,
-    Best waterpark in Patna,
-    Swimming pool resort Patna,
-    Family waterpark Patna,
-    Rain dance Patna,
-    Amusement park Patna
-    " />
-
-  <meta name="author" content="Jungle Resort And Water Park Patna" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <!-- Open Graph (Google + WhatsApp share) -->
-  <meta property="og:title" content="Jungle Resort Patna - Waterpark & Wedding Venue" />
-  <meta property="og:description"
-    content="Best Jungle Resort & Waterpark in Patna for weddings, parties & family fun." />
-  <meta property="og:image" content="https://jungleresortpatna.in/logo.png" />
-  <meta property="og:url" content="https://jungleresortpatna.in/" />
-  <meta property="og:type" content="website" />
-
-  <!-- 🔥 SEO END -->
-
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
+  <!-- SEO -->
+  <title>Jungle Resort Patna - Waterpark, Banquet Hall &amp; Wedding Venue</title>
+  <meta name="description"
+    content="Jungle Resort &amp; Waterpark in Patna offers the best wedding venue, banquet hall, birthday party packages &amp; water rides. Book now for an unforgettable experience." />
+  <meta name="keywords"
+    content="Best Banquet hall in Patna, Best Resort in Patna, Best Water Park in Patna, Jungle Resort Patna, Wedding venue in Patna, Marriage hall in Patna, Destination wedding in Patna, Birthday party venue in Patna" />
+  <meta name="author" content="Jungle Resort And Water Park Patna" />
+  <link rel="canonical" href="https://jungleresortpatna.in/" />
 
-  <!-- Razorpay -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jungle Resort Patna - Waterpark &amp; Wedding Venue" />
+  <meta property="og:description"
+    content="Best Jungle Resort &amp; Waterpark in Patna for weddings, parties &amp; family fun." />
+  <meta property="og:image" content="https://jungleresortpatna.in/logo-red-yellow.png" />
+  <meta property="og:url" content="https://jungleresortpatna.in/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jungle Resort Patna" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jungle Resort Patna - Waterpark &amp; Wedding Venue" />
+  <meta name="twitter:description" content="Best Jungle Resort &amp; Waterpark in Patna for weddings, parties &amp; family fun." />
+  <meta name="twitter:image" content="https://jungleresortpatna.in/logo-red-yellow.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Fonts: fully non-blocking — media=print trick, swap to all onload -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap"
+    media="print" onload="this.media='all'" />
+
+  <!-- Font Awesome removed — WhatsApp icon now uses inline SVG (no 3rd-party CSS needed) -->
+
+  <!-- LCP image preload — must match src in hero-section.jsx exactly -->
+  <link rel="preload" as="image" href="%PUBLIC_URL%/videos/hero.webp"
+    type="image/webp" fetchpriority="high" />
+
+  <!-- Razorpay loaded dynamically only in Checkout page — not globally -->
+
+  <!-- Critical inline CSS: prevent invisible text + reserve LCP space -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #faf8f3;
+    }
+    #root { min-height: 100vh; }
+    /* Reserve hero min-height so LCP image has space immediately */
+    .heroSection, [class*="heroSection"] {
+      min-height: 100vh;
+      background: #1a1a1a;
+    }
+  </style>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+
+  <!-- Structured Data: LocalBusiness Schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Resort",
+    "name": "Jungle Resort & Waterpark Patna",
+    "url": "https://jungleresortpatna.in/",
+    "logo": "https://jungleresortpatna.in/logo-red-yellow.png",
+    "image": "https://jungleresortpatna.in/videos/hero.webp",
+    "description": "Jungle Resort & Waterpark in Patna offers the best wedding venue, banquet hall, birthday party packages & water rides.",
+    "telephone": ["+91-9031080901", "+91-9031080902", "+91-9031080903"],
+    "email": "jungleresort.patna@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bypass Thana, Marcha - Mirchi Road, Dharamsala",
+      "addressLocality": "Patna",
+      "addressRegion": "Bihar",
+      "postalCode": "800009",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "25.5941",
+      "longitude": "85.1376"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      "https://facebook.com",
+      "https://instagram.com",
+      "https://youtube.com"
+    ],
+    "priceRange": "₹₹",
+    "servesCuisine": "Indian",
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Waterpark", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Banquet Hall", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Wedding Venue", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Swimming Pool", "value": true}
+    ]
+  }
+  </script>
 </body>
 
 </html>
