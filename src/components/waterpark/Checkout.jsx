@@ -145,15 +145,13 @@ function SuccessScreen({ formData, selectedTickets, cottage, totalAmount, bookin
     };
 
     useEffect(() => {
-        // Auto-download once on mount — deps intentionally omitted (one-shot)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // Direct download as requested by user
         const t = setTimeout(() => {
             downloadTicket({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId });
             setDownloaded(true);
-        }, 1000);
+        }, 800); // slightly reduced delay
         return () => clearTimeout(t);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [formData, selectedTickets, cottage, totalAmount, bookingId, paymentId]);
 
     return ReactDOM.createPortal(
         <div className={styles.successOverlay}>
@@ -285,7 +283,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
             });
-            
+
             if (!res.ok) {
                 const errorData = await res.json().catch(() => ({}));
                 throw new Error(errorData.details || errorData.error || "Server error");
@@ -327,11 +325,11 @@ export default function Checkout({ isOpen, onClose, data }) {
                         name: formData.name || "",
                         phone: formData.phone || "",
                         visitDate: formData.visitDate || "",
-                        cottagePackage: { 
-                            id: cottage.id, 
-                            duration: cottage.duration, 
-                            price: cottage.basePrice || 0, 
-                            days: cottage.days || 1 
+                        cottagePackage: {
+                            id: cottage.id,
+                            duration: cottage.duration,
+                            price: cottage.basePrice || 0,
+                            days: cottage.days || 1
                         },
                         waterParkAddons: cottage.addons || {},
                         total: cottage.total || 0,
@@ -371,49 +369,48 @@ export default function Checkout({ isOpen, onClose, data }) {
                 })(),
 
                 handler: async (response) => {
-                    setLoading(true); // show loader during post-payment sync
-                    try {
-                        const paymentFields = {
-                            paymentId: response.razorpay_payment_id,
-                            orderId: response.razorpay_order_id,
-                            verification: true,
-                            paymentStatus: "paid",
-                            paymentAt: new Date().toISOString(),
-                        };
+                    setLoading(true);
+                    const paymentFields = {
+                        paymentId: response.razorpay_payment_id || "N/A",
+                        orderId: response.razorpay_order_id || "N/A",
+                        verification: true,
+                        paymentStatus: "paid",
+                        paymentAt: new Date().toISOString(),
+                    };
 
+                    try {
+                        // Sync with WaterPark collection
                         if (Object.keys(selectedTickets || {}).length > 0 || cottage) {
                             await setDoc(doc(db, "WaterPark", monthYear),
                                 { [bookingId]: { ...wpBookingData, ...paymentFields } },
                                 { merge: true }
                             );
                         }
-                        
+
                         if (cottage) {
-                            // Fetch again to ensure we have previous fields
                             await setDoc(doc(db, "CottageBookings", monthYear),
                                 { [bookingId]: paymentFields },
                                 { merge: true }
                             );
                         }
-
-                        localStorage.removeItem("cart");
-                        window.dispatchEvent(new Event("cartUpdated"));
-                        setLoading(false);
-
-                        setSuccessData({
-                            formData,
-                            selectedTickets,
-                            cottage,
-                            totalAmount,
-                            bookingId,
-                            paymentId: response.razorpay_payment_id,
-                        });
-
                     } catch (syncErr) {
-                        console.error("Post-payment Sync Error:", syncErr);
-                        setPaymentError("Payment recorded but confirmation failed. Please contact support.");
-                        setLoading(false);
+                        console.error("Critical: Post-payment Sync Failed", syncErr);
+                        // We do NOT show error message to user here because payment is already successful.
+                        // We proceed to show success screen so they get their ticket.
                     }
+
+                    localStorage.removeItem("cart");
+                    window.dispatchEvent(new Event("cartUpdated"));
+
+                    setLoading(false);
+                    setSuccessData({
+                        formData,
+                        selectedTickets,
+                        cottage,
+                        totalAmount,
+                        bookingId,
+                        paymentId: response.razorpay_payment_id,
+                    });
                 },
 
                 modal: {
@@ -424,7 +421,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                         setDoc(doc(db, "WaterPark", monthYear),
                             { [bookingId]: { paymentStatus: "cancelled", cancelledAt: new Date().toISOString() } },
                             { merge: true }
-                        ).catch(() => {});
+                        ).catch(() => { });
                     }
                 },
 
