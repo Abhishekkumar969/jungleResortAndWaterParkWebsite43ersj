@@ -23,11 +23,12 @@
 .heroWrap {
     position: relative;
     min-height: 280px;
-    background: url("/public/images/waterpark-main.webp") center / cover no-repeat;
+    background: url("/public/eventPics/Pool Party/waterparkjungleresort.webp") center / cover no-repeat;
     display: flex;
     align-items: flex-end;
     padding: 40px 24px 36px;
     overflow: hidden;
+    top: 50px;
 }
 
 .heroWrapOverlay {
@@ -69,7 +70,7 @@
 }
 
 .heroWrapContent span {
-    color: #38bdf8;
+    color: #ffffff;
 }
 
 .heroWrapContent p {

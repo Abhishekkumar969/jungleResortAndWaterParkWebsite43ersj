@@ -24,7 +24,7 @@
 .waterparkOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 80, 170, 0.62);
+  background: #00c3ff43;
   z-index: 1;
 }
 
