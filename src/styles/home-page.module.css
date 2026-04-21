@@ -1,8 +1,4 @@
 .homePage {
   min-height: 100vh;
-  background: white;
-}
-
-.mobileview {
-  display: none;
-}
+  background: #faf8f3;
+}

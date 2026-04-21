@@ -90,7 +90,7 @@
     display      : block;
     font-size    : 14px;
     font-weight  : 600;
-    color        : #0077b6;
+    color        : #005b8a;
     margin-bottom: 6px;
     text-align   : left;
 }
@@ -118,7 +118,7 @@
     padding      : 13px;
     border       : none;
     border-radius: 10px;
-    background   : linear-gradient(90deg, #1da1f2, #0066ff);
+    background   : linear-gradient(90deg, #005fbc, #0046b8);
     color        : #fff;
     font-weight  : 600;
     font-size    : 15px;
@@ -141,7 +141,7 @@
 /* ================= HELP TEXT ================= */
 .helpText {
     font-size  : 13px;
-    color      : #0077ff;
+    color      : #005fbc;
     margin-top : 5px;
     line-height: 1.4;
 }

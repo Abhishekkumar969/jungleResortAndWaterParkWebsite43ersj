@@ -2,7 +2,7 @@
 .overlayBody {
     position: fixed;
     inset   : 0;
-    z-index : 999;
+    z-index : 9100;
 }
 
 .overlay {
@@ -104,6 +104,7 @@
     font-size : 14px;
     text-align: left;
     margin    : 0px;
+    color     : black;
 }
 
 .inputGroup input {
@@ -369,4 +370,210 @@
     font-weight: bold;
     text-align : right;
     font-size  : 16px;
+}
+
+/* ===== ORDER SUMMARY BOX ===== */
+.orderSummaryBox {
+    background   : #f8f9fc;
+    border       : 1px solid #e8ecf0;
+    border-radius: 12px;
+    padding      : 12px 16px;
+    margin-bottom: 18px;
+}
+
+.summaryRow {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    padding        : 6px 0;
+    font-size      : 13px;
+    color          : #4a5568;
+    border-bottom  : 1px solid #f0f2f5;
+}
+
+.summaryRow:last-of-type {
+    border-bottom: none;
+}
+
+.summaryRow strong {
+    font-weight: 800;
+    color      : #1a1a2e;
+}
+
+.summaryTotal {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    margin-top     : 10px;
+    padding-top    : 10px;
+    border-top     : 2px solid #e8ecf0;
+    font-size      : 14px;
+    color          : #6b7a8d;
+    font-weight    : 700;
+}
+
+.summaryTotal strong {
+    font-size  : 20px;
+    font-weight: 900;
+    color      : #e91e8c;
+}
+
+/* ===== SUCCESS SCREEN ===== */
+.successOverlay {
+    position       : fixed;
+    inset          : 0;
+    z-index        : 9200;
+    background     : rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    padding        : 20px;
+    animation      : fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.successCard {
+    background   : #fff;
+    border-radius: 24px;
+    padding      : 36px 32px;
+    max-width    : 440px;
+    width        : 100%;
+    text-align   : center;
+    box-shadow   : 0 30px 80px rgba(0, 0, 0, 0.3);
+    animation    : scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleIn {
+    from {
+        opacity  : 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity  : 1;
+        transform: scale(1);
+    }
+}
+
+.successIcon {
+    font-size    : 60px;
+    margin-bottom: 14px;
+    animation    : bounce 0.6s ease;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-12px);
+    }
+
+    70% {
+        transform: translateY(-6px);
+    }
+}
+
+.successTitle {
+    font-size  : 26px;
+    font-weight: 900;
+    color      : #1a1a2e;
+    margin     : 0 0 8px;
+}
+
+.successSub {
+    font-size: 14px;
+    color    : #6b7a8d;
+    margin   : 0 0 22px;
+}
+
+.successInfo {
+    background   : #f8f9fc;
+    border-radius: 14px;
+    padding      : 16px;
+    margin-bottom: 20px;
+    text-align   : left;
+}
+
+.successRow {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    padding        : 8px 0;
+    font-size      : 13px;
+    color          : #6b7a8d;
+    border-bottom  : 1px solid #f0f2f5;
+}
+
+.successRow:last-child {
+    border-bottom: none;
+}
+
+.successRow strong {
+    font-weight: 800;
+    color      : #1a1a2e;
+}
+
+.downloadedBanner {
+    background   : #dcfce7;
+    color        : #16a34a;
+    border       : 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding      : 10px 14px;
+    font-size    : 13px;
+    font-weight  : 700;
+    margin-bottom: 16px;
+    animation    : fadeIn 0.4s ease;
+}
+
+.downloadBtn {
+    width        : 100%;
+    padding      : 14px;
+    background   : linear-gradient(135deg, #e91e8c, #ff6b35);
+    color        : #fff;
+    border       : none;
+    border-radius: 14px;
+    font-size    : 15px;
+    font-weight  : 800;
+    cursor       : pointer;
+    font-family  : inherit;
+    margin-bottom: 10px;
+    box-shadow   : 0 6px 20px rgba(233, 30, 140, 0.35);
+    transition   : transform 0.18s;
+}
+
+.downloadBtn:hover {
+    transform: scale(1.02);
+}
+
+.doneBtn {
+    width        : 100%;
+    padding      : 12px;
+    background   : #f1f5f9;
+    color        : #64748b;
+    border       : none;
+    border-radius: 14px;
+    font-size    : 14px;
+    font-weight  : 700;
+    cursor       : pointer;
+    font-family  : inherit;
+    transition   : background 0.2s;
+}
+
+.doneBtn:hover {
+    background: #e2e8f0;
+    color     : #1a1a2e;
 }
