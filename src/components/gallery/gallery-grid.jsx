@@ -49,13 +49,13 @@ export default function GalleryGrid() {
                 </div>
 
                 {/* Category Filters */}
-                <div className={styles.filters}>
+                <div className={styles.filters} role="group" aria-label="Filter gallery by category">
                     {categories.map((category) => (
                         <button
                             key={category}
                             onClick={() => setActiveCategory(category)}
-                            className={`${styles.filterBtn} ${activeCategory === category ? styles.active : ""
-                                }`}
+                            className={`${styles.filterBtn} ${activeCategory === category ? styles.active : ""}`}
+                            aria-pressed={activeCategory === category}
                         >
                             {category}
                         </button>
@@ -67,15 +67,18 @@ export default function GalleryGrid() {
                     {filteredImages.map((image, index) => (
                         <div
                             key={index}
-                            className={`${styles.card} ${index % 5 === 0 ? styles.large : ""
-                                }`}
-                            onClick={() => setLightboxImage(image.src)}
+                            className={`${styles.card} ${index % 5 === 0 ? styles.large : ""}`}
+                            onClick={() => setLightboxImage(image)}
+                            onKeyDown={(e) => e.key === "Enter" && setLightboxImage(image)}
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`View photo: ${image.title}`}
                         >
-                            <img src={image.src} alt={image.title} />
-
-                            <div className={styles.overlay}>
+                            <img src={image.src} alt={image.title} loading="lazy" width="400" height="300" />
+                            {/* aria-hidden: heading inside button violates ARIA spec */}
+                            <div className={styles.overlay} aria-hidden="true">
                                 <span>{image.category}</span>
-                                <h3>{image.title}</h3>
+                                <p>{image.title}</p>
                             </div>
                         </div>
                     ))}
@@ -86,15 +89,23 @@ export default function GalleryGrid() {
                     <div
                         className={styles.lightbox}
                         onClick={() => setLightboxImage(null)}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label={`Gallery image: ${lightboxImage.title || "full view"}`}
                     >
                         <button
                             className={styles.close}
                             onClick={() => setLightboxImage(null)}
+                            aria-label="Close image viewer"
                         >
-                            <X size={30} />
+                            <X size={30} aria-hidden="true" />
                         </button>
 
-                        <img src={lightboxImage} alt="Gallery" className={styles.lightboxImg} />
+                        <img
+                            src={lightboxImage.src || lightboxImage}
+                            alt={lightboxImage.title || "Gallery image"}
+                            className={styles.lightboxImg}
+                        />
                     </div>
                 )}
 

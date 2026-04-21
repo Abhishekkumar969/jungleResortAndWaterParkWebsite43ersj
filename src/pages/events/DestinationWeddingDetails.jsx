@@ -1,227 +1,52 @@
-import React, { useState, useEffect, useRef } from "react";
-import Navigation from "../../components/navigation-temp";
-import Footer from "../../components/footer-temp";
-import QuickBookForm from "../../components/quick-book-form";
-import { Play } from "lucide-react";
-import styles from "../../styles/eventspages.module.css";
-import { Helmet } from "react-helmet";
+import React from "react";
+import EventDetailPage from "../../components/EventDetailPage";
 
 export default function DestinationWeddingDetails() {
-
-    const [selectedIndex, setSelectedIndex] = useState(null);
-
-    const getYouTubeThumbnail = (url) => {
-        const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
-    };
-
-    const itemRefs = useRef([]);
-
-    useEffect(() => {
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach((entry) => {
-
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add(styles.show);
-                        observer.unobserve(entry.target);
-                    }
-
-                });
-
-            },
-            { threshold: 0.2 }
-        );
-
-        itemRefs.current.forEach((el) => el && observer.observe(el));
-
-        return () => observer.disconnect();
-
-    }, []);
-
-    const media = [
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/3f4ce4265b717aacce9b6b8378018292.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/132.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/unnamed.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/image10(57).webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/hero.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/1485498619_595x400.webp" },
-
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
-    ];
-
-    const filtered = media;
-
-    const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
-
     return (
-        <>
-            <Helmet>
-                <title>Best Destination Wedding Venue in Patna | Jungle Resort</title>
-
-                <meta
-                    name="description"
-                    content="Plan your dream destination wedding at Jungle Resort Patna with luxury venue, decoration, lawn & premium services. Book best wedding venue today!"
-                />
-
-                <meta
-                    name="keywords"
-                    content="Destination wedding Patna, Wedding resort Patna, Outdoor wedding Patna, Jungle Resort wedding"
-                />
-
-                {/* OG TAGS */}
-                <meta property="og:title" content="Best Destination Wedding Venue in Patna | Jungle Resort" />
-                <meta property="og:description" content="Celebrate your destination wedding with luxury setup & lawn at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/DestWed/hero.webp" />
-                <meta property="og:url" content="https://jungleresortpatna.in/destinationwedding" />
-                <meta property="og:type" content="website" />
-
-                {/* CANONICAL */}
-                <link rel="canonical" href="https://jungleresortpatna.in/destinationwedding" />
-
-                {/* SCHEMA */}
-                <script type="application/ld+json">
-                    {`
-{
-  "@context": "https://schema.org",
-  "@type": "EventVenue",
-  "name": "Jungle Resort Destination Wedding",
-  "image": "https://jungleresortpatna.in/eventPics/DestWed/hero.webp",
-  "url": "https://jungleresortpatna.in/destinationwedding",
-  "telephone": "+91-9065383838",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
-    "addressLocality": "Patna",
-    "addressRegion": "Bihar",
-    "postalCode": "800009",
-    "addressCountry": "India"
-  },
-  "description": "Best destination wedding venue in Patna with luxury lawn, decoration & premium services at Jungle Resort."
-}
-`}
-                </script>
-            </Helmet>
-
-            <div className={styles.eventPage}>
-
-
-                {/* FIXED BACKGROUND */}
-                <div
-                    className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/gallery-1.webp)" }}
-                ></div>
-                <div className={styles.pageOverlay}></div>
-
-                <Navigation />
-
-                {/* HERO */}
-                <section className={styles.heroSection}>
-
-                    <div className={styles.heroContent}>
-
-                        <div className={styles.heroLeft}>
-                            <h1 className={styles.heroTitle}>
-                                Best <span>Destination Wedding</span> Venue in Patna
-                            </h1>
-                        </div>
-
-                        <div className={styles.heroRight}>
-                            <QuickBookForm defaultFunctionType="Destination Wedding" />
-                        </div>
-                    </div>
-                </section>
-
-                <section className={styles.mobileBook}>
-                    <QuickBookForm defaultFunctionType="Destination Wedding" />
-                </section>
-
-                {/* GALLERY */}
-
-                <div className={styles.galleryContent}>
-
-                    <div className={styles.galleryHeader}>
-                        <h1 className={styles.galleryTitle}>Gallery</h1>
-                    </div>
-
-                    <div className={styles.galleryGrid}>
-
-                        {media.map((item, i) => (
-
-                            <div
-                                key={i}
-                                ref={(el) => (itemRefs.current[i] = el)}
-                                className={`${styles.galleryItem} ${styles.animateItem}`}
-                                onClick={() => setSelectedIndex(i)}
-                            >
-
-                                {item.type === "image" ? (
-                                    <>
-                                        <img src={item.url} alt="" className={styles.galleryImage} />
-                                        <div className={styles.galleryOverlay}></div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <img
-                                            src={getYouTubeThumbnail(item.url)}
-                                            alt=""
-                                            className={styles.galleryImage}
-                                        />
-                                        <div className={styles.galleryOverlay}></div>
-                                        <Play className={styles.galleryPlay} />
-                                    </>
-                                )}
-
-                            </div>
-
-                        ))}
-
-                    </div>
-
-                </div>
-
-                {selectedMedia && (
-
-                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
-
-                        <button className={styles.galleryClose}>✕</button>
-
-                        <div
-                            className={styles.galleryViewerContent}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-
-                            {selectedMedia.type === "image" ? (
-                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="" />
-                            ) : (
-                                <iframe
-                                    src={selectedMedia.url}
-                                    width="100%"
-                                    height="600"
-                                    frameBorder="0"
-                                    allowFullScreen
-                                    title="video"
-                                />
-                            )}
-
-                        </div>
-
-                    </div>
-
-                )}
-
-                <Footer />
-
-            </div>
-        </>
+        <EventDetailPage
+            formType="Destination Wedding"
+            helmet={{
+                title: "Destination Wedding Venue in Patna | Jungle Resort",
+                description: "Plan a magical destination wedding at Jungle Resort Patna with lush greenery, luxury décor, and all-inclusive packages. Book today!",
+                keywords: "Destination wedding Patna, Wedding resort Bihar, Luxury wedding venue Patna, Jungle Resort destination wedding",
+                ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
+                canonical: "/destinationwedding",
+            }}
+            hero={{
+                bg: "/eventPics/Wed/jungleresort.webp",
+                pill: "Destination Wedding",
+                title: "Magical",
+                titleHighlight: "Destination Wedding in Patna",
+                subtitle: "Escape the ordinary — celebrate your love story surrounded by lush jungle greenery and timeless elegance at Jungle Resort.",
+                features: ["🌿 Jungle Setting", "🏰 Luxury Suites", "🍾 All-Inclusive", "📸 Pre-Wedding Setup"],
+            }}
+            info={[
+                { icon: "👥", label: "Capacity", value: "Upto 2000 Guests" },
+                { icon: "🌿", label: "Setting", value: "Jungle & Lawn" },
+                { icon: "📍", label: "Location", value: "Patna, Bihar" },
+                { icon: "📞", label: "Enquiry", value: "+91 90653 83838" },
+            ]}
+            desc={{
+                label: "Destination Wedding",
+                title: "Your Love Story Deserves a Jungle Backdrop",
+                text: "Jungle Resort Patna offers a unique destination wedding experience — lush greenery, serene ambiance, and world-class hospitality all in one place. From intimate ceremonies to grand celebrations, we make every moment magical.",
+                highlights: [
+                    "Scenic outdoor lawns and indoor banquet halls",
+                    "Premium décor, floral & lighting arrangements",
+                    "Multi-cuisine catering with dedicated chefs",
+                    "Pre-wedding shoot set-ups included",
+                    "Accommodation for guests & family",
+                ],
+                image: "/eventPics/Wed/venue-wedding.webp",
+            }}
+            gallery={[
+                { type: "image", url: "/eventPics/Wed/venue-wedding.webp", alt: "Destination Wedding Jungle Resort" },
+                { type: "image", url: "/eventPics/Wed/unnamed.webp", alt: "Wedding Venue Patna" },
+                { type: "image", url: "/eventPics/Wed/jungleresort.webp", alt: "Jungle Resort Wedding" },
+                { type: "image", url: "/eventPics/Wed/jungleresort1.webp", alt: "Jungle Resort Wedding Hall" },
+                { type: "image", url: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp", alt: "Wedding Decoration" },
+                { type: "image", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp", alt: "Jungle Resort Kumhrar" },
+            ]}
+        />
     );
 }

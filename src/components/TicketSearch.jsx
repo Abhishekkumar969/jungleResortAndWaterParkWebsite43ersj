@@ -4,8 +4,6 @@ import { doc, getDoc } from "firebase/firestore";
 import styles from "../styles/TicketSearch.module.css";
 import { QRCodeCanvas } from "qrcode.react";
 import { useRef } from "react";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 
 export default function TicketSearch() {
     const [phone, setPhone] = useState("");
@@ -120,6 +118,11 @@ export default function TicketSearch() {
     }, [open, resultOpen]);
 
     const downloadPDF = async () => {
+        const jsPDFModule = await import("jspdf");
+        const html2canvasModule = await import("html2canvas");
+        const jsPDFConst = jsPDFModule.default || jsPDFModule.jsPDF;
+        const html2canvas = html2canvasModule.default;
+
         const element = ticketRef.current;
 
         const canvas = await html2canvas(element, {
@@ -129,7 +132,7 @@ export default function TicketSearch() {
 
         const imgData = canvas.toDataURL("image/png");
 
-        const pdf = new jsPDF("p", "mm", "a4");
+        const pdf = new jsPDFConst("p", "mm", "a4");
 
         const pageWidth = pdf.internal.pageSize.getWidth();
         const pageHeight = pdf.internal.pageSize.getHeight();
@@ -174,14 +177,16 @@ export default function TicketSearch() {
                                 <button
                                     className={styles.closeBtn}
                                     onClick={() => setOpen(false)}
+                                    aria-label="Close form"
                                 >
                                     ✕
                                 </button>
                             </div>
 
                             <div className={styles.field}>
-                                <label className={styles.label}>Visit Date:</label>
+                                <label htmlFor="ticket-visit-date" className={styles.label}>Visit Date:</label>
                                 <input
+                                    id="ticket-visit-date"
                                     type="date"
                                     value={date}
                                     onChange={(e) => setDate(e.target.value)}
@@ -190,8 +195,9 @@ export default function TicketSearch() {
                             </div>
 
                             <div className={styles.field}>
-                                <label className={styles.label}>Phone Number: (10 Digits)</label>
+                                <label htmlFor="ticket-phone" className={styles.label}>Phone Number: (10 Digits)</label>
                                 <input
+                                    id="ticket-phone"
                                     type="text"
                                     placeholder=""
                                     value={phone}
@@ -247,6 +253,7 @@ export default function TicketSearch() {
                                 <button
                                     className={styles.closeBtn}
                                     onClick={() => setResultOpen(false)}
+                                    aria-label="Close results"
                                 >
                                     ✕
                                 </button>
@@ -258,7 +265,7 @@ export default function TicketSearch() {
                                         margin: "10px 0px",
                                         padding: "10px",
                                         width: "100%",
-                                        background: "#22c55e",
+                                        background: "#15803d",
                                         color: "#fff",
                                         border: "none",
                                         borderRadius: "8px",
@@ -312,7 +319,7 @@ export default function TicketSearch() {
                                         <div className={styles.ticketContent}>
 
                                             <div className={styles.ticketlogo}>
-                                                <img src="../../images/logo.webp" alt="Jungle Resort Logo" />
+                                                <img src="../../images/logo.webp" alt="Jungle Resort Logo" width="120" height="60" />
                                             </div>
 
                                             <div className={styles.ticketCardDetails}>

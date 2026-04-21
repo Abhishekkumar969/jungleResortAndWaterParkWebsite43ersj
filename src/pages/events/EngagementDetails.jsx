@@ -1,227 +1,50 @@
-import React, { useState, useEffect, useRef } from "react";
-import Navigation from "../../components/navigation-temp";
-import Footer from "../../components/footer-temp";
-import QuickBookForm from "../../components/quick-book-form";
-import { Play } from "lucide-react";
-import styles from "../../styles/eventspages.module.css";
-import { Helmet } from "react-helmet";
+import React from "react";
+import EventDetailPage from "../../components/EventDetailPage";
 
-export default function WeddingDetails() {
-
-    const [selectedIndex, setSelectedIndex] = useState(null);
-
-    const getYouTubeThumbnail = (url) => {
-        const id = url.split("/embed/")[1].split("?")[0];
-        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
-    };
-
-    const itemRefs = useRef([]);
-
-    useEffect(() => {
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach((entry) => {
-
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add(styles.show);
-                        observer.unobserve(entry.target);
-                    }
-
-                });
-
-            },
-            { threshold: 0.2 }
-        );
-
-        itemRefs.current.forEach((el) => el && observer.observe(el));
-
-        return () => observer.disconnect();
-
-    }, []);
-
-    const media = [
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/3f4ce4265b717aacce9b6b8378018292.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/132.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/unnamed.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/Anniversary/Anniversary6.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/image10(57).jpeg" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/hero.webp" },
-        { type: "image", category: "Photos", url: "/eventPics/DestWed/1485498619_595x400.png" },
-
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
-        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
-    ];
-
-    const filtered = media;
-
-    const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
-
+export default function EngagementDetails() {
     return (
-        <>
-            <Helmet>
-                <title>Best Engagement Ceremony Venue in Patna | Jungle Resort</title>
-
-                <meta
-                    name="description"
-                    content="Celebrate your engagement ceremony at Jungle Resort Patna with decoration, DJ, luxury venue & memorable setup. Book best engagement venue today!"
-                />
-
-                <meta
-                    name="keywords"
-                    content="Engagement venue Patna, Ring ceremony Patna, Engagement party Patna, Jungle Resort engagement"
-                />
-
-                {/* OG TAGS */}
-                <meta property="og:title" content="Best Engagement Ceremony Venue in Patna | Jungle Resort" />
-                <meta property="og:description" content="Celebrate engagement ceremony with decoration & luxury setup at Jungle Resort Patna." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/weddings1.webp" />
-                <meta property="og:url" content="https://jungleresortpatna.in/engagement" />
-                <meta property="og:type" content="website" />
-
-                {/* CANONICAL */}
-                <link rel="canonical" href="https://jungleresortpatna.in/engagement" />
-
-                {/* SCHEMA */}
-                <script type="application/ld+json">
-                    {`
-{
-  "@context": "https://schema.org",
-  "@type": "EventVenue",
-  "name": "Jungle Resort Engagement Ceremony",
-  "image": "https://jungleresortpatna.in/images/weddings1.webp",
-  "url": "https://jungleresortpatna.in/engagement",
-  "telephone": "+91-9065383838",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
-    "addressLocality": "Patna",
-    "addressRegion": "Bihar",
-    "postalCode": "800009",
-    "addressCountry": "India"
-  },
-  "description": "Best engagement ceremony venue in Patna with decoration & premium setup at Jungle Resort."
-}
-`}
-                </script>
-            </Helmet>
-
-            <div className={styles.eventPage}>
-
-
-                {/* FIXED BACKGROUND */}
-                <div
-                    className={styles.pageBg}
-                    style={{ backgroundImage: "url(/images/engagement.webp)" }}
-                ></div>
-                <div className={styles.pageOverlay}></div>
-
-                <Navigation />
-
-                {/* HERO */}
-                <section className={styles.heroSection}>
-
-                    <div className={styles.heroContent}>
-
-                        <div className={styles.heroLeft}>
-                            <h1 className={styles.heroTitle}>
-                                Best <span>Engagement Ceremony</span> Venue in Patna
-                            </h1>
-                        </div>
-
-                        <div className={styles.heroRight}>
-                            <QuickBookForm defaultFunctionType="Engagement" />
-                        </div>
-                    </div>
-                </section>
-
-                <section className={styles.mobileBook}>
-                    <QuickBookForm defaultFunctionType="Engagement" />
-                </section>
-
-                {/* GALLERY */}
-
-                <div className={styles.galleryContent}>
-
-                    <div className={styles.galleryHeader}>
-                        <h1 className={styles.galleryTitle}>Gallery</h1>
-                    </div>
-
-                    <div className={styles.galleryGrid}>
-
-                        {media.map((item, i) => (
-
-                            <div
-                                key={i}
-                                ref={(el) => (itemRefs.current[i] = el)}
-                                className={`${styles.galleryItem} ${styles.animateItem}`}
-                                onClick={() => setSelectedIndex(i)}
-                            >
-
-                                {item.type === "image" ? (
-                                    <>
-                                        <img src={item.url} alt="Engagement Ceremony Jungle Resort Patna" className={styles.galleryImage} />
-                                        <div className={styles.galleryOverlay}></div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <img
-                                            src={getYouTubeThumbnail(item.url)}
-                                            alt="Engagement Ceremony Jungle Resort Patna"
-                                            className={styles.galleryImage}
-                                        />
-                                        <div className={styles.galleryOverlay}></div>
-                                        <Play className={styles.galleryPlay} />
-                                    </>
-                                )}
-
-                            </div>
-
-                        ))}
-
-                    </div>
-
-                </div>
-
-                {selectedMedia && (
-
-                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
-
-                        <button className={styles.galleryClose}>✕</button>
-
-                        <div
-                            className={styles.galleryViewerContent}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-
-                            {selectedMedia.type === "image" ? (
-                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="Engagement Ceremony Jungle Resort Patna" />
-                            ) : (
-                                <iframe
-                                    src={selectedMedia.url}
-                                    width="100%"
-                                    height="600"
-                                    frameBorder="0"
-                                    allowFullScreen
-                                    title="video"
-                                />
-                            )}
-
-                        </div>
-
-                    </div>
-
-                )}
-
-                <Footer />
-
-            </div>
-        </>
+        <EventDetailPage
+            formType="Engagement"
+            helmet={{
+                title: "Engagement Ceremony Venue in Patna | Jungle Resort",
+                description: "Host your ring ceremony or engagement at Jungle Resort Patna with elegant décor, catering & event management. Book Engagement venue today!",
+                keywords: "Engagement venue Patna, Ring ceremony Patna, Sagai venue Patna, Jungle Resort engagement",
+                ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
+                canonical: "/engagement",
+            }}
+            hero={{
+                bg: "/eventPics/Wed/venue-wedding.webp",
+                pill: "Engagement Ceremony",
+                title: "Beautiful",
+                titleHighlight: "Engagement Venue in Patna",
+                subtitle: "Mark the beginning of your forever with a beautifully arranged engagement ceremony at Jungle Resort Patna.",
+                features: ["💍 Ring Ceremony Setup", "🌸 Floral Décor", "📸 Photography", "🍽️ Catering"],
+            }}
+            info={[
+                { icon: "💍", label: "Ceremony", value: "Ring Ceremony" },
+                { icon: "🌸", label: "Décor", value: "Elegant Floral" },
+                { icon: "📍", label: "Location", value: "Patna, Bihar" },
+                { icon: "📞", label: "Enquiry", value: "+91 90653 83838" },
+            ]}
+            desc={{
+                label: "Engagement",
+                title: "Say Yes to Forever in Style",
+                text: "Your engagement is the first step of a lifelong journey — make it count. Jungle Resort Patna offers intimate and grand engagement setups with stunning floral backdrops, premium catering, and moment-capturing photography arrangements.",
+                highlights: [
+                    "Custom floral arch and backdrop setups",
+                    "Ring ceremony stage with premium lighting",
+                    "Multi-cuisine catering for all guests",
+                    "Photography and videography setup",
+                    "Accommodation for out-of-town guests",
+                ],
+                image: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp",
+            }}
+            gallery={[
+                { type: "image", url: "/eventPics/Wed/venue-wedding.webp", alt: "Engagement Venue Patna" },
+                { type: "image", url: "/eventPics/Wed/jungleresort.webp", alt: "Jungle Resort Engagement" },
+                { type: "image", url: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp", alt: "Engagement Ceremony Patna" },
+                { type: "image", url: "/eventPics/Wed/unnamed.webp", alt: "Ring Ceremony Patna" },
+            ]}
+        />
     );
 }

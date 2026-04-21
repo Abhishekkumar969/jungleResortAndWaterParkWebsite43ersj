@@ -1,258 +1,237 @@
-import React, { useState, useEffect } from "react";
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import QuickBookForm from "../quick-book-form";
-import { ChevronDown, TreePine, Waves } from "lucide-react";
+import { ChevronDown, X, Calendar } from "lucide-react";
 import styles from "../../styles/hero-section.module.css";
 
-// const texts = [
-//   "Destination Wedding in Patna",
-//   "Water park in Patna"
-// ];
+const QuickBookForm = lazy(() => import("../quick-book-form"));
+
+const heroMenus = [
+  {
+    title: "Book Your Event",
+    items: [
+      { name: "Destination Wedding", link: "/destinationwedding" },
+      { name: "Wedding", link: "/wedding" },
+      { name: "Haldi", link: "/haldi" },
+      { name: "Mehndi", link: "/mehndi" },
+      { name: "Sangeet", link: "/sangeet" },
+      { name: "Receptions", link: "/reception" },
+      { name: "Anniversary", link: "/anniversary" },
+      { name: "Engagement", link: "/engagement" },
+    ],
+  },
+  {
+    title: "Birthday & Parties",
+    items: [
+      { name: "Birthday Celebration", link: "/birthday" },
+      { name: "Pool Party", link: "/poolparty" },
+      { name: "Get Together", link: "/gettogether" },
+      { name: "Kitty Party", link: "/kittyparty" },
+    ],
+  },
+  {
+    title: "Corporate Events",
+    items: [
+      { name: "Corporate Events", link: "/corporateevents" },
+      { name: "Corporate Party", link: "/corporateparty" },
+      { name: "Corporate Pool Party", link: "/corporatepoolparty" },
+    ],
+  },
+  { title: "Cottage Rooms", link: "/cottage-booking" },
+  { title: "WaterPark Tickets", link: "/waterpark-in-patna" },
+  { title: "FunPark Tickets", link: "/FunPark" },
+];
 
 export default function HeroSection() {
+  // Booking modal state
+  const [showBooking, setShowBooking] = useState(false);
+  // FunPark coming-soon popup
+  const [showFunPark, setShowFunPark] = useState(false);
 
-  // const [displayText, setDisplayText] = useState("");
-  // const [textIndex, setTextIndex] = useState(0);
-  // const [charIndex, setCharIndex] = useState(0);
-  // const [isDeleting, setIsDeleting] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const openBooking = () => setShowBooking(true);
+  const closeBooking = () => setShowBooking(false);
 
-  const slides = [
-    // { src: "/videos/hero.png" },
-    { src: "/videos/hero3.png" },
-  ];
-
+  // Listen for global openBooking event
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 10000);
+    const handleGlobalOpen = () => setShowBooking(true);
+    window.addEventListener("openBooking", handleGlobalOpen);
 
-    return () => clearInterval(interval);
-  }, [slides.length]);
+    // Also check URL params if someone navigated from another page
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("openBooking") === "true") {
+      handleGlobalOpen();
+      // Clean up URL WITHOUT triggering a re-render if possible, 
+      // but we need to remove the param so it doesn't reopen on refresh
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
 
-  /* Typewriter */
-  // useEffect(() => {
-
-  //   const currentText = texts[textIndex];
-  //   const typingSpeed = isDeleting ? 40 : 80;
-
-  //   const timer = setTimeout(() => {
-
-  //     if (!isDeleting) {
-
-  //       setDisplayText(currentText.substring(0, charIndex + 1));
-  //       setCharIndex(prev => prev + 1);
-
-  //       if (charIndex + 1 === currentText.length) {
-  //         setTimeout(() => setIsDeleting(true), 1200);
-  //       }
-
-  //     } else {
-
-  //       setDisplayText(currentText.substring(0, charIndex - 1));
-  //       setCharIndex(prev => prev - 1);
-
-  //       if (charIndex - 1 === 0) {
-  //         setIsDeleting(false);
-  //         setTextIndex(prev => (prev + 1) % texts.length);
-  //       }
-
-  //     }
-
-  //   }, typingSpeed);
-
-  //   return () => clearTimeout(timer);
-
-  // }, [charIndex, isDeleting, textIndex]);
-
-  const heroMenus = [
-    {
-      title: "Book Your Event",
-      items: [
-        { name: "Destination Wedding", link: "/destinationwedding" },
-        { name: "Wedding", link: "/wedding" },
-        { name: "Haldi", link: "/haldi" },
-        { name: "Mehndi", link: "/mehndi" },
-        { name: "Sangeet", link: "/sangeet" },
-        { name: "Receptions", link: "/reception" },
-        { name: "Anniversary", link: "/anniversary" },
-        { name: "Engagement", link: "/engagement" }
-      ]
-    },
-    {
-      title: "Birthday Celebrations",
-      items: [
-        { name: "Birthday Celebration", link: "/birthday" },
-        { name: "Pool Party", link: "/poolparty" },
-        { name: "Get Together", link: "/gettogether" },
-        { name: "Kitty Party", link: "/kittyparty" }
-      ]
-    },
-    {
-      title: "Corporate Events",
-      items: [
-        { name: "Corporate Events", link: "/corporateevents" },
-        { name: "Corporate Party", link: "/corporateparty" },
-        { name: "Corporate Pool Party", link: "/corporatepoolparty" }
-      ]
-    },
-    { title: "WaterPark Tickets", link: "/waterpark-in-patna" },
-    { title: "FunPark Tickets", link: "/FunPark" }
-  ];
+    return () => window.removeEventListener("openBooking", handleGlobalOpen);
+  }, []); // Run when search params change
 
   return (
     <>
+      {/* ── HERO SECTION ── */}
       <section className={styles.heroSection}>
 
         {/* Background */}
         <div className={styles.heroBg}>
-          <div
-            className={styles.slider}
-            style={{
-              transform: `translateX(-${currentSlide * 100}%)`,
-            }}
-          >
-            {slides.map((slide, index) => (
-              <div className={styles.slide} key={index}>
-                <img
-                  src={slide.src}
-                  alt="hero"
-                  className={styles.heroVideo}
-                  loading={index === 0 ? "eager" : "lazy"} // 🔥 important
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.heroOverlay}></div>
+          <img
+            src="/videos/hero.webp"
+            alt="Jungle Resort Patna — Luxury Wedding Venue, Waterpark &amp; Banquet Hall"
+            className={styles.heroVideo}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width="1920"
+            height="1080"
+          />
+          <div className={styles.heroOverlay} aria-hidden="true" />
         </div>
 
-        {/* Decorative Icons */}
-        <TreePine className={styles.heroTree} />
-        <Waves className={styles.heroWaves} />
-
-        {/* Content */}
+        {/* Content – static text only, ZERO Firebase on initial paint */}
         <div className={styles.heroContent}>
-          <div className={styles.heroLeft}>
 
-            {/* Show in desktop view */}
-            <div className={styles.heroName} >
-
-              <h1 className={`${styles.heroTitle}`}>
-                Welcome to <br />
-                <span className={`${styles.mobileTitle}`}> Jungle Resort <div>&</div> Waterpark </span>
-              </h1>
-
-            </div>
-
-            {/* Show in mobile view  */}
-            <div style={{ display: "flex", justifyContent: "center", margin: "-8px", width: "100%" }}>
-              <div className={styles.heroForm}>
-                <QuickBookForm />
-              </div>
-            </div>
-
-            {/* <div className={styles.divtypeWriter}>
-            <h2 className={styles.typeWriter}>
-              {displayText}
-              <span className={styles.cursor}>|</span>
-            </h2>
-          </div> */}
-
-
-
+          {/* Title */}
+          <div className={styles.heroTitleBlock}>
+            <h1 className={styles.heroTitle}>
+              Welcome to
+              <span className={styles.heroTitleBreak}>Jungle Resort</span>
+              <span className={styles.heroTitleBreak}>&amp;</span>
+              <span className={styles.heroTitleBreak}>Waterpark, Patna</span>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Patna's Premier Destination for Weddings, Events &amp; Waterpark Fun
+            </p>
           </div>
 
 
 
-          <div className={styles.heroRight} style={{ padding: "70px 0px" }}>
-            <QuickBookForm />
+          {/* CTA — clicking this is the ONLY time Firebase loads */}
+          <button
+            className={styles.heroBookBtn}
+            onClick={openBooking}
+            aria-label="Open booking form to check availability"
+          >
+            <Calendar size={20} aria-hidden="true" />
+            Check Availability &amp; Book
+          </button>
+
+          {/* Trust badges – pure static HTML */}
+          <div className={styles.heroBadges}>
+            <span className={styles.heroBadge}>🏆 1000+ Events</span>
+            <span className={styles.heroBadge}>⭐ 4.8 Rating</span>
+            <span className={styles.heroBadge}>💧 Waterpark Included</span>
+            <span className={styles.heroBadge}>📍 Patna, Bihar</span>
           </div>
-
-
-
 
         </div>
 
-      </section>
-
-      <div style={{ marginTop: "20px" }}>
-        {/* Buttons */}
-        <div className={styles.heroButtons}>
-
+        {/* ── HERO BUTTONS — pinned at bottom of hero image ── */}
+        <nav className={styles.heroButtons} aria-label="Event categories">
           {heroMenus.map((menu, index) => (
-
             <div key={index} className={styles.dropdown}>
 
               {menu.items ? (
                 <>
-                  <button className={styles.heroBtnPrimary}>
+                  <button
+                    className={styles.heroBtnPrimary}
+                    aria-haspopup="menu"
+                    aria-label={`Open ${menu.title} menu`}
+                  >
                     {menu.title}
-                    <ChevronDown size={16} style={{ marginLeft: "6px" }} />
+                    <ChevronDown size={15} style={{ marginLeft: "5px" }} aria-hidden="true" />
                   </button>
-
-                  <div className={styles.dropdownMenu}>
+                  <div className={styles.dropdownMenu} role="menu">
                     {menu.items.map((item, i) => (
-                      <Link key={i} to={item.link} className={styles.dropdownItem}>
+                      <Link key={i} to={item.link} className={styles.dropdownItem} role="menuitem">
                         {item.name}
                       </Link>
                     ))}
                   </div>
                 </>
               ) : menu.title === "FunPark Tickets" ? (
-
-                // ✅ ONLY button (no Link)
                 <button
                   className={styles.heroBtnOutline}
-                  onClick={() => setShowPopup(true)}
+                  onClick={() => setShowFunPark(true)}
+                  aria-label="FunPark Tickets — Coming Soon"
                 >
                   {menu.title}
                 </button>
-
               ) : (
-
-                // ✅ Normal link
                 <Link to={menu.link} className={styles.heroBtnOutline}>
                   {menu.title}
                 </Link>
-
               )}
+            </div>
+          ))}
+        </nav>
 
+      </section>
+
+      {/* ── BOOKING MODAL ── Only mounts after user clicks CTA */}
+      {showBooking && (
+        <div
+          className={styles.bookingOverlay}
+          onClick={closeBooking}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Booking form"
+        >
+          <div
+            className={styles.bookingModal}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className={styles.bookingModalHeader}>
+              <h2 className={styles.bookingModalTitle}>Check Availability</h2>
+              <button
+                className={styles.bookingModalClose}
+                onClick={closeBooking}
+                aria-label="Close booking form"
+              >
+                <X size={20} aria-hidden="true" />
+              </button>
             </div>
 
-          ))}
-
-        </div>
-
-        {showPopup && (
-          <div
-            className={styles.popupOverlay}
-            onClick={() => setShowPopup(false)} // outside click close
-          >
-            <div
-              className={styles.popupBox}
-              onClick={(e) => e.stopPropagation()} // prevent close inside click
-            >
-              {/* Close Button */}
-              <button
-                className={styles.popupClose}
-                onClick={() => setShowPopup(false)}
-              >
-                ✕
-              </button>
-
-              {/* Content */}
-              <h2>🎡 FunPark Coming Soon!</h2>
-              <p>
-                Exciting rides, games, and a full entertainment experience are coming very soon 🚀
-              </p>
+            {/* Lazy-loaded form — Firebase only loads HERE */}
+            <div className={styles.bookingModalBody}>
+              <Suspense fallback={
+                <div className={styles.bookingLoader} role="status" aria-label="Loading booking form">
+                  <div className={styles.bookingLoaderSpinner} />
+                  <p>Loading form…</p>
+                </div>
+              }>
+                <QuickBookForm onClose={closeBooking} />
+              </Suspense>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-      </div>
-
+      {/* ── FUNPARK POPUP ── */}
+      {showFunPark && (
+        <div
+          className={styles.bookingOverlay}
+          onClick={() => setShowFunPark(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="funpark-title"
+        >
+          <div
+            className={styles.popupBox}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className={styles.popupClose}
+              onClick={() => setShowFunPark(false)}
+              aria-label="Close popup"
+            >
+              <X size={18} aria-hidden="true" />
+            </button>
+            <h2 id="funpark-title">🎡 FunPark Coming Soon!</h2>
+            <p>Thrilling rides and entertainment are on the way 🚀 Stay tuned!</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }

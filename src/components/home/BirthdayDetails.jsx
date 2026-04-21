@@ -40,6 +40,7 @@ export default function BirthdayDetails() {
                             left: 0,
                             filter: "brightness(0.6)",
                         }}
+                        loading="lazy"
                     />
                 )}
 

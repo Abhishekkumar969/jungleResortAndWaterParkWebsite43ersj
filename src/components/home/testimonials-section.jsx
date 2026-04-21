@@ -73,16 +73,17 @@ export default function TestimonialsSection() {
 
                         </div> */}
 
-                        <div className={styles.testimonialContent}>
+                        <div className={styles.testimonialContent} aria-live="polite" aria-atomic="true">
 
-                            <Quote className={styles.quoteIcon} />
+                            <Quote className={styles.quoteIcon} aria-hidden="true" />
 
-                            <div className={styles.testimonialRating}>
-
+                            <div
+                              className={styles.testimonialRating}
+                              aria-label={`${testimonials[current].rating} out of 5 stars`}
+                            >
                                 {[...Array(testimonials[current].rating)].map((_, i) => (
-                                    <Star key={i} size={18} className={styles.starIcon} />
+                                    <Star key={i} size={18} className={styles.starIcon} aria-hidden="true" />
                                 ))}
-
                             </div>
 
                             <p className={styles.testimonialText}>
@@ -90,33 +91,30 @@ export default function TestimonialsSection() {
                             </p>
 
                             <div className={styles.testimonialAuthor}>
-
-                                <h4>{testimonials[current].name}</h4>
-
+                                <p className={styles.testimonialAuthorName}>{testimonials[current].name}</p>
                                 <p>{testimonials[current].event}</p>
-
                             </div>
 
                             <div className={styles.testimonialNav}>
 
-                                <button onClick={prev} className={styles.navBtn}>
-                                    <ChevronLeft size={20} />
+                                <button onClick={prev} className={styles.navBtn} aria-label="Previous testimonial">
+                                    <ChevronLeft size={20} aria-hidden="true" />
                                 </button>
 
-                                <div className={styles.testimonialDots}>
-
+                                <div className={styles.testimonialDots} role="group" aria-label="Testimonial navigation">
                                     {testimonials.map((_, i) => (
                                         <button
                                             key={i}
                                             onClick={() => setCurrent(i)}
                                             className={`${styles.dot} ${i === current ? styles.active : ""}`}
+                                            aria-label={`Go to testimonial ${i + 1}`}
+                                            aria-pressed={i === current}
                                         />
                                     ))}
-
                                 </div>
 
-                                <button onClick={next} className={styles.navBtn}>
-                                    <ChevronRight size={20} />
+                                <button onClick={next} className={styles.navBtn} aria-label="Next testimonial">
+                                    <ChevronRight size={20} aria-hidden="true" />
                                 </button>
 
                             </div>
