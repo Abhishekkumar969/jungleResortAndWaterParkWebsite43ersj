@@ -274,12 +274,23 @@ export default function Checkout({ isOpen, onClose, data }) {
         setPaymentError("");
 
         try {
+            const payload = {
+                amount: totalAmount,
+                tickets: selectedTickets || {},
+                cottage: cottage || null,
+            };
+
             const res = await fetch(process.env.REACT_APP_API_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount: totalAmount }),
+                body: JSON.stringify(payload),
             });
-            if (!res.ok) throw new Error("Server error");
+            
+            if (!res.ok) {
+                const errorData = await res.json().catch(() => ({}));
+                throw new Error(errorData.details || errorData.error || "Server error");
+            }
+
             const order = await res.json();
             if (!order?.id) throw new Error("Order creation failed");
 
@@ -291,35 +302,49 @@ export default function Checkout({ isOpen, onClose, data }) {
             const wpBookingData = {
                 bookingId,
                 userId: auth.currentUser?.uid || "guest",
-                ...formData,
-                tickets: selectedTickets,
+                name: formData.name || "",
+                phone: formData.phone || "",
+                visitDate: formData.visitDate || "",
+                tickets: selectedTickets || {},
                 cottage: cottage ? { id: cottage.id, duration: cottage.duration, total: cottage.total } : null,
-                total: totalAmount,
+                total: totalAmount || 0,
                 orderId: order.id,
                 verification: false,
+                paymentStatus: "pending",
                 createdAt: new Date().toLocaleString("en-IN"),
             };
 
-            if (Object.keys(selectedTickets || {}).length > 0 || cottage) {
-                await setDoc(doc(db, "WaterPark", monthYear), { [bookingId]: wpBookingData }, { merge: true });
-            }
+            // ✅ PRE-SAVE to Firestore (Wrapped in try-catch so it doesn't block Razorpay if Firestore is down/slow)
+            try {
+                if (Object.keys(selectedTickets || {}).length > 0 || cottage) {
+                    await setDoc(doc(db, "WaterPark", monthYear), { [bookingId]: wpBookingData }, { merge: true });
+                }
 
-            let cottageBookingData = null;
-            if (cottage) {
-                cottageBookingData = {
-                    bookingId,
-                    userId: auth.currentUser?.uid || "guest",
-                    name: formData.name,
-                    phone: formData.phone,
-                    visitDate: formData.visitDate,
-                    cottagePackage: { id: cottage.id, duration: cottage.duration, price: cottage.basePrice, days: cottage.days || 1 },
-                    waterParkAddons: cottage.addons || {},
-                    total: cottage.total,
-                    orderId: order.id,
-                    verification: false,
-                    createdAt: new Date().toLocaleString("en-IN"),
-                };
-                await setDoc(doc(db, "CottageBookings", monthYear), { [bookingId]: cottageBookingData }, { merge: true });
+                if (cottage) {
+                    const cottageBookingData = {
+                        bookingId,
+                        userId: auth.currentUser?.uid || "guest",
+                        name: formData.name || "",
+                        phone: formData.phone || "",
+                        visitDate: formData.visitDate || "",
+                        cottagePackage: { 
+                            id: cottage.id, 
+                            duration: cottage.duration, 
+                            price: cottage.basePrice || 0, 
+                            days: cottage.days || 1 
+                        },
+                        waterParkAddons: cottage.addons || {},
+                        total: cottage.total || 0,
+                        orderId: order.id,
+                        verification: false,
+                        paymentStatus: "pending",
+                        createdAt: new Date().toLocaleString("en-IN"),
+                    };
+                    await setDoc(doc(db, "CottageBookings", monthYear), { [bookingId]: cottageBookingData }, { merge: true });
+                }
+            } catch (fsErr) {
+                console.error("Firestore Pre-save Error:", fsErr);
+                // We'll still proceed to payment since order is created
             }
 
             const options = {
@@ -327,41 +352,54 @@ export default function Checkout({ isOpen, onClose, data }) {
                 amount: order.amount,
                 order_id: order.id,
                 currency: "INR",
-                name: "Jungle Resort & Waterpark",
-                description: cottage && Object.keys(selectedTickets || {}).length > 0
-                    ? "Waterpark Tickets + Cottage Room"
-                    : cottage ? `Cottage – ${cottage.duration}` : "Waterpark Tickets",
+                name: cottage ? "Jungle Resort Cottage Booking" : "Jungle Resort Waterpark",
+                description: (() => {
+                    const ticketSummary = Object.entries(selectedTickets || {})
+                        .map(([k, v]) => `${k}×${v}`)
+                        .join(",");
+
+                    const cottageSummary = cottage
+                        ? `${cottage.duration}${cottage.days > 1 ? `×${cottage.days}` : ""}`
+                        : "";
+
+                    let desc = "";
+                    if (cottage && ticketSummary) desc = `Combo: ${ticketSummary} + ${cottageSummary}`;
+                    else if (cottage) desc = `Cottage: ${cottageSummary}`;
+                    else desc = `Waterpark: ${ticketSummary}`;
+
+                    return desc.substring(0, 250); // Trim to avoid Razorpay SDK issues
+                })(),
 
                 handler: async (response) => {
-                    setLoading(false);
+                    setLoading(true); // show loader during post-payment sync
                     try {
                         const paymentFields = {
                             paymentId: response.razorpay_payment_id,
                             orderId: response.razorpay_order_id,
                             verification: true,
-                            paymentAt: new Date(),
+                            paymentStatus: "paid",
+                            paymentAt: new Date().toISOString(),
                         };
 
                         if (Object.keys(selectedTickets || {}).length > 0 || cottage) {
-                            await setDoc(
-                                doc(db, "WaterPark", monthYear),
+                            await setDoc(doc(db, "WaterPark", monthYear),
                                 { [bookingId]: { ...wpBookingData, ...paymentFields } },
                                 { merge: true }
                             );
                         }
-                        if (cottageBookingData) {
-                            await setDoc(
-                                doc(db, "CottageBookings", monthYear),
-                                { [bookingId]: { ...cottageBookingData, ...paymentFields } },
+                        
+                        if (cottage) {
+                            // Fetch again to ensure we have previous fields
+                            await setDoc(doc(db, "CottageBookings", monthYear),
+                                { [bookingId]: paymentFields },
                                 { merge: true }
                             );
                         }
 
-                        // Clear cart
                         localStorage.removeItem("cart");
                         window.dispatchEvent(new Event("cartUpdated"));
+                        setLoading(false);
 
-                        // Show success screen
                         setSuccessData({
                             formData,
                             selectedTickets,
@@ -371,17 +409,22 @@ export default function Checkout({ isOpen, onClose, data }) {
                             paymentId: response.razorpay_payment_id,
                         });
 
-                    } catch { setPaymentError("Payment recorded but confirmation failed. Contact support."); }
+                    } catch (syncErr) {
+                        console.error("Post-payment Sync Error:", syncErr);
+                        setPaymentError("Payment recorded but confirmation failed. Please contact support.");
+                        setLoading(false);
+                    }
                 },
 
                 modal: {
                     ondismiss: () => {
                         setLoading(false);
                         setPaymentError("Payment cancelled ❌");
+                        // Log cancellation
                         setDoc(doc(db, "WaterPark", monthYear),
-                            { [bookingId]: { ...wpBookingData, paymentStatus: "cancelled", cancelledAt: new Date() } },
+                            { [bookingId]: { paymentStatus: "cancelled", cancelledAt: new Date().toISOString() } },
                             { merge: true }
-                        );
+                        ).catch(() => {});
                     }
                 },
 
@@ -393,7 +436,8 @@ export default function Checkout({ isOpen, onClose, data }) {
             rzp.open();
 
         } catch (err) {
-            setPaymentError("Payment failed. Please try again ❌");
+            console.error("HandlePayment Error:", err);
+            setPaymentError(err.message || "Payment failed. Please try again ❌");
             setLoading(false);
         }
     };
