@@ -177,8 +177,8 @@ export default function TicketPricing() {
                 <div className={styles.heroWrap}>
                     <div className={styles.heroWrapOverlay} />
                     <div className={styles.heroWrapContent}>
-                        <span className={styles.heroWrapPill}>🌊 Jungle Resort Waterpark, Patna</span>
-                        <h1>Waterpark Tickets <span>&amp;</span> Cottage Rooms</h1>
+                        <span className={styles.heroWrapPill}>🌊 Jungle Resort Water Park, Patna</span>
+                        <h1>Water Park Tickets <span>&amp;</span> Cottage Rooms</h1>
                         <p>Book tickets, add a cottage — all in one place</p>
                         <div className={styles.heroBadges}>
                             <span className={styles.heroBadge}><Waves size={13} /> Wave Pool</span>
@@ -191,7 +191,7 @@ export default function TicketPricing() {
 
                 <div className={styles.ticketsContainer}>
                     <div className={styles.ticketsHeader}>
-                        <h2>Select Your <span>WaterPark Tickets</span></h2>
+                        <h2>Select Your <span>Water Park Tickets</span></h2>
                         <p>Individuals, groups &amp; families — pick the best deal</p>
                         <div className={styles.searchWrap} data-booking-form="true"><TicketSearch /></div>
                     </div>
@@ -259,7 +259,7 @@ export default function TicketPricing() {
                                     aria-label={`Select ${pkg.duration} cottage package`}
                                 >
                                     {pkg.popular && <div className={cottageStyles.pkgBadge}>🔥 Most Popular</div>}
-                                    {pkg.waterIncluded && <div className={cottageStyles.pkgWaterBadge}>🌊 Waterpark Included</div>}
+                                    {pkg.waterIncluded && <div className={cottageStyles.pkgWaterBadge}>🌊 Water Park Included</div>}
 
                                     <div className={cottageStyles.pkgDuration}>
                                         {pkg.emoji} {pkg.duration}

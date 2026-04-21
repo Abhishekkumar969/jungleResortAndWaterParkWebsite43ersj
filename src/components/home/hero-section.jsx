@@ -99,11 +99,9 @@ export default function HeroSection() {
               <span className={styles.heroTitleBreak}>Waterpark, Patna</span>
             </h1>
             <p className={styles.heroSubtitle}>
-              Patna's Premier Destination for Weddings, Events &amp; Waterpark Fun
+              Patna's Premier Destination for Weddings, Events &amp; Water Park
             </p>
           </div>
-
-
 
           {/* CTA — clicking this is the ONLY time Firebase loads */}
           <button
@@ -112,14 +110,15 @@ export default function HeroSection() {
             aria-label="Open booking form to check availability"
           >
             <Calendar size={20} aria-hidden="true" />
-            Check Availability &amp; Book
+            Check Availability
           </button>
 
           {/* Trust badges – pure static HTML */}
           <div className={styles.heroBadges}>
             <span className={styles.heroBadge}>🏆 1000+ Events</span>
             <span className={styles.heroBadge}>⭐ 4.8 Rating</span>
-            <span className={styles.heroBadge}>💧 Waterpark Included</span>
+            <span className={styles.heroBadge}>🏘️ Cottage Rooms</span>
+            <span className={styles.heroBadge}>💧 Water Park</span>
             <span className={styles.heroBadge}>📍 Patna, Bihar</span>
           </div>
 

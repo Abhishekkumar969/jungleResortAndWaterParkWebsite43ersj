@@ -21,11 +21,11 @@ function HomePage() {
         <title>Luxury Resort & Banquet in Patna | Wedding, Birthday & Corporate Events</title>
         <meta
           name="description"
-          content="Jungle Resort Patna offers luxury wedding venue, banquet hall, birthday party space and waterpark fun. Book best resort in Patna for unforgettable events."
+          content="Jungle Resort Patna offers luxury wedding venue, banquet hall, birthday party space and Water Park fun. Book best resort in Patna for unforgettable events."
         />
         <meta
           name="keywords"
-          content="resort in patna, banquet hall patna, wedding venue patna, birthday party hall patna, waterpark patna"
+          content="resort in patna, banquet hall patna, wedding venue patna, birthday party hall patna, water park patna"
         />
       </Helmet>
 

@@ -10,7 +10,7 @@ export default function WaterparkPage() {
     return (
         <main className={styles.waterparkPage}>
             <Helmet>
-                <title>Best Water Park in Patna | Jungle Resort Waterpark</title>
+                <title>Best Water Park in Patna | Jungle Resort Water Park</title>
 
                 <meta
                     name="description"
@@ -19,10 +19,10 @@ export default function WaterparkPage() {
 
                 <meta
                     name="keywords"
-                    content="Best Water Park in Patna, Best Water Park in Bihar, Water park Patna, Jungle Resort water park, waterpark, Water park near me, Waterpark near me, Family water park Patna, Water slides Patna, Rain dance Patna, Wave pool Patna"
+                    content="Best Water Park in Patna, Best Water Park in Bihar, Water Park Patna, Jungle Resort Water Park, Water Park, Water Park near me, Family Water Park Patna, Water slides Patna, Rain dance Patna, Wave pool Patna"
                 />
 
-                <meta property="og:title" content="Best Water Park in Patna | Jungle Resort Waterpark" />
+                <meta property="og:title" content="Best Water Park in Patna | Jungle Resort Water Park" />
                 <meta property="og:description" content="Wave pool, rain dance, DJ & slides – enjoy the best water park in Patna at Jungle Resort." />
                 <meta property="og:image" content="https://jungleresortpatna.in/WaterParkAds/6.jpeg" />
                 <meta property="og:url" content="https://jungleresortpatna.in/waterpark-in-patna" />

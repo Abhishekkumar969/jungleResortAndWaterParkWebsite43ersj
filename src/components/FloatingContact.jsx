@@ -21,7 +21,7 @@ export default function FloatingContact() {
 
         // 1. Check if there's a booking form on current page
         const existingForm = document.querySelector('[data-booking-form="true"]');
-        
+
         if (existingForm) {
             existingForm.scrollIntoView({ behavior: "smooth", block: "center" });
             return;

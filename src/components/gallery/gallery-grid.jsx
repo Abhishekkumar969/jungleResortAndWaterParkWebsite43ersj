@@ -6,21 +6,19 @@ const categories = ["All", "Weddings", "Waterpark", "Birthdays", "Corporate", "R
 
 const galleryImages = [
     { src: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp", category: "Weddings", title: "Garden Wedding Ceremony" },
-    { src: "/eventPics/Pool Party/waterparkjungleresort.webp", category: "Waterpark", title: "Main Waterpark Area" },
     { src: "/eventPics/Wed/venue-wedding.webp", category: "Weddings", title: "Traditional Wedding Setup" },
-    // { src: "/eventPics/Pool Party/waterparkjungleresort.webp", category: "Waterpark", title: "Family Fun Day" },
     { src: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp", category: "Weddings", title: "Reception Dinner" },
-    { src: "/images/birthday-stage.webp", category: "Birthdays", title: "Birthday Stage Decor" },
     { src: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.webp", category: "Weddings", title: "Elegant Reception Hall" },
-    // { src: "/images/waterpark-wave.webp", category: "Waterpark", title: "Wave Pool Fun" },
-    // { src: "/images/birthday-superhero.webp", category: "Birthdays", title: "Superhero Theme Party" },
-    { src: "/images/CorporateEvent7.webp", category: "Corporate", title: "Corporate Conference" },
-    // { src: "/images/waterpark-slides.webp", category: "Waterpark", title: "Thrilling Water Slides" },
+
+    { src: "/eventPics/Pool Party/waterparkjungleresort.webp", category: "Waterpark", title: "Main Waterpark Area" },
+
+    { src: "/images/birthday-stage.webp", category: "Birthdays", title: "Birthday Stage Decor" },
     { src: "/images/birthday-princess.webp", category: "Birthdays", title: "Princess Theme Party" },
-    // { src: "/images/gallery-4.webp", category: "Birthdays", title: "Kids Birthday Celebration" },
-    { src: "/images/CorporateEvent8.webp", category: "Corporate", title: "Business Event Setup" },
-    // { src: "/images/gallery-6.webp", category: "Waterpark", title: "Lazy River Experience" },
     { src: "/images/birthday-jungle.webp", category: "Birthdays", title: "Jungle Safari Theme" },
+
+    { src: "/images/CorporateEvent7.webp", category: "Corporate", title: "Corporate Conference" },
+    { src: "/images/CorporateEvent8.webp", category: "Corporate", title: "Business Event Setup" },
+
     { src: "/images/jungle-resort-kumhrar-patna.webp", category: "Resort", title: "Resort Aerial View" },
     { src: "/images/3.webp", category: "Resort", title: "Resort Water Park View" },
 ];

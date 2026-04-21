@@ -21,7 +21,7 @@ const WATERPARK_ADDONS = [
 
 const CROSS_SELL = [
     { id: "cottage", emoji: "🏡", title: "Cottage Rooms", subtitle: "From ₹1,999 · Private AC Room", link: "/cottage-booking", color: "#e91e8c" },
-    { id: "waterpark", emoji: "🌊", title: "More WaterPark Tickets", subtitle: "Kids ₹299 · Adults ₹399", link: "/waterpark-in-patna", color: "#0ea5e9" },
+    { id: "waterpark", emoji: "🌊", title: "More Water Park Tickets", subtitle: "Kids ₹299 · Adults ₹399", link: "/waterpark-in-patna", color: "#0ea5e9" },
 ];
 
 const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
@@ -99,7 +99,7 @@ export default function Cart({ isOpen, onClose, onProceed }) {
                             {/* ═══ WATERPARK TICKETS SECTION ═══ */}
                             {hasWaterpark && (
                                 <div className={styles.cartSection}>
-                                    <div className={styles.sectionLabel}>🌊 Waterpark Tickets</div>
+                                    <div className={styles.sectionLabel}>🌊 Water Park Tickets</div>
                                     {Object.entries(cartItems).map(([id, qty]) => {
                                         const ticket = ticketMap[id];
                                         return (

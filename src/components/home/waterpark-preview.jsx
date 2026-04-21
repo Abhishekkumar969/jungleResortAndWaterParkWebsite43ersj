@@ -1,10 +1,7 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { WavesLadder, ArrowRight, Ticket, PlaneLanding, CloudRainWind, Speaker } from "lucide-react";
 import styles from "../../styles/waterpark-preview.module.css";
-
-// TicketSearch is lazy-loaded — it has Razorpay/Firebase deps
-const TicketSearch = lazy(() => import("../TicketSearch"));
 
 const attractions = [
     { name: "Wave Pool", icon: WavesLadder },
@@ -39,7 +36,7 @@ export default function WaterparkPreview() {
 
                         <div className={styles.waterparkBadge}>
                             <WavesLadder size={16} aria-hidden="true" />
-                            <span>Waterpark Adventures</span>
+                            <span>Water Park Adventures</span>
                         </div>
 
                         <h2 className={styles.waterparkTitle}>
@@ -79,15 +76,10 @@ export default function WaterparkPreview() {
 
                         <div className={styles.waterparkActions}>
                             <Link to="/waterpark-in-patna" className={styles.waterparkBtn}>
-                                Book Waterpark Tickets
+                                Book Water Park Tickets
                                 <ArrowRight size={18} aria-hidden="true" />
                             </Link>
 
-                            <div className={styles.ticketSearchBox}>
-                                <Suspense fallback={null}>
-                                    <TicketSearch />
-                                </Suspense>
-                            </div>
                         </div>
 
                     </div>

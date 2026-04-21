@@ -33,7 +33,7 @@ export default function Footer() {
             </div>
             <p className="footer-text">
               Jungle Resort Patna is the best destination for wedding venues, banquet halls,
-              and waterpark fun in Patna, Bihar. Explore our gallery, book waterpark tickets,
+              and Water Park fun in Patna, Bihar. Explore our gallery, book Water Park tickets,
               and enjoy premium resort experiences.
             </p>
             <ul className="footer-social" aria-label="Social media links">
@@ -66,7 +66,7 @@ export default function Footer() {
             <ul className="footer-links">
               <li><Link to="/">Jungle Resort Patna Home</Link></li>
               <li><Link to="/venues">Best Banquet Hall in Patna</Link></li>
-              <li><Link to="/waterpark-in-patna">Best Waterpark in Patna</Link></li>
+              <li><Link to="/waterpark-in-patna">Best Water Park in Patna</Link></li>
               <li><Link to="/birthdays">Birthday Party Venue in Patna</Link></li>
               <li><Link to="/gallery">Jungle Resort Patna Gallery</Link></li>
               <li><Link to="/contact">Contact Jungle Resort Patna</Link></li>
@@ -108,7 +108,7 @@ export default function Footer() {
 
               <li>
                 <Hotel size={18} aria-hidden="true" />
-                <span>Enquiry for Waterpark</span>
+                <span>Enquiry for Water Park</span>
               </li>
               <li>
                 <Phone size={18} aria-hidden="true" />
@@ -148,7 +148,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <div className="footer-bottom-container">
-          <p>© 2025 Jungle Resort Patna – Best Wedding Venue &amp; Waterpark</p>
+          <p>© 2025 Jungle Resort Patna – Best Wedding Venue &amp; Water Park</p>
         </div>
       </div>
 

@@ -30,7 +30,13 @@ const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
 /* ─── Ticket PDF Generator ─── */
 function downloadTicket({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId }) {
     const now = new Date();
-    const dateStr = now.toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" });
+    const formatDate = (date) => {
+        const d = new Date(date);
+        if (isNaN(d)) return date;
+        return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+    };
+    const dateStr = formatDate(now);
+    const visitDateStr = formatDate(formData.visitDate);
 
     const ticketRows = Object.entries(selectedTickets || {}).map(([id, qty]) => {
         const t = ticketNames[id];
@@ -92,7 +98,7 @@ function downloadTicket({ formData, selectedTickets, cottage, totalAmount, booki
 <body>
 <div class="ticket">
     <div class="header">
-        <h1>🌿 Jungle Resort &amp; Waterpark</h1>
+        <h1>🌿 Jungle Resort &amp; Water Park</h1>
         <p>Patna, Bihar — Your Visit Ticket</p>
         <span class="badge">✅ Booking Confirmed</span>
     </div>
@@ -100,7 +106,7 @@ function downloadTicket({ formData, selectedTickets, cottage, totalAmount, booki
         <div class="info-grid">
             <div class="info-box"><label>Guest Name</label><span>${formData.name}</span></div>
             <div class="info-box"><label>Mobile</label><span>${formData.phone}</span></div>
-            <div class="info-box"><label>Visit Date</label><span>${formData.visitDate}</span></div>
+            <div class="info-box"><label>Visit Date</label><span>${visitDateStr}</span></div>
             <div class="info-box"><label>Booking Date</label><span>${dateStr}</span></div>
         </div>
         <p class="booking-id">Booking ID: ${bookingId} &nbsp;|&nbsp; Payment: ${paymentId}</p>
@@ -119,7 +125,7 @@ function downloadTicket({ formData, selectedTickets, cottage, totalAmount, booki
         </p>
     </div>
     <div class="footer">
-        <b>Jungle Resort &amp; Waterpark Patna</b><br>
+        <b>Jungle Resort &amp; Water Park Patna</b><br>
         📞 +91 90653 83838 · enjoy your visit!
     </div>
 </div>
@@ -159,7 +165,7 @@ function SuccessScreen({ formData, selectedTickets, cottage, totalAmount, bookin
                 <div className={styles.successIcon}>🎉</div>
                 <h2 className={styles.successTitle}>Payment Successful!</h2>
                 <p className={styles.successSub}>
-                    Thank you for choosing <strong>Jungle Resort &amp; Waterpark</strong>
+                    Thank you for choosing <strong>Jungle Resort &amp; Water Park</strong>
                 </p>
 
                 <div className={styles.successInfo}>
@@ -167,7 +173,10 @@ function SuccessScreen({ formData, selectedTickets, cottage, totalAmount, bookin
                         <span>👤 Name</span><strong>{formData.name}</strong>
                     </div>
                     <div className={styles.successRow}>
-                        <span>📅 Visit Date</span><strong>{formData.visitDate}</strong>
+                        <span>📅 Visit Date</span><strong>{(() => {
+                            const d = new Date(formData.visitDate);
+                            return isNaN(d) ? formData.visitDate : `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}/${d.getFullYear()}`;
+                        })()}</strong>
                     </div>
                     <div className={styles.successRow}>
                         <span>💰 Amount Paid</span>
@@ -350,7 +359,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                 amount: order.amount,
                 order_id: order.id,
                 currency: "INR",
-                name: cottage ? "Jungle Resort Cottage Booking" : "Jungle Resort Waterpark",
+                name: cottage ? "Jungle Resort Cottage Booking" : "Jungle Resort Water Park",
                 description: (() => {
                     const ticketSummary = Object.entries(selectedTickets || {})
                         .map(([k, v]) => `${k}×${v}`)
@@ -363,7 +372,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                     let desc = "";
                     if (cottage && ticketSummary) desc = `Combo: ${ticketSummary} + ${cottageSummary}`;
                     else if (cottage) desc = `Cottage: ${cottageSummary}`;
-                    else desc = `Waterpark: ${ticketSummary}`;
+                    else desc = `Water Park: ${ticketSummary}`;
 
                     return desc.substring(0, 250); // Trim to avoid Razorpay SDK issues
                 })(),
