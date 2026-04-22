@@ -131,8 +131,11 @@ export default function Cart({ isOpen, onClose, onProceed }) {
                                         <div className={styles.cottageRow}>
                                             <div>
                                                 <strong className={styles.cottageName}>{cottage.duration}</strong>
-                                                {cottage.id === "cottage1day" && cottage.days > 1 && (
+                                                {cottage.days > 1 && (
                                                     <span className={styles.cottageDays}> × {cottage.days} days</span>
+                                                )}
+                                                {cottage.rooms > 1 && (
+                                                    <span className={styles.cottageDays}> × {cottage.rooms} rooms</span>
                                                 )}
                                                 <p className={styles.cottageBase}>₹{fmt(cottage.basePrice)} per day</p>
                                             </div>

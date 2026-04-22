@@ -32,7 +32,7 @@ function downloadTicketHTML({ name, phone, visitDate, createdAt, tickets, cottag
 
     const cottageRow = cottage ? `
         <tr style="background:#fff0f7">
-            <td>🏡 Cottage Room – ${cottage.duration}${cottage.days > 1 ? ` × ${cottage.days} days` : ""}</td>
+            <td>🏡 Cottage Room – ${cottage.duration}${cottage.days > 1 ? ` × ${cottage.days} days` : ""}${cottage.rooms > 1 ? ` (${cottage.rooms} Rooms)` : ""}</td>
             <td style="text-align:center">1</td>
             <td style="text-align:right">₹${fmt(cottage.total)}</td>
         </tr>` : "";

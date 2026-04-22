@@ -49,7 +49,7 @@ function downloadTicket({ formData, selectedTickets, cottage, totalAmount, booki
 
     const cottageRow = cottage ? `
         <tr style="background:#fff0f7">
-            <td>🏡 Cottage Room – ${cottage.duration}${cottage.days > 1 ? ` × ${cottage.days} days` : ""}</td>
+            <td>🏡 Cottage Room – ${cottage.duration}${cottage.days > 1 ? ` × ${cottage.days} days` : ""}${cottage.rooms > 1 ? ` (${cottage.rooms} Rooms)` : ""}</td>
             <td style="text-align:center">1</td>
             <td style="text-align:right">₹${fmt(cottage.total)}</td>
         </tr>` : "";
@@ -313,7 +313,13 @@ export default function Checkout({ isOpen, onClose, data }) {
                 phone: formData.phone || "",
                 visitDate: formData.visitDate || "",
                 tickets: selectedTickets || {},
-                cottage: cottage ? { id: cottage.id, duration: cottage.duration, total: cottage.total } : null,
+                cottage: cottage ? {
+                    id: cottage.id,
+                    duration: cottage.duration,
+                    total: cottage.total,
+                    rooms: cottage.rooms || 1,
+                    days: cottage.days || 1
+                } : null,
                 total: totalAmount || 0,
                 orderId: order.id,
                 verification: false,
@@ -338,7 +344,8 @@ export default function Checkout({ isOpen, onClose, data }) {
                             id: cottage.id,
                             duration: cottage.duration,
                             price: cottage.basePrice || 0,
-                            days: cottage.days || 1
+                            days: cottage.days || 1,
+                            rooms: cottage.rooms || 1
                         },
                         waterParkAddons: cottage.addons || {},
                         total: cottage.total || 0,
@@ -593,9 +600,9 @@ export default function Checkout({ isOpen, onClose, data }) {
                                 })}
                                 {cottage && (
                                     <tr>
-                                        <td>🏡 Cottage {cottage.duration}</td>
+                                        <td>🏡 Cottage {cottage.duration} {cottage.rooms > 1 ? `(${cottage.rooms} Rooms)` : ""}</td>
                                         <td>₹{fmt(cottage.basePrice)}</td>
-                                        <td>{cottage.days || 1}</td>
+                                        <td>{cottage.days || 1} {cottage.days > 1 ? "days" : "day"}</td>
                                         <td>₹{fmt(cottage.total)}</td>
                                     </tr>
                                 )}
@@ -609,3 +616,4 @@ export default function Checkout({ isOpen, onClose, data }) {
         document.body
     );
 }
+

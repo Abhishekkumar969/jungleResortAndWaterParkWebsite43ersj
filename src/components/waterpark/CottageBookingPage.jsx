@@ -63,6 +63,7 @@ export default function CottageBookingPage() {
 
     const [selectedPkg, setSelectedPkg] = useState(null);
     const [days, setDays] = useState(1);
+    const [rooms, setRooms] = useState(1);
     const [addons, setAddons] = useState({});
     const [activeVideo, setActiveVideo] = useState(0);
     const [bookedRooms, setBookedRooms] = useState(0);
@@ -126,8 +127,8 @@ export default function CottageBookingPage() {
     }, 0);
 
     const basePkgPrice = selectedPkg ? PACKAGES.find(p => p.id === selectedPkg)?.price || 0 : 0;
-    // For 1-day package multiply by days; others single price
-    const pkgPrice = selectedPkg === "cottage1day" ? basePkgPrice * days : basePkgPrice;
+    // For 1-day package multiply by days; others single price. Both multiplied by rooms.
+    const pkgPrice = (selectedPkg === "cottage1day" ? basePkgPrice * days : basePkgPrice) * rooms;
     const grandTotal = pkgPrice + addonTotal;
 
     const updateAddon = (id, delta) => {
@@ -154,6 +155,7 @@ export default function CottageBookingPage() {
             duration: pkg?.duration,
             basePrice: basePkgPrice,
             days: selectedPkg === "cottage1day" ? days : 1,
+            rooms: rooms,
             addons,
             addonTotal,
             total: grandTotal,
@@ -299,6 +301,33 @@ export default function CottageBookingPage() {
                                         </div>
                                     )}
 
+                                    {/* ── Rooms stepper — shown when selected ── */}
+                                    {isSelected && (
+                                        <div
+                                            className={styles.daysStepper}
+                                            onClick={(e) => e.stopPropagation()}
+                                            style={{ marginTop: "12px", borderTop: "1px dashed #eee", paddingTop: "12px" }}
+                                        >
+                                            <span className={styles.daysLabel}>No. of Rooms</span>
+                                            <div className={styles.daysControl}>
+                                                <button
+                                                    className={styles.daysBtn}
+                                                    onClick={() => setRooms(r => Math.max(1, r - 1))}
+                                                    disabled={rooms <= 1}
+                                                    aria-label="Decrease rooms"
+                                                >−</button>
+                                                <span className={styles.daysCount}>{rooms}</span>
+                                                <button
+                                                    className={styles.daysBtn}
+                                                    onClick={() => setRooms(r => Math.min(availableRooms, r + 1))}
+                                                    disabled={rooms >= availableRooms}
+                                                    aria-label="Increase rooms"
+                                                >+</button>
+                                            </div>
+                                            <span className={styles.daysTotal}>Max {availableRooms} available</span>
+                                        </div>
+                                    )}
+
                                     <div className={`${styles.pkgSelectBtn} ${isSelected ? styles.pkgSelectBtnActive : ""}`}>
                                         {isSelected ? "✓ Selected" : "Select Package"}
                                     </div>
@@ -315,6 +344,7 @@ export default function CottageBookingPage() {
                                 <span className={styles.bookCTADuration}>
                                     {selectedPkgObj?.duration}
                                     {selectedPkg === "cottage1day" && days > 1 && ` × ${days} days`}
+                                    {rooms > 1 && ` × ${rooms} rooms`}
                                 </span>
                                 <span className={styles.bookCTAPrice}>₹{fmt(pkgPrice + addonTotal)}</span>
                                 {addonTotal > 0 && <span className={styles.bookCTABreak}>(Cottage ₹{fmt(pkgPrice)} + Add-ons ₹{fmt(addonTotal)})</span>}
@@ -393,6 +423,7 @@ export default function CottageBookingPage() {
                         <div className={styles.stickyDuration}>
                             {selectedPkgObj?.duration}
                             {selectedPkg === "cottage1day" && days > 1 && ` × ${days} days`}
+                            {rooms > 1 && ` × ${rooms} rooms`}
                         </div>
                         <div className={styles.stickyPrice}>₹{fmt(grandTotal)}</div>
                         {addonTotal > 0 && <div className={styles.stickyBreak}>incl. add-ons</div>}
