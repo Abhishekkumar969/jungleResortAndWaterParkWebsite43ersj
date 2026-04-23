@@ -6,7 +6,7 @@ const events = [
     {
         title: "DESTINATION WEDDING",
         image: "/images/gallery-1.webp",
-        href: "/destinationwedding"
+        href: "/destination-wedding"
     },
     {
         title: "WEDDING",
@@ -46,22 +46,22 @@ const events = [
     {
         title: "RING CEREMONY",
         image: "/images/ringceremony.webp",
-        href: "/ringceremony"
+        href: "/ring-ceremony"
     },
     {
         title: "CORPORATE EVENT",
         image: "/images/CorporateEvent7.webp",
-        href: "/corporateevents"
+        href: "/corporate-events"
     },
     {
         title: "THEME PARTY",
         image: "/images/birthday-princess.webp",
-        href: "/themeparty"
+        href: "/theme-party"
     },
     {
         title: "POOL PARTY",
         image: "/eventPics/Pool Party/waterparkjungleresort.webp",
-        href: "/poolparty"
+        href: "/pool-party"
     }
 ];
 

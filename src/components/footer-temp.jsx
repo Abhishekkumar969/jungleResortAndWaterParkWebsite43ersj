@@ -64,25 +64,46 @@ export default function Footer() {
           <div className="footer-section">
             <p className="footer-title">Quick Links</p>
             <ul className="footer-links">
-              <li><Link to="/">Jungle Resort Patna Home</Link></li>
-              <li><Link to="/venues">Best Banquet Hall in Patna</Link></li>
-              <li><Link to="/waterpark-in-patna">Best Water Park in Patna</Link></li>
-              <li><Link to="/birthdays">Birthday Party Venue in Patna</Link></li>
-              <li><Link to="/gallery">Jungle Resort Patna Gallery</Link></li>
-              <li><Link to="/contact">Contact Jungle Resort Patna</Link></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about-us">About Us</Link></li>
+              <li><Link to="/Services">Our Services</Link></li>
+              <li><Link to="/waterpark-in-patna">Water Park</Link></li>
+              <li><Link to="/fun-park">Fun Park</Link></li>
+              <li><Link to="/gallery">Gallery</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/contact">Contact Us</Link></li>
             </ul>
           </div>
 
-          {/* Our Services */}
+          {/* Event Venues */}
           <div className="footer-section">
-            <p className="footer-title">Our Services</p>
+            <p className="footer-title">Events & Venues</p>
             <ul className="footer-links">
-              <li><Link to="/wedding">Wedding Venue in Patna</Link></li>
-              <li><Link to="/reception">Reception Party Venue in Patna</Link></li>
-              <li><Link to="/corporateevents">Corporate Event Venue in Patna</Link></li>
-              <li><Link to="/birthday">Birthday Party Venue in Patna</Link></li>
-              <li><Link to="/waterpark-in-patna">Best Waterpark in Patna</Link></li>
-              <li><Link to="/">Resort Cottage Booking in Patna</Link></li>
+              <li><Link to="/destination-wedding">Destination Wedding</Link></li>
+              <li><Link to="/wedding">Wedding</Link></li>
+              <li><Link to="/reception">Reception</Link></li>
+              <li><Link to="/theme-party">Theme Party</Link></li>
+              <li><Link to="/birthday">Birthday Party</Link></li>
+              <li><Link to="/anniversary">Anniversary</Link></li>
+              <li><Link to="/ring-ceremony">Ring Ceremony</Link></li>
+              <li><Link to="/corporate-events">Corporate Events</Link></li>
+              <li><Link to="/pool-party">Pool Party</Link></li>
+            </ul>
+          </div>
+
+          {/* More Services */}
+          <div className="footer-section">
+            <p className="footer-title">Special Occasions</p>
+            <ul className="footer-links">
+              <li><Link to="/haldi">Haldi Ceremony</Link></li>
+              <li><Link to="/mehndi">Mehndi Ceremony</Link></li>
+              <li><Link to="/sangeet">Sangeet Ceremony</Link></li>
+              <li><Link to="/engagement">Engagement</Link></li>
+              <li><Link to="/get-together">Get Together</Link></li>
+              <li><Link to="/kitty-party">Kitty Party</Link></li>
+              <li><Link to="/corporate-party">Corporate Party</Link></li>
+              <li><Link to="/corporate-pool-party">Corporate Pool Party</Link></li>
+              <li><Link to="/birthday-ceremony">Birthday Ceremony</Link></li>
             </ul>
           </div>
 

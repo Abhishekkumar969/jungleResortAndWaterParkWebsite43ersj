@@ -9,7 +9,7 @@ const Cart = lazy(() => import("./Cart"));
 
 const navLinks = [
   { href: "/", label: "HOME" },
-  { href: "/AboutUs", label: "ABOUT US" },
+  { href: "/about-us", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
   { href: "/gallery", label: "GALLERY" },
   { href: "/blog", label: "BLOG" },

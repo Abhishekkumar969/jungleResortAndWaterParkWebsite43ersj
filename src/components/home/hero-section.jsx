@@ -9,7 +9,7 @@ const heroMenus = [
   {
     title: "Book Your Event",
     items: [
-      { name: "Destination Wedding", link: "/destinationwedding" },
+      { name: "Destination Wedding", link: "/destination-wedding" },
       { name: "Wedding", link: "/wedding" },
       { name: "Haldi", link: "/haldi" },
       { name: "Mehndi", link: "/mehndi" },
@@ -23,22 +23,22 @@ const heroMenus = [
     title: "Birthday & Parties",
     items: [
       { name: "Birthday Celebration", link: "/birthday" },
-      { name: "Pool Party", link: "/poolparty" },
-      { name: "Get Together", link: "/gettogether" },
-      { name: "Kitty Party", link: "/kittyparty" },
+      { name: "Pool Party", link: "/pool-party" },
+      { name: "Get Together", link: "/get-together" },
+      { name: "Kitty Party", link: "/kitty-party" },
     ],
   },
   {
     title: "Corporate Events",
     items: [
-      { name: "Corporate Events", link: "/corporateevents" },
-      { name: "Corporate Party", link: "/corporateparty" },
-      { name: "Corporate Pool Party", link: "/corporatepoolparty" },
+      { name: "Corporate Events", link: "/corporate-events" },
+      { name: "Corporate Party", link: "/corporate-party" },
+      { name: "Corporate Pool Party", link: "/corporate-pool-party" },
     ],
   },
   { title: "Cottage Rooms", link: "/cottage-booking" },
   { title: "WaterPark Tickets", link: "/waterpark-in-patna" },
-  { title: "FunPark Tickets", link: "/FunPark" },
+  { title: "FunPark Tickets", link: "/fun-park" },
 ];
 
 export default function HeroSection() {
