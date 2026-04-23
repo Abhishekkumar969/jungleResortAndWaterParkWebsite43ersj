@@ -8,7 +8,7 @@
   bottom: 1.5rem;
   left: 0;
   right: 0;
-  z-index: 1002;
+  z-index: 9999;
   pointer-events: none;
 }
 
@@ -55,15 +55,8 @@ body.show-floating #floating-contacts .floating-btn:hover {
 
 /* Bounce Animation */
 @keyframes bounce-slow {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .animate-bounce-slow {
@@ -80,11 +73,9 @@ body.show-floating #floating-contacts .floating-btn:hover {
     width: 3.4rem;
     height: 3.4rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.call {
     left: 1.3rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.whatsapp {
     right: 1.3rem;
   }
@@ -97,11 +88,9 @@ body.show-floating #floating-contacts .floating-btn:hover {
     height: 3.2rem;
     bottom: 1.2rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.call {
     left: 1.2rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.whatsapp {
     right: 1.2rem;
   }
@@ -114,11 +103,9 @@ body.show-floating #floating-contacts .floating-btn:hover {
     height: 3rem;
     bottom: 1rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.call {
     left: 1rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.whatsapp {
     right: 1rem;
   }
@@ -131,11 +118,9 @@ body.show-floating #floating-contacts .floating-btn:hover {
     height: 2.8rem;
     bottom: 0.9rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.call {
     left: 0.9rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.whatsapp {
     right: 0.9rem;
   }
@@ -148,11 +133,9 @@ body.show-floating #floating-contacts .floating-btn:hover {
     height: 2.6rem;
     bottom: 0.8rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.call {
     left: 0.8rem;
   }
-
   body.show-floating #floating-contacts .floating-btn.whatsapp {
     right: 0.8rem;
   }
