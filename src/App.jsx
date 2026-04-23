@@ -92,46 +92,46 @@ function App() {
           <Route path="/cart" element={<Suspense fallback={<Loader />}> <Cart /> </Suspense>} />
           <Route path="/checkout" element={<Suspense fallback={<Loader />}>  <Checkout /> </Suspense>} />
           <Route path="/dashboard" element={<Suspense fallback={<Loader />}>  <UserDashboard /> </Suspense>} />
-          <Route path="/mytickets" element={<Suspense fallback={<Loader />}>  <MyTickets /> </Suspense>} />
+          <Route path="/my-tickets" element={<Suspense fallback={<Loader />}>  <MyTickets /> </Suspense>} />
 
-          <Route path="/AboutUs" element={<Suspense fallback={<Loader />}>  <AboutUs /> </Suspense>} />
+          <Route path="/about-us" element={<Suspense fallback={<Loader />}>  <AboutUs /> </Suspense>} />
           <Route path="/Services" element={<Suspense fallback={<Loader />}>  <Services /> </Suspense>} />
 
           <Route path="/waterpark-in-patna" element={<Suspense fallback={<Loader />}>  <Waterpark /> </Suspense>} />
           <Route path="/cottage-booking" element={<Navigate to="/waterpark-in-patna" replace />} />
-          <Route path="/FunPark" element={<Suspense fallback={<Loader />}>  <FunPark /> </Suspense>} />
+          <Route path="/fun-park" element={<Suspense fallback={<Loader />}>  <FunPark /> </Suspense>} />
 
-          <Route path="/BirthdayCeremony" element={<Suspense fallback={<Loader />}>  <BirthdayCeremony /> </Suspense>} />
+          <Route path="/birthday-ceremony" element={<Suspense fallback={<Loader />}>  <BirthdayCeremony /> </Suspense>} />
 
 
-          <Route path="/Contact" element={<Suspense fallback={<Loader />}>  <Contact /> </Suspense>} />
-          <Route path="/Gallery" element={<Suspense fallback={<Loader />}>  <Gallery /> </Suspense>} />
+          <Route path="/contact" element={<Suspense fallback={<Loader />}>  <Contact /> </Suspense>} />
+          <Route path="/gallery" element={<Suspense fallback={<Loader />}>  <Gallery /> </Suspense>} />
 
-          <Route path="/destinationwedding" element={<Suspense fallback={<Loader />}>  <DestinationWeddingDetails /> </Suspense>} />
+          <Route path="/destination-wedding" element={<Suspense fallback={<Loader />}>  <DestinationWeddingDetails /> </Suspense>} />
           <Route path="/wedding" element={<Suspense fallback={<Loader />}>  <WeddingDetails /> </Suspense>} />
           <Route path="/reception" element={<Suspense fallback={<Loader />}>  <ReceptionDetails /> </Suspense>} />
-          <Route path="/themeparty" element={<Suspense fallback={<Loader />}>  <ThemePartyDetails /> </Suspense>} />
+          <Route path="/theme-party" element={<Suspense fallback={<Loader />}>  <ThemePartyDetails /> </Suspense>} />
 
           <Route path="/birthday" element={<Suspense fallback={<Loader />}>  <BirthdayDetails /> </Suspense>} />
 
-          <Route path="/birthdayexplorebtn" element={<Suspense fallback={<Loader />}>  <BirthdayExploreBtn /> </Suspense>} />
-          <Route path="/birthdayexplore" element={<Suspense fallback={<Loader />}>  <BirthdayExplore /> </Suspense>} />
+          <Route path="/birthday-explore-btn" element={<Suspense fallback={<Loader />}>  <BirthdayExploreBtn /> </Suspense>} />
+          <Route path="/birthday-explore" element={<Suspense fallback={<Loader />}>  <BirthdayExplore /> </Suspense>} />
 
           <Route path="/anniversary" element={<Suspense fallback={<Loader />}>  <AnniversaryDetails /> </Suspense>} />
-          <Route path="/ringceremony" element={<Suspense fallback={<Loader />}>  <RingCeremonyDetails /> </Suspense>} />
+          <Route path="/ring-ceremony" element={<Suspense fallback={<Loader />}>  <RingCeremonyDetails /> </Suspense>} />
 
-          <Route path="/corporateevents" element={<Suspense fallback={<Loader />}>  <CorporateEventsDetails /> </Suspense>} />
-          <Route path="/poolparty" element={<Suspense fallback={<Loader />}>  <PoolPartyDetails /> </Suspense>} />
+          <Route path="/corporate-events" element={<Suspense fallback={<Loader />}>  <CorporateEventsDetails /> </Suspense>} />
+          <Route path="/pool-party" element={<Suspense fallback={<Loader />}>  <PoolPartyDetails /> </Suspense>} />
 
           <Route path="/haldi" element={<Suspense fallback={<Loader />}>  <HaldiDetails /> </Suspense>} />
           <Route path="/mehndi" element={<Suspense fallback={<Loader />}>  <MehndiDetails /> </Suspense>} />
           <Route path="/sangeet" element={<Suspense fallback={<Loader />}>  <SangeetDetails /> </Suspense>} />
           <Route path="/engagement" element={<Suspense fallback={<Loader />}>  <EngagementDetails /> </Suspense>} />
 
-          <Route path="/gettogether" element={<Suspense fallback={<Loader />}>  <GetTogetherDetails /> </Suspense>} />
-          <Route path="/kittyparty" element={<Suspense fallback={<Loader />}>  <KittyPartyDetails /> </Suspense>} />
-          <Route path="/corporateparty" element={<Suspense fallback={<Loader />}>  <CorporatePartyDetails /> </Suspense>} />
-          <Route path="/corporatepoolparty" element={<Suspense fallback={<Loader />}>  <CorporatePoolPartyDetails /> </Suspense>} />
+          <Route path="/get-together" element={<Suspense fallback={<Loader />}>  <GetTogetherDetails /> </Suspense>} />
+          <Route path="/kitty-party" element={<Suspense fallback={<Loader />}>  <KittyPartyDetails /> </Suspense>} />
+          <Route path="/corporate-party" element={<Suspense fallback={<Loader />}>  <CorporatePartyDetails /> </Suspense>} />
+          <Route path="/corporate-pool-party" element={<Suspense fallback={<Loader />}>  <CorporatePoolPartyDetails /> </Suspense>} />
 
           <Route path="/blog" element={<Suspense fallback={<Loader />}> <Blog /> </Suspense>} />
           <Route path="/blog/:slug" element={<Suspense fallback={<Loader />}> <BlogDetails /> </Suspense>} />
