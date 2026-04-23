@@ -99,14 +99,18 @@
   letter-spacing: 0.5px;
   cursor: pointer;
   background: transparent;
-  color: #718096;
+  color: #e72e77;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 0 #b01a52, 0 4px 8px rgba(231, 46, 119, 0.3);
+  border: 2px solid #e72e77;
 }
 
 .toggleBtn.active {
-  background: #ffffff;
-  color: #e72e77;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: #e72e77;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 0 #b01a52, 0 8px 15px rgba(231, 46, 119, 0.3);
+  z-index: 1;
 }
 
 /* ── Submit Button ── */
@@ -121,7 +125,7 @@
   border: none;
   cursor: pointer;
   margin-top: 10px;
-  box-shadow: 0 8px 24px rgba(231, 46, 119, 0.3);
+  box-shadow: 0 4px 0 #b01a52, 0 8px 15px rgba(231, 46, 119, 0.3);
   transition: all 0.2s ease;
 }
 
@@ -216,7 +220,8 @@
   color: #e72e77;
 }
 
-.start, .end {
+.start,
+.end {
   background: #e72e77 !important;
   color: #fff !important;
 }
@@ -235,15 +240,15 @@
   .quickBook {
     padding: 20px;
   }
-  
-  .monthContainer > div:nth-child(2) {
+
+  .monthContainer>div:nth-child(2) {
     display: none;
   }
-  
+
   .calendarHeader span:nth-child(3) {
     display: none;
   }
-  
+
   .calendarWrapper {
     width: 92vw;
   }
@@ -253,20 +258,20 @@
   .quickBook {
     padding: 16px;
   }
-  
+
   .quickBook h3 {
     font-size: 1.1rem;
   }
-  
+
   .formGroup input,
   .formGroup select {
     font-size: 13px;
   }
-  
+
   .grid {
     gap: 4px;
   }
-  
+
   .day {
     font-size: 12px;
   }
