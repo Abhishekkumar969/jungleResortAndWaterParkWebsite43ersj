@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useId } from "react";
 import { Calendar, User, Phone, PartyPopper } from "lucide-react";
 import { db } from "../firebaseConfig";
 import { collection, doc, getDocs, setDoc, serverTimestamp, } from "firebase/firestore";
 import styles from "../styles/quick-book-section.module.css";
 
-export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
+const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
@@ -15,6 +15,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selecting, setSelecting] = useState("start");
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const currentId = useId().replace(/:/g, "");
   const calendarRef = useRef();
 
   const [range, setRange] = useState({
@@ -249,9 +250,8 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
         toDate: ""
       });
 
-    } catch (error) {
-      console.error("❌ Firestore error:", error);
-      setMessage("❌ Failed to submit enquiry");
+    } catch {
+      setMessage("❌ Failed to submit enquiry. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -289,7 +289,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
   today.setHours(0, 0, 0, 0);
 
   return (
-    <div className={styles.quickBook}>
+    <div className={styles.quickBook} data-booking-form="true">
       {/* <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <h3>Check  Availability</h3>
       </div> */}
@@ -328,10 +328,11 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
           <>
             {[0].map((index) => (
               <div key={index} className={styles.formGroup}>
-                <label>SELECT EVENT TYPE</label>
+                <label htmlFor={`${currentId}-event-type-${index}`}>SELECT EVENT TYPE</label>
                 <PartyPopper className={styles.icon} />
 
                 <select
+                  id={`${currentId}-event-type-${index}`}
                   value={formData.functionTypes[index] || ""}
                   onChange={(e) => {
                     const updated = [...formData.functionTypes];
@@ -359,10 +360,11 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
           // ✅ MULTI DAY (unlimited - existing logic)
           formData.functionTypes.map((type, index) => (
             <div key={index} className={styles.formGroup}>
-              <label>SELECT EVENT TYPE {index + 1}</label>
+              <label htmlFor={`${currentId}-multi-event-type-${index}`}>SELECT EVENT TYPE {index + 1}</label>
               <PartyPopper className={styles.icon} />
 
               <select
+                id={`${currentId}-multi-event-type-${index}`}
                 value={type}
                 onChange={(e) => {
                   const updated = [...formData.functionTypes];
@@ -395,9 +397,10 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
         {bookingType === "single" ? (
 
           <div className={styles.formGroup}>
-            <label>EXPECTED DATE</label>
+            <label htmlFor={`${currentId}-booking-date`}>EXPECTED DATE</label>
             <Calendar className={styles.icon} />
             <input
+              id={`${currentId}-booking-date`}
               type="date"
               value={formData.date}
               min={new Date().toISOString().split("T")[0]}
@@ -411,9 +414,10 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
         ) : (
 
           <div className={styles.formGroup}>
-            <label>EXPECTED DATE RANGE</label>
+            <label htmlFor={`${currentId}-booking-date-range`}>EXPECTED DATE RANGE</label>
 
             <input
+              id={`${currentId}-booking-date-range`}
               type="text"
               readOnly
               placeholder=""
@@ -430,7 +434,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
 
                 {/* HEADER */}
                 <div className={styles.calendarHeader}>
-                  <button onClick={prevMonth} className={styles.navMonth}>‹</button>
+                  <button type="button" onClick={prevMonth} className={styles.navMonth} aria-label="Previous month">‹</button>
                   <span>
                     {currentMonth.toLocaleString("default", { month: "long", year: "numeric" })}
                   </span>
@@ -438,7 +442,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
                     {new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
                       .toLocaleString("default", { month: "long", year: "numeric" })}
                   </span>
-                  <button onClick={nextMonth} className={styles.navMonth}>›</button>
+                  <button type="button" onClick={nextMonth} className={styles.navMonth} aria-label="Next month">›</button>
                 </div>
 
                 {/* MONTHS */}
@@ -522,10 +526,11 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
 
         {/* NAME */}
         <div className={styles.formGroup}>
-          <label> NAME </label>
+          <label htmlFor={`${currentId}-booking-name`}> NAME </label>
 
           <User className={styles.icon} />
           <input
+            id={`${currentId}-booking-name`}
             type="text"
             placeholder=""
             value={formData.name}
@@ -538,10 +543,11 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
 
         {/* MOBILE */}
         <div className={styles.formGroup}>
-          <label> MOBILE NUMBER </label>
+          <label htmlFor={`${currentId}-booking-mobile`}> MOBILE NUMBER </label>
 
           <Phone className={styles.icon} />
           <input
+            id={`${currentId}-booking-mobile`}
             type="text"
             placeholder=""
             value={formData.mobile}
@@ -574,7 +580,7 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
           type="submit"
           disabled={isSubmitting || isDuplicate || isCheckingDuplicate}
           className={styles.submitBtn}
-          style={{ ...buttonStyle, backgroundColor: "#00bbff", textShadow: "1px 1px 1px #000000af", fontSize: "20px" }}
+          style={{ ...buttonStyle, backgroundColor: "#025ab5", textShadow: "1px 1px 1px #000000af", fontSize: "20px" }}
         >
           {isCheckingDuplicate
             ? "Checking..."
@@ -596,4 +602,6 @@ export default function QuickBookForm({ defaultFunctionType = "", onClose }) {
 
     </div>
   );
-}
+});
+
+export default QuickBookForm;

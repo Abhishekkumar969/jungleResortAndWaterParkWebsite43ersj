@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/Cart.module.css";
-import Checkout from "./waterpark/Checkout";
 
 const ticketMap = {
     kidsbelow10years: { name: "Kids Below 10 Years", price: 299 },
@@ -11,46 +12,66 @@ const ticketMap = {
     groupof20: { name: "Group Of 20", price: 5500 }
 };
 
-export default function Cart({ isOpen, onClose }) {
-    const [cartItems, setCartItems] = useState({});
-    const [showCheckout, setShowCheckout] = useState(false);
+const WATERPARK_ADDONS = [
+    { id: "wpaKids", name: "Kids (Below 10 Yrs)", price: 299 },
+    { id: "wpaAdult", name: "Adult (Above 10 Yrs)", price: 399 },
+    { id: "wpaGroup5", name: "Group of 5", price: 1849 },
+    { id: "wpaGroup10", name: "Group of 10", price: 3250 },
+];
 
-    // ✅ LOAD CART PROPERLY
-    useEffect(() => {
-        const storedCart = JSON.parse(localStorage.getItem("cart")) || {};
-        setCartItems(storedCart.items || {});
-    }, [isOpen]);
+const CROSS_SELL = [
+    { id: "cottage", emoji: "🏡", title: "Cottage Rooms", subtitle: "From ₹1,999 · Private AC Room", link: "/cottage-booking", color: "#e91e8c" },
+    { id: "waterpark", emoji: "🌊", title: "More Water Park Tickets", subtitle: "Kids ₹299 · Adults ₹399", link: "/waterpark-in-patna", color: "#0ea5e9" },
+];
 
-    // ✅ TOTAL CALCULATE (dynamic)
-    const totalAmount = Object.entries(cartItems).reduce(
-        (sum, [id, qty]) => sum + (ticketMap[id]?.price || 0) * qty,
-        0
+const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
+
+export default function Cart({ isOpen, onClose, onProceed }) {
+    const navigate = useNavigate();
+    const [cartItems, setCartItems] = useState({});   // waterpark tickets
+    const [cottage, setCottage] = useState(null); // cottage booking
+
+    /* ── Load both from localStorage ── */
+    const loadCart = () => {
+        const stored = JSON.parse(localStorage.getItem("cart")) || {};
+        setCartItems(stored.items || {});
+        setCottage(stored.cottage || null);
+    };
+
+    useEffect(() => { loadCart(); }, [isOpen]);
+
+    /* ── Totals ── */
+    const wpTotal = Object.entries(cartItems).reduce(
+        (sum, [id, qty]) => sum + (ticketMap[id]?.price || 0) * qty, 0
     );
+    const cottageTotal = cottage?.total || 0;
+    const grandTotal = wpTotal + cottageTotal;
 
-    // ✅ QTY UPDATE
-    const updateQty = (id, change) => {
+    const hasWaterpark = Object.keys(cartItems).length > 0;
+    const hasCottage = !!cottage;
+    const hasItems = hasWaterpark || hasCottage;
+
+    /* ── Waterpark qty update ── */
+    const updateQty = (id, delta) => {
         const updated = { ...cartItems };
-
-        updated[id] = (updated[id] || 0) + change;
-
-        if (updated[id] <= 0) {
-            delete updated[id];
-        }
-
+        updated[id] = (updated[id] || 0) + delta;
+        if (updated[id] <= 0) delete updated[id];
         setCartItems(updated);
-
-        localStorage.setItem("cart", JSON.stringify({
-            items: updated
-        }));
-
+        const stored = JSON.parse(localStorage.getItem("cart")) || {};
+        localStorage.setItem("cart", JSON.stringify({ ...stored, items: updated }));
         window.dispatchEvent(new Event("cartUpdated"));
     };
 
-    const formatINR = (amount) => {
-        return new Intl.NumberFormat("en-IN").format(amount);
+    /* ── Remove cottage ── */
+    const removeCottage = () => {
+        const stored = JSON.parse(localStorage.getItem("cart")) || {};
+        delete stored.cottage;
+        localStorage.setItem("cart", JSON.stringify(stored));
+        setCottage(null);
+        window.dispatchEvent(new Event("cartUpdated"));
     };
 
-    return (
+    return ReactDOM.createPortal(
         <div>
             {/* Overlay */}
             <div className={`${styles.overlay} ${isOpen ? styles.show : ""}`} onClick={onClose} />
@@ -60,76 +81,146 @@ export default function Cart({ isOpen, onClose }) {
 
                 {/* HEADER */}
                 <div className={styles.header}>
-                    <h3>Your Cart</h3>
-                    <button onClick={onClose}>✕</button>
+                    <h3>🛒 Your Cart</h3>
+                    <button onClick={onClose} aria-label="Close cart">✕</button>
                 </div>
 
                 {/* CONTENT */}
                 <div className={styles.content}>
 
-                    {Object.keys(cartItems).length === 0 ? (
-                        <p className={styles.empty}>Cart is empty</p>
+                    {!hasItems ? (
+                        <div className={styles.emptyWrap}>
+                            <div className={styles.emptyIcon}>🛒</div>
+                            <p className={styles.empty}>Your cart is empty</p>
+                            <p className={styles.emptyHint}>Add waterpark tickets or a cottage room to get started</p>
+                        </div>
                     ) : (
                         <>
-                            {Object.entries(cartItems).map(([id, qty]) => {
-
-                                const ticket = ticketMap[id];
-
-                                return (
-                                    <div key={id} className={styles.ticketItem}>
-
-                                        <div>
-                                            <strong>{ticket?.name}</strong>
-                                            <p style={{ marginTop: "5px" }}>₹ {formatINR(ticket?.price)} x {qty} =  <span style={{ fontWeight: "700", color: "#0080b7" }}>  ₹ {formatINR(ticket?.price * qty)} </span> </p>
-                                        </div>
-
-                                        <div style={{ display: "block", }} >
-
-                                            <div className={styles.qtyControl}>
-                                                <button onClick={() => updateQty(id, -1)}>-</button>
-                                                <span>{qty}</span>
-                                                <button onClick={() => updateQty(id, 1)}>+</button>
+                            {/* ═══ WATERPARK TICKETS SECTION ═══ */}
+                            {hasWaterpark && (
+                                <div className={styles.cartSection}>
+                                    <div className={styles.sectionLabel}>🌊 Water Park Tickets</div>
+                                    {Object.entries(cartItems).map(([id, qty]) => {
+                                        const ticket = ticketMap[id];
+                                        return (
+                                            <div key={id} className={styles.ticketItem}>
+                                                <div className={styles.ticketInfo}>
+                                                    <strong>{ticket?.name}</strong>
+                                                    <p>₹{fmt(ticket?.price)} × {qty} = <span>₹{fmt((ticket?.price || 0) * qty)}</span></p>
+                                                </div>
+                                                <div className={styles.qtyControl}>
+                                                    <button onClick={() => updateQty(id, -1)} aria-label="Decrease">−</button>
+                                                    <span>{qty}</span>
+                                                    <button onClick={() => updateQty(id, 1)} aria-label="Increase">+</button>
+                                                </div>
                                             </div>
+                                        );
+                                    })}
+                                    <div className={styles.sectionSubtotal}>
+                                        <span>Subtotal</span>
+                                        <strong>₹{fmt(wpTotal)}</strong>
+                                    </div>
+                                </div>
+                            )}
 
+                            {/* ═══ COTTAGE SECTION ═══ */}
+                            {hasCottage && (
+                                <div className={styles.cartSection}>
+                                    <div className={styles.sectionLabel}>🏡 Cottage Room</div>
+                                    <div className={styles.cottageCard}>
+                                        <div className={styles.cottageRow}>
+                                            <div>
+                                                <strong className={styles.cottageName}>{cottage.duration}</strong>
+                                                {cottage.days > 1 && (
+                                                    <span className={styles.cottageDays}> × {cottage.days} days</span>
+                                                )}
+                                                {cottage.rooms > 1 && (
+                                                    <span className={styles.cottageDays}> × {cottage.rooms} rooms</span>
+                                                )}
+                                                <p className={styles.cottageBase}>₹{fmt(cottage.basePrice)} per day</p>
+                                            </div>
+                                            <button
+                                                className={styles.cottageRemove}
+                                                onClick={removeCottage}
+                                                aria-label="Remove cottage"
+                                            >✕</button>
                                         </div>
 
+                                        {/* Waterpark addons on the cottage */}
+                                        {cottage.addons && Object.keys(cottage.addons).length > 0 && (
+                                            <div className={styles.cottageAddons}>
+                                                {Object.entries(cottage.addons).map(([id, qty]) => {
+                                                    const a = WATERPARK_ADDONS.find(x => x.id === id);
+                                                    return (
+                                                        <div key={id} className={styles.cottageAddonRow}>
+                                                            <span>🎟️ {a?.name} × {qty}</span>
+                                                            <span>₹{fmt((a?.price || 0) * qty)}</span>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        )}
+
+                                        <div className={styles.sectionSubtotal}>
+                                            <span>Subtotal</span>
+                                            <strong>₹{fmt(cottageTotal)}</strong>
+                                        </div>
                                     </div>
-                                );
-                            })}
+                                </div>
+                            )}
+
+                            {/* ═══ GRAND TOTAL ═══ */}
+                            <div className={styles.totalRow}>
+                                <span>Grand Total</span>
+                                <strong>₹{fmt(grandTotal)}</strong>
+                            </div>
+
+                            {/* ═══ BLINKIT CROSS-SELL ═══ */}
+                            <div className={styles.crossSellSection}>
+                                <div className={styles.crossSellHeading}>⚡ Add more to your visit</div>
+                                {CROSS_SELL.map(item => (
+                                    <button
+                                        key={item.id}
+                                        className={styles.crossSellCard}
+                                        onClick={() => { onClose(); navigate(item.link); }}
+                                        style={{ "--cross-color": item.color }}
+                                        aria-label={`Go to ${item.title}`}
+                                    >
+                                        <span className={styles.crossSellEmoji}>{item.emoji}</span>
+                                        <div className={styles.crossSellText}>
+                                            <strong>{item.title}</strong>
+                                            <small>{item.subtitle}</small>
+                                        </div>
+                                        <span className={styles.crossSellArrow}>→</span>
+                                    </button>
+                                ))}
+                            </div>
                         </>
                     )}
-
-                    <div style={{ fontWeight: "800", display: "flex", alignItems: "end", justifyContent: "end", marginTop: "20px", color: "#0080b7", fontSize: "19px" }}>
-                        Total : ₹ {formatINR(totalAmount)}
-                    </div>
                 </div>
 
                 {/* FOOTER */}
-                {Object.keys(cartItems).length !== 0 && (
+                {hasItems && (
                     <div className={styles.footer}>
-
                         <button
                             className={styles.button}
                             onClick={() => {
-                                onClose(); // cart band
-                                setShowCheckout(true); // checkout open
+                                if (onProceed) {
+                                    onProceed({
+                                        selectedTickets: cartItems,
+                                        cottage,
+                                        totalAmount: grandTotal,
+                                    });
+                                }
                             }}
                         >
-                            Proceed Now
+                            Proceed to Payment · ₹{fmt(grandTotal)} →
                         </button>
                     </div>
                 )}
-
             </div>
 
-            <Checkout
-                isOpen={showCheckout}
-                onClose={() => setShowCheckout(false)}
-                data={{
-                    selectedTickets: cartItems,
-                    totalAmount
-                }}
-            />
-        </div>
+        </div>,
+        document.body
     );
 }

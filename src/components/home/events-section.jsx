@@ -6,7 +6,7 @@ const events = [
     {
         title: "DESTINATION WEDDING",
         image: "/images/gallery-1.webp",
-        href: "/destinationwedding"
+        href: "/destination-wedding"
     },
     {
         title: "WEDDING",
@@ -46,22 +46,22 @@ const events = [
     {
         title: "RING CEREMONY",
         image: "/images/ringceremony.webp",
-        href: "/ringceremony"
+        href: "/ring-ceremony"
     },
     {
         title: "CORPORATE EVENT",
         image: "/images/CorporateEvent7.webp",
-        href: "/corporateevents"
+        href: "/corporate-events"
     },
     {
         title: "THEME PARTY",
         image: "/images/birthday-princess.webp",
-        href: "/themeparty"
+        href: "/theme-party"
     },
     {
         title: "POOL PARTY",
         image: "/eventPics/Pool Party/waterparkjungleresort.webp",
-        href: "/poolparty"
+        href: "/pool-party"
     }
 ];
 
@@ -72,27 +72,28 @@ export default function EventsSection() {
             <div className="container">
 
                 <div className={styles.eventsHeader}>
-                    <h2 className={styles.eventsLabel}>EVENTS & CELEBRATIONS</h2>
+                    <h2 className={styles.eventsLabel}>EVENTS &amp; CELEBRATIONS</h2>
 
                     <div className={styles.eventsLabelDivider}>
-                        <img src="images/divider.webp" alt="EVENTS & CELEBRATIONS" />
+                        <img src="/images/divider.webp" alt="" aria-hidden="true" loading="lazy" width="150" height="15" />
                     </div>
 
-                    <h2 className={styles.eventsTitle}>
-                        Wedding Venue & Banquet Hall in Patna
-                    </h2>
+                    <p className={styles.eventsTitle}>
+                        Wedding Venue &amp; Banquet Hall in Patna
+                    </p>
                 </div>
 
-                <div className={styles.eventsGrid}>
+                <div className={`${styles.eventsGrid} stagger-children`}>
 
                     {events.map((event, index) => {
 
                         return (
-                            <Link to={event.href} key={index} className={styles.eventCard}>
+                            <Link to={event.href} key={index} className={styles.eventCard} data-animate="fade-up">
 
                                 <div className={styles.eventImage}>
 
-                                    <img src={event.image} alt={event.title} />
+
+                                    <img src={event.image} alt={event.title} loading="lazy" width="400" height="300" />
 
                                     <div className={styles.eventOverlay}></div>
                                 </div>
