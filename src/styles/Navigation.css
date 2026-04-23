@@ -330,15 +330,8 @@
 
 .mobile-menu.active a:nth-child(6) {
   transition-delay: 0.30s;
-  background: #e72e77;
-  color: #ffffff !important;
-  font-weight: 800;
 }
 
-.mobile-menu.active a:nth-child(6):hover {
-  background: #c91a55;
-  color: #ffffff;
-}
 
 /* ==============================================
    RESPONSIVE BREAKPOINTS
