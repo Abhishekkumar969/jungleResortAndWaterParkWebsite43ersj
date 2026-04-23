@@ -65,11 +65,15 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
   }, [showCalendar]);
 
   useEffect(() => {
-    if (range.start && range.end) {
+    if (range.start) {
+      const startStr = range.start.toISOString().split("T")[0];
+      const endStr = range.end ? range.end.toISOString().split("T")[0] : startStr;
+
       setFormData((prev) => ({
         ...prev,
-        fromDate: range.start.toISOString().split("T")[0],
-        toDate: range.end.toISOString().split("T")[0]
+        date: startStr,
+        fromDate: startStr,
+        toDate: endStr
       }));
     }
   }, [range]);
@@ -393,136 +397,117 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
 
         )}
 
-        {/* DATE */}
-        {bookingType === "single" ? (
-
-          <div className={styles.formGroup}>
-            <label htmlFor={`${currentId}-booking-date`}>EXPECTED DATE</label>
-            <Calendar className={styles.icon} />
-            <input
-              id={`${currentId}-booking-date`}
-              type="date"
-              value={formData.date}
-              min={new Date().toISOString().split("T")[0]}
-              onChange={(e) =>
-                setFormData({ ...formData, date: e.target.value })
-              }
-              required
-            />
-          </div>
-
-        ) : (
-
-          <div className={styles.formGroup}>
-            <label htmlFor={`${currentId}-booking-date-range`}>EXPECTED DATE RANGE</label>
-
-            <input
-              id={`${currentId}-booking-date-range`}
-              type="text"
-              readOnly
-              placeholder=""
-              value={
-                range.start && range.end
+        <div className={styles.formGroup}>
+          <label htmlFor={`${currentId}-booking-date`}>
+            {bookingType === "single" ? "EXPECTED DATE" : "EXPECTED DATE RANGE"}
+          </label>
+          <Calendar className={styles.icon} />
+          <input
+            id={`${currentId}-booking-date`}
+            type="text"
+            readOnly
+            placeholder=""
+            value={
+              bookingType === "single"
+                ? (range.start ? range.start.toLocaleDateString() : "")
+                : (range.start && range.end
                   ? `${range.start.toLocaleDateString()} → ${range.end.toLocaleDateString()}`
-                  : ""
-              }
-              onClick={() => setShowCalendar(true)}
-            />
+                  : "")
+            }
+            onClick={() => setShowCalendar(true)}
+            required
+          />
 
-            {showCalendar && (
-              <div className={styles.calendarWrapper} ref={calendarRef}>
+          {showCalendar && (
+            <div className={styles.calendarWrapper} ref={calendarRef}>
 
-                {/* HEADER */}
-                <div className={styles.calendarHeader}>
-                  <button type="button" onClick={prevMonth} className={styles.navMonth} aria-label="Previous month">‹</button>
-                  <span>
-                    {currentMonth.toLocaleString("default", { month: "long", year: "numeric" })}
-                  </span>
-                  <span>
-                    {new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
-                      .toLocaleString("default", { month: "long", year: "numeric" })}
-                  </span>
-                  <button type="button" onClick={nextMonth} className={styles.navMonth} aria-label="Next month">›</button>
-                </div>
-
-                {/* MONTHS */}
-                <div className={styles.monthContainer}>
-                  {[0, 1].map((offset) => {
-
-                    // 👉 MOBILE pe sirf first month dikhana
-                    // if (window.innerWidth <= 768 && offset === 1) return null;
-
-                    const monthDate = new Date(
-                      currentMonth.getFullYear(),
-                      currentMonth.getMonth() + offset
-                    );
-
-                    const days = generateMonth(
-                      monthDate.getFullYear(),
-                      monthDate.getMonth()
-                    );
-
-                    return (
-                      <div key={offset}>
-                        <div className={styles.grid}>
-                          {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(d => (
-                            <div key={d} className={styles.dayName}>{d}</div>
-                          ))}
-
-                          {days.map((date, i) => {
-                            if (!date) return <div key={i}></div>;
-
-                            const isStart = range.start?.toDateString() === date.toDateString();
-                            const isEnd = range.end?.toDateString() === date.toDateString();
-
-                            const inRange =
-                              range.start &&
-                              range.end &&
-                              date > range.start &&
-                              date < range.end;
-
-                            const isPast = date < today;
-
-                            return (
-                              <div
-                                key={i}
-                                className={`${styles.day}
-                  ${isStart ? styles.start : ""}
-                  ${isEnd ? styles.end : ""}
-                  ${inRange ? styles.inRange : ""}
-                    ${isPast ? styles.disabled : ""}  
-                `}
-                                onClick={() => {
-                                  if (selecting === "start") {
-                                    setRange({ start: date, end: null });
-                                    setSelecting("end");
-                                  } else {
-                                    if (date < range.start) {
-                                      setRange({ start: date, end: range.start });
-                                    } else {
-                                      setRange({ ...range, end: date });
-                                    }
-                                    setSelecting("start");
-                                    setShowCalendar(false);
-                                  }
-                                }}
-                              >
-                                {date.getDate()}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-
+              {/* HEADER */}
+              <div className={styles.calendarHeader}>
+                <button type="button" onClick={prevMonth} className={styles.navMonth} aria-label="Previous month">‹</button>
+                <span>
+                  {currentMonth.toLocaleString("default", { month: "long", year: "numeric" })}
+                </span>
+                <button type="button" onClick={nextMonth} className={styles.navMonth} aria-label="Next month">›</button>
               </div>
-            )}
-          </div>
 
-        )}
+              {/* MONTH */}
+              <div className={styles.monthContainer}>
+                {[0].map((offset) => {
+                  const monthDate = new Date(
+                    currentMonth.getFullYear(),
+                    currentMonth.getMonth() + offset
+                  );
+
+                  const days = generateMonth(
+                    monthDate.getFullYear(),
+                    monthDate.getMonth()
+                  );
+
+                  return (
+                    <div key={offset}>
+                      <div className={styles.grid}>
+                        {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(d => (
+                          <div key={d} className={styles.dayName}>{d}</div>
+                        ))}
+
+                        {days.map((date, i) => {
+                          if (!date) return <div key={i}></div>;
+
+                          const isStart = range.start?.toDateString() === date.toDateString();
+                          const isEnd = range.end?.toDateString() === date.toDateString();
+
+                          const inRange =
+                            range.start &&
+                            range.end &&
+                            date > range.start &&
+                            date < range.end;
+
+                          const isPast = date < today;
+
+                          return (
+                            <div
+                              key={i}
+                              className={`${styles.day}
+                ${isStart ? styles.start : ""}
+                ${isEnd ? styles.end : ""}
+                ${inRange ? styles.inRange : ""}
+                  ${isPast ? styles.disabled : ""}  
+              `}
+                              onClick={() => {
+                                if (bookingType === "single") {
+                                  setRange({ start: date, end: date });
+                                  setShowCalendar(false);
+                                  return;
+                                }
+
+                                if (selecting === "start") {
+                                  setRange({ start: date, end: null });
+                                  setSelecting("end");
+                                } else {
+                                  if (date < range.start) {
+                                    setRange({ start: date, end: range.start });
+                                  } else {
+                                    setRange({ ...range, end: date });
+                                  }
+                                  setSelecting("start");
+                                  setShowCalendar(false);
+                                }
+                              }}
+                            >
+                              {date.getDate()}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+
+            </div>
+          )}
+        </div>
 
         {/* NAME */}
         <div className={styles.formGroup}>
