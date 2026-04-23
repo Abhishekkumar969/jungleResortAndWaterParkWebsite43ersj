@@ -392,3 +392,71 @@ button:active,
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ─── ULTRA-RESPONSIVE FIXES (< 400px) ─── */
+@media (max-width: 400px) {
+  html {
+    font-size: 15px;
+    /* Scale down base font size */
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  [class*="container"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Specific adjustments for cards and modals */
+  [class*="modal"],
+  [class*="card"] {
+    width: 95% !important;
+    padding: 15px !important;
+  }
+}
+
+/* ─── MICRO-SCREEN FIXES (< 350px) ─── */
+@media (max-width: 350px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+
+  /* Reduce gaps and margins */
+  [class*="field"],
+  [class*="row"] {
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Force stack any remaining side-by-side elements */
+  .callBtns {
+    flex-direction: column;
+    gap: 8px !important;
+  }
+
+  .callBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
