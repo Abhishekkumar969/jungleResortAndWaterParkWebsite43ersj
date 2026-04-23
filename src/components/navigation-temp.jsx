@@ -133,7 +133,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" aria-label="Jungle Resort Patna — Go to homepage">
             <div className="nav-logo">
-              <img src="/images/jungle-reosrt.png" alt="Jungle Resort Patna logo" width={34} height={34} />
+              <img src="/images/jungle-reosrt.png" alt="Jungle Resort Patna logo" width={45} height={45} />
             </div>
           </Link>
 

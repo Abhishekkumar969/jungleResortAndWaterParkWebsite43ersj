@@ -5,7 +5,9 @@ import "./loader.css";
 const Loader = () => {
     return (
         <div className="loader-wrapper">
-            <div className="loader"></div>
+            <div className="splash-logo-container">
+                <img src="/images/jungle-reosrt.png" alt="Jungle Resort Patna" className="splash-logo" />
+            </div>
         </div>
     );
 };

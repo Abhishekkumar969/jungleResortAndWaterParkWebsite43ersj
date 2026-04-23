@@ -1,23 +1,44 @@
-/* loader.css */
-.loader {
-    width        : 50px;
-    height       : 50px;
-    border       : 5px solid #e1e1e1;
-    border-top   : 8px solid #00ddff;
-    border-radius: 50%;
-    animation    : spin 1s linear infinite;
-    margin       : auto;
-}
-
 .loader-wrapper {
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
-    height          : 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #e72e77;
+    /* Premium pink from brand */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
+.splash-logo-container {
+    background: #e72e77;
+    padding: 20px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.splash-logo {
+    width: 200px;
+    /* Large enough to be prominent */
+    height: auto;
+    border-radius: 20px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }
