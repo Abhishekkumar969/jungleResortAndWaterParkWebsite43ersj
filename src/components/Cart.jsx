@@ -3,25 +3,11 @@ import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Cart.module.css";
 
-const ticketMap = {
-    kidsbelow10years: { name: "Kids Below 10 Years", price: 299 },
-    above10years: { name: "Above 10 Years", price: 399 },
-    groupof5: { name: "Group Of 5", price: 1849 },
-    groupof10: { name: "Group Of 10", price: 3250 },
-    groupof15: { name: "Group Of 15", price: 4500 },
-    groupof20: { name: "Group Of 20", price: 5500 }
-};
-
-const WATERPARK_ADDONS = [
-    { id: "wpaKids", name: "Kids (Below 10 Yrs)", price: 299 },
-    { id: "wpaAdult", name: "Adult (Above 10 Yrs)", price: 399 },
-    { id: "wpaGroup5", name: "Group of 5", price: 1849 },
-    { id: "wpaGroup10", name: "Group of 10", price: 3250 },
-];
+import { TICKET_MAP as ticketMap, WATERPARK_ADDONS } from "../constants/ticketPrices";
 
 const CROSS_SELL = [
-    { id: "cottage", emoji: "🏡", title: "Cottage Rooms", subtitle: "From ₹1,999 · Private AC Room", link: "/cottage-booking", color: "#e91e8c" },
-    { id: "waterpark", emoji: "🌊", title: "More Water Park Tickets", subtitle: "Kids ₹299 · Adults ₹399", link: "/waterpark-in-patna", color: "#0ea5e9" },
+    { id: "cottage", emoji: "🏡", title: "Cottage Rooms", subtitle: "From ₹1,999 · Private AC Room", link: "/cottage-in-patna", color: "#e91e8c" },
+    { id: "waterpark", emoji: "🌊", title: "More Water Park Tickets", subtitle: `Kids FREE · Adults ₹${ticketMap['above10years']?.price || 199}`, link: "/waterpark-in-patna", color: "#0ea5e9" },
 ];
 
 const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);

@@ -7,47 +7,7 @@ import styles from "../../styles/cottage-booking.module.css";
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 /* ─── Cottage Packages ─── */
-const PACKAGES = [
-    {
-        id: "cottage4hrs",
-        duration: "4 Hours",
-        price: 1999,
-        highlights: ["Private AC Cottage Room", "Peaceful Jungle Ambiance", "Ideal for Day Rest"],
-        waterIncluded: false,
-        color: "#2ecc71",
-    },
-    {
-        id: "cottage10hrs",
-        duration: "10 Hours",
-        price: 2499,
-        highlights: ["Private AC Cottage Room", "Peaceful Jungle Ambiance", "Extended Day Outing"],
-        waterIncluded: false,
-        color: "#3498db",
-        popular: true,
-    },
-    {
-        id: "cottage1day",
-        duration: "1 Full Day",
-        price: 3999,
-        highlights: [
-            "Private AC Cottage Room",
-            "✅ Waterpark Entry",
-            "✅ Wave Pool",
-            "✅ Rain Dance",
-            "✅ Water Slides",
-        ],
-        waterIncluded: true,
-        color: "#e91e8c",
-    },
-];
-
-/* ─── Waterpark Ticket Add-ons ─── */
-const WATERPARK_ADDONS = [
-    { id: "wpaKids", name: "Kids (Below 10 Yrs)", price: 299, emoji: "👶" },
-    { id: "wpaAdult", name: "Adult (Above 10 Yrs)", price: 399, emoji: "🧑" },
-    { id: "wpaGroup5", name: "Group of 5", price: 1849, emoji: "👨‍👩‍👧‍👦" },
-    { id: "wpaGroup10", name: "Group of 10", price: 3250, emoji: "🎉" },
-];
+import { COTTAGE_PKGS as PACKAGES, WATERPARK_ADDONS } from "../../constants/ticketPrices";
 
 /* ─── YouTube video IDs for the resort ─── */
 const VIDEOS = [

@@ -36,7 +36,7 @@ const heroMenus = [
       { name: "Corporate Pool Party", link: "/corporate-pool-party" },
     ],
   },
-  { title: "Cottage Rooms", link: "/cottage-booking" },
+  { title: "Cottage Rooms", link: "/cottage-in-patna" },
   { title: "WaterPark Tickets", link: "/waterpark-in-patna" },
   { title: "FunPark Tickets", link: "/fun-park" },
 ];
@@ -115,8 +115,6 @@ export default function HeroSection() {
 
           {/* Trust badges – pure static HTML */}
           <div className={styles.heroBadges}>
-            <span className={styles.heroBadge}>🏆 1000+ Events</span>
-            <span className={styles.heroBadge}>⭐ 4.8 Rating</span>
             <span className={styles.heroBadge}>🏘️ Cottage Rooms</span>
             <span className={styles.heroBadge}>💧 Water Park</span>
             <span className={styles.heroBadge}>📍 Patna, Bihar</span>

@@ -8,6 +8,7 @@ const Footer = lazy(() => import("../components/footer-temp"));
 const EventsSection = lazy(() => import("../components/home/events-section"));
 
 const BirthdayExploreBtn = lazy(() => import("../components/home/BirthdayExploreBtn"));
+const CottagePreview = lazy(() => import("../components/home/cottage-preview"));
 const WaterparkPreview = lazy(() => import("../components/home/waterpark-preview"));
 const TestimonialsSection = lazy(() => import("../components/home/testimonials-section"));
 const AboutJungleResortPatna = lazy(() => import("../components/home/about-section"));
@@ -32,7 +33,7 @@ function HomePage() {
       <Navbar />
 
       <HeroSection />
-      
+
       <div data-animate="fade-up">
         <Suspense fallback={null}>
           <EventsSection />
@@ -54,6 +55,12 @@ function HomePage() {
       <div data-animate="fade-up">
         <Suspense fallback={null}>
           <TestimonialsSection />
+        </Suspense>
+      </div>
+
+      <div data-animate="zoom-up">
+        <Suspense fallback={null}>
+          <CottagePreview />
         </Suspense>
       </div>
 

@@ -1,90 +1,91 @@
 import React from "react";
 import styles from "../../styles/waterparkinfo.module.css";
-import { Clock, ShieldCheck, Utensils, Lock, Shirt, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { Clock, ShieldCheck, Utensils, Coffee, Key, Car, CheckCircle2 } from "lucide-react";
 
 const info = [
     {
         icon: Clock,
-        title: "Operating Hours",
+        title: "Check-in & Check-out",
         color: "#0ea5e9",
         items: [
-            "Monday - Sunday: 10:00 AM - 6:00 PM",
-            "Last entry at 5:00 PM",
-            "Open on all public holidays"
+            "Check-in: 11:00 AM onwards",
+            "Check-out: 10:00 AM next day",
+            "4Hr/10Hr: Flexible timings",
+            "Early check-in (if available)"
         ]
     },
     {
         icon: ShieldCheck,
-        title: "Safety Measures",
+        title: "Guest Safety",
         color: "#2ecc71",
         items: [
-            "Trained lifeguards on duty",
-            "First aid station available",
-            "CCTV surveillance 24/7",
-            "Safety markings on all pools"
+            "Private secured campus",
+            "24/7 Security guards",
+            "Fire safety equipped",
+            "Safe parking inside resort"
         ]
     },
     {
         icon: Utensils,
-        title: "Food & Beverages",
+        title: "Dining Options",
         color: "#f59e0b",
         items: [
-            "Pure Veg in-park restaurant",
-            "Poolside snack bars available",
-            "Wide range of refreshments",
-            "Outside food not allowed"
+            "In-room dining available",
+            "Multi-cuisine restaurant",
+            "Breakfast: 8 AM - 10 AM",
+            "Dinner orders till 10 PM"
         ]
     },
     {
-        icon: Lock,
-        title: "Lockers & Storage",
+        icon: Coffee,
+        title: "Room Amenities",
         color: "#8b5cf6",
         items: [
-            "Secure lockers for valuables",
-            "Refundable deposit policy",
-            "Multiple sizes available",
-            "Digital key access"
+            "Complimentary mineral water",
+            "Tea/Coffee maker in room",
+            "Premium toiletries provided",
+            "Extra towels on request"
         ]
     },
     {
-        icon: Shirt,
-        title: "Dress Code",
+        icon: Key,
+        title: "Guest Rules",
         color: "#e91e8c",
         items: [
-            "Nylon/Lycra swimwear mandatory",
-            "Costumes available for rent",
-            "No cotton clothes in pools",
-            "Lockers for regular clothes"
+            "Valid ID proof mandatory",
+            "Visitors not allowed in rooms",
+            "No smoking inside cottages",
+            "Maintain peaceful environment"
         ]
     },
     {
-        icon: AlertTriangle,
-        title: "Park Rules",
-        color: "#ef4444",
+        icon: Car,
+        title: "Location & Parking",
+        color: "#64748b",
         items: [
-            "Follow all ride requirements",
-            "No diving in shallow areas",
-            "Supervise children at all times",
-            "No glass items permitted"
+            "Located at Sampatchak, Patna",
+            "Free parking for all guests",
+            "Easy access to Water Park",
+            "Taxi service available on call"
         ]
     }
 ];
 
-export default function WaterparkInfo() {
+export default function CottageInfo() {
     return (
-        <section className={styles.infoSection}>
+        <section className={styles.infoSection} style={{ background: "#ffffff" }}>
             <div className={styles.infoContainer}>
                 <div className={styles.infoHeader}>
-                    <div className={styles.infoPill}>📋 Plan Your Visit</div>
-                    <h2>Important <span>Information</span></h2>
-                    <p>Everything you need to know before your visit to ensure a safe and enjoyable experience at Jungle Resort.</p>
+                    <div className={styles.infoPill}>🏨 Stay Policy</div>
+                    <h2>Stay <span>Information</span></h2>
+                    <p>Everything you need to know for a comfortable and memorable stay at Jungle Resort Patna.</p>
                 </div>
 
                 <div className={styles.infoGrid}>
                     {info.map((item) => {
                         const Icon = item.icon;
                         return (
-                            <div className={styles.infoCard} key={item.title}>
+                            <div className={styles.infoCard} key={item.title} style={{ background: "#f8fafc" }}>
                                 <div className={styles.infoCardHeader}>
                                     <div className={styles.iconBox} style={{ background: item.color + "15", color: item.color }}>
                                         <Icon size={22} />

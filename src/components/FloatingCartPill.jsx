@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import { useLocation } from "react-router-dom";
 import styles from "../styles/FloatingCartPill.module.css";
 
-const ticketMap = {
-    kidsbelow10years: 299, above10years: 399,
-    groupof5: 1849, groupof10: 3250,
-    groupof15: 4500, groupof20: 5500,
-};
+import { TICKET_MAP } from "../constants/ticketPrices";
+
+// Flatten TICKET_MAP for easier use in this component
+const ticketMap = Object.entries(TICKET_MAP).reduce((acc, [id, data]) => {
+    acc[id] = data.price;
+    return acc;
+}, {});
 
 const EXCLUDED_ROUTES = [];
 
