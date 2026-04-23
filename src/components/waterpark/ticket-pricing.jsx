@@ -206,7 +206,7 @@ export default function TicketPricing() {
                                     key={ticket.id}
                                     className={`${styles.ticketCard} ${ticket.popular ? styles.popular : ""}`}
                                 >
-                                    {ticket.popular && <div className={styles.badge}>Best Value</div>}
+                                    {/* {ticket.popular && <div className={styles.badge}>Best Value</div>} */}
                                     <div className={styles.ticketTop}>
                                         <Icon size={22} color="#0ea5e9" aria-hidden="true" />
                                         <h3>{ticket.name}</h3>

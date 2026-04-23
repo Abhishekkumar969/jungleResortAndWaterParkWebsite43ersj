@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import { db, auth } from "../../firebaseConfig";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 import styles from "../../styles/Checkout.module.css";
+import "../../styles/Calendar.css"
 
 function loadRazorpay() {
     return new Promise((resolve) => {
@@ -218,8 +221,21 @@ export default function Checkout({ isOpen, onClose, data }) {
     const [paymentError, setPaymentError] = useState("");
     const [showDetails, setShowDetails] = useState(false);
     const [successData, setSuccessData] = useState(null);
-
+    const [reservedDates, setReservedDates] = useState([]);
     const [formData, setFormData] = useState({ name: "", phone: "", visitDate: "" });
+
+    useEffect(() => {
+        const fetchReserved = async () => {
+            const ref = doc(db, "Reserved", "Dates");
+            const snap = await getDoc(ref);
+
+            if (snap.exists()) {
+                setReservedDates(snap.data().dates || []);
+            }
+        };
+
+        fetchReserved();
+    }, []);
 
     useEffect(() => { loadRazorpay(); }, []);
 
@@ -455,6 +471,25 @@ export default function Checkout({ isOpen, onClose, data }) {
         }
     };
 
+    const parseISTDate = (dateStr) => {
+        const [y, m, d] = dateStr.split("-");
+        return new Date(y, m - 1, d); // 👈 local date (IST safe)
+    };
+
+    const formatDateIST = (date) => {
+        return new Intl.DateTimeFormat("en-CA", {
+            timeZone: "Asia/Kolkata",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }).format(date);
+    };
+
+    const formatDisplayDate = (dateStr) => {
+        const [y, m, d] = dateStr.split("-");
+        return `${d}/${m}/${y}`;
+    };
+
     return ReactDOM.createPortal(
         <div className={styles.overlayBody}>
 
@@ -506,14 +541,70 @@ export default function Checkout({ isOpen, onClose, data }) {
                             {/* Form */}
                             <div className={styles.inputGroup}>
 
-                                <label>Choose Visit Date</label>
-                                <input
-                                    type="date"
-                                    name="visitDate"
-                                    value={formData.visitDate}
-                                    min={new Date().toISOString().split("T")[0]}
-                                    onChange={handleChange}
-                                />
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                    <label>Choose Visit Date</label>
+
+                                    {formData.visitDate && (
+                                        <span
+                                            style={{
+                                                fontSize: "13px",
+                                                fontWeight: "700",
+                                                color: "#e91e8c",
+                                                background: "#ffe4f1",
+                                                padding: "4px 10px",
+                                                borderRadius: "20px"
+                                            }}
+                                        >
+                                            📅 {formatDisplayDate(formData.visitDate)}
+                                        </span>
+                                    )}
+                                </div>
+
+                                <div className={styles.calendarWrapper}>
+                                    <Calendar
+                                        value={
+                                            formData.visitDate
+                                                ? parseISTDate(formData.visitDate)
+                                                : null
+                                        }
+
+                                        onChange={(date) => {
+                                            const formatted = formatDateIST(date);
+
+                                            setFormData(prev => ({
+                                                ...prev,
+                                                visitDate: formatted
+                                            }));
+
+                                            setErrors(prev => {
+                                                const n = { ...prev };
+                                                delete n.visitDate;
+                                                return n;
+                                            });
+                                        }}
+
+                                        tileDisabled={({ date }) => {
+                                            const formatted = formatDateIST(date);
+
+                                            const today = new Date();
+                                            today.setHours(0, 0, 0, 0);
+
+                                            return (
+                                                date < today ||
+                                                reservedDates.includes(formatted)
+                                            );
+                                        }}
+
+                                        tileClassName={({ date }) => {
+                                            const formatted = formatDateIST(date);
+
+                                            if (reservedDates.includes(formatted)) {
+                                                return "reserved-date";
+                                            }
+                                        }}
+                                    />
+                                </div>
+
                                 {errors.visitDate && <p className={styles.error}>{errors.visitDate}</p>}
 
                                 <div> <label>Full Name</label> </div>
@@ -612,6 +703,9 @@ export default function Checkout({ isOpen, onClose, data }) {
                     </div>
                 </div>
             )}
+
+
+
         </div>,
         document.body
     );
