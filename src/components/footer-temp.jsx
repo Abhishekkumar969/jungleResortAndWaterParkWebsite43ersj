@@ -7,16 +7,16 @@ export default function Footer() {
   const [promptEvent, setPromptEvent] = useState(null);
 
   useEffect(() => {
-    const handler = (e) => {
+    window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       setPromptEvent(e);
-    };
-    window.addEventListener("beforeinstallprompt", handler);
-    return () => window.removeEventListener("beforeinstallprompt", handler);
+    });
   }, []);
 
   const handleInstall = () => {
-    if (promptEvent) promptEvent.prompt();
+    if (promptEvent) {
+      promptEvent.prompt();
+    }
   };
 
   return (
@@ -28,153 +28,138 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="footer-brand">
+
             <div className="footer-logo">
-              <img src="/images/jungle-reosrt.png" alt="Jungle Resort Patna logo" loading="lazy" width="100" height="100" />
+              <img src="/images/jungle-reosrt.png" alt="Jungle Resort Logo" />
             </div>
+
             <p className="footer-text">
               Jungle Resort Patna is the best destination for wedding venues, banquet halls,
-              and Water Park fun in Patna, Bihar. Explore our gallery, book Water Park tickets,
+              and waterpark fun in Patna, Bihar. Explore our gallery, book waterpark tickets,
               and enjoy premium resort experiences.
             </p>
-            <ul className="footer-social" aria-label="Social media links">
-              <li>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-                  <Facebook size={18} aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
-                  <Instagram size={18} aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Watch us on YouTube">
-                  <Youtube size={18} aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter / X">
-                  <Twitter size={18} aria-hidden="true" />
-                </a>
-              </li>
-            </ul>
+
+            <div className="footer-social">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <Facebook size={18} />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <Instagram size={18} />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <Youtube size={18} />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <Twitter size={18} />
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
           <div className="footer-section">
-            <p className="footer-title">Quick Links</p>
+            <h4 className="footer-title">Quick Links</h4>
             <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about-us">About Us</Link></li>
-              <li><Link to="/Services">Our Services</Link></li>
-              <li><Link to="/waterpark-in-patna">Water Park</Link></li>
-              <li><Link to="/fun-park">Fun Park</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
+              <li><Link to="/">Jungle Resort Patna Home</Link></li>
+              <li><Link to="/venues">Best Banquet Hall in Patna</Link></li>
+              <li><Link to="/waterpark-in-patna">Best Waterpark in Patna</Link></li>
+              <li><Link to="/birthdays">Birthday Party Venue in Patna</Link></li>
+              <li><Link to="/gallery">Jungle Resort Patna Gallery</Link></li>
+              <li><Link to="/contact">Contact Jungle Resort Patna</Link></li>
             </ul>
           </div>
 
-          {/* Event Venues */}
+          {/* Our Services */}
           <div className="footer-section">
-            <p className="footer-title">Events & Venues</p>
+            <h4 className="footer-title">Our Services</h4>
             <ul className="footer-links">
-              <li><Link to="/destination-wedding">Destination Wedding</Link></li>
-              <li><Link to="/wedding">Wedding</Link></li>
-              <li><Link to="/reception">Reception</Link></li>
-              <li><Link to="/theme-party">Theme Party</Link></li>
-              <li><Link to="/birthday">Birthday Party</Link></li>
-              <li><Link to="/anniversary">Anniversary</Link></li>
-              <li><Link to="/ring-ceremony">Ring Ceremony</Link></li>
-              <li><Link to="/corporate-events">Corporate Events</Link></li>
-              <li><Link to="/pool-party">Pool Party</Link></li>
+
+              <li>
+                <Link to="/wedding">Wedding Venue in Patna</Link>
+              </li>
+
+              <li>
+                <Link to="/reception">Reception Party Venue in Patna</Link>
+              </li>
+
+              <li>
+                <Link to="/corporateevents">Corporate Event Venue in Patna</Link>
+              </li>
+
+              <li>
+                <Link to="/birthday">Birthday Party Venue in Patna</Link>
+              </li>
+
+              <li>
+                <Link to="/waterpark-in-patna">Best Waterpark in Patna</Link>
+              </li>
+
+              <li> <Link to="/">Resort Cottage Booking in Patna</Link> </li>
+
             </ul>
           </div>
 
-          {/* More Services */}
+          {/* Contact Info */}
           <div className="footer-section">
-            <p className="footer-title">Special Occasions</p>
-            <ul className="footer-links">
-              <li><Link to="/haldi">Haldi Ceremony</Link></li>
-              <li><Link to="/mehndi">Mehndi Ceremony</Link></li>
-              <li><Link to="/sangeet">Sangeet Ceremony</Link></li>
-              <li><Link to="/engagement">Engagement</Link></li>
-              <li><Link to="/get-together">Get Together</Link></li>
-              <li><Link to="/kitty-party">Kitty Party</Link></li>
-              <li><Link to="/corporate-party">Corporate Party</Link></li>
-              <li><Link to="/corporate-pool-party">Corporate Pool Party</Link></li>
-              <li><Link to="/birthday-ceremony">Birthday Ceremony</Link></li>
-            </ul>
-          </div>
-
-          {/* Contact Info — fixed: no <div> or foreign elements inside <ul> */}
-          <div className="footer-section">
-            <p className="footer-title">Contact Us</p>
+            <h4 className="footer-title">Contact Us</h4>
             <ul className="footer-contact">
-
               <li>
-                <MapPin size={18} aria-hidden="true" />
-                <span>Bypass Thana, Marcha - Mirchi Road, Dharamsala, Patna, Bihar 800009</span>
+                <MapPin size={27} color="#ffffff" />
+                <span>
+                  Jungle Resort & WaterPark, Bypass Thana, Marcha - Mirchi Road, more, Dharamsala, Patna, Bihar 800009
+                </span>
               </li>
 
+              <div className="Contact-Seperator">
+                <div style={{ marginBottom: "10px" }}> <Hotel size={18} color="#ffffff" style={{ marginRight: "10px" }} />Enquiry for Resort</div>
+                <li>
+                  <Phone size={18} color="#ffffff" />
+                  <a href="tel:+919031080901" style={{ whiteSpace: "nowrap" }}>+91 9031080901</a>,<a style={{ whiteSpace: "nowrap" }} href="tel:+919031080902">+91 9031080902</a>
+                </li>
+              </div>
+
+              <div className="Contact-Seperator">
+                <div style={{ marginBottom: "10px" }}> <Hotel size={18} color="#ffffff" style={{ marginRight: "10px" }} />Enquiry for Waterpark</div>
+                <li>
+                  <Phone size={18} color="#ffffff" />
+                  <a href="tel:+919031080903" style={{ whiteSpace: "nowrap" }}>+91 90 3108 0903</a>,<a style={{ whiteSpace: "nowrap" }} href="tel:+919031080904">+91 90 3108 0904</a>
+                </li>
+              </div>
+
+              <div className="Contact-Seperator">
+                <div style={{ marginBottom: "10px" }}> <Hotel size={18} color="#ffffff" style={{ marginRight: "10px" }} />For Complain & Feedback</div>
+                <li>
+                  <Phone size={18} color="#ffffff" />
+                  <a href="tel:+919065383838" style={{ whiteSpace: "nowrap" }}>+91 9065383838</a>
+                </li>
+              </div>
+
               <li>
-                <Hotel size={18} aria-hidden="true" />
-                <span>Enquiry for Resort</span>
-              </li>
-              <li>
-                <Phone size={18} aria-hidden="true" />
-                <a href="tel:+919031080901" style={{ whiteSpace: "nowrap" }}>+91 9031080901</a>,&nbsp;
-                <a href="tel:+919031080902" style={{ whiteSpace: "nowrap" }}>+91 9031080902</a>
+                <Mail size={18} color="#ffffff" />
+                <a href="mailto:jungleresort.patna@gmail.com">
+                  jungleresort.patna@gmail.com
+                </a>
               </li>
 
               <li>
-                <Hotel size={18} aria-hidden="true" />
-                <span>Enquiry for Water Park</span>
-              </li>
-              <li>
-                <Phone size={18} aria-hidden="true" />
-                <a href="tel:+919031080903" style={{ whiteSpace: "nowrap" }}>+91 90 3108 0903</a>,&nbsp;
-                <a href="tel:+919031080904" style={{ whiteSpace: "nowrap" }}>+91 90 3108 0904</a>
-              </li>
-
-              <li>
-                <Hotel size={18} aria-hidden="true" />
-                <span>For Complaint &amp; Feedback</span>
-              </li>
-              <li>
-                <Phone size={18} aria-hidden="true" />
-                <a href="tel:+919065383838" style={{ whiteSpace: "nowrap" }}>+91 9065383838</a>
-              </li>
-
-              <li>
-                <Mail size={18} aria-hidden="true" />
-                <a href="mailto:jungleresort.patna@gmail.com">jungleresort.patna@gmail.com</a>
-              </li>
-
-              <li>
-                <Clock size={18} aria-hidden="true" />
+                <Clock size={18} color="#ffffff" />
                 <span>Open 24/7</span>
               </li>
-
             </ul>
           </div>
-
-
-
+          <button onClick={handleInstall} className="install-btn">
+            Install App
+          </button>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="footer-bottom" style={{ marginBottom: "110px" }}>
+      <div className="footer-bottom">
         <div className="footer-bottom-container">
-          <p>© 2025 Jungle Resort Patna – Best Wedding Venue &amp; Water Park</p>
-          <button onClick={handleInstall} className="install-btn" aria-label="Install Jungle Resort app on your device">
-            Install App
-          </button>
+          <p>
+            © 2025 Jungle Resort Patna – Best Wedding Venue & Waterpark
+          </p>
         </div>
-
       </div>
-
     </footer>
   );
 }

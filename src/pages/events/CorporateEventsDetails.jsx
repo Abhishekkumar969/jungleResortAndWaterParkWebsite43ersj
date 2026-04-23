@@ -1,50 +1,218 @@
-import React from "react";
-import EventDetailPage from "../../components/EventDetailPage";
+import React, { useState, useEffect, useRef } from "react";
+import Navigation from "../../components/navigation-temp";
+import Footer from "../../components/footer-temp";
+import QuickBookForm from "../../components/quick-book-form";
+import { Play } from "lucide-react";
+import styles from "../../styles/eventspages.module.css";
+import { Helmet } from "react-helmet";
 
 export default function CorporateEventsDetails() {
+
+
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
+    const getYouTubeThumbnail = (url) => {
+        const id = url.split("/embed/")[1].split("?")[0];
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
+    };
+
+    const itemRefs = useRef([]);
+
+    useEffect(() => {
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.show);
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            { threshold: 0.2 }
+        );
+
+        itemRefs.current.forEach((el) => el && observer.observe(el));
+
+        return () => observer.disconnect();
+
+    }, []);
+
+    const media = [
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event1.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event2.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event3.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event4.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Corporate Event/Corporate Event7.webp" },
+    ];
+
+    const filtered = media;
+
+    const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
+
     return (
-        <EventDetailPage
-            formType="Corporate Event"
-            helmet={{
-                title: "Corporate Event Venue in Patna | Jungle Resort",
-                description: "Host corporate meetings, conferences & team events at Jungle Resort Patna. Premium AV setup, catering & team-building activities.",
-                keywords: "Corporate event venue Patna, Conference hall Patna, Team outing Patna, Corporate party Patna, Jungle Resort corporate",
-                ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
-                canonical: "/corporateevents",
-            }}
-            hero={{
-                bg: "/eventPics/Wed/venue-wedding.webp",
-                pill: "Corporate Events",
-                title: "Premium",
-                titleHighlight: "Corporate Events in Patna",
-                subtitle: "From conferences to team outings — Jungle Resort Patna provides a professional and refreshing corporate event experience in a unique jungle setting.",
-                features: ["📊 Conference Setup", "🎯 Team Building", "🍽️ Corporate Catering", "🏊 Recreational Activities"],
-            }}
-            info={[
-                { icon: "👔", label: "Event Type", value: "Corporate / Conference" },
-                { icon: "💼", label: "Capacity", value: "Upto 1000 Guests" },
-                { icon: "📍", label: "Location", value: "Patna, Bihar" },
-                { icon: "📞", label: "Enquiry", value: "+91 90653 83838" },
-            ]}
-            desc={{
-                label: "Corporate Events",
-                title: "Where Productivity Meets Serenity",
-                text: "Jungle Resort Patna is the ideal venue for your next corporate event. Step away from the city and into a refreshing jungle environment — perfect for productive meetings, inspiring conferences, and fun team-building activities.",
-                highlights: [
-                    "Air-conditioned conference hall with AV equipment",
-                    "Team building activities and games",
-                    "Waterpark access for recreational breaks",
-                    "Corporate catering with premium buffet",
-                    "Cottage rooms for outstation team members",
-                ],
-                image: "/eventPics/Wed/jungleresort.webp",
-            }}
-            gallery={[
-                { type: "image", url: "/eventPics/Wed/venue-wedding.webp", alt: "Corporate Event Venue Patna" },
-                { type: "image", url: "/eventPics/Wed/jungleresort.webp", alt: "Corporate Venue Jungle Resort" },
-                { type: "image", url: "/eventPics/Wed/jungleresort1.webp", alt: "Conference Hall Patna" },
-                { type: "image", url: "/eventPics/Pool Party/waterparkjungleresort.webp", alt: "Corporate Team Outing Patna" },
-            ]}
-        />
+        <>
+            <Helmet>
+                <title>Best Corporate Event Venue in Patna | Jungle Resort</title>
+
+                <meta
+                    name="description"
+                    content="Host professional corporate events at Jungle Resort Patna with premium venue, conference setup, pool party & team activities. Book now!"
+                />
+
+                <meta
+                    name="keywords"
+                    content="Corporate event venue Patna, Corporate party Patna, Conference hall Patna, Team outing Patna, Office party venue Patna, Jungle Resort corporate event" />
+
+                {/* OG TAGS */}
+                <meta property="og:title" content="Best Corporate Event Venue in Patna | Jungle Resort" />
+                <meta property="og:description" content="Plan corporate events, meetings & team outings at Jungle Resort Patna." />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.webp" />
+                <meta property="og:url" content="https://jungleresortpatna.in/corporateevents" />
+                <meta property="og:type" content="website" />
+
+                {/* CANONICAL */}
+                <link rel="canonical" href="https://jungleresortpatna.in/corporateevents" />
+
+                {/* SCHEMA */}
+                <script type="application/ld+json">
+                    {`
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Jungle Resort Corporate Event Venue",
+  "image": "https://jungleresortpatna.in/eventPics/Corporate Event/Corporate Event.webp",
+  "url": "https://jungleresortpatna.in/corporateevents",
+  "telephone": "+91-9065383838",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
+    "addressLocality": "Patna",
+    "addressRegion": "Bihar",
+    "postalCode": "800009",
+    "addressCountry": "India"
+  },
+  "description": "Best corporate event venue in Patna for meetings, conferences & team outings at Jungle Resort."
+}
+`}
+                </script>
+            </Helmet>
+
+            <div className={styles.eventPage}>
+
+                {/* FIXED BACKGROUND */}
+                <div
+                    className={styles.pageBg}
+                    style={{ backgroundImage: "url(/images/CorporateEvent7.webp)" }}
+                ></div>
+                <div className={styles.pageOverlay}></div>
+
+                <Navigation />
+
+                {/* HERO */}
+                <section className={styles.heroSection}>
+
+                    <div className={styles.heroContent}>
+
+                        <div className={styles.heroLeft}>
+                            <h1 className={styles.heroTitle}>
+                                Best <span>Corporate Event</span> Venue in Patna
+                            </h1>
+                        </div>
+
+                        <div className={styles.heroRight}>
+                            <QuickBookForm defaultFunctionType="Corporate Event" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className={styles.mobileBook}>
+                    <QuickBookForm defaultFunctionType="Corporate Event" />
+                </section>
+
+                {/* GALLERY */}
+
+                <div className={styles.galleryContent}>
+
+                    <div className={styles.galleryHeader}>
+                        <h1 className={styles.galleryTitle}>Gallery</h1>
+                    </div>
+
+                    <div className={styles.galleryGrid}>
+
+                        {media.map((item, i) => (
+
+                            <div
+                                key={i}
+                                ref={(el) => (itemRefs.current[i] = el)}
+                                className={`${styles.galleryItem} ${styles.animateItem}`}
+                                onClick={() => setSelectedIndex(i)}
+                            >
+
+                                {item.type === "image" ? (
+                                    <>
+                                        <img src={item.url} alt="Corporate Event Setup Jungle Resort Patna" className={styles.galleryImage} />
+                                        <div className={styles.galleryOverlay}></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img
+                                            src={getYouTubeThumbnail(item.url)}
+                                            alt="Corporate Event Setup Jungle Resort Patna"
+                                            className={styles.galleryImage}
+                                        />
+                                        <div className={styles.galleryOverlay}></div>
+                                        <Play className={styles.galleryPlay} />
+                                    </>
+                                )}
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+                {selectedMedia && (
+
+                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
+
+                        <button className={styles.galleryClose}>✕</button>
+
+                        <div
+                            className={styles.galleryViewerContent}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+
+                            {selectedMedia.type === "image" ? (
+                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="Corporate Event Setup Jungle Resort Patna" />
+                            ) : (
+                                <iframe
+                                    src={selectedMedia.url}
+                                    width="100%"
+                                    height="600"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    title="video"
+                                />
+                            )}
+
+                        </div>
+
+                    </div>
+
+                )}
+
+                <Footer />
+
+            </div>
+        </>
     );
 }

@@ -1,51 +1,237 @@
-import React from "react";
-import EventDetailPage from "../../components/EventDetailPage";
+import React, { useState, useEffect, useRef } from "react";
+import Navigation from "../../components/navigation-temp";
+import Footer from "../../components/footer-temp";
+import QuickBookForm from "../../components/quick-book-form";
+import { Play } from "lucide-react";
+import styles from "../../styles/eventspages.module.css";
+import { Helmet } from "react-helmet";
 
-export default function SangeetDetails() {
+export default function WeddingDetails() {
+
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
+    const getYouTubeThumbnail = (url) => {
+        const id = url.split("/embed/")[1].split("?")[0];
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
+    };
+
+    const itemRefs = useRef([]);
+
+    useEffect(() => {
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.show);
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            { threshold: 0.2 }
+        );
+
+        itemRefs.current.forEach((el) => el && observer.observe(el));
+
+        return () => observer.disconnect();
+
+    }, []);
+
+    const media = [
+
+
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 5.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 6.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 7.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Mehndi/jungle resort Mehndi 8.webp" },
+
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/1aeeba6687b67e0795cb6543f33dcffd.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 5.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Haldi/e0aae3b40c464678197025282445e212.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Haldi/haldi function jungle resort haldi photos 8k 2.webp" },
+
+        // { type: "image", category: "Photos", url: "/images/weddings1.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings2.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings3.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings4.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings5.webp" },
+        // { type: "image", category: "Photos", url: "/images/weddings6.webp" },
+
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
+    ];
+
+    const filtered = media;
+
+    const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
+
     return (
-        <EventDetailPage
-            formType="Sangeet"
-            helmet={{
-                title: "Sangeet Ceremony Venue in Patna | Jungle Resort",
-                description: "Host an unforgettable Sangeet night at Jungle Resort Patna with DJ, live performances, and grand stage. Book Sangeet venue in Patna today!",
-                keywords: "Sangeet night Patna, Sangeet venue Patna, Wedding Sangeet Patna, Dance night Patna, Jungle Resort Sangeet",
-                ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
-                canonical: "/sangeet",
-            }}
-            hero={{
-                bg: "/eventPics/Wed/venue-wedding.webp",
-                pill: "Sangeet Night",
-                title: "Epic",
-                titleHighlight: "Sangeet Night in Patna",
-                subtitle: "Get the beats going! A night of music, dance, and celebration — Sangeet at Jungle Resort Patna is an experience unlike any other.",
-                features: ["🎵 Live DJ", "💃 Grand Stage", "🎤 Performances", "✨ Premium Lighting"],
-            }}
-            info={[
-                { icon: "🎵", label: "Music", value: "DJ + Live Acts" },
-                { icon: "💃", label: "Dance", value: "Grand Stage Setup" },
-                { icon: "📍", label: "Location", value: "Patna, Bihar" },
-                { icon: "📞", label: "Enquiry", value: "+91 90653 83838" },
-            ]}
-            desc={{
-                label: "Sangeet Night",
-                title: "Dance, Sing & Celebrate the Night Away",
-                text: "The Sangeet night is where families come together to sing, dance, and celebrate the upcoming wedding. Jungle Resort Patna provides a grand stage, professional lighting & sound, DJ music, and all arrangements for a truly spectacular Sangeet night.",
-                highlights: [
-                    "Grand stage with professional lighting & sound system",
-                    "Live DJ, dholak and folk music arrangements",
-                    "Special performances area for family dances",
-                    "Premium décor with fairy lights and florals",
-                    "Full catering menu available for the evening",
-                ],
-                image: "/eventPics/Wed/jungleresort.webp",
-            }}
-            gallery={[
-                { type: "image", url: "/eventPics/Wed/venue-wedding.webp", alt: "Sangeet Venue Patna" },
-                { type: "image", url: "/eventPics/Wed/jungleresort.webp", alt: "Sangeet Night Jungle Resort" },
-                { type: "image", url: "/eventPics/Wed/jungleresort1.webp", alt: "Sangeet Hall Patna" },
-                { type: "image", url: "/eventPics/Wed/unnamed.webp", alt: "Sangeet Ceremony Patna" },
-                { type: "image", url: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.webp", alt: "Sangeet Decoration Patna" },
-            ]}
-        />
+        <>
+            <Helmet>
+                <title>Best Sangeet Ceremony Venue in Patna | Jungle Resort</title>
+
+                <meta
+                    name="description"
+                    content="Celebrate your Sangeet ceremony at Jungle Resort Patna with music, dance, DJ, lighting & vibrant ambiance. Book best Sangeet venue today!"
+                />
+
+                <meta
+                    name="keywords"
+                    content="Sangeet ceremony Patna, Sangeet function venue Patna, Wedding Sangeet Patna, Jungle Resort Sangeet"
+                />
+
+                {/* OG TAGS */}
+                <meta property="og:title" content="Best Sangeet Ceremony Venue in Patna | Jungle Resort" />
+                <meta property="og:description" content="Celebrate your Sangeet night with DJ, music & lighting at Jungle Resort Patna." />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/sangeet.webp" />
+                <meta property="og:url" content="https://jungleresortpatna.in/sangeet" />
+                <meta property="og:type" content="website" />
+
+                {/* CANONICAL */}
+                <link rel="canonical" href="https://jungleresortpatna.in/sangeet" />
+
+                {/* SCHEMA */}
+                <script type="application/ld+json">
+                    {`
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Jungle Resort Sangeet Ceremony Venue",
+  "image": "https://jungleresortpatna.in/images/sangeet.webp",
+  "url": "https://jungleresortpatna.in/sangeet",
+  "telephone": "+91-9065383838",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
+    "addressLocality": "Patna",
+    "addressRegion": "Bihar",
+    "postalCode": "800009",
+    "addressCountry": "India"
+  },
+  "description": "Best Sangeet ceremony venue in Patna with DJ, music & lighting at Jungle Resort."
+}
+`}
+                </script>
+            </Helmet>
+
+            <div className={styles.eventPage}>
+
+
+                {/* FIXED BACKGROUND */}
+                <div
+                    className={styles.pageBg}
+                    style={{ backgroundImage: "url(/images/sangeet.webp)" }}
+                ></div>
+                <div className={styles.pageOverlay}></div>
+
+                <Navigation />
+
+                {/* HERO */}
+                <section className={styles.heroSection}>
+
+                    <div className={styles.heroContent}>
+
+                        <div className={styles.heroLeft}>
+                            <h1 className={styles.heroTitle}>
+                                Best <span>Sangeet Ceremony</span> Venue in Patna
+                            </h1>
+                        </div>
+
+                        <div className={styles.heroRight}>
+                            <QuickBookForm defaultFunctionType="Sangeet" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className={styles.mobileBook}>
+                    <QuickBookForm defaultFunctionType="Sangeet" />
+                </section>
+
+                {/* GALLERY */}
+
+                <div className={styles.galleryContent}>
+
+                    <div className={styles.galleryHeader}>
+                        <h1 className={styles.galleryTitle}>Gallery</h1>
+                    </div>
+
+                    <div className={styles.galleryGrid}>
+
+                        {media.map((item, i) => (
+
+                            <div
+                                key={i}
+                                ref={(el) => (itemRefs.current[i] = el)}
+                                className={`${styles.galleryItem} ${styles.animateItem}`}
+                                onClick={() => setSelectedIndex(i)}
+                            >
+
+                                {item.type === "image" ? (
+                                    <>
+                                        <img src={item.url} alt="Sangeet Ceremony Jungle Resort Patna" className={styles.galleryImage} />
+                                        <div className={styles.galleryOverlay}></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img
+                                            src={getYouTubeThumbnail(item.url)}
+                                            alt="Sangeet Ceremony Jungle Resort Patna"
+                                            className={styles.galleryImage}
+                                        />
+                                        <div className={styles.galleryOverlay}></div>
+                                        <Play className={styles.galleryPlay} />
+                                    </>
+                                )}
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+                {selectedMedia && (
+
+                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
+
+                        <button className={styles.galleryClose}>✕</button>
+
+                        <div
+                            className={styles.galleryViewerContent}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+
+                            {selectedMedia.type === "image" ? (
+                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="Sangeet Ceremony Jungle Resort Patna" />
+                            ) : (
+                                <iframe
+                                    src={selectedMedia.url}
+                                    width="100%"
+                                    height="600"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    title="video"
+                                />
+                            )}
+
+                        </div>
+
+                    </div>
+
+                )}
+
+                <Footer />
+
+            </div>
+        </>
     );
 }

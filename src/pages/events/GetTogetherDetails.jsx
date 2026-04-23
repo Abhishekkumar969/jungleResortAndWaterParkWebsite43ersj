@@ -1,50 +1,219 @@
-import React from "react";
-import EventDetailPage from "../../components/EventDetailPage";
+import React, { useState, useEffect, useRef } from "react";
+import Navigation from "../../components/navigation-temp";
+import Footer from "../../components/footer-temp";
+import QuickBookForm from "../../components/quick-book-form";
+import { Play } from "lucide-react";
+import styles from "../../styles/eventspages.module.css";
+import { Helmet } from "react-helmet";
 
-export default function GetTogetherDetails() {
+export default function WeddingDetails() {
+
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
+    const getYouTubeThumbnail = (url) => {
+        const id = url.split("/embed/")[1].split("?")[0];
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
+    };
+
+    const itemRefs = useRef([]);
+
+    useEffect(() => {
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.show);
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            { threshold: 0.2 }
+        );
+
+        itemRefs.current.forEach((el) => el && observer.observe(el));
+
+        return () => observer.disconnect();
+
+    }, []);
+
+    const media = [
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungleresort1.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/unnamjms.png" },
+        { type: "image", category: "Photos", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/0903809001493963548.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/image10(57).jpeg" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/hero.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/DestWed/1485498619_595x400.png" },
+    ];
+
+    const filtered = media;
+
+    const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
+
     return (
-        <EventDetailPage
-            formType="Get Together"
-            helmet={{
-                title: "Get Together Venue in Patna | Jungle Resort",
-                description: "Host a memorable get together or family reunion at Jungle Resort Patna with excellent food, fun activities & beautiful ambiance.",
-                keywords: "Get together venue Patna, Family reunion Patna, Friends gathering Patna, Jungle Resort get together",
-                ogImage: "https://jungleresortpatna.in/eventPics/Wed/jungleresort.webp",
-                canonical: "/gettogether",
-            }}
-            hero={{
-                bg: "/eventPics/Wed/jungleresort.webp",
-                pill: "Get Together",
-                title: "Unforgettable",
-                titleHighlight: "Get Together in Patna",
-                subtitle: "Reconnect with friends and family in the most beautiful jungle setting in Patna — great food, fun activities, and priceless memories.",
-                features: ["🎊 Fun Activities", "🍽️ Great Food", "🌊 Pool Access", "📸 Photography"],
-            }}
-            info={[
-                { icon: "🎊", label: "Event Type", value: "Get Together" },
-                { icon: "🌿", label: "Setting", value: "Jungle & Lawn" },
-                { icon: "📍", label: "Location", value: "Patna, Bihar" },
-                { icon: "📞", label: "Enquiry", value: "+91 90653 83838" },
-            ]}
-            desc={{
-                label: "Get Together",
-                title: "Because Some Moments Need to Be Celebrated",
-                text: "Whether it's a college reunion, a family get-together, or a friends' hangout — Jungle Resort Patna is the perfect place to create memories. With waterpark access, outdoor lawn spaces, great food, and music, the fun never stops.",
-                highlights: [
-                    "Outdoor lawn and indoor hall options",
-                    "Waterpark and pool access for groups",
-                    "Custom food and beverage packages",
-                    "Fun games and team activities",
-                    "Photography setups available",
-                ],
-                image: "/eventPics/Wed/unnamed.webp",
-            }}
-            gallery={[
-                { type: "image", url: "/eventPics/Wed/jungleresort.webp", alt: "Get Together Jungle Resort" },
-                { type: "image", url: "/eventPics/Wed/venue-wedding.webp", alt: "Get Together Venue Patna" },
-                { type: "image", url: "/eventPics/Wed/unnamed.webp", alt: "Family Gathering Patna" },
-                { type: "image", url: "/eventPics/Pool Party/waterparkjungleresort.webp", alt: "Pool Party Get Together" },
-            ]}
-        />
+        <>
+            <Helmet>
+                <title>Best Get Together Venue in Patna | Jungle Resort</title>
+
+                <meta
+                    name="description"
+                    content="Plan your get together party at Jungle Resort Patna with DJ, pool, lawn & fun activities. Book best venue for friends & family gathering today!"
+                />
+
+                <meta
+                    name="keywords"
+                    content="Get together venue Patna, Friends party Patna, Family gathering Patna, Jungle Resort party"
+                />
+
+                {/* OG TAGS */}
+                <meta property="og:title" content="Best Get Together Venue in Patna | Jungle Resort" />
+                <meta property="og:description" content="Enjoy get together party with DJ, pool & fun at Jungle Resort Patna." />
+                <meta property="og:image" content="https://jungleresortpatna.in/images/gettogether.webp" />
+                <meta property="og:url" content="https://jungleresortpatna.in/gettogether" />
+                <meta property="og:type" content="website" />
+
+                {/* CANONICAL */}
+                <link rel="canonical" href="https://jungleresortpatna.in/gettogether" />
+
+                {/* SCHEMA */}
+                <script type="application/ld+json">
+                    {`
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Jungle Resort Get Together Venue",
+  "image": "https://jungleresortpatna.in/images/gettogether.webp",
+  "url": "https://jungleresortpatna.in/gettogether",
+  "telephone": "+91-9065383838",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
+    "addressLocality": "Patna",
+    "addressRegion": "Bihar",
+    "postalCode": "800009",
+    "addressCountry": "India"
+  },
+  "description": "Best get together venue in Patna with DJ, pool party & fun activities at Jungle Resort."
+}
+`}
+                </script>
+            </Helmet>
+
+            <div className={styles.eventPage}>
+
+                {/* FIXED BACKGROUND */}
+                <div
+                    className={styles.pageBg}
+                    style={{ backgroundImage: "url(/images/gettogether.webp)" }}
+                ></div>
+
+                <div className={styles.pageOverlay}></div>
+
+                <Navigation />
+
+                {/* HERO */}
+                <section className={styles.heroSection}>
+
+                    <div className={styles.heroContent}>
+
+                        <div className={styles.heroLeft}>
+                            <h1 className={styles.heroTitle}>
+                                Best <span>Get Together</span> Venue in Patna
+                            </h1>
+                        </div>
+
+                        <div className={styles.heroRight}>
+                            <QuickBookForm defaultFunctionType="Get Together" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className={styles.mobileBook}>
+                    <QuickBookForm defaultFunctionType="Get Together" />
+                </section>
+
+                {/* GALLERY */}
+                <div className={styles.galleryContent}>
+
+                    <div className={styles.galleryHeader}>
+                        <h1 className={styles.galleryTitle}>Gallery</h1>
+                    </div>
+
+                    <div className={styles.galleryGrid}>
+
+                        {media.map((item, i) => (
+
+                            <div
+                                key={i}
+                                ref={(el) => (itemRefs.current[i] = el)}
+                                className={`${styles.galleryItem} ${styles.animateItem}`}
+                                onClick={() => setSelectedIndex(i)}
+                            >
+
+                                {item.type === "image" ? (
+                                    <>
+                                        <img src={item.url} alt="Get Together Party Jungle Resort Patna" className={styles.galleryImage} />
+                                        <div className={styles.galleryOverlay}></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img
+                                            src={getYouTubeThumbnail(item.url)}
+                                            alt="Get Together Party Jungle Resort Patna"
+                                            className={styles.galleryImage}
+                                        />
+                                        <div className={styles.galleryOverlay}></div>
+                                        <Play className={styles.galleryPlay} />
+                                    </>
+                                )}
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+                {selectedMedia && (
+
+                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
+
+                        <button className={styles.galleryClose}>✕</button>
+
+                        <div
+                            className={styles.galleryViewerContent}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+
+                            {selectedMedia.type === "image" ? (
+                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="Get Together Party Jungle Resort Patna" />
+                            ) : (
+                                <iframe
+                                    src={selectedMedia.url}
+                                    width="100%"
+                                    height="600"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    title="video"
+                                />
+                            )}
+
+                        </div>
+
+                    </div>
+
+                )}
+
+                <Footer />
+
+            </div>
+        </>
     );
 }

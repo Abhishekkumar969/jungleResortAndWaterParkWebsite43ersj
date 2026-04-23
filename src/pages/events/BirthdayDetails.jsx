@@ -1,51 +1,226 @@
-import React from "react";
-import EventDetailPage from "../../components/EventDetailPage";
+import React, { useState, useEffect, useRef } from "react";
+import Navigation from "../../components/navigation-temp";
+import Footer from "../../components/footer-temp";
+import QuickBookForm from "../../components/quick-book-form";
+import { Play } from "lucide-react";
+import styles from "../../styles/eventspages.module.css";
+import { Helmet } from "react-helmet";
 
 export default function BirthdayDetails() {
+
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
+    const getYouTubeThumbnail = (url) => {
+        const id = url.split("/embed/")[1].split("?")[0];
+        return `https://img.youtube.com/vi/${id}/sddefault.webp`;
+    };
+
+    const itemRefs = useRef([]);
+
+    useEffect(() => {
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.show);
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            { threshold: 0.2 }
+        );
+
+        itemRefs.current.forEach((el) => el && observer.observe(el));
+
+        return () => observer.disconnect();
+
+    }, []);
+
+    const media = [
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/7.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/10.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/1.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday6.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday7.webp" },
+        // { type: "image", category: "Photos", url: "/eventPics/Birthday/2.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/Birthday8.webp" },
+
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-jungle.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-princess.webp" },
+        { type: "image", category: "Photos", url: "/eventPics/Birthday/birthday-stage.webp" },
+
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/j3mVk4QBc40" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/q5TWK4_dHoo" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/RNOTMAzo5_M" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/DzThR9h15Js" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/nsYtMbs0P6k" },
+        // { type: "video", category: "Videos", url: "https://www.youtube.com/embed/HAhSASuW28E" },
+    ];
+
+    const filtered = media;
+
+    const selectedMedia = selectedIndex !== null ? filtered[selectedIndex] : null;
+
     return (
-        <EventDetailPage
-            formType="Birthday"
-            helmet={{
-                title: "Best Birthday Party Venue in Patna | Jungle Resort",
-                description: "Celebrate your birthday at Jungle Resort Patna with amazing décor, DJ, pool access, and fun activities. Book the best birthday party venue today!",
-                keywords: "Birthday party venue Patna, Birthday celebration Patna, Kids birthday party Patna, Jungle Resort birthday",
-                ogImage: "https://jungleresortpatna.in/eventPics/Wed/jungleresort.webp",
-                canonical: "/birthday",
-            }}
-            hero={{
-                bg: "/eventPics/Wed/jungleresort.webp",
-                pill: "Birthday Celebration",
-                title: "Celebrate Your",
-                titleHighlight: "Birthday in Style!",
-                subtitle: "From kids' parties to milestone birthdays — enjoy DJ, pool party, custom décor, and amazing food at Jungle Resort Patna.",
-                features: ["🎂 Custom Cake", "🎉 DJ & Dance", "🌊 Pool Access", "🎈 Balloon Décor"],
-            }}
-            info={[
-                { icon: "🎂", label: "Event Type", value: "Birthday Party" },
-                { icon: "🎵", label: "Entertainment", value: "DJ + Pool + Activities" },
-                { icon: "📍", label: "Location", value: "Patna, Bihar" },
-                { icon: "📞", label: "Enquiry", value: "+91 90653 83838" },
-            ]}
-            desc={{
-                label: "Birthday Party",
-                title: "The Ultimate Birthday Experience Awaits",
-                text: "Why settle for ordinary when you can have extraordinary? Jungle Resort Patna brings together the best of celebrations — vibrant décor, pool access, DJ, and gourmet food — all in a stunning jungle setting.",
-                highlights: [
-                    "Customized birthday themes and balloon décor",
-                    "DJ night, rain dance & pool party option",
-                    "Birthday cake and special food menu",
-                    "Fun activities and entertainment for all ages",
-                    "Photography setup available on request",
-                ],
-                image: "/eventPics/Wed/unnamed.webp",
-            }}
-            gallery={[
-                { type: "image", url: "/eventPics/Wed/jungleresort.webp", alt: "Birthday Party Jungle Resort Patna" },
-                { type: "image", url: "/eventPics/Wed/venue-wedding.webp", alt: "Birthday Venue Patna" },
-                { type: "image", url: "/eventPics/Wed/unnamed.webp", alt: "Birthday Celebration Patna" },
-                { type: "image", url: "/eventPics/Wed/jungleresort1.webp", alt: "Birthday Hall Patna" },
-                { type: "image", url: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp", alt: "Jungle Resort Birthday" },
-            ]}
-        />
+        <>
+            <Helmet>
+                <title>Best Birthday Party Place in Patna | Jungle Resort</title>
+
+                <meta
+                    name="description"
+                    content="Celebrate unforgettable birthday parties at Jungle Resort Patna with decoration, DJ, pool party & fun activities. Book now for best birthday venue in Patna."
+                />
+                <meta
+                    name="keywords"
+                    content="Birthday party place Patna, Kids birthday venue Patna, Birthday celebration Patna, Pool party Patna, Theme birthday party Patna, Jungle Resort birthday" />
+
+                <meta property="og:title" content="Best Birthday Party Place in Patna | Jungle Resort" />
+                <meta property="og:description" content="Celebrate birthday with DJ, pool party & decoration at Jungle Resort Patna." />
+                <meta property="og:image" content="https://jungleresortpatna.in/eventPics/Birthday/7.webp" />
+                <meta property="og:url" content="https://jungleresortpatna.in/birthday" />
+                <meta property="og:type" content="website" />
+                <link rel="canonical" href="https://jungleresortpatna.in/birthday" />
+
+                <script type="application/ld+json">
+                    {`
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Jungle Resort Birthday Party",
+  "image": "https://jungleresortpatna.in/eventPics/Birthday/7.webp",
+  "url": "https://jungleresortpatna.in/birthday",
+  "telephone": "+91-9065383838",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bypass Thana, Marcha - Mirchi Road, more, Dharamsala",
+    "addressLocality": "Patna",
+    "addressRegion": "Bihar",
+    "postalCode": "800009",
+    "addressCountry": "India"
+  },
+  "description": "Best birthday party place in Patna with DJ, pool party & decoration at Jungle Resort."
+}
+`}
+                </script>
+
+            </Helmet>
+
+            <div className={styles.eventPage}>
+
+
+                {/* FIXED BACKGROUND */}
+                <div
+                    className={styles.pageBg}
+                    style={{ backgroundImage: "url(/images/birthday-stage.webp)" }}
+                ></div>
+                <div className={styles.pageOverlay}></div>
+
+                <Navigation />
+
+                {/* HERO */}
+                <section className={styles.heroSection}>
+
+                    <div className={styles.heroContent}>
+
+                        <div className={styles.heroLeft}>
+                            <h1 className={styles.heroTitle}>
+                                Best <span>Birthday Party</span> Place in Patna
+                            </h1>
+                        </div>
+
+                        <div className={styles.heroRight}>
+                            <QuickBookForm defaultFunctionType="Birthday Party" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className={styles.mobileBook}>
+                    <QuickBookForm defaultFunctionType="Birthday Party" />
+                </section>
+
+                {/* GALLERY */}
+
+                <div className={styles.galleryContent}>
+
+                    <div className={styles.galleryHeader}>
+                        <h1 className={styles.galleryTitle}>Gallery</h1>
+                    </div>
+
+                    <div className={styles.galleryGrid}>
+
+                        {media.map((item, i) => (
+
+                            <div
+                                key={i}
+                                ref={(el) => (itemRefs.current[i] = el)}
+                                className={`${styles.galleryItem} ${styles.animateItem}`}
+                                onClick={() => setSelectedIndex(i)}
+                            >
+
+                                {item.type === "image" ? (
+                                    <>
+                                        <img src={item.url} alt="Birthday Party Decoration Jungle Resort Patna" className={styles.galleryImage} />
+                                        <div className={styles.galleryOverlay}></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img
+                                            src={getYouTubeThumbnail(item.url)}
+                                            alt="Birthday Party Decoration Jungle Resort Patna"
+                                            className={styles.galleryImage}
+                                        />
+                                        <div className={styles.galleryOverlay}></div>
+                                        <Play className={styles.galleryPlay} />
+                                    </>
+                                )}
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+                {selectedMedia && (
+
+                    <div className={styles.galleryViewer} onClick={() => setSelectedIndex(null)}>
+
+                        <button className={styles.galleryClose}>✕</button>
+
+                        <div
+                            className={styles.galleryViewerContent}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+
+                            {selectedMedia.type === "image" ? (
+                                <img src={selectedMedia.url} className={styles.galleryFullImage} alt="Birthday Party Decoration Jungle Resort Patna" />
+                            ) : (
+                                <iframe
+                                    src={selectedMedia.url}
+                                    width="100%"
+                                    height="600"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    title="video"
+                                />
+                            )}
+
+                        </div>
+
+                    </div>
+
+                )}
+
+                <Footer />
+
+            </div>
+        </>
     );
 }

@@ -69,13 +69,13 @@ export default function AboutSection() {
             <div className={styles.aboutImages}>
 
               <div className={styles.imageColumn}>
-                <img src="/images/venue-wedding.webp" alt="Wedding venue" className={styles.imgLarge} loading="lazy" />
-                <img src="/images/waterpark-main.webp" alt="Waterpark" className={styles.imgSmall} loading="lazy" />
+                <img src="/images/venue-wedding.webp" alt="Wedding venue" className={styles.imgLarge} />
+                <img src="/images/waterpark-main.webp" alt="Waterpark" className={styles.imgSmall} />
               </div>
 
               <div className={`${styles.imageColumn} ${styles.topSpace}`}>
-                <img src="/images/birthday-stage.webp" alt="Birthday celebration" className={styles.imgSmall} loading="lazy" />
-                <img src="/images/venue-reception.webp" alt="Reception hall" className={styles.imgLarge} loading="lazy" />
+                <img src="/images/birthday-stage.webp" alt="Birthday celebration" className={styles.imgSmall} />
+                <img src="/images/venue-reception.webp" alt="Reception hall" className={styles.imgLarge} />
               </div>
 
             </div>
@@ -172,32 +172,32 @@ export default function AboutSection() {
               <div>
                 <strong> Frequently Asked Questions: </strong> <br />
                 <strong>Q1. Which is the best resort in Patna?</strong> <br />
-                <span> We also offer options for pool party in Patna, picnic outings, social and large gatherings.</span>
+                <spam> We also offer options for pool party in Patna, picnic outings, social and large gatherings.</spam>
               </div>
 
               <div>
                 <strong>Q2. What is the price of resort in Patna?</strong> <br />
-                <span> Prices depend on packages and guest count. Affordable options are available.</span>
+                <spam> Prices depend on packages and guest count. Affordable options are available.</spam>
               </div>
 
               <div>
                 <strong>Q3. Is Jungle Resort good for destination wedding in Patna?</strong> <br />
-                <span> Yes, it is one of the top venues for destination weddings with lawn and Cottage rooms.</span>
+                <spam> Yes, it is one of the top venues for destination weddings with lawn and Cottage rooms.</spam>
               </div>
 
               <div>
                 <strong>Q4. Do you provide open lawn wedding in Patna?</strong> <br />
-                <span>Yes, we offer a spacious lawn for outdoor and open air weddings.</span>
+                <spam>Yes, we offer a spacious lawn for outdoor and open air weddings.</spam>
               </div>
 
               <div>
                 <strong>Q5. Is it good for birthday party in Patna?</strong> <br />
-                <span>Yes, it is one of the best birthday party venues in Patna.</span>
+                <spam>Yes, it is one of the best birthday party venues in Patna.</spam>
               </div>
 
               <div>
                 <strong>Q6. Which is the best Banquet hall in Patna?</strong> <br />
-                <span>Jungle Resort, Patna has the best Banquet hall with a big dedicated lawn for the banquet</span>
+                <spam>Jungle Resort, Patna has the best Banquet hall with a big dedicated lawn for the banquet</spam>
               </div>
 
             </div>

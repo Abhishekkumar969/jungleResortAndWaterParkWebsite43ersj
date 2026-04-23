@@ -74,13 +74,16 @@ export default function AboutSection() {
                   const Icon = feature.icon;
                   return (
                     <div key={index} className={styles.featureItem}>
+
                       <div className={styles.featureIcon}>
-                        <Icon size={20} aria-hidden="true" />
+                        <Icon size={20} />
                       </div>
+
                       <div>
-                        <p className={styles.featureTitle}>{feature.title}</p>
-                        <p className={styles.featureDesc}>{feature.desc}</p>
+                        <h4>{feature.title}</h4>
+                        <p>{feature.desc}</p>
                       </div>
+
                     </div>
                   );
                 })}
@@ -91,13 +94,13 @@ export default function AboutSection() {
             <div className={styles.aboutImages}>
 
               <div className={styles.imageColumn}>
-                <img src="/images/venue-wedding.webp" alt="Wedding venue" className={styles.imgLarge} loading="lazy" width="400" height="600" />
-                <img src="/eventPics/Pool Party/waterparkjungleresort.webp" alt="Waterpark" className={styles.imgSmall} loading="lazy" width="400" height="300" />
+                <img src="/images/venue-wedding.webp" alt="Wedding venue" className={styles.imgLarge} />
+                <img src="/eventPics/Pool Party/waterparkjungleresort.webp" alt="Waterpark" className={styles.imgSmall} />
               </div>
 
               <div className={`${styles.imageColumn} ${styles.topSpace}`}>
-                <img src="/images/birthday-stage.webp" alt="Birthday celebration" className={styles.imgSmall} loading="lazy" width="400" height="300" />
-                <img src="/eventPics/Corporate Event/Corporate Event5.webp" alt="Reception hall" className={styles.imgLarge} loading="lazy" width="400" height="600" />
+                <img src="/images/birthday-stage.webp" alt="Birthday celebration" className={styles.imgSmall} />
+                <img src="/eventPics/Corporate Event/Corporate Event5.webp" alt="Reception hall" className={styles.imgLarge} />
               </div>
 
             </div>
@@ -108,16 +111,16 @@ export default function AboutSection() {
           <div className={styles.container}>
 
             <div>
-              <div className={styles.aboutTexts}>
-                <strong>Why Jungle Resort is the Best Resort in Patna:</strong>
-              </div>
-              <ul className={styles.aboutList}>
+              <p className={styles.aboutTexts}>
+                <strong> Why Jungle Resort is the Best Resort in Patna: </strong>
+                <ul>
                   <li>One of the largest resorts in Patna</li>
                   <li>Perfect for Weddings, parties, birthday, reception, anniversary, pool party and day outing.</li>
                   <li>Prime location near Patna City and Kankarbagh</li>
                   <li>Affordable pricing options</li>
                   <li>Safe & family friendly environment</li>
-              </ul>
+                </ul>
+              </p>
             </div>
 
             {/* FAQ */}
@@ -130,24 +133,25 @@ export default function AboutSection() {
               {faqs.map((item, index) => (
                 <div key={index} className={styles.faqItem}>
 
-                  <button
+                  {/* QUESTION */}
+                  <div
                     className={`${styles.faqQuestion} ${activeIndex === index ? styles.active : ""}`}
-                    onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                    aria-expanded={activeIndex === index}
-                    aria-controls={`faq-answer-${index}`}
-                    style={{ background: 'none', border: 'none', textAlign: 'left', width: '100%', fontFamily: 'inherit', cursor: 'pointer' }}
+                    onClick={() =>
+                      setActiveIndex(activeIndex === index ? null : index)
+                    }
                   >
                     <span>{item.q}</span>
+
                     <ChevronDown
                       size={18}
-                      aria-hidden="true"
-                      className={`${styles.icon} ${activeIndex === index ? styles.rotate : ""}`}
+                      className={`${styles.icon} ${activeIndex === index ? styles.rotate : ""
+                        }`}
                     />
-                  </button>
+                  </div>
 
                   {/* ANSWER */}
                   {activeIndex === index && (
-                    <div id={`faq-answer-${index}`} className={styles.faqAnswer}>
+                    <div className={styles.faqAnswer}>
                       {item.a}
                     </div>
                   )}

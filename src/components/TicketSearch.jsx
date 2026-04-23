@@ -1,128 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import styles from "../styles/TicketSearch.module.css";
-
-
-const ticketNames = {
-    kidsbelow10years: { name: "Kids Below 10 Years", price: 299 },
-    above10years: { name: "Above 10 Years", price: 399 },
-    groupof5: { name: "Group Of 5", price: 1849 },
-    groupof10: { name: "Group Of 10", price: 3250 },
-    groupof15: { name: "Group Of 15", price: 4500 },
-    groupof20: { name: "Group Of 20", price: 5500 },
-};
-
-const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
-const formatDate = (date) => {
-    const d = new Date(date);
-    if (isNaN(d)) return date;
-    return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
-};
-
-function downloadTicketHTML({ name, phone, visitDate, createdAt, tickets, cottage, total, bookingId, paymentId }) {
-    const ticketRows = Object.entries(tickets || {}).map(([id, qty]) => {
-        const t = ticketNames[id];
-        return `<tr>
-            <td>${t?.name || id}</td>
-            <td style="text-align:center">${qty}</td>
-            <td style="text-align:right">₹${fmt((t?.price || 0) * qty)}</td>
-        </tr>`;
-    }).join("");
-
-    const cottageRow = cottage ? `
-        <tr style="background:#fff0f7">
-            <td>🏡 Cottage Room – ${cottage.duration}${cottage.days > 1 ? ` × ${cottage.days} days` : ""}${cottage.rooms > 1 ? ` (${cottage.rooms} Rooms)` : ""}</td>
-            <td style="text-align:center">1</td>
-            <td style="text-align:right">₹${fmt(cottage.total)}</td>
-        </tr>` : "";
-
-    const html = `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Jungle Resort Ticket</title>
-<style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI',Arial,sans-serif; background:#f5f6fa; padding:20px; }
-    .ticket { background:#fff; border-radius:20px; max-width:600px; margin:0 auto;
-        box-shadow:0 8px 32px rgba(0,0,0,.12); overflow:hidden; }
-    .header { background:linear-gradient(135deg,#e91e8c,#ff6b35); color:#fff;
-        padding:28px 32px; text-align:center; }
-    .header h1 { font-size:26px; font-weight:900; letter-spacing:.5px; margin-bottom:4px; }
-    .header p { font-size:13px; opacity:.85; }
-    .badge { display:inline-block; background:rgba(255,255,255,.25);
-        border:1px solid rgba(255,255,255,.4); border-radius:20px;
-        padding:4px 16px; font-size:11px; font-weight:700; margin-top:8px;
-        text-transform:uppercase; letter-spacing:1px; }
-    .body { padding:28px 32px; }
-    .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
-    .info-box { background:#f8f9fc; border-radius:12px; padding:14px 16px; }
-    .info-box label { display:block; font-size:11px; color:#6b7a8d; text-transform:uppercase;
-        letter-spacing:.5px; margin-bottom:4px; font-weight:700; }
-    .info-box span { font-size:15px; font-weight:800; color:#1a1a2e; }
-    table { width:100%; border-collapse:collapse; margin-bottom:16px; }
-    thead tr { background:#f0f9ff; }
-    thead th { padding:10px 12px; font-size:11px; color:#0ea5e9; text-transform:uppercase;
-        letter-spacing:.5px; text-align:left; font-weight:800; }
-    tbody tr { border-bottom:1px solid #f0f2f5; }
-    tbody td { padding:12px 12px; font-size:14px; color:#1a1a2e; font-weight:600; }
-    .total-row { background:#e91e8c; color:#fff; }
-    .total-row td { padding:14px 12px; font-size:16px; font-weight:900; }
-    .footer { background:#1a1a2e; color:rgba(255,255,255,.7); text-align:center;
-        padding:18px; font-size:12px; }
-    .footer b { color:#fff; }
-    .booking-id { font-family:monospace; font-size:12px; color:#6b7a8d;
-        text-align:center; margin:0 0 20px; }
-    .divider { border:none; border-top:2px dashed #e8ecf0; margin:20px 0; }
-</style>
-</head>
-<body>
-<div class="ticket">
-    <div class="header">
-        <h1>🌿 Jungle Resort &amp; Water Park</h1>
-        <p>Patna, Bihar — Your Visit Ticket</p>
-        <span class="badge">✅ Booking Confirmed</span>
-    </div>
-    <div class="body">
-        <div class="info-grid">
-            <div class="info-box"><label>Guest Name</label><span>${name}</span></div>
-            <div class="info-box"><label>Mobile</label><span>${phone}</span></div>
-            <div class="info-box"><label>Visit Date</label><span>${formatDate(visitDate)}</span></div>
-            <div class="info-box"><label>Booking Date</label><span>${createdAt ? (createdAt.includes("/") ? createdAt : formatDate(createdAt)) : "N/A"}</span></div>
-        </div>
-        <p class="booking-id">Booking ID: ${bookingId} &nbsp;|&nbsp; Payment: ${paymentId || "Success"}</p>
-        <hr class="divider" />
-        <table>
-            <thead><tr><th>Item</th><th style="text-align:center">Qty</th><th style="text-align:right">Amount</th></tr></thead>
-            <tbody>
-                ${ticketRows}${cottageRow}
-                <tr class="total-row"><td colspan="2">Grand Total</td><td style="text-align:right">₹${fmt(total)}</td></tr>
-            </tbody>
-        </table>
-        <hr class="divider" />
-        <p style="font-size:12px;color:#6b7a8d;text-align:center">
-            Please show this ticket at the entrance. Food charges are extra.<br>
-            This ticket is non-transferable and non-refundable.
-        </p>
-    </div>
-    <div class="footer">
-        <b>Jungle Resort &amp; Water Park Patna</b><br>
-        📞 +91 90653 83838 · enjoy your visit!
-    </div>
-</div>
-</body>
-</html>`;
-
-    const blob = new Blob([html], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `JungleResort_Ticket_${bookingId.slice(0, 8).toUpperCase()}.html`;
-    a.click();
-    URL.revokeObjectURL(url);
-}
+import { QRCodeCanvas } from "qrcode.react";
+import { useRef } from "react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 export default function TicketSearch() {
     const [phone, setPhone] = useState("");
@@ -133,17 +16,24 @@ export default function TicketSearch() {
     const [searched, setSearched] = useState(false);
     const [resultOpen, setResultOpen] = useState(false);
     const [isCancelled, setIsCancelled] = useState(false);
+    const ticketRef = useRef();
 
+    // 🔥 Month generator
+    const getMonthDoc = (date) => {
+        const d = new Date(date);
 
+        const month = d.toLocaleString("en-US", {
+            month: "short",
+        }); // Jan, Feb, Mar...
+
+        const year = d.getFullYear();
+
+        return `${month}${year}`; // Apr2026
+    };
 
     const handleSearch = async () => {
         if (!phone || !date) {
             alert("Enter phone & date");
-            return;
-        }
-
-        if (phone.length !== 10) {
-            alert("Enter a valid 10-digit phone number");
             return;
         }
 
@@ -154,26 +44,27 @@ export default function TicketSearch() {
             setLoading(true);
             setResults([]);
 
-            // ✅ Search across ALL month documents in WaterPark collection
-            const colRef = collection(db, "WaterPark");
-            const snap = await getDocs(colRef);
+            const monthDoc = getMonthDoc(date);
+            const docRef = doc(db, "WaterPark", monthDoc);
+            const snap = await getDoc(docRef);
 
-            let allBookings = [];
-            snap.forEach(docSnap => {
-                const data = docSnap.data();
-                Object.entries(data).forEach(([bid, val]) => {
-                    allBookings.push({ bookingId: bid, ...val });
-                });
-            });
+            if (!snap.exists()) return;
 
-            // ✅ filter by phone + date
-            const filtered = allBookings.filter(
+            const data = snap.data();
+
+            const bookingList = Object.entries(data).map(([uid, value]) => ({
+                uid,
+                ...value,
+            }));
+
+            // ✅ match phone + date
+            const filtered = bookingList.filter(
                 (b) => b.phone === phone && b.visitDate === date
             );
 
-            // ✅ Only include 'paid' tickets with a valid paymentId
+            // ✅ remove cancelled
             const validTickets = filtered.filter(
-                (b) => b.paymentStatus === "paid" && b.paymentId
+                (b) => b.paymentStatus !== "cancelled"
             );
 
             // 🔥 CASE 1: All tickets cancelled
@@ -186,7 +77,7 @@ export default function TicketSearch() {
             // 🔥 CASE 2: Valid ticket found
             if (validTickets.length > 0) {
                 setResults(validTickets);
-                // setOpen(false); // keep modal open to show results
+                setOpen(false);
                 setResultOpen(true);
             }
 
@@ -196,8 +87,7 @@ export default function TicketSearch() {
             }
 
         } catch (err) {
-            console.error("Search error:", err);
-            alert("Something went wrong during search.");
+            console.error(err);
         } finally {
             setLoading(false);
         }
@@ -229,18 +119,36 @@ export default function TicketSearch() {
         }
     }, [open, resultOpen]);
 
-    const handleDownload = (ticket) => {
-        downloadTicketHTML({
-            name: ticket.name,
-            phone: ticket.phone,
-            visitDate: ticket.visitDate,
-            createdAt: ticket.createdAt,
-            tickets: ticket.tickets,
-            cottage: ticket.cottage,
-            total: ticket.total,
-            bookingId: ticket.bookingId,
-            paymentId: ticket.paymentId
+    const downloadPDF = async () => {
+        const element = ticketRef.current;
+
+        const canvas = await html2canvas(element, {
+            scale: 3,
+            useCORS: true,
         });
+
+        const imgData = canvas.toDataURL("image/png");
+
+        const pdf = new jsPDF("p", "mm", "a4");
+
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+
+        let imgWidth = pageWidth - 20;
+        let imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        // 🔥 MAIN FIX (height control)
+        if (imgHeight > pageHeight - 20) {
+            imgHeight = pageHeight - 20;
+            imgWidth = (canvas.width * imgHeight) / canvas.height;
+        }
+
+        const x = (pageWidth - imgWidth) / 2;
+        const y = (pageHeight - imgHeight) / 2;
+
+        pdf.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
+
+        pdf.save("WaterPark-Ticket.pdf");
     };
 
     return (
@@ -266,16 +174,14 @@ export default function TicketSearch() {
                                 <button
                                     className={styles.closeBtn}
                                     onClick={() => setOpen(false)}
-                                    aria-label="Close form"
                                 >
                                     ✕
                                 </button>
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor="ticket-visit-date" className={styles.label}>Visit Date:</label>
+                                <label className={styles.label}>Visit Date:</label>
                                 <input
-                                    id="ticket-visit-date"
                                     type="date"
                                     value={date}
                                     onChange={(e) => setDate(e.target.value)}
@@ -284,9 +190,8 @@ export default function TicketSearch() {
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor="ticket-phone" className={styles.label}>Phone Number: (10 Digits)</label>
+                                <label className={styles.label}>Phone Number: (10 Digits)</label>
                                 <input
-                                    id="ticket-phone"
                                     type="text"
                                     placeholder=""
                                     value={phone}
@@ -342,29 +247,124 @@ export default function TicketSearch() {
                                 <button
                                     className={styles.closeBtn}
                                     onClick={() => setResultOpen(false)}
-                                    aria-label="Close results"
                                 >
                                     ✕
                                 </button>
                             </div>
-                            {results.map((r, i) => (
-                                <div key={i} className={styles.resultCard}>
-                                    <div className={styles.resRow}>
-                                        <span>👤 Name:</span> <strong>{r.name}</strong>
-                                    </div>
-                                    <div className={styles.resRow}>
-                                        <span>📅 Visit Date:</span> <strong>{formatDate(r.visitDate)}</strong>
-                                    </div>
-                                    <div className={styles.resRow}>
-                                        <span>💰 Total:</span> <strong>₹{fmt(r.total)}</strong>
-                                    </div>
+                            <div>
+                                <button
+                                    onClick={downloadPDF}
+                                    style={{
+                                        margin: "10px 0px",
+                                        padding: "10px",
+                                        width: "100%",
+                                        background: "#22c55e",
+                                        color: "#fff",
+                                        border: "none",
+                                        borderRadius: "8px",
+                                        fontWeight: "600",
+                                        cursor: "pointer"
+                                    }}
+                                >
+                                    📥 Download
+                                </button>
+                            </div>
 
-                                    <button
-                                        onClick={() => handleDownload(r)}
-                                        className={styles.resultDownloadBtn}
-                                    >
-                                        📥 Download Ticket
-                                    </button>
+                            {results.map((r, i) => (
+                                <div key={i} className={styles.card}>
+
+                                    {/* <p className={styles.text}><b>Name:</b> {r.name}</p>
+                                    <p className={styles.text}><b>Phone:</b> {r.phone}</p>
+
+                                    <p className={styles.text}>
+                                        <b>Visit Date:</b>{" "}
+                                        {new Date(r.visitDate).toLocaleDateString("en-GB")}
+                                    </p>
+
+                                    {Object.entries(r.tickets || {}).map(([key, value]) => (
+                                        <p className={styles.text}>
+                                            🎟️ <b>{key}:</b> {value}
+                                        </p>
+                                    ))}
+
+                                    <p className={styles.text}>
+                                        <b>Total:</b> ₹{Number(r.total || 0)}
+                                    </p>
+
+                                    <p className={styles.text}>
+                                        <b>Status:</b> {r.paymentStatus}
+                                    </p>
+
+                                    <p className={styles.text}>
+                                        <b>Booked On:</b> {r.createdAt}
+                                    </p>
+
+                                    <div style={{ marginTop: "10px", textAlign: "center" }}>
+                                        <QRCodeCanvas value={generateQRData(r)} size={120} />
+                                    </div> */}
+
+
+
+                                    <div className={styles.ticketCard} ref={ticketRef}>
+
+                                        <div style={{ marginBottom: "10px" }}></div>
+
+                                        <div className={styles.ticketContent}>
+
+                                            <div className={styles.ticketlogo}>
+                                                <img src="../../images/logo.webp" alt="Jungle Resort Logo" />
+                                            </div>
+
+                                            <div className={styles.ticketCardDetails}>
+                                                <div className={styles.ticketName}>
+                                                    {r.name}
+                                                </div>
+
+                                                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                                    <div className={styles.ticketTitle}>
+                                                        YOUR UNIQUE ENTRY PASS
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div className={styles.qrBox}>
+                                                    <QRCodeCanvas value={JSON.stringify({
+                                                        ticketId: r.uid
+                                                    })} size={140} />
+                                                </div>
+
+                                                <p style={{ fontSize: "12px" }}>
+                                                    Visit: {new Date(r.visitDate).toLocaleDateString("en-GB")}
+                                                </p>
+
+                                                <div className={styles.ticketTermsWrapper}>
+                                                    <div className={styles.ticketTerms}>
+                                                        <div className={styles.termsTitle}>TERMS & CONDITIONS</div>
+
+                                                        <ul className={styles.termsList}>
+                                                            <li>Valid ticket required. Non-refundable & non-transferable.</li>
+                                                            <li>Management reserves right of admission.</li>
+                                                            <li>Follow safety rules & staff instructions.</li>
+                                                            <li>Lockers, swimwear & food chargeable. Outside food/alcohol not allowed.</li>
+                                                            <li>Guests responsible for belongings. Use rides at own risk.</li>
+                                                            <li>No liability for injury, loss or damage.</li>
+                                                            <li>Property damage will be charged.</li>
+                                                            <li>Rides may close anytime; no refund (including weather).</li>
+                                                            <li>Entry means consent for photo/video use for promotion.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <p style={{ fontSize: "7px" }}>
+                                                    ID: {r.uid}
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div style={{ marginBottom: "10px" }}></div>
+                                    </div>
                                 </div>
                             ))}
 

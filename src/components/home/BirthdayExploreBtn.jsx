@@ -14,9 +14,6 @@ export default function BirthdayHero() {
                             src="/images/birthday-stage.webp"
                             alt="Birthday celebration"
                             className={styles.image}
-                            loading="lazy"
-                            width="800"
-                            height="600"
                         />
                         <div className={styles.overlay}></div>
                     </div>
