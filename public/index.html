@@ -4,7 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#1a5c2a" />
+  <meta name="theme-color" content="#d11a68" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Favicon & PWA -->
   <link rel="icon" href="%PUBLIC_URL%/logo-red-yellow.png" />
@@ -32,7 +34,8 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Jungle Resort Patna - Waterpark &amp; Wedding Venue" />
-  <meta name="twitter:description" content="Best Jungle Resort &amp; Waterpark in Patna for weddings, parties &amp; family fun." />
+  <meta name="twitter:description"
+    content="Best Jungle Resort &amp; Waterpark in Patna for weddings, parties &amp; family fun." />
   <meta name="twitter:image" content="https://jungleresortpatna.in/logo-red-yellow.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,23 +49,32 @@
   <!-- Font Awesome removed — WhatsApp icon now uses inline SVG (no 3rd-party CSS needed) -->
 
   <!-- LCP image preload — must match src in hero-section.jsx exactly -->
-  <link rel="preload" as="image" href="%PUBLIC_URL%/videos/hero.webp"
-    type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="%PUBLIC_URL%/videos/hero.webp" type="image/webp" fetchpriority="high" />
 
   <!-- Razorpay loaded dynamically only in Checkout page — not globally -->
 
   <!-- Critical inline CSS: prevent invisible text + reserve LCP space -->
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
       font-family: Georgia, 'Times New Roman', serif;
       background: #faf8f3;
     }
-    #root { min-height: 100vh; }
+
+    #root {
+      min-height: 100vh;
+    }
+
     /* Reserve hero min-height so LCP image has space immediately */
-    .heroSection, [class*="heroSection"] {
+    .heroSection,
+    [class*="heroSection"] {
       min-height: 100vh;
       background: #1a1a1a;
     }
