@@ -26,13 +26,14 @@
 .card {
     width        : 100%;
     max-width    : 500px;
-    height       : fit-content;
+    max-height   : 90vh;
+    overflow-y   : auto;
     border-radius: 18px;
-    overflow     : hidden;
     background   : white;
     box-shadow   : 0 25px 70px rgba(0, 0, 0, 0.3);
     animation    : popup 0.3s ease;
 }
+
 
 /* ===== LEFT ===== */
 .left {
@@ -577,3 +578,72 @@
     background: #e2e8f0;
     color     : #1a1a2e;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.right>div:first-child {
+    position  : sticky;
+    top       : 0;
+    background: white;
+    z-index   : 2;
+    padding   : 10px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
