@@ -515,8 +515,6 @@ export default function Checkout({ isOpen, onClose, data }) {
                                 <button className={styles.close} onClick={onClose} aria-label="Close checkout">✕</button>
                             </div>
 
-                           
-
                             {/* Form */}
                             <div className={styles.inputGroup}>
 
@@ -541,6 +539,27 @@ export default function Checkout({ isOpen, onClose, data }) {
 
                                 <div className={styles.calendarWrapper}>
                                     <Calendar
+
+                                        prev2Label={null}   // ❌ remove <<
+                                        next2Label={null}   // ❌ remove >>
+
+                                        minDetail="month"   // ❌ disable year view
+                                        maxDetail="month"   // ❌ disable drill up
+
+                                        navigationLabel={({ date }) =>
+                                            date.toLocaleDateString("en-US", {
+                                                month: "long",
+                                                year: "numeric",
+                                            })
+                                        }
+
+                                        formatMonthYear={(locale, date) =>
+                                            date.toLocaleDateString("en-US", {
+                                                month: "long",
+                                                year: "numeric",
+                                            })
+                                        }
+
                                         value={
                                             formData.visitDate
                                                 ? parseISTDate(formData.visitDate)
@@ -641,8 +660,8 @@ export default function Checkout({ isOpen, onClose, data }) {
                                 )}
                             </button>
 
-                             {/* Order Summary */}
-                            <div className={styles.orderSummaryBox} style={{marginTop:"15px"}}>
+                            {/* Order Summary */}
+                            <div className={styles.orderSummaryBox} style={{ marginTop: "15px" }}>
                                 {Object.entries(selectedTickets || {}).map(([id, qty]) => {
                                     const t = ticketNames[id];
                                     return (

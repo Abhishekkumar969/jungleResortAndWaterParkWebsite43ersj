@@ -79,10 +79,7 @@
     transition     : all 0.2s ease;
 }
 
-/* hover */
-.react-calendar__tile:hover {
-    background: #e0f2fe !important;
-}
+
 
 /* ===== TODAY ===== */
 .react-calendar__tile--now {
@@ -94,7 +91,7 @@
 .react-calendar__tile--active {
     background   : linear-gradient(135deg, #e91e8c, #ff6b35) !important;
     color        : white !important;
-    border-radius: 50% !important;
+    border-radius: 20% !important;
 }
 
 /* ===== RESERVED ===== */
@@ -135,8 +132,3 @@
         font-size: 13px;
     }
 }
-
-
-
-
-
