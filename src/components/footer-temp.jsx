@@ -159,18 +159,20 @@ export default function Footer() {
             </ul>
           </div>
 
-          <button onClick={handleInstall} className="install-btn" aria-label="Install Jungle Resort app on your device">
-            Install App
-          </button>
+
 
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="footer-bottom">
+      <div className="footer-bottom" style={{ marginBottom: "110px" }}>
         <div className="footer-bottom-container">
           <p>© 2025 Jungle Resort Patna – Best Wedding Venue &amp; Water Park</p>
+          <button onClick={handleInstall} className="install-btn" aria-label="Install Jungle Resort app on your device">
+            Install App
+          </button>
         </div>
+
       </div>
 
     </footer>
