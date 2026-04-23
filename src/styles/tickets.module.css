@@ -541,6 +541,7 @@
     .heroWrap {
         min-height: 220px;
         padding: 28px 16px 28px;
+        margin: 35px 0px;
     }
 
     .ticketsGrid {

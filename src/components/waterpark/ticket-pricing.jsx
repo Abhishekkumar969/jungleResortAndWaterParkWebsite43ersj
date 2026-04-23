@@ -177,7 +177,7 @@ export default function TicketPricing() {
                 <div className={styles.heroWrap}>
                     <div className={styles.heroWrapOverlay} />
                     <div className={styles.heroWrapContent}>
-                        <span className={styles.heroWrapPill}>🌊 Jungle Resort Water Park, Patna</span>
+                        <span className={styles.heroWrapPill}>🌊 Jungle Resort And Water Park, Patna</span>
                         <h1>Water Park Tickets <span>&amp;</span> Cottage Rooms</h1>
                         <p>Book tickets, add a cottage — all in one place</p>
                         <div className={styles.heroBadges}>

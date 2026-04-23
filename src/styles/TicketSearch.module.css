@@ -539,3 +539,65 @@
     background: #166534;
     transform: scale(0.98);
 }
+
+/* ─── RESPONSIVE FIXES (< 400px) ─── */
+@media (max-width: 400px) {
+    .container {
+        padding: 20px 15px;
+        width: 95%;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .input,
+    .button,
+    .field {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .button {
+        margin: 15px 0;
+    }
+}
+
+/* ─── RESPONSIVE FIXES (< 350px) ─── */
+@media (max-width: 350px) {
+    .container {
+        padding: 15px 10px;
+    }
+
+    .resRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .resRow span {
+        font-size: 12px;
+    }
+
+    .resRow strong {
+        font-size: 13px;
+    }
+
+    .callBtns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .callBtn {
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .closeBtn {
+        right: -10px;
+        top: 5px;
+    }
+}
