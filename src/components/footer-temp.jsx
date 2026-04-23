@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Twitter, Hotel } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Hotel } from "lucide-react";
 import "../styles/Footer.css";
 
 export default function Footer() {
@@ -38,23 +38,13 @@ export default function Footer() {
             </p>
             <ul className="footer-social" aria-label="Social media links">
               <li>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                <a href="https://facebook.com/profile.php?id=61564248387792" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
                   <Facebook size={18} aria-hidden="true" />
                 </a>
               </li>
               <li>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                <a href="https://instagram.com/jungleresort.patna/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
                   <Instagram size={18} aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Watch us on YouTube">
-                  <Youtube size={18} aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter / X">
-                  <Twitter size={18} aria-hidden="true" />
                 </a>
               </li>
             </ul>

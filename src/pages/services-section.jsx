@@ -174,9 +174,9 @@ export default function ServicesSection() {
 
                     </section >
 
-                    <div style={{ padding: "0px" }}>
+                    <div className={styles.servicesSeoContent} >
 
-                        <h3>Why Jungle Resort & Water Park is the Best in Patna</h3>
+                        <h3 style={{color:"#e72e77"}}>Why Jungle Resort & Water Park is the Best in Patna</h3>
 
                         <ul>
 
