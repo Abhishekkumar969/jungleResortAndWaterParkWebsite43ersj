@@ -27,6 +27,7 @@ const Contact = lazy(() => import("./pages/contact/Contact"));
 const AboutUs = lazy(() => import("./pages/about-section"));
 const Services = lazy(() => import("./pages/services-section"));
 const Waterpark = lazy(() => import("./pages/waterpark/Waterpark"));
+const CottageInPatna = lazy(() => import("./pages/waterpark/CottageInPatna"));
 const FunPark = lazy(() => import("./pages/events/FunParkDetails"));
 const BirthdayCeremony = lazy(() => import("./pages/birthdays/Birthdays"));
 const DestinationWeddingDetails = lazy(() => import("./pages/events/DestinationWeddingDetails"));
@@ -98,7 +99,8 @@ function App() {
           <Route path="/Services" element={<Suspense fallback={<Loader />}>  <Services /> </Suspense>} />
 
           <Route path="/waterpark-in-patna" element={<Suspense fallback={<Loader />}>  <Waterpark /> </Suspense>} />
-          <Route path="/cottage-booking" element={<Navigate to="/waterpark-in-patna" replace />} />
+          <Route path="/cottage-in-patna" element={<Suspense fallback={<Loader />}>  <CottageInPatna /> </Suspense>} />
+          <Route path="/cottage-booking" element={<Navigate to="/cottage-in-patna" replace />} />
           <Route path="/fun-park" element={<Suspense fallback={<Loader />}>  <FunPark /> </Suspense>} />
 
           <Route path="/birthday-ceremony" element={<Suspense fallback={<Loader />}>  <BirthdayCeremony /> </Suspense>} />

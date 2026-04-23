@@ -8,6 +8,9 @@
   color: #ffffff;
   overflow: hidden;
   min-height: 560px;
+  margin: 40px 20px;
+  border-radius: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
 /* ── Background image ── */
@@ -119,7 +122,7 @@
   gap: 8px 16px;
 }
 
-.pricingGrid > div {
+.pricingGrid>div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -128,7 +131,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.pricingGrid > div span {
+.pricingGrid>div span {
   opacity: 0.88;
 }
 
@@ -147,7 +150,7 @@
   flex-wrap: wrap;
 }
 
-.waterparkInfo > div {
+.waterparkInfo>div {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -261,13 +264,16 @@
   }
 
   .waterparkImages {
-    display: none; /* hide on tablet/mobile to keep it clean */
+    display: none;
+    /* hide on tablet/mobile to keep it clean */
   }
 }
 
 @media (max-width: 600px) {
   .waterparkSection {
     padding: 40px 16px 48px;
+    margin: 20px 10px;
+    border-radius: 24px;
   }
 
   .waterparkActions {

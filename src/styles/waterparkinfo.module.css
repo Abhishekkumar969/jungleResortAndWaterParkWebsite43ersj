@@ -1,132 +1,146 @@
-.infoSection {
-    padding: 80px 20px;
-    color  : white;
-}
-
-.infoContainer {
-    max-width: 1200px;
-    margin   : auto;
-}
-
-.infoHeader {
-    text-align   : center;
-    margin-bottom: 50px;
-}
-
-.infoHeader h2 {
-    font-size    : 36px;
-    font-weight  : 700;
-    margin-bottom: 10px;
-    color        : white;
-}
-
-.infoHeader span {
-    color: #ffd700;
-}
-
-.infoHeader p {
-    color    : white;
-    max-width: 600px;
-    margin   : auto;
-    font-size: 16px;
-}
-
-.infoGrid {
-    display              : grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap                  : 25px;
-}
-
-.infoCard {
-    background     : #00517779;
-    backdrop-filter: blur(5px);
-    padding        : 25px;
-    border-radius  : 12px;
-    transition     : .3s;
-}
-
-.infoCard:hover {
-    transform : translateY(-5px);
-    background: #0000004f;
-}
-
-.infoCardHeader {
-    display      : flex;
-    align-items  : center;
-    gap          : 10px;
-    margin-bottom: 15px;
-}
-
-.iconBox {
-    width          : 40px;
-    height         : 40px;
-    background     : rgba(255, 215, 0, 0.2);
-    display        : flex;
-    align-items    : center;
-    justify-content: center;
-    border-radius  : 8px;
-    color          : #ffd700;
-}
-
-.infoCard h3 {
-    font-size  : 18px;
-    font-weight: 600;
-}
-
-.infoCard ul {
-    list-style: none;
-    padding   : 0;
-    margin    : 0;
-}
-
-.infoCard li {
-    display      : flex;
-    align-items  : center;
-    gap          : 8px;
-    font-size    : 14px;
-    margin-bottom: 8px;
-    color        : rgba(255, 255, 255, 0.85);
-}
-
-.dot {
-    width        : 6px;
-    height       : 6px;
-    background   : #ffd700;
-    border-radius: 50%;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
 
 .infoSection {
+    padding: 100px 24px;
+    background-color: #f8fafc;
+    font-family: "Outfit", sans-serif;
     position: relative;
-    padding : 80px 20px;
-    color   : white;
     overflow: hidden;
 }
 
-/* VIDEO */
-
-.infoVideo {
-    position  : absolute;
-    top       : 0;
-    left      : 0;
-    width     : 100%;
-    height    : 100%;
-    object-fit: cover;
-}
-
-/* OVERLAY */
-
-.infoOverlay {
-    position  : absolute;
-    top       : 0;
-    left      : 0;
-    width     : 100%;
-    height    : 100%;
-    background: linear-gradient(rgba(66, 208, 255, 0.6), #0099cc99);
+/* Subtle background decoration */
+.infoSection::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.05) 0%, transparent 70%);
+    z-index: 0;
 }
 
 .infoContainer {
     max-width: 1200px;
-    margin   : auto;
-    position : relative;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.infoHeader {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.infoPill {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+    border-radius: 40px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.infoHeader h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.1;
+}
+
+.infoHeader span {
+    color: #0ea5e9;
+}
+
+.infoHeader p {
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.infoCard {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 32px;
+    border-radius: 28px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.infoCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    border-color: #0ea5e9;
+}
+
+.infoCardHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.iconBox {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    flex-shrink: 0;
+}
+
+.infoCard h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0;
+}
+
+.itemList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+.checkIcon {
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .infoSection {
+        padding: 60px 20px;
+    }
 }
