@@ -20,7 +20,6 @@ function loadRazorpay() {
     });
 }
 
-
 const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
 
 /* ─── Ticket PDF Generator ─── */
@@ -336,39 +335,26 @@ export default function Checkout({ isOpen, onClose, data }) {
                 createdAt: new Date().toLocaleString("en-IN"),
             };
 
-            // ✅ PRE-SAVE to Firestore (Wrapped in try-catch so it doesn't block Razorpay if Firestore is down/slow)
-            try {
-                if (Object.keys(selectedTickets || {}).length > 0 || cottage) {
-                    await setDoc(doc(db, "WaterPark", monthYear), { [bookingId]: wpBookingData }, { merge: true });
-                }
-
-                if (cottage) {
-                    const cottageBookingData = {
-                        bookingId,
-                        userId: auth.currentUser?.uid || "guest",
-                        name: formData.name || "",
-                        phone: formData.phone || "",
-                        visitDate: formData.visitDate || "",
-                        cottagePackage: {
-                            id: cottage.id,
-                            duration: cottage.duration,
-                            price: cottage.basePrice || 0,
-                            days: cottage.days || 1,
-                            rooms: cottage.rooms || 1
-                        },
-                        waterParkAddons: cottage.addons || {},
-                        total: cottage.total || 0,
-                        orderId: order.id,
-                        verification: false,
-                        paymentStatus: "pending",
-                        createdAt: new Date().toLocaleString("en-IN"),
-                    };
-                    await setDoc(doc(db, "CottageBookings", monthYear), { [bookingId]: cottageBookingData }, { merge: true });
-                }
-            } catch (fsErr) {
-                console.error("Firestore Pre-save Error:", fsErr);
-                // We'll still proceed to payment since order is created
-            }
+            const cottageBookingData = cottage ? {
+                bookingId,
+                userId: auth.currentUser?.uid || "guest",
+                name: formData.name || "",
+                phone: formData.phone || "",
+                visitDate: formData.visitDate || "",
+                cottagePackage: {
+                    id: cottage.id,
+                    duration: cottage.duration,
+                    price: cottage.basePrice || 0,
+                    days: cottage.days || 1,
+                    rooms: cottage.rooms || 1
+                },
+                waterParkAddons: cottage.addons || {},
+                total: cottage.total || 0,
+                orderId: order.id,
+                verification: false,
+                paymentStatus: "pending",
+                createdAt: new Date().toLocaleString("en-IN"),
+            } : null;
 
             const options = {
                 key: process.env.REACT_APP_RAZORPAY_KEY_ID,
@@ -414,7 +400,7 @@ export default function Checkout({ isOpen, onClose, data }) {
 
                         if (cottage) {
                             await setDoc(doc(db, "CottageBookings", monthYear),
-                                { [bookingId]: paymentFields },
+                                { [bookingId]: { ...cottageBookingData, ...paymentFields } },
                                 { merge: true }
                             );
                         }
@@ -442,11 +428,6 @@ export default function Checkout({ isOpen, onClose, data }) {
                     ondismiss: () => {
                         setLoading(false);
                         setPaymentError("Payment cancelled ❌");
-                        // Log cancellation
-                        setDoc(doc(db, "WaterPark", monthYear),
-                            { [bookingId]: { paymentStatus: "cancelled", cancelledAt: new Date().toISOString() } },
-                            { merge: true }
-                        ).catch(() => { });
                     }
                 },
 
