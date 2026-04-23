@@ -12,7 +12,7 @@
 }
 
 .servicesLabel {
-    color         : #065e01;
+    color         : #e72e77;
     font-weight   : 600;
     text-transform: uppercase;
     font-size     : 42px;
@@ -23,10 +23,11 @@
     font-weight  : 700;
     margin-top   : 10px;
     margin-bottom: 20px;
+    color        : #e72e77;
 }
 
 .servicesTitle span {
-    color: #065e01;
+    color: #e72e77;
 }
 
 .servicesDesc {
@@ -51,7 +52,7 @@
 .serviceCard:hover {
     transform   : translateY(-5px);
     box-shadow  : 0 10px 25px rgba(0, 0, 0, 0.1);
-    border-color: #065e01;
+    border-color: #e72e77;
 }
 
 .serviceIcon {
@@ -62,13 +63,13 @@
     display        : flex;
     align-items    : center;
     justify-content: center;
-    color          : #065e01;
+    color          : #e72e77;
     margin-bottom  : 15px;
     transition     : .3s;
 }
 
 .serviceCard:hover .serviceIcon {
-    background: #065e01;
+    background: #e72e77;
     color     : white;
     transform : scale(1.1);
 }
@@ -76,6 +77,7 @@
 .serviceCard h3 {
     font-size    : 18px;
     margin-bottom: 8px;
+    color        : #e72e77;
 }
 
 .serviceCard p {
@@ -118,7 +120,7 @@
     margin-top : 40px;
     line-height: 1.8;
     font-size  : 16px;
-    color      : #000000;
+    color      : #1b1b1b;
 }
 
 .servicesSeoContent p {
