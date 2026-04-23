@@ -515,28 +515,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                                 <button className={styles.close} onClick={onClose} aria-label="Close checkout">✕</button>
                             </div>
 
-                            {/* Order Summary */}
-                            <div className={styles.orderSummaryBox}>
-                                {Object.entries(selectedTickets || {}).map(([id, qty]) => {
-                                    const t = ticketNames[id];
-                                    return (
-                                        <div key={id} className={styles.summaryRow}>
-                                            <span>🎟️ {t?.name} × {qty}</span>
-                                            <strong>₹{fmt((t?.price || 0) * qty)}</strong>
-                                        </div>
-                                    );
-                                })}
-                                {cottage && (
-                                    <div className={styles.summaryRow}>
-                                        <span>🏡 Cottage {cottage.duration}{cottage.days > 1 ? ` × ${cottage.days}d` : ""}</span>
-                                        <strong>₹{fmt(cottage.total)}</strong>
-                                    </div>
-                                )}
-                                <div className={styles.summaryTotal}>
-                                    <span>Grand Total</span>
-                                    <strong>₹{fmt(totalAmount)}</strong>
-                                </div>
-                            </div>
+                           
 
                             {/* Form */}
                             <div className={styles.inputGroup}>
@@ -661,6 +640,29 @@ export default function Checkout({ isOpen, onClose, data }) {
                                     <>PAY NOW : ₹ {fmt(totalAmount)}</>
                                 )}
                             </button>
+
+                             {/* Order Summary */}
+                            <div className={styles.orderSummaryBox} style={{marginTop:"15px"}}>
+                                {Object.entries(selectedTickets || {}).map(([id, qty]) => {
+                                    const t = ticketNames[id];
+                                    return (
+                                        <div key={id} className={styles.summaryRow}>
+                                            <span>🎟️ {t?.name} × {qty}</span>
+                                            <strong>₹{fmt((t?.price || 0) * qty)}</strong>
+                                        </div>
+                                    );
+                                })}
+                                {cottage && (
+                                    <div className={styles.summaryRow}>
+                                        <span>🏡 Cottage {cottage.duration}{cottage.days > 1 ? ` × ${cottage.days}d` : ""}</span>
+                                        <strong>₹{fmt(cottage.total)}</strong>
+                                    </div>
+                                )}
+                                <div className={styles.summaryTotal}>
+                                    <span>Grand Total</span>
+                                    <strong>₹{fmt(totalAmount)}</strong>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
