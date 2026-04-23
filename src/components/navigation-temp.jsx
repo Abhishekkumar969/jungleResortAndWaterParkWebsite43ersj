@@ -22,6 +22,17 @@ const navLinks = [
   }
 ];
 
+const mobileNavLinks = [
+  { href: "/", label: "HOME" },
+  { href: "/destination-wedding", label: "DESTINATION WEDDING" },
+  { href: "/cottage-in-patna", label: "COTTAGE ROOMS" },
+  { href: "/waterpark-in-patna", label: "WATER PARK" },
+  { href: "/about-us", label: "ABOUT US" },
+  { href: "/services", label: "SERVICES" },
+  { href: "/gallery", label: "GALLERY" },
+  { href: "/blog", label: "BLOG" },
+];
+
 const waterparkNavLinks = [
   { href: "/waterpark-in-patna", label: "WATER PARK TICKETS", className: "waterpark-btn-outlines" }
 ];
@@ -33,13 +44,13 @@ export default function Navbar() {
   const [cartCount, setCartCount] = useState(0);
   const [animateCart, setAnimateCart] = useState(false);
   const menuRef = useRef(null);
+  const btnRef = useRef(null);
 
   // ── Checkout state (lifted here so it persists after Cart unmounts) ──
   const [showCheckout, setShowCheckout] = useState(false);
   const [checkoutData, setCheckoutData] = useState(null);
 
   // Apply/remove inert when menu opens/closes
-  // inert makes ALL children non-focusable — fixes aria-hidden + focusable descendants
   useEffect(() => {
     const menu = menuRef.current;
     if (!menu) return;
@@ -50,13 +61,30 @@ export default function Navbar() {
     }
   }, [isOpen]);
 
+  // Click outside to close mobile menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        btnRef.current &&
+        !btnRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
   useEffect(() => {
     if (cartCount > 0) {
       setAnimateCart(true);
-
       setTimeout(() => {
         setAnimateCart(false);
-      }, 300); // animation duration
+      }, 300);
     }
   }, [cartCount]);
 
@@ -70,10 +98,7 @@ export default function Navbar() {
     };
 
     updateCartCount();
-
-    // custom event listener
     window.addEventListener("cartUpdated", updateCartCount);
-
     return () => window.removeEventListener("cartUpdated", updateCartCount);
   }, []);
 
@@ -81,14 +106,11 @@ export default function Navbar() {
     const handleOpenCart = () => {
       setCartOpen(true);
     };
-
     window.addEventListener("openCart", handleOpenCart);
-
     return () => window.removeEventListener("openCart", handleOpenCart);
   }, []);
 
   useEffect(() => {
-
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
@@ -96,10 +118,8 @@ export default function Navbar() {
         setIsScrolled(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-
   }, []);
 
   return (
@@ -167,7 +187,6 @@ export default function Navbar() {
             >
               <div style={{ position: "relative" }}>
                 <ShoppingCart size={25} aria-hidden="true" />
-
                 {cartCount > 0 && (
                   <span
                     className={`cart-badge ${animateCart ? "cart-bounce" : ""}`}
@@ -181,6 +200,7 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
+              ref={btnRef}
               className="mobile-menu-btn"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -199,25 +219,16 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu — inert applied via ref when closed */}
+      {/* Mobile Menu */}
       <div
         id="mobile-menu"
         ref={menuRef}
         className={`mobile-menu ${isOpen ? "active" : ""}`}
         aria-hidden={!isOpen}
+        style={{ display: "flex", flexDirection: "column" }}
       >
-
-        {navLinks.map((link) =>
-          link.isExternal ? (
-            <a
-              className={link.className}
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </a>
-          ) : (
+        <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
+          {mobileNavLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
@@ -225,12 +236,33 @@ export default function Navbar() {
             >
               {link.label}
             </Link>
-          )
-        )}
+          ))}
+        </div>
 
+        {/* Enquiry Link in Mobile - Pink Button at Bottom */}
+        <div style={{ padding: "15px 10px", borderTop: "1px solid #f0f0f0" }}>
+          <a
+            href="tel:9065383838"
+            onClick={() => setIsOpen(false)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "#e72e77",
+              color: "#fff",
+              padding: "8px",
+              borderRadius: "40px",
+              fontWeight: "800",
+              fontSize: "17px",
+              textDecoration: "none",
+              boxShadow: "0 4px 12px #e91e8c4d"
+            }}
+          >
+            ENQUIRY NOW
+          </a>
+        </div>
       </div>
 
-      {/* <AuthModal isOpen={openAuth} onClose={() => setOpenAuth(false)} /> */}
       {cartOpen && (
         <Suspense fallback={null}>
           <Cart
@@ -249,7 +281,6 @@ export default function Navbar() {
         </Suspense>
       )}
 
-      {/* Checkout — mounted independently so it persists after Cart closes */}
       <Checkout
         isOpen={showCheckout}
         onClose={() => setShowCheckout(false)}

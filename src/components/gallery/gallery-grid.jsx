@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import styles from "../../styles/gallery-grid.module.css";
 import { X } from "lucide-react";
 
-const categories = ["All", "Weddings", "Waterpark", "Birthdays", "Corporate", "Resort"];
+const categories = ["All", "Destination Weddings", "Cottage", "Waterpark", "Birthdays", "Corporate", "Resort"];
 
 const galleryImages = [
-    { src: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp", category: "Weddings", title: "Garden Wedding Ceremony" },
-    { src: "/eventPics/Wed/venue-wedding.webp", category: "Weddings", title: "Traditional Wedding Setup" },
-    { src: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp", category: "Weddings", title: "Reception Dinner" },
-    { src: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.webp", category: "Weddings", title: "Elegant Reception Hall" },
+    { src: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp", category: "Destination Weddings", title: "Garden Wedding Ceremony" },
+    { src: "/eventPics/Wed/venue-wedding.webp", category: "Destination Weddings", title: "Traditional Wedding Setup" },
+    { src: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp", category: "Destination Weddings", title: "Reception Dinner" },
+    { src: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.webp", category: "Destination Weddings", title: "Elegant Reception Hall" },
+
+    { src: "/images/cottage-room.webp", category: "Cottage", title: "Luxury Cottage Interior" },
+    { src: "/images/cottage-exterior.webp", category: "Cottage", title: "Cottage Exterior View" },
 
     { src: "/eventPics/Pool Party/waterparkjungleresort.webp", category: "Waterpark", title: "Main Waterpark Area" },
 
@@ -24,7 +27,7 @@ const galleryImages = [
 ];
 
 export default function GalleryGrid() {
-    const [activeCategory, setActiveCategory] = useState("Weddings");
+    const [activeCategory, setActiveCategory] = useState("Destination Weddings");
     const [lightboxImage, setLightboxImage] = useState(null);
 
     const filteredImages =
