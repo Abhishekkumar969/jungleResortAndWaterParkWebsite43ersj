@@ -1,9 +1,7 @@
-import React, { lazy, Suspense, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { ChevronDown, X, Calendar } from "lucide-react";
 import styles from "../../styles/hero-section.module.css";
-
-const QuickBookForm = lazy(() => import("../quick-book-form"));
 
 const heroMenus = [
   {
@@ -42,30 +40,12 @@ const heroMenus = [
 ];
 
 export default function HeroSection() {
-  // Booking modal state
-  const [showBooking, setShowBooking] = useState(false);
   // FunPark coming-soon popup
   const [showFunPark, setShowFunPark] = useState(false);
 
-  const openBooking = () => setShowBooking(true);
-  const closeBooking = () => setShowBooking(false);
-
-  // Listen for global openBooking event
-  useEffect(() => {
-    const handleGlobalOpen = () => setShowBooking(true);
-    window.addEventListener("openBooking", handleGlobalOpen);
-
-    // Also check URL params if someone navigated from another page
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("openBooking") === "true") {
-      handleGlobalOpen();
-      // Clean up URL WITHOUT triggering a re-render if possible, 
-      // but we need to remove the param so it doesn't reopen on refresh
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
-
-    return () => window.removeEventListener("openBooking", handleGlobalOpen);
-  }, []); // Run when search params change
+  const openBooking = () => {
+    window.dispatchEvent(new CustomEvent("openBooking"));
+  };
 
   return (
     <>
@@ -163,46 +143,6 @@ export default function HeroSection() {
         </nav>
 
       </section>
-
-      {/* ── BOOKING MODAL ── Only mounts after user clicks CTA */}
-      {showBooking && (
-        <div
-          className={styles.bookingOverlay}
-          onClick={closeBooking}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Booking form"
-        >
-          <div
-            className={styles.bookingModal}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header */}
-            <div className={styles.bookingModalHeader}>
-              <h2 className={styles.bookingModalTitle}>Check Availability</h2>
-              <button
-                className={styles.bookingModalClose}
-                onClick={closeBooking}
-                aria-label="Close booking form"
-              >
-                <X size={20} aria-hidden="true" />
-              </button>
-            </div>
-
-            {/* Lazy-loaded form — Firebase only loads HERE */}
-            <div className={styles.bookingModalBody}>
-              <Suspense fallback={
-                <div className={styles.bookingLoader} role="status" aria-label="Loading booking form">
-                  <div className={styles.bookingLoaderSpinner} />
-                  <p>Loading form…</p>
-                </div>
-              }>
-                <QuickBookForm onClose={closeBooking} />
-              </Suspense>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* ── FUNPARK POPUP ── */}
       {showFunPark && (

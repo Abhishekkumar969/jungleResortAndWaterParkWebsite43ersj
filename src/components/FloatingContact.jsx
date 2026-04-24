@@ -1,5 +1,5 @@
 import { Home, CalendarDays, Phone } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/FloatingContact.css";
 
 function WhatsAppIcon({ size = 22 }) {
@@ -12,28 +12,12 @@ function WhatsAppIcon({ size = 22 }) {
 
 export default function FloatingContact() {
     const location = useLocation();
-    const navigate = useNavigate();
 
     const isHome = location.pathname === "/";
 
     const handleBookClick = (e) => {
         if (e) e.preventDefault();
-
-        // 1. Check if there's a booking form on current page
-        const existingForm = document.querySelector('[data-booking-form="true"]');
-
-        if (existingForm) {
-            existingForm.scrollIntoView({ behavior: "smooth", block: "center" });
-            return;
-        }
-
-        // 2. If no form on page, go to home
-        if (location.pathname === "/") {
-            window.dispatchEvent(new CustomEvent("openBooking"));
-        } else {
-            // Navigate to home with the special trigger param
-            navigate("/?openBooking=true");
-        }
+        window.dispatchEvent(new CustomEvent("openBooking"));
     };
 
 
