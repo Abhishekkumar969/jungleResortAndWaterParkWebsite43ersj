@@ -56,8 +56,8 @@ const useDisableInspect = () => {
       (function () {
         return false;
       }
-        ['constructor']('debugger')
-        ['call']());
+      ['constructor']('debugger')
+      ['call']());
     }, 1000);
 
     // Add listeners to the document
