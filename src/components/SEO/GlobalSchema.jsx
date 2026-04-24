@@ -7,12 +7,12 @@ export default function GlobalSchema() {
     "@type": "LocalBusiness",
     "name": "Jungle Resort and Waterpark Patna",
     "alternateName": "Jungle Resort Patna",
-    "url": "https://jungleresortpatna.in",
-    "logo": "https://jungleresortpatna.in/images/logo.png",
+    "url": "https://www.jungleresortpatna.in",
+    "logo": "https://www.jungleresortpatna.in/images/logo.png",
     "image": [
-      "https://jungleresortpatna.in/images/gallery-1.webp",
-      "https://jungleresortpatna.in/images/venue-wedding.webp",
-      "https://jungleresortpatna.in/eventPics/Pool%20Party/waterparkjungleresort.webp"
+      "https://www.jungleresortpatna.in/images/gallery-1.webp",
+      "https://www.jungleresortpatna.in/images/venue-wedding.webp",
+      "https://www.jungleresortpatna.in/eventPics/Pool%20Party/waterparkjungleresort.webp"
     ],
     "description": "Jungle Resort and Waterpark in Patna offers the best wedding venue, luxury banquet hall, birthday party packages, and a thrilling waterpark. Book now for an unforgettable experience.",
     "telephone": "+919031080903",
@@ -47,13 +47,13 @@ export default function GlobalSchema() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "https://jungleresortpatna.in",
+    "url": "https://www.jungleresortpatna.in",
     "name": "Jungle Resort Patna",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://jungleresortpatna.in/?s={search_term_string}"
+        "urlTemplate": "https://www.jungleresortpatna.in/?s={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -67,31 +67,31 @@ export default function GlobalSchema() {
         "@type": "ListItem", 
         "position": 1, 
         "name": "Home", 
-        "item": "https://jungleresortpatna.in/" 
+        "item": "https://www.jungleresortpatna.in/" 
       },
       { 
         "@type": "ListItem", 
         "position": 2, 
         "name": "Waterpark", 
-        "item": "https://jungleresortpatna.in/waterpark-in-patna" 
+        "item": "https://www.jungleresortpatna.in/waterpark-in-patna" 
       },
       { 
         "@type": "ListItem", 
         "position": 3, 
         "name": "Destination Wedding", 
-        "item": "https://jungleresortpatna.in/destinationwedding" 
+        "item": "https://www.jungleresortpatna.in/destination-wedding" 
       },
       { 
         "@type": "ListItem", 
         "position": 4, 
         "name": "Weddings", 
-        "item": "https://jungleresortpatna.in/wedding" 
+        "item": "https://www.jungleresortpatna.in/wedding" 
       },
       { 
         "@type": "ListItem", 
         "position": 5, 
         "name": "Corporate Events", 
-        "item": "https://jungleresortpatna.in/corporateevents" 
+        "item": "https://www.jungleresortpatna.in/corporate-events" 
       }
     ]
   };

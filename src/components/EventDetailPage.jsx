@@ -54,9 +54,9 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
                 <meta property="og:title" content={helmet.title} />
                 <meta property="og:description" content={helmet.description} />
                 <meta property="og:image" content={helmet.ogImage} />
-                <meta property="og:url" content={`https://jungleresortpatna.in${helmet.canonical}`} />
+                <meta property="og:url" content={`https://www.jungleresortpatna.in${helmet.canonical}`} />
                 <meta property="og:type" content="website" />
-                <link rel="canonical" href={`https://jungleresortpatna.in${helmet.canonical}`} />
+                <link rel="canonical" href={`https://www.jungleresortpatna.in${helmet.canonical}`} />
             </Helmet>
 
             <div className={styles.eventPage}>
