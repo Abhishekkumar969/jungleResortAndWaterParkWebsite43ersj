@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#d11a68" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -83,7 +83,53 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <div id="root">
+    <!-- SEO Fallback Content: This is replaced by React on load -->
+    <header style="display:none;">
+      <nav>
+        <img src="/logo-red-yellow.png" alt="Jungle Resort Patna Logo" width="150">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/destination-wedding">Destination Wedding</a></li>
+          <li><a href="/waterpark-in-patna">Water Park</a></li>
+          <li><a href="/cottage-in-patna">Cottage Rooms</a></li>
+          <li><a href="/wedding">Wedding Venue</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main style="padding: 20px; max-width: 800px; margin: 0 auto; display:none;">
+      <section>
+        <h1>Welcome to Jungle Resort & Waterpark, Patna</h1>
+        <p>Patna's Premier Destination for Weddings, Events & Water Park Fun.</p>
+        <p>Jungle Resort Patna offers a luxurious experience with top-notch amenities including a world-class Water
+          Park, elegant Banquet Halls, and comfortable Cottage Rooms. Whether you are planning a destination wedding, a
+          corporate event, or a fun-filled family day out at the water park, Jungle Resort is the best choice in Patna,
+          Bihar.</p>
+      </section>
+      <section>
+        <h2>Our Services</h2>
+        <ul>
+          <li><strong>Wedding Venue:</strong> The most beautiful wedding lawn and banquet hall in Patna for your special
+            day.</li>
+          <li><strong>Water Park:</strong> Enjoy thrilling water slides and pool parties in Patna.</li>
+          <li><strong>Cottage Rooms:</strong> Stay in luxury with our beautifully designed cottage rooms.</li>
+          <li><strong>Events:</strong> Perfect for Birthdays, Anniversaries, Corporate Meetings, and Kitty Parties.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Why Choose Jungle Resort Patna?</h2>
+        <p>Located in the heart of Patna, Jungle Resort combines luxury with nature. We provide personalized event
+          planning services, exquisite catering, and a safe, fun environment for children and adults alike at our water
+          park. Discover why we are rated as the best resort in Patna.</p>
+      </section>
+    </main>
+    <footer style="display:none;">
+      <p>&copy; 2026 Jungle Resort & Waterpark Patna. All rights reserved.</p>
+      <p>Address: Bypass Thana, Marcha - Mirchi Road, Dharamsala, Patna, Bihar 800009</p>
+      <p>Phone: +91-9031080901, 9031080902, 9031080903</p>
+    </footer>
+  </div>
 
   <!-- Structured Data: LocalBusiness Schema for SEO -->
   <script type="application/ld+json">
