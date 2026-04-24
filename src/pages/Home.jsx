@@ -28,6 +28,7 @@ function HomePage() {
           name="keywords"
           content="resort in patna, banquet hall patna, wedding venue patna, birthday party hall patna, water park patna"
         />
+        <link rel="canonical" href="https://www.jungleresortpatna.in/" />
       </Helmet>
 
       <Navbar />

@@ -10,7 +10,7 @@ export default function RingCeremonyDetails() {
                 description: "Host a memorable ring ceremony or sagai at Jungle Resort Patna with premium décor, catering & event planning services.",
                 keywords: "Ring ceremony Patna, Sagai venue Patna, Ring ceremony banquet hall Patna, Jungle Resort ring ceremony",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
-                canonical: "/ringceremony",
+                canonical: "/ring-ceremony",
             }}
             hero={{
                 bg: "/eventPics/Wed/jungleresort1.webp",

@@ -10,7 +10,7 @@ export default function CorporatePartyDetails() {
                 description: "Organize an exciting corporate party at Jungle Resort Patna with DJ, pool access, catering & team fun. Book corporate party venue today!",
                 keywords: "Corporate party Patna, Office party Patna, Company party venue Patna, Jungle Resort corporate party",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/jungleresort.webp",
-                canonical: "/corporateparty",
+                canonical: "/corporate-party",
             }}
             hero={{
                 bg: "/eventPics/Wed/jungleresort.webp",

@@ -96,7 +96,7 @@ function App() {
           <Route path="/my-tickets" element={<Suspense fallback={<Loader />}>  <MyTickets /> </Suspense>} />
 
           <Route path="/about-us" element={<Suspense fallback={<Loader />}>  <AboutUs /> </Suspense>} />
-          <Route path="/Services" element={<Suspense fallback={<Loader />}>  <Services /> </Suspense>} />
+          <Route path="/services" element={<Suspense fallback={<Loader />}>  <Services /> </Suspense>} />
 
           <Route path="/waterpark-in-patna" element={<Suspense fallback={<Loader />}>  <Waterpark /> </Suspense>} />
           <Route path="/cottage-in-patna" element={<Suspense fallback={<Loader />}>  <CottageInPatna /> </Suspense>} />

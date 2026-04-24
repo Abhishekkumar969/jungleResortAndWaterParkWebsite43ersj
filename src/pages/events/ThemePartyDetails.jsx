@@ -10,7 +10,7 @@ export default function ThemePartyDetails() {
                 description: "Host an exciting theme party at Jungle Resort Patna with creative décor, DJ, pool party & customized setups for all themes.",
                 keywords: "Theme party venue Patna, Costume party Patna, Themed event Patna, Jungle Resort theme party",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/jungleresort.webp",
-                canonical: "/themeparty",
+                canonical: "/theme-party",
             }}
             hero={{
                 bg: "/eventPics/Wed/jungleresort.webp",

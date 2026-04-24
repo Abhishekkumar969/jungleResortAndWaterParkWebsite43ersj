@@ -1,5 +1,6 @@
 import React from "react";
 import { TreePine, Heart, Sparkles, Award } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 import Navbar from "../components/navigation-temp";
 import Footer from "../components/footer-temp";
@@ -16,6 +17,14 @@ const features = [
 export default function AboutSection() {
   return (
     <>
+      <Helmet>
+        <title>About Us | Jungle Resort & Water Park Patna</title>
+        <meta
+          name="description"
+          content="Learn more about Jungle Resort & Waterpark, Patna's premier destination for luxury weddings, events, and family fun. Discover our mission and facilities."
+        />
+        <link rel="canonical" href="https://www.jungleresortpatna.in/about-us" />
+      </Helmet>
       <Navbar />
       <section className={styles.aboutSection}>
         <div className={styles.container}>

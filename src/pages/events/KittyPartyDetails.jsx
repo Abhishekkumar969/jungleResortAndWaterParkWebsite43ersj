@@ -10,7 +10,7 @@ export default function KittyPartyDetails() {
                 description: "Host a fun and luxurious kitty party at Jungle Resort Patna with themed décor, lunch buffet, games & entertainment. Book today!",
                 keywords: "Kitty party venue Patna, Ladies party Patna, Kitty party lunch Patna, Jungle Resort kitty party",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
-                canonical: "/kittyparty",
+                canonical: "/kitty-party",
             }}
             hero={{
                 bg: "/eventPics/Wed/venue-wedding.webp",

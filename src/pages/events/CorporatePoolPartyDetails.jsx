@@ -10,7 +10,7 @@ export default function CorporatePoolPartyDetails() {
                 description: "Plan an exciting corporate pool party at Jungle Resort Patna waterpark with DJ, rain dance & team fun activities. Book today!",
                 keywords: "Corporate pool party Patna, Office pool party Patna, Team pool party Patna, Jungle Resort waterpark corporate",
                 ogImage: "https://jungleresortpatna.in/eventPics/Pool Party/waterparkjungleresort.webp",
-                canonical: "/corporatepoolparty",
+                canonical: "/corporate-pool-party",
             }}
             hero={{
                 bg: "/eventPics/Pool%20Party/waterparkjungleresort.webp",

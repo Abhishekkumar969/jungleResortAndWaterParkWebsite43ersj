@@ -10,7 +10,7 @@ export default function GetTogetherDetails() {
                 description: "Host a memorable get together or family reunion at Jungle Resort Patna with excellent food, fun activities & beautiful ambiance.",
                 keywords: "Get together venue Patna, Family reunion Patna, Friends gathering Patna, Jungle Resort get together",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/jungleresort.webp",
-                canonical: "/gettogether",
+                canonical: "/get-together",
             }}
             hero={{
                 bg: "/eventPics/Wed/jungleresort.webp",

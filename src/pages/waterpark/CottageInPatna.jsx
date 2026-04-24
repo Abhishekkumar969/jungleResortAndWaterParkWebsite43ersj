@@ -21,10 +21,10 @@ export default function CottageInPatna() {
                 />
                 <meta property="og:title" content="Luxury Cottage Stay in Patna | Jungle Resort Patna" />
                 <meta property="og:description" content="Private AC cottages, peaceful jungle ambiance & water park access – enjoy the best stay in Patna at Jungle Resort." />
-                <meta property="og:image" content="https://jungleresortpatna.in/images/cottage-main.webp" />
-                <meta property="og:url" content="https://jungleresortpatna.in/cottage-in-patna" />
+                <meta property="og:image" content="https://www.jungleresortpatna.in/images/cottage-main.webp" />
+                <meta property="og:url" content="https://www.jungleresortpatna.in/cottage-in-patna" />
                 <meta property="og:type" content="website" />
-                <link rel="canonical" href="https://jungleresortpatna.in/cottage-in-patna" />
+                <link rel="canonical" href="https://www.jungleresortpatna.in/cottage-in-patna" />
 
                 <script type="application/ld+json">
                     {`
@@ -36,13 +36,13 @@ export default function CottageInPatna() {
    "@type": "ListItem",
    "position": 1,
    "name": "Home",
-   "item": "https://jungleresortpatna.in/"
+   "item": "https://www.jungleresortpatna.in/"
   },
   {
    "@type": "ListItem",
    "position": 2,
    "name": "Cottage Stay",
-   "item": "https://jungleresortpatna.in/cottage-in-patna"
+   "item": "https://www.jungleresortpatna.in/cottage-in-patna"
   }
  ]
 }

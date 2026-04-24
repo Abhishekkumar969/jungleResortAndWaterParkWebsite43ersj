@@ -10,7 +10,7 @@ export default function PoolPartyDetails() {
                 description: "Enjoy pool party at Jungle Resort Patna with DJ, rain dance, water fun & exciting activities. Book best pool party venue today!",
                 keywords: "Pool party Patna, Rain dance Patna, Water party Patna, Jungle Resort pool party",
                 ogImage: "https://jungleresortpatna.in/eventPics/Pool Party/waterparkjungleresort.webp",
-                canonical: "/poolparty",
+                canonical: "/pool-party",
             }}
             hero={{
                 bg: "/eventPics/Pool%20Party/waterparkjungleresort.webp",

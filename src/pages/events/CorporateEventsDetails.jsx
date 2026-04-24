@@ -10,7 +10,7 @@ export default function CorporateEventsDetails() {
                 description: "Host corporate meetings, conferences & team events at Jungle Resort Patna. Premium AV setup, catering & team-building activities.",
                 keywords: "Corporate event venue Patna, Conference hall Patna, Team outing Patna, Corporate party Patna, Jungle Resort corporate",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
-                canonical: "/corporateevents",
+                canonical: "/corporate-events",
             }}
             hero={{
                 bg: "/eventPics/Wed/venue-wedding.webp",

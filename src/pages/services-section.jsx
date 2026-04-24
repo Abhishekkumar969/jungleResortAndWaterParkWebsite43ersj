@@ -49,9 +49,19 @@ const services = [
     }
 ];
 
+import { Helmet } from "react-helmet";
+
 export default function ServicesSection() {
     return (
         <>
+            <Helmet>
+                <title>Our Services | Jungle Resort & Water Park Patna</title>
+                <meta
+                    name="description"
+                    content="Explore our comprehensive services including gourmet catering, photography, event management, and more at Jungle Resort & Waterpark Patna."
+                />
+                <link rel="canonical" href="https://www.jungleresortpatna.in/Services" />
+            </Helmet>
             <Navbar />
             <section className={styles.servicesSection}>
 
@@ -156,7 +166,7 @@ export default function ServicesSection() {
 
                         <p>
                             Looking for a <strong>wedding venue in Patna</strong>? Explore our{" "}
-                            <Link to="/AboutUs"><strong>Jungle Resort & Water Park</strong></Link>{" "}
+                            <Link to="/about-us"><strong>Jungle Resort & Water Park</strong></Link>{" "}
                             to know more about our premium facilities.
                         </p>
 

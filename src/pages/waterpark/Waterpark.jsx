@@ -24,10 +24,10 @@ export default function WaterparkPage() {
 
                 <meta property="og:title" content="Best Water Park in Patna | Jungle Resort Water Park" />
                 <meta property="og:description" content="Wave pool, rain dance, DJ & slides – enjoy the best water park in Patna at Jungle Resort." />
-                <meta property="og:image" content="https://jungleresortpatna.in/WaterParkAds/6.jpeg" />
-                <meta property="og:url" content="https://jungleresortpatna.in/waterpark-in-patna" />
+                <meta property="og:image" content="https://www.jungleresortpatna.in/WaterParkAds/6.jpeg" />
+                <meta property="og:url" content="https://www.jungleresortpatna.in/waterpark-in-patna" />
                 <meta property="og:type" content="website" />
-                <link rel="canonical" href="https://jungleresortpatna.in/waterpark-in-patna" />
+                <link rel="canonical" href="https://www.jungleresortpatna.in/waterpark-in-patna" />
 
                 <script type="application/ld+json">
                     {`
@@ -39,13 +39,13 @@ export default function WaterparkPage() {
    "@type": "ListItem",
    "position": 1,
    "name": "Home",
-   "item": "https://jungleresortpatna.in/"
+   "item": "https://www.jungleresortpatna.in/"
   },
   {
    "@type": "ListItem",
    "position": 2,
    "name": "Waterpark",
-   "item": "https://jungleresortpatna.in/waterpark-in-patna"
+   "item": "https://www.jungleresortpatna.in/waterpark-in-patna"
   }
  ]
 }

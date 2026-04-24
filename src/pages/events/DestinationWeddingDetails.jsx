@@ -10,7 +10,7 @@ export default function DestinationWeddingDetails() {
                 description: "Plan a magical destination wedding at Jungle Resort Patna with lush greenery, luxury décor, and all-inclusive packages. Book today!",
                 keywords: "Destination wedding Patna, Wedding resort Bihar, Luxury wedding venue Patna, Jungle Resort destination wedding",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
-                canonical: "/destinationwedding",
+                canonical: "/destination-wedding",
             }}
             hero={{
                 bg: "/eventPics/Wed/jungleresort.webp",
