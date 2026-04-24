@@ -46,7 +46,7 @@ export default function BookingOptions({ onSelectEvent, onClose }) {
 
     return (
         <div className={styles.optionsContainer}>
-            <p className={styles.optionsHeading}>What would you like to book?</p>
+            <p className={styles.optionsHeading}>Popular Options</p>
             <div className={styles.optionsList}>
                 {options.map((option) => {
                     const Icon = option.icon;
