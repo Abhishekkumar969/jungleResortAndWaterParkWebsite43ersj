@@ -10,6 +10,7 @@ import FloatingCartPill from "./components/FloatingCartPill";
 import useScrollReveal from "./hooks/useScrollReveal";
 import GlobalSchema from "./components/SEO/GlobalSchema";
 import ScrollProgress from "./components/ScrollProgress";
+import BookingModal from "./components/BookingModal";
 
 
 
@@ -25,7 +26,7 @@ const MyTickets = lazy(() => import("./pages/MyTickets"));
 const Gallery = lazy(() => import("./pages/gallery/Gallery"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const AboutUs = lazy(() => import("./pages/about-section"));
-const Services = lazy(() => import("./pages/services-section"));
+const Services = lazy(() => import("./pages/services"));
 const Waterpark = lazy(() => import("./pages/waterpark/Waterpark"));
 const CottageInPatna = lazy(() => import("./pages/waterpark/CottageInPatna"));
 const FunPark = lazy(() => import("./pages/events/FunParkDetails"));
@@ -79,6 +80,7 @@ function App() {
     <Router>
       <ScrollProgress />
       <GlobalSchema />
+      <BookingModal />
       <Layout>
         <ScrollToTop />
 

@@ -60,7 +60,7 @@ export default function ServicesSection() {
                     name="description"
                     content="Explore our comprehensive services including gourmet catering, photography, event management, and more at Jungle Resort & Waterpark Patna."
                 />
-                <link rel="canonical" href="https://www.jungleresortpatna.in/Services" />
+                <link rel="canonical" href="https://www.jungleresortpatna.in/services" />
             </Helmet>
             <Navbar />
             <section className={styles.servicesSection}>
