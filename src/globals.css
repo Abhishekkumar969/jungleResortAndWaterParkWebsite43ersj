@@ -414,15 +414,15 @@ button:active,
   }
 
   [class*="container"] {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   /* Specific adjustments for cards and modals */
   [class*="modal"],
   [class*="card"] {
-    width: 95% !important;
-    padding: 15px !important;
+    width: 95%;
+    padding: 15px;
   }
 }
 
@@ -445,14 +445,14 @@ button:active,
   /* Reduce gaps and margins */
   [class*="field"],
   [class*="row"] {
-    gap: 8px !important;
-    margin-bottom: 10px !important;
+    gap: 8px;
+    margin-bottom: 10px;
   }
 
   /* Force stack any remaining side-by-side elements */
   .callBtns {
     flex-direction: column;
-    gap: 8px !important;
+    gap: 8px;
   }
 
   .callBtn {

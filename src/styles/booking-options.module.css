@@ -1,5 +1,6 @@
 .optionsContainer {
-    padding: 0 15px 15px;
+    padding: 0 10px 10px;
+    /* Reduced side padding */
     width: 100%;
 }
 
@@ -7,46 +8,58 @@
     text-align: center;
     font-size: 0.85rem;
     color: #666;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     margin-top: -5px;
-    /* Move it higher up */
     font-weight: 500;
 }
 
 .optionsList {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    /* Reduced gap between cards */
+}
+
+/* Tablet optimization */
+@media (min-width: 601px) {
+    .optionsList {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .optionsContainer {
+        padding: 0 15px 15px;
+    }
 }
 
 .optionCard {
-    display: flex;
-    flex-direction: row;
-    /* Change to horizontal layout to save height */
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
     background: #fff;
     border-radius: 12px;
+    /* Slightly smaller radius for cleaner look */
     overflow: hidden;
     cursor: pointer;
     transition: all 0.2s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    height: 80px;
-    /* Fixed height for consistency */
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    height: 90px !important;
+    width: 100%;
 }
 
 .optionCard:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: #e72e7744;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    border-color: #e72e7733;
 }
 
 .cardImage {
     position: relative;
-    height: 100%;
-    width: 100px;
-    /* Fixed width for image on the left */
+    height: 100% !important;
+    width: 95px !important;
     overflow: hidden;
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
 }
 
 .cardImage img {
@@ -61,21 +74,23 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 .cardContent {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
+    padding: 0 12px;
     flex: 1;
+    min-width: 0;
 }
 
 .cardInfo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    min-width: 0;
 }
 
 .iconWrapper {
@@ -88,35 +103,91 @@
     flex-shrink: 0;
 }
 
+.textWrapper {
+    min-width: 0;
+}
+
 .textWrapper h3 {
     margin: 0;
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 800;
     color: #1a1a1a;
+    line-height: 1.2;
 }
 
 .textWrapper p {
     margin: 2px 0 0;
     font-size: 0.75rem;
     color: #666;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .arrow {
     color: #ccc;
-    transition: all 0.3s ease;
-}
-
-.optionCard:hover .arrow {
-    color: #e72e77;
-    transform: translateX(5px);
+    flex-shrink: 0;
+    margin-left: 4px;
 }
 
 @media (max-width: 480px) {
+    .optionsContainer {
+        padding: 0 8px 10px;
+        /* Even tighter padding for mobile */
+    }
+
+    .optionCard {
+        height: 85px !important;
+    }
+
     .cardImage {
-        width: 80px;
+        width: 85px !important;
     }
 
     .cardContent {
         padding: 0 10px;
+    }
+
+    .cardInfo {
+        gap: 8px;
+    }
+
+    .iconWrapper {
+        width: 28px;
+        height: 28px;
+    }
+
+    .textWrapper h3 {
+        font-size: 0.9rem;
+    }
+
+    .textWrapper p {
+        font-size: 0.7rem;
+    }
+
+    [class*="modal"],
+    [class*="card"] {
+        width: 95%;
+        padding: 1px;
+    }
+}
+
+@media (max-width: 360px) {
+    .optionsContainer {
+        padding: 0 6px 8px;
+    }
+
+    .cardImage {
+        width: 75px !important;
+    }
+
+    .iconWrapper {
+        width: 24px;
+        height: 24px;
+    }
+
+    .textWrapper h3 {
+        font-size: 0.85rem;
     }
 }
