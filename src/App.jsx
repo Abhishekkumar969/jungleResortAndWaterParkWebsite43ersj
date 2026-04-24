@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingContact from "./components/FloatingContact";
 import FloatingCartPill from "./components/FloatingCartPill";
 import useScrollReveal from "./hooks/useScrollReveal";
+import useDisableInspect from "./hooks/useDisableInspect";
 import GlobalSchema from "./components/SEO/GlobalSchema";
 import ScrollProgress from "./components/ScrollProgress";
 import BookingModal from "./components/BookingModal";
@@ -59,22 +60,7 @@ if ("serviceWorker" in navigator) {
 
 function App() {
   useScrollReveal();
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (
-        (e.ctrlKey && (e.key === "+" || e.key === "-" || e.key === "=")) ||
-        (e.ctrlKey && e.key === "0")
-      ) {
-        e.preventDefault();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
+  useDisableInspect();
 
   return (
     <Router>
