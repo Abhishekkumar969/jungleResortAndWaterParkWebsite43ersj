@@ -333,6 +333,19 @@
 }
 
 
+.mobile-menu.active a:nth-child(7) {
+  transition-delay: 0.35s;
+}
+
+.mobile-menu.active a:nth-child(8) {
+  transition-delay: 0.40s;
+}
+
+.mobile-menu.active a:nth-child(9) {
+  transition-delay: 0.45s;
+}
+
+
 /* ==============================================
    RESPONSIVE BREAKPOINTS
    ============================================== */

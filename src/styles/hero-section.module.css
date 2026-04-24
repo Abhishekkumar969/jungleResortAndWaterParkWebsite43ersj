@@ -522,7 +522,7 @@
 
 @media (max-width: 480px) {
   .heroSection {
-    min-height: 100svh;
+    min-height: 90svh;
   }
 
   .heroBg {
@@ -561,7 +561,7 @@
   }
 
   .heroContent {
-    padding: 85px 16px 50px;
+    padding: 50px 16px 50px;
     gap: 18px;
   }
 
