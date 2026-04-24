@@ -8,7 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingContact from "./components/FloatingContact";
 import FloatingCartPill from "./components/FloatingCartPill";
 import useScrollReveal from "./hooks/useScrollReveal";
-// import useDisableInspect from "./hooks/useDisableInspect";
+import useDisableInspect from "./hooks/useDisableInspect";
 import GlobalSchema from "./components/SEO/GlobalSchema";
 import ScrollProgress from "./components/ScrollProgress";
 import BookingModal from "./components/BookingModal";
@@ -58,7 +58,7 @@ if ("serviceWorker" in navigator) {
 
 function App() {
   useScrollReveal();
-  // useDisableInspect();
+  useDisableInspect();
 
   return (
     <Router>
