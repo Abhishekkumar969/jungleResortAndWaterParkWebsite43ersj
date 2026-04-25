@@ -19,7 +19,6 @@ const mobileNavLinks = [
   { href: "/", label: "HOME" },
   { href: "/destination-wedding", label: "DESTINATION WEDDING" },
   { href: "/cottage-in-patna", label: "COTTAGE ROOMS" },
-  { label: "DOWNLOAD YOUR TICKETS NOW", isDownload: true },
   { href: "/about-us", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
   { href: "/gallery", label: "GALLERY" },
@@ -191,14 +190,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Download Ticket Button (Desktop) */}
-            <button
-              onClick={openTicketSearch}
-              className="btn-outlines"
-              style={{ padding: "8px 16px", background: "#ffffff", color: "#e72e77", border: "none", cursor: "pointer" }}
-            >
-              DOWNLOAD YOUR TICKETS NOW
-            </button>
 
             {/* CART */}
             <button
