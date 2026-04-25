@@ -13,20 +13,13 @@ const navLinks = [
   { href: "/services", label: "SERVICES" },
   { href: "/gallery", label: "GALLERY" },
   { href: "/blog", label: "BLOG" },
-  {
-    href: "tel:9065383838",
-    label: "ENQUIRY NOW",
-    className: "btn-outlines",
-    isExternal: true,
-    isCall: true
-  }
 ];
 
 const mobileNavLinks = [
   { href: "/", label: "HOME" },
   { href: "/destination-wedding", label: "DESTINATION WEDDING" },
   { href: "/cottage-in-patna", label: "COTTAGE ROOMS" },
-  { href: "/waterpark-in-patna", label: "WATER PARK" },
+  { label: "DOWNLOAD YOUR TICKETS NOW", isDownload: true },
   { href: "/about-us", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
   { href: "/gallery", label: "GALLERY" },
@@ -35,6 +28,10 @@ const mobileNavLinks = [
 
 const waterparkNavLinks = [
   { href: "/waterpark-in-patna", label: "WATER PARK TICKETS", className: "waterpark-btn-outlines" }
+];
+
+const cottageNavLinks = [
+  { href: "/cottage-in-patna", label: "COTTAGE TICKETS", className: "btn-outlines" }
 ];
 
 export default function Navbar() {
@@ -49,6 +46,10 @@ export default function Navbar() {
   // ── Checkout state (lifted here so it persists after Cart unmounts) ──
   const [showCheckout, setShowCheckout] = useState(false);
   const [checkoutData, setCheckoutData] = useState(null);
+
+  const openTicketSearch = () => {
+    window.dispatchEvent(new CustomEvent("openTicketSearchModal"));
+  };
 
   // Apply/remove inert when menu opens/closes
   useEffect(() => {
@@ -164,6 +165,18 @@ export default function Navbar() {
           </div>
 
           <div className="nav-right">
+            {/* Cottage Button */}
+            <div>
+              {cottageNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={link.className || ""}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
 
             {/* Waterpark Button */}
             <div>
@@ -177,6 +190,15 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
+
+            {/* Download Ticket Button (Desktop) */}
+            <button
+              onClick={openTicketSearch}
+              className="btn-outlines"
+              style={{ padding: "8px 16px", background: "#ffffff", color: "#e72e77", border: "none", cursor: "pointer" }}
+            >
+              DOWNLOAD YOUR TICKETS NOW
+            </button>
 
             {/* CART */}
             <button
@@ -229,13 +251,40 @@ export default function Navbar() {
       >
         <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
           {mobileNavLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </Link>
+            link.isDownload ? (
+              <button
+                key="mobile-download"
+                onClick={() => {
+                  setIsOpen(false);
+                  openTicketSearch();
+                }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "14px 24px",
+                  color: "#1a1a1a",
+                  fontSize: "14px",
+                  fontWeight: "800",
+                  letterSpacing: "0.5px",
+                  background: "none",
+                  border: "none",
+                  borderBottom: "1px solid #f0f0f0",
+                  width: "100%",
+                  cursor: "pointer",
+                  textAlign: "left"
+                }}
+              >
+                {link.label}
+              </button>
+            ) : (
+              <Link
+                key={link.href}
+                to={link.href}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </div>
 
@@ -263,23 +312,25 @@ export default function Navbar() {
         </div>
       </div>
 
-      {cartOpen && (
-        <Suspense fallback={null}>
-          <Cart
-            isOpen={cartOpen}
-            onClose={() => {
-              setCartOpen(false);
-              window.dispatchEvent(new Event("closeCart"));
-            }}
-            onProceed={(data) => {
-              setCheckoutData(data);
-              setCartOpen(false);
-              window.dispatchEvent(new Event("closeCart"));
-              setShowCheckout(true);
-            }}
-          />
-        </Suspense>
-      )}
+      {
+        cartOpen && (
+          <Suspense fallback={null}>
+            <Cart
+              isOpen={cartOpen}
+              onClose={() => {
+                setCartOpen(false);
+                window.dispatchEvent(new Event("closeCart"));
+              }}
+              onProceed={(data) => {
+                setCheckoutData(data);
+                setCartOpen(false);
+                window.dispatchEvent(new Event("closeCart"));
+                setShowCheckout(true);
+              }}
+            />
+          </Suspense>
+        )
+      }
 
       <Checkout
         isOpen={showCheckout}
@@ -287,6 +338,6 @@ export default function Navbar() {
         data={checkoutData}
       />
 
-    </header>
+    </header >
   );
 }

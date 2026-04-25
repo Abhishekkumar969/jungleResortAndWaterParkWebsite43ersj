@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { Check, Star, Users, Baby, Crown, Sparkles, Play, ShieldCheck, Coffee, Wind, Bed, Tv, Wifi, Waves, Heart, Camera, ArrowRight } from "lucide-react";
+import { Check, Star, Users, Baby, Crown, Sparkles, Play, ShieldCheck, Coffee, Wind, Bed, Tv, Wifi, Waves, Heart, Camera, Ticket } from "lucide-react";
 import styles from "../../styles/tickets.module.css";
 import cottageStyles from "../../styles/cottage-booking.module.css";
 import TicketSearch from "../TicketSearch";
@@ -195,6 +194,8 @@ export default function CottagePricing() {
                 </div>
             </section>
 
+
+
             {/* ════════════ TRUST POINTS ════════════ */}
             <div style={{ background: "#fff", padding: "20px 0", borderBottom: "1px solid #f0f0f0" }}>
                 <div className={cottageStyles.sectionWrap} style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap", gap: "20px" }}>
@@ -211,8 +212,6 @@ export default function CottagePricing() {
                     })}
                 </div>
             </div>
-
-
 
             {/* ════════════ VIDEO & GALLERY SECTION ════════════ */}
             <section className={cottageStyles.videoSection}>
@@ -267,6 +266,12 @@ export default function CottagePricing() {
                 </div>
             </section>
 
+            <div className={styles.ticketsHeader}>
+                <div className={styles.sectionIcon}><Ticket size={24} /></div>
+                <h2>Already have a <span>Booking?</span></h2>
+                <p>Book online to get guaranteed entry and avoid long queues at the counter.</p>
+                <div className={styles.searchWrap} data-booking-form="true"><TicketSearch /></div>
+            </div>
 
             {/* ════════════ PACKAGE SELECTION ════════════ */}
             <section className={cottageStyles.packageSection}>
@@ -339,11 +344,9 @@ export default function CottagePricing() {
             {/* ════════════ WATERPARK ADDONS ════════════ */}
             <section className={styles.ticketsSection} style={{ background: "#f5f6fa", paddingBottom: "100px" }}>
                 <div className={styles.ticketsContainer}>
+
                     <div className={styles.ticketsHeader}>
                         <div style={{ display: "inline-block", padding: "10px 20px", background: "#0ea5e915", borderRadius: "30px", color: "#0ea5e9", fontSize: "12px", fontWeight: "800", textTransform: "uppercase", marginBottom: "15px" }}>Add-on Experience</div>
-                        <h2>Unlock <span>Water Park Fun</span></h2>
-                        <p>Complete your stay with our thrilling water slides, wave pool, and rain dance</p>
-                        <div className={styles.searchWrap} data-booking-form="true"><TicketSearch /></div>
                     </div>
 
                     <div className={styles.ticketsGrid}>
@@ -409,16 +412,7 @@ export default function CottagePricing() {
                     </div>
                 </div>
             </section>
-            {/* ════════════ DOWNLOAD TICKETS BANNER ════════════ */}
-            <section style={{ background: "linear-gradient(135deg, #1e293b, #0f172a)", padding: "60px 20px", textAlign: "center", color: "#fff", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-                <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-                    <h3 style={{ fontSize: "28px", fontWeight: "900", marginBottom: "15px" }}>Already have a booking? 🎟️</h3>
-                    <p style={{ color: "#94a3b8", marginBottom: "30px", fontSize: "16px" }}>Retrieve and download your tickets instantly using your phone number or booking ID.</p>
-                    <Link to="/my-tickets" style={{ background: "linear-gradient(135deg, #e91e8c, #ff6b35)", color: "#fff", padding: "16px 40px", borderRadius: "50px", fontWeight: "900", fontSize: "18px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", boxShadow: "0 20px 40px rgba(233, 30, 140, 0.3)", transition: "transform 0.3s" }} onMouseEnter={(e) => e.target.style.transform = "scale(1.05)"} onMouseLeave={(e) => e.target.style.transform = "scale(1)"}>
-                        Download Your Tickets Now <ArrowRight size={20} />
-                    </Link>
-                </div>
-            </section>
+
         </div>
     );
 }

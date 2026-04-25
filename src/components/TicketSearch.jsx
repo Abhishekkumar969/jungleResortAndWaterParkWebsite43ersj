@@ -126,6 +126,11 @@ export default function TicketSearch() {
     const [searched, setSearched] = useState(false);
     const [resultOpen, setResultOpen] = useState(false);
     const [isCancelled, setIsCancelled] = useState(false);
+    useEffect(() => {
+        const handleOpen = () => setOpen(true);
+        window.addEventListener("openTicketSearchModal", handleOpen);
+        return () => window.removeEventListener("openTicketSearchModal", handleOpen);
+    }, []);
 
 
 
@@ -244,7 +249,7 @@ export default function TicketSearch() {
                 className={styles.downloadBtn}
                 onClick={() => setOpen(true)}
             >
-                🎟️ Download Your Tickets Now
+                Download Your Tickets Now
             </button>
 
             {open && (

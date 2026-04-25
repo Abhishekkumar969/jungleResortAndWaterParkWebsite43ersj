@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Check, Star, Users, Baby, Crown, Sparkles, Waves, Music, MapPin, Clock, ShieldCheck, Ticket, Calendar, Utensils, Droplets, ArrowRight } from "lucide-react";
+import { Check, Star, Users, Baby, Crown, Sparkles, Waves, Music, MapPin, Clock, ShieldCheck, Ticket, Calendar, Utensils, Droplets } from "lucide-react";
 import styles from "../../styles/tickets.module.css";
 import cottageStyles from "../../styles/cottage-booking.module.css";
 import TicketSearch from "../TicketSearch";
@@ -139,6 +139,7 @@ export default function TicketPricing() {
 
     return (
         <div className={styles.pageWrap}>
+
             {/* ════════════ HERO ════════════ */}
             <section className={styles.heroWrap}>
                 <div className={styles.heroWrapOverlay} />
@@ -158,32 +159,12 @@ export default function TicketPricing() {
                 </div>
             </section>
 
-            {/* ════════════ FEATURES GRID ════════════ */}
-            <div style={{ background: "#fff", padding: "60px 0", borderBottom: "1px solid #f0f0f0" }}>
-                <div className={styles.ticketsContainer}>
-                    <div className={styles.ticketsGrid} style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
-                        {HIGHLIGHTS.map((h, i) => {
-                            const Icon = h.icon;
-                            return (
-                                <div key={i} style={{ display: "flex", flexDirection: "column", gap: "12px", padding: "20px" }}>
-                                    <div style={{ background: h.color + "15", width: "45px", height: "45px", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                        <Icon size={22} color={h.color} />
-                                    </div>
-                                    <h4 style={{ margin: 0, fontSize: "16px", fontWeight: "800", color: "#1a1a2e" }}>{h.title}</h4>
-                                    <p style={{ margin: 0, fontSize: "13px", color: "#6b7a8d", lineHeight: "1.5" }}>{h.desc}</p>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </div>
-
             {/* ════════════ TICKETS ════════════ */}
             <section className={styles.ticketsSection} style={{ background: "#f8fafc" }}>
                 <div className={styles.ticketsContainer}>
                     <div className={styles.ticketsHeader}>
                         <div className={styles.sectionIcon}><Ticket size={24} /></div>
-                        <h2>Select Your <span>Entry Tickets</span></h2>
+                        <h2>Already have a <span>Booking?</span></h2>
                         <p>Book online to get guaranteed entry and avoid long queues at the counter.</p>
                         <div className={styles.searchWrap} data-booking-form="true"><TicketSearch /></div>
                     </div>
@@ -287,16 +268,27 @@ export default function TicketPricing() {
                     </div>
                 </div>
             </section>
-            {/* ════════════ DOWNLOAD TICKETS BANNER ════════════ */}
-            <section style={{ background: "linear-gradient(135deg, #1e293b, #0f172a)", padding: "60px 20px", textAlign: "center", color: "#fff", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-                <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-                    <h3 style={{ fontSize: "28px", fontWeight: "900", marginBottom: "15px" }}>Already have a booking? 🎟️</h3>
-                    <p style={{ color: "#94a3b8", marginBottom: "30px", fontSize: "16px" }}>Retrieve and download your tickets instantly using your phone number or booking ID.</p>
-                    <Link to="/my-tickets" style={{ background: "linear-gradient(135deg, #e91e8c, #ff6b35)", color: "#fff", padding: "16px 40px", borderRadius: "50px", fontWeight: "900", fontSize: "18px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", boxShadow: "0 20px 40px rgba(233, 30, 140, 0.3)", transition: "transform 0.3s" }} onMouseEnter={(e) => e.target.style.transform = "scale(1.05)"} onMouseLeave={(e) => e.target.style.transform = "scale(1)"}>
-                        Download Your Tickets Now <ArrowRight size={20} />
-                    </Link>
+
+            {/* ════════════ FEATURES GRID ════════════ */}
+            <div style={{ background: "#fff", padding: "60px 0", borderBottom: "1px solid #f0f0f0" }}>
+                <div className={styles.ticketsContainer}>
+                    <div className={styles.ticketsGrid} style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+                        {HIGHLIGHTS.map((h, i) => {
+                            const Icon = h.icon;
+                            return (
+                                <div key={i} style={{ display: "flex", flexDirection: "column", gap: "12px", padding: "20px" }}>
+                                    <div style={{ background: h.color + "15", width: "45px", height: "45px", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                        <Icon size={22} color={h.color} />
+                                    </div>
+                                    <h4 style={{ margin: 0, fontSize: "16px", fontWeight: "800", color: "#1a1a2e" }}>{h.title}</h4>
+                                    <p style={{ margin: 0, fontSize: "13px", color: "#6b7a8d", lineHeight: "1.5" }}>{h.desc}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
-            </section>
+            </div>
+
         </div>
     );
 }
