@@ -6,6 +6,8 @@ import TicketSearch from "../TicketSearch";
 
 /* ─── Waterpark Tickets ─── */
 import { WATERPARK_TICKETS as tickets, COTTAGE_PKGS } from "../../constants/ticketPrices";
+import { db } from "../../firebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
 
 // Add icons back to the tickets array for rendering
 const ticketsWithIcons = tickets.map(t => {
@@ -64,7 +66,53 @@ export default function CottagePricing() {
     const [activeItem, setActiveItem] = useState(GALLERY_ITEMS[0]);
     const TOTAL_ROOMS = 5;
 
+    const [cottageDate, setCottageDate] = useState(() => {
+        const stored = JSON.parse(localStorage.getItem("cart")) || {};
+        return stored.cottage?.date || "";
+    });
+    const [availableRooms, setAvailableRooms] = useState(TOTAL_ROOMS);
+    const [isCheckingDate, setIsCheckingDate] = useState(false);
+
     const initialized = useRef(false);
+
+    /* ── Check Availability ── */
+    useEffect(() => {
+        if (!cottageDate) {
+            setAvailableRooms(TOTAL_ROOMS);
+            return;
+        }
+        const checkAvailability = async () => {
+            setIsCheckingDate(true);
+            try {
+                const [y, m, d] = cottageDate.split("-");
+                const dateObj = new Date(y, m - 1, d);
+                const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                const monthYear = `${monthNames[dateObj.getMonth()]}${dateObj.getFullYear()}`;
+
+                const snap = await getDoc(doc(db, "CottageBookings", monthYear));
+                let booked = 0;
+                if (snap.exists()) {
+                    const data = snap.data();
+                    Object.values(data).forEach(booking => {
+                        if (booking.paymentStatus === "paid" && booking.visitDate === cottageDate) {
+                            booked += (booking.cottagePackage?.rooms || 1);
+                        }
+                    });
+                }
+                const avail = Math.max(0, TOTAL_ROOMS - booked);
+                setAvailableRooms(avail);
+                setCottageRooms(prev => {
+                    if (prev > avail) return Math.max(1, avail);
+                    return prev;
+                });
+            } catch (e) {
+                console.error("Failed to fetch availability", e);
+            } finally {
+                setIsCheckingDate(false);
+            }
+        };
+        checkAvailability();
+    }, [cottageDate]);
 
     /* ── Sync from localStorage on external updates ── */
     useEffect(() => {
@@ -76,10 +124,12 @@ export default function CottagePricing() {
                 setSelectedCottage(stored.cottage.id);
                 setCottageDays(stored.cottage.days || 1);
                 setCottageRooms(stored.cottage.rooms || 1);
+                setCottageDate(stored.cottage.date || "");
             } else {
                 setSelectedCottage(null);
                 setCottageDays(1);
                 setCottageRooms(1);
+                setCottageDate("");
             }
             if (stored.items) {
                 setSelectedTickets(stored.items);
@@ -126,6 +176,7 @@ export default function CottagePricing() {
                 basePrice: pkg.price,
                 days,
                 rooms,
+                date: cottageDate,
                 addons: {},
                 addonTotal: 0,
                 total: pkg.price * days * rooms,
@@ -159,6 +210,19 @@ export default function CottagePricing() {
             if (stored.cottage) {
                 stored.cottage.days = newDays;
                 stored.cottage.total = pkg.price * newDays * cottageRooms;
+            }
+            localStorage.setItem("cart", JSON.stringify(stored));
+            window.dispatchEvent(new Event("cartUpdated"));
+        }
+    };
+
+    const handleDateChange = (e) => {
+        const newDate = e.target.value;
+        setCottageDate(newDate);
+        if (selectedCottage) {
+            const stored = JSON.parse(localStorage.getItem("cart")) || {};
+            if (stored.cottage) {
+                stored.cottage.date = newDate;
             }
             localStorage.setItem("cart", JSON.stringify(stored));
             window.dispatchEvent(new Event("cartUpdated"));
@@ -307,7 +371,28 @@ export default function CottagePricing() {
 
                                     <div className={cottageStyles.pkgNote}>⚠️ Food charges extra as per menu</div>
 
-                                    {pkg.id === "cottage1day" && isSelected && (
+                                    {isSelected && (
+                                        <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
+                                            <span className={cottageStyles.daysLabel}>Select Date</span>
+                                            <div className={cottageStyles.daysControl} style={{ width: "100%", justifyContent: "flex-end" }}>
+                                                <input
+                                                    type="date"
+                                                    min={new Date().toISOString().split("T")[0]}
+                                                    value={cottageDate}
+                                                    onChange={handleDateChange}
+                                                    style={{ padding: "6px 10px", borderRadius: "8px", border: "1px solid #e0e0e0", outline: "none", fontFamily: "inherit", fontWeight: "600", color: "#1a1a2e" }}
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {isSelected && cottageDate && (
+                                        <div style={{ textAlign: "right", fontSize: "12px", color: availableRooms <= 2 ? "#e91e8c" : "#2ecc71", fontWeight: "700", marginTop: "-5px", marginBottom: "10px" }}>
+                                            {isCheckingDate ? "Checking availability..." : `${availableRooms} cottage${availableRooms !== 1 ? "s" : ""} available on this date`}
+                                        </div>
+                                    )}
+
+                                    {pkg.id === "cottage1day" && isSelected && cottageDate && !isCheckingDate && (
                                         <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
                                             <span className={cottageStyles.daysLabel}>Number of Days</span>
                                             <div className={cottageStyles.daysControl}>
@@ -318,13 +403,13 @@ export default function CottagePricing() {
                                         </div>
                                     )}
 
-                                    {isSelected && (
+                                    {isSelected && cottageDate && !isCheckingDate && (
                                         <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
                                             <span className={cottageStyles.daysLabel}>Number of Rooms</span>
                                             <div className={cottageStyles.daysControl}>
-                                                <button className={cottageStyles.daysBtn} onClick={() => updateCottageRooms(-1)} disabled={cottageRooms <= 1}>−</button>
+                                                <button className={cottageStyles.daysBtn} onClick={() => updateCottageRooms(-1)} disabled={cottageRooms <= 1 || availableRooms === 0}>−</button>
                                                 <span className={cottageStyles.daysCount}>{cottageRooms}</span>
-                                                <button className={cottageStyles.daysBtn} onClick={() => updateCottageRooms(1)} disabled={cottageRooms >= TOTAL_ROOMS}>+</button>
+                                                <button className={cottageStyles.daysBtn} onClick={() => updateCottageRooms(1)} disabled={cottageRooms >= availableRooms}>+</button>
                                             </div>
                                         </div>
                                     )}
@@ -337,8 +422,8 @@ export default function CottagePricing() {
                         })}
                     </div>
                 </div>
-            </section>
 
+            </section>
 
 
             {/* ════════════ WATERPARK ADDONS ════════════ */}

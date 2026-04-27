@@ -253,6 +253,12 @@ export default function Checkout({ isOpen, onClose, data }) {
         return () => unsubscribe();
     }, []);
 
+    useEffect(() => {
+        if (isOpen && cottage?.date) {
+            setFormData(prev => ({ ...prev, visitDate: cottage.date }));
+        }
+    }, [isOpen, cottage?.date]);
+
     if (!isOpen && !successData) return null;
 
     // Show success screen if payment done

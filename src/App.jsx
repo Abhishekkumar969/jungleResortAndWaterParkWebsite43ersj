@@ -8,7 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingContact from "./components/FloatingContact";
 import FloatingCartPill from "./components/FloatingCartPill";
 import useScrollReveal from "./hooks/useScrollReveal";
-import useDisableInspect from "./hooks/useDisableInspect";
+// import useDisableInspect from "./hooks/useDisableInspect";
 import GlobalSchema from "./components/SEO/GlobalSchema";
 import ScrollProgress from "./components/ScrollProgress";
 import BookingModal from "./components/BookingModal";
@@ -58,7 +58,7 @@ if ("serviceWorker" in navigator) {
 
 function App() {
   useScrollReveal();
-  useDisableInspect();
+  // useDisableInspect();
 
   return (
     <Router>
@@ -123,6 +123,9 @@ function App() {
 
           <Route path="/blog" element={<Suspense fallback={<Loader />}> <Blog /> </Suspense>} />
           <Route path="/blog/:slug" element={<Suspense fallback={<Loader />}> <BlogDetails /> </Suspense>} />
+
+          {/* Catch-all route to handle unknown paths */}
+          <Route path="*" element={<Navigate to="/" replace />} />
 
         </Routes>
 
