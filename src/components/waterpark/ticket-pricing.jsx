@@ -243,7 +243,7 @@ export default function TicketPricing() {
                         <span className={styles.heroWrapPill}><MapPin size={12} /> Patna, Bihar</span>
                         <span className={styles.heroWrapPill}><Clock size={12} /> 10 AM - 6 PM</span>
                     </div>
-                    <h1>Top Waterpark in Patna - <span>Tickets & Timings</span></h1>
+                    <h1>Unforgettable <span>Water Park</span> Fun</h1>
                     <p>Escape the heat and dive into a world of excitement. Patna's largest wave pool and world-class water slides await your arrival.</p>
 
                     <div className={styles.heroBadges}>

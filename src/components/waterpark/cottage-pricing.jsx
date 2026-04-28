@@ -111,11 +111,11 @@ export default function CottagePricing() {
                             const data = snap.data();
                             for (const [bid, booking] of Object.entries(data)) {
                                 if (bookedIds.has(bid)) continue;
-
+                                
                                 // Normalize booking date comparison
                                 const bDate = booking.visitDate || "";
                                 const isPaid = booking.paymentStatus === "paid";
-
+                                
                                 if (isPaid && bDate === targetDate) {
                                     // Handle both structure types
                                     const roomCount = booking.cottagePackage?.rooms || booking.cottage?.rooms || 0;
@@ -267,7 +267,7 @@ export default function CottagePricing() {
                 <div className={cottageStyles.heroOverlay} />
                 <div className={cottageStyles.heroContent}>
                     <div className={cottageStyles.heroPill}>✨ Premium Stay Experience</div>
-                    <h1>Luxury Cottage Stay <span>In Patna</span></h1>
+                    <h1>Your Luxury Escape <span>Inside Nature</span></h1>
                     <p>Experience the perfect blend of rustic jungle vibes and modern luxury. Patna's most exclusive cottage stay awaits you.</p>
 
                     <div className={cottageStyles.heroStats}>
