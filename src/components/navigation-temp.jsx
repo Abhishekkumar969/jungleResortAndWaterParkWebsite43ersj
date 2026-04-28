@@ -9,6 +9,10 @@ const Cart = lazy(() => import("./Cart"));
 
 const navLinks = [
   { href: "/", label: "HOME" },
+  { href: "/destination-wedding", label: "DESTINATION WEDDING" },
+  { href: "/wedding", label: "WEDDING" },
+  { href: "/waterpark-in-patna", label: "WATER PARK TICKETS", className: "hide-mobile" },
+  { href: "/cottage-in-patna", label: "COTTAGE BOOKINGS", className: "hide-mobile" },
   { href: "/about-us", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
   { href: "/gallery", label: "GALLERY" },
@@ -18,19 +22,13 @@ const navLinks = [
 const mobileNavLinks = [
   { href: "/", label: "HOME" },
   { href: "/destination-wedding", label: "DESTINATION WEDDING" },
-  { href: "/cottage-in-patna", label: "COTTAGE ROOMS" },
+  { href: "/wedding", label: "WEDDING" },
+  { href: "/waterpark-in-patna", label: "WATER PARK TICKETS" },
+  { href: "/cottage-in-patna", label: "COTTAGE BOOKINGS" },
   { href: "/about-us", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
   { href: "/gallery", label: "GALLERY" },
   { href: "/blog", label: "BLOG" },
-];
-
-const waterparkNavLinks = [
-  { href: "/waterpark-in-patna", label: "WATER PARK TICKETS", className: "waterpark-btn-outlines" }
-];
-
-const cottageNavLinks = [
-  { href: "/cottage-in-patna", label: "COTTAGE TICKETS", className: "btn-outlines" }
 ];
 
 export default function Navbar() {
@@ -164,31 +162,13 @@ export default function Navbar() {
           </div>
 
           <div className="nav-right">
-            {/* Cottage Button */}
-            <div>
-              {cottageNavLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={link.className || ""}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-
-            {/* Waterpark Button */}
-            <div>
-              {waterparkNavLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={link.className || ""}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            {/* Waterpark Button - Mobile Only */}
+            <Link
+              to="/waterpark-in-patna"
+              className="waterpark-btn-outlines hide-desktop"
+            >
+              WATER PARK TICKETS
+            </Link>
 
 
             {/* CART */}

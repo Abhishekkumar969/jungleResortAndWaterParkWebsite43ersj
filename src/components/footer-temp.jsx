@@ -22,9 +22,25 @@ export default function Footer() {
   return (
     <footer className="footer">
 
+      {/* Top Bar Links */}
+      <div className="footer-top-links">
+        <div className="footer-top-container">
+          <Link to="/">HOME</Link>
+          <Link to="/destination-wedding">DESTINATION WEDDING VENUE</Link>
+          <Link to="/wedding">WEDDING BANQUET HALL</Link>
+          <Link to="/waterpark-in-patna">WATER PARK TICKETS PRICE</Link>
+          <Link to="/cottage-in-patna">LUXURY COTTAGE STAY IN PATNA</Link>
+          <Link to="/about-us">ABOUT US</Link>
+          <Link to="/services">SERVICES</Link>
+          <Link to="/gallery">GALLERY</Link>
+          <Link to="/blog">BLOG</Link>
+        </div>
+      </div>
+
       {/* Main Footer */}
       <div className="footer-container">
         <div className="footer-grid">
+
 
           {/* Brand */}
           <div className="footer-brand">
@@ -70,8 +86,8 @@ export default function Footer() {
           <div className="footer-section">
             <p className="footer-title">Events & Venues</p>
             <ul className="footer-links">
-              <li><Link to="/destination-wedding">Destination Wedding</Link></li>
-              <li><Link to="/wedding">Wedding</Link></li>
+              <li><Link to="/destination-wedding">Best Destination Wedding Venue</Link></li>
+              <li><Link to="/wedding">Luxury Wedding Banquet Hall</Link></li>
               <li><Link to="/reception">Reception</Link></li>
               <li><Link to="/theme-party">Theme Party</Link></li>
               <li><Link to="/birthday">Birthday Party</Link></li>

@@ -10,17 +10,17 @@ export default function CottageInPatna() {
     return (
         <main className={styles.waterparkPage}>
             <Helmet>
-                <title>Luxury Cottage Stay in Patna | Best Resort for Stay - Jungle Resort</title>
+                <title>Luxury Cottage Stay in Patna - Book Now | Jungle Resort & Waterpark</title>
                 <meta
                     name="description"
-                    content="Experience the best luxury cottage stay in Patna at Jungle Resort. Perfect for families and couples with private AC rooms and a peaceful jungle vibe. Book your stay now!"
+                    content="Book the finest luxury cottage stay in Patna at Jungle Resort & Waterpark. Enjoy private AC rooms, beautiful ambiance, and premium amenities. Perfect for families and couples."
                 />
                 <meta
                     name="keywords"
-                    content="cottage in patna, resort in patna for stay, best cottage in patna, luxury room in patna, jungle resort stay, couple friendly resort patna"
+                    content="cottage stay in patna, best resort in patna for stay, luxury cottages patna, jungle resort rooms, couple friendly stay patna, resort room booking patna"
                 />
-                <meta property="og:title" content="Luxury Cottage Stay in Patna | Jungle Resort Patna" />
-                <meta property="og:description" content="Private AC cottages, peaceful jungle ambiance & water park access – enjoy the best stay in Patna at Jungle Resort." />
+                <meta property="og:title" content="Luxury Cottage Stay in Patna | Jungle Resort & Waterpark" />
+                <meta property="og:description" content="Private AC cottages, beautiful ambiance & premium luxury – experience the best stay in Patna at Jungle Resort & Waterpark." />
                 <meta property="og:image" content="https://www.jungleresortpatna.in/images/cottage-main.webp" />
                 <meta property="og:url" content="https://www.jungleresortpatna.in/cottage-in-patna" />
                 <meta property="og:type" content="website" />
@@ -41,7 +41,7 @@ export default function CottageInPatna() {
   {
    "@type": "ListItem",
    "position": 2,
-   "name": "Cottage Stay",
+   "name": "Luxury Cottage Stay In Patna",
    "item": "https://www.jungleresortpatna.in/cottage-in-patna"
   }
  ]

@@ -19,14 +19,14 @@ function HomePage() {
   return (
     <main className={styles.homePage}>
       <Helmet>
-        <title>Jungle Resort Patna | Luxury Resort, Banquet Hall & Water Park</title>
+        <title>Jungle Resort & Waterpark | Luxury Resort, Destination Wedding & Water Park in Patna</title>
         <meta
           name="description"
-          content="Experience luxury and nature at Jungle Resort Patna. The perfect destination for family stays, grand weddings, corporate events, and water park fun. Visit the best resort in Patna today!"
+          content="Experience luxury and nature at Jungle Resort & Waterpark, Patna's premier destination for weddings, family stays, and grand celebrations. Features luxury banquet halls, premium cottages, and a thrilling water park."
         />
         <meta
           name="keywords"
-          content="jungle resort patna, best resort in patna, luxury stay patna, resort near me, family vacation patna"
+          content="jungle resort patna, best destination wedding venue patna, luxury resort patna, premium banquet hall patna, water park patna"
         />
         <link rel="canonical" href="https://www.jungleresortpatna.in/" />
       </Helmet>

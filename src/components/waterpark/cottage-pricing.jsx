@@ -66,9 +66,18 @@ export default function CottagePricing() {
     const [activeItem, setActiveItem] = useState(GALLERY_ITEMS[0]);
     const TOTAL_ROOMS = 5;
 
+    const getTodayIST = () => {
+        return new Intl.DateTimeFormat("en-CA", {
+            timeZone: "Asia/Kolkata",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }).format(new Date());
+    };
+
     const [cottageDate, setCottageDate] = useState(() => {
         const stored = JSON.parse(localStorage.getItem("cart")) || {};
-        return stored.cottage?.date || "";
+        return stored.cottage?.date || getTodayIST();
     });
     const [availableRooms, setAvailableRooms] = useState(TOTAL_ROOMS);
     const [isCheckingDate, setIsCheckingDate] = useState(false);
@@ -85,19 +94,41 @@ export default function CottagePricing() {
             setIsCheckingDate(true);
             try {
                 const [y, m, d] = cottageDate.split("-");
-                const dateObj = new Date(y, m - 1, d);
+                // Create date in IST to get correct month
+                const dateObj = new Date(`${y}-${m}-${d}T00:00:00+05:30`);
                 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 const monthYear = `${monthNames[dateObj.getMonth()]}${dateObj.getFullYear()}`;
 
-                const snap = await getDoc(doc(db, "CottageBookings", monthYear));
                 let booked = 0;
-                if (snap.exists()) {
-                    const data = snap.data();
-                    Object.values(data).forEach(booking => {
-                        if (booking.paymentStatus === "paid" && booking.visitDate === cottageDate) {
-                            booked += (booking.cottagePackage?.rooms || 1);
+                const bookedIds = new Set();
+                const targetDate = cottageDate; // YYYY-MM-DD
+
+                const collections = ["CottageBookings", "WaterPark"];
+                for (const col of collections) {
+                    try {
+                        const snap = await getDoc(doc(db, col, monthYear));
+                        if (snap.exists()) {
+                            const data = snap.data();
+                            for (const [bid, booking] of Object.entries(data)) {
+                                if (bookedIds.has(bid)) continue;
+
+                                // Normalize booking date comparison
+                                const bDate = booking.visitDate || "";
+                                const isPaid = booking.paymentStatus === "paid";
+
+                                if (isPaid && bDate === targetDate) {
+                                    // Handle both structure types
+                                    const roomCount = booking.cottagePackage?.rooms || booking.cottage?.rooms || 0;
+                                    if (roomCount > 0) {
+                                        booked += Number(roomCount);
+                                        bookedIds.add(bid);
+                                    }
+                                }
+                            }
                         }
-                    });
+                    } catch (err) {
+                        console.error(`Error checking ${col}:`, err);
+                    }
                 }
                 const avail = Math.max(0, TOTAL_ROOMS - booked);
                 setAvailableRooms(avail);
@@ -236,7 +267,7 @@ export default function CottagePricing() {
                 <div className={cottageStyles.heroOverlay} />
                 <div className={cottageStyles.heroContent}>
                     <div className={cottageStyles.heroPill}>✨ Premium Stay Experience</div>
-                    <h1>Your Luxury Escape <span>Inside Nature</span></h1>
+                    <h1>Luxury Cottage Stay <span>In Patna</span></h1>
                     <p>Experience the perfect blend of rustic jungle vibes and modern luxury. Patna's most exclusive cottage stay awaits you.</p>
 
                     <div className={cottageStyles.heroStats}>
@@ -373,7 +404,7 @@ export default function CottagePricing() {
 
                                     {isSelected && (
                                         <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
-                                            <span className={cottageStyles.daysLabel}>Select Date</span>
+                                            <span className={cottageStyles.daysLabel}>Visit Date</span>
                                             <div className={cottageStyles.daysControl} style={{ width: "100%", justifyContent: "flex-end" }}>
                                                 <input
                                                     type="date"

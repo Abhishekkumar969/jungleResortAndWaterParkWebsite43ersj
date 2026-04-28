@@ -316,9 +316,11 @@ export default function Checkout({ isOpen, onClose, data }) {
             if (!order?.id) throw new Error("Order creation failed");
 
             const bookingId = crypto.randomUUID();
-            const now = new Date();
+            const [y, m, d] = (formData.visitDate || "").split("-");
+            // Create date in IST to get correct month
+            const dateObj = new Date(`${y}-${m}-${d}T00:00:00+05:30`);
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            const monthYear = `${monthNames[now.getMonth()]}${now.getFullYear()}`;
+            const monthYear = `${monthNames[dateObj.getMonth()]}${dateObj.getFullYear()}`;
 
             const wpBookingData = {
                 bookingId,
@@ -457,12 +459,11 @@ export default function Checkout({ isOpen, onClose, data }) {
     };
 
     const formatDateIST = (date) => {
-        return new Intl.DateTimeFormat("en-CA", {
-            timeZone: "Asia/Kolkata",
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }).format(date);
+        const d = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
     };
 
     const formatDisplayDate = (dateStr) => {

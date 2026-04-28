@@ -249,7 +249,7 @@ export default function TicketSearch() {
                 className={styles.downloadBtn}
                 onClick={() => setOpen(true)}
             >
-                Download Your Tickets Now
+                Download Booking Confirmations
             </button>
 
             {open && (

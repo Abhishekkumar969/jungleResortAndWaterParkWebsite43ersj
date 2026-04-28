@@ -6,36 +6,36 @@ export default function WeddingDetails() {
         <EventDetailPage
             formType="Wedding"
             helmet={{
-                title: "Top Wedding Venue in Patna | Best Marriage Hall & Lawn - Jungle Resort",
-                description: "Book the best wedding venue in Patna at Jungle Resort. Luxury banquet hall, open lawn, and premium catering for your special day. Check wedding packages now!",
-                keywords: "wedding in patna, wedding venue in patna, marriage hall in patna, best wedding hall patna, luxury marriage lawn patna, wedding resort patna",
-                ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
+                title: "Luxury Wedding Banquet Hall in Patna | Jungle Resort & Waterpark",
+                description: "Book the finest wedding banquet hall and marriage lawn in Patna at Jungle Resort & Waterpark. Luxury interiors, grand open lawns, and world-class catering for your special day.",
+                keywords: "wedding banquet hall patna, marriage hall in patna, best wedding lawn patna, luxury marriage venue patna, jungle resort wedding banquet",
+                ogImage: "https://www.jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
                 canonical: "/wedding",
             }}
             hero={{
                 bg: "/eventPics/Wed/venue-wedding.webp",
-                pill: "Jungle Resort Patna",
-                title: "Best",
-                titleHighlight: "Wedding Venue in Patna",
-                subtitle: "Celebrate your dream wedding with luxury banquet hall, open lawns, and world-class décor at Jungle Resort Patna.",
-                features: ["💐 Luxury Décor", "🎊 Banquet & Lawn", "🍽️ Catering", "📸 Photography Setup"],
+                pill: "Jungle Resort & Waterpark Patna",
+                title: "Luxury",
+                titleHighlight: "Wedding Banquet Hall in Patna",
+                subtitle: "Celebrate your grand wedding at Patna's most elegant venue with luxury banquet halls, open lawns, and premium décor at Jungle Resort & Waterpark.",
+                features: ["💐 Designer Décor", "🎊 Grand Banquet & Lawn", "🍽️ Royal Catering", "📸 Photography Setup"],
             }}
             info={[
                 { icon: "👥", label: "Capacity", value: "Upto 2000 Guests" },
-                { icon: "🏛️", label: "Venue", value: "Indoor + Outdoor" },
+                { icon: "🏛️", label: "Venue", value: "Grand Hall + Lawn" },
                 { icon: "📍", label: "Location", value: "Patna, Bihar" },
                 { icon: "📞", label: "Enquiry", value: "+91 90653 83838" },
             ]}
             desc={{
-                label: "Why Choose Us",
-                title: "Your Dream Wedding Awaits at Jungle Resort",
-                text: "Make your wedding day truly unforgettable at Jungle Resort Patna. Nestled in a serene jungle setting, our venue combines natural beauty with modern luxury — perfect for intimate ceremonies and grand celebrations alike.",
+                label: "Luxury Weddings",
+                title: "Your Dream Wedding Awaits at Jungle Resort & Waterpark",
+                text: "Make your wedding day truly unforgettable at Jungle Resort & Waterpark Patna. Our venue combines modern luxury with classic elegance — perfect for grand celebrations and intimate ceremonies alike.",
                 highlights: [
-                    "Grand banquet halls and open lawns for all event scales",
-                    "Customized décor and floral arrangements",
-                    "Multi-cuisine catering with premium menu",
-                    "Dedicated event coordinator for seamless planning",
-                    "Ample parking and accommodation facilities",
+                    "Grand royal banquet halls and open lawns",
+                    "Customized designer décor and floral arrangements",
+                    "Exquisite multi-cuisine catering menus",
+                    "Dedicated event coordinators for seamless planning",
+                    "Ample parking and luxury guest accommodation",
                 ],
                 image: "/eventPics/Wed/jungleresort.webp",
             }}

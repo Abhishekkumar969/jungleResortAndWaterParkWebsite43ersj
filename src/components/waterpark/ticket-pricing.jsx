@@ -52,9 +52,18 @@ export default function TicketPricing() {
     });
     const TOTAL_ROOMS = 5;
 
+    const getTodayIST = () => {
+        return new Intl.DateTimeFormat("en-CA", {
+            timeZone: "Asia/Kolkata",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }).format(new Date());
+    };
+
     const [cottageDate, setCottageDate] = useState(() => {
         const stored = JSON.parse(localStorage.getItem("cart")) || {};
-        return stored.cottage?.date || "";
+        return stored.cottage?.date || getTodayIST();
     });
     const [availableRooms, setAvailableRooms] = useState(TOTAL_ROOMS);
     const [isCheckingDate, setIsCheckingDate] = useState(false);
@@ -71,19 +80,41 @@ export default function TicketPricing() {
             setIsCheckingDate(true);
             try {
                 const [y, m, d] = cottageDate.split("-");
-                const dateObj = new Date(y, m - 1, d);
+                // Create date in IST to get correct month
+                const dateObj = new Date(`${y}-${m}-${d}T00:00:00+05:30`);
                 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 const monthYear = `${monthNames[dateObj.getMonth()]}${dateObj.getFullYear()}`;
-                
-                const snap = await getDoc(doc(db, "CottageBookings", monthYear));
+
                 let booked = 0;
-                if (snap.exists()) {
-                    const data = snap.data();
-                    Object.values(data).forEach(booking => {
-                        if (booking.paymentStatus === "paid" && booking.visitDate === cottageDate) {
-                            booked += (booking.cottagePackage?.rooms || 1);
+                const bookedIds = new Set();
+                const targetDate = cottageDate; // YYYY-MM-DD
+
+                const collections = ["CottageBookings", "WaterPark"];
+                for (const col of collections) {
+                    try {
+                        const snap = await getDoc(doc(db, col, monthYear));
+                        if (snap.exists()) {
+                            const data = snap.data();
+                            for (const [bid, booking] of Object.entries(data)) {
+                                if (bookedIds.has(bid)) continue;
+
+                                // Normalize booking date comparison
+                                const bDate = booking.visitDate || "";
+                                const isPaid = booking.paymentStatus === "paid";
+
+                                if (isPaid && bDate === targetDate) {
+                                    // Handle both structure types
+                                    const roomCount = booking.cottagePackage?.rooms || booking.cottage?.rooms || 0;
+                                    if (roomCount > 0) {
+                                        booked += Number(roomCount);
+                                        bookedIds.add(bid);
+                                    }
+                                }
+                            }
                         }
-                    });
+                    } catch (err) {
+                        console.error(`Error checking ${col}:`, err);
+                    }
                 }
                 const avail = Math.max(0, TOTAL_ROOMS - booked);
                 setAvailableRooms(avail);
@@ -212,7 +243,7 @@ export default function TicketPricing() {
                         <span className={styles.heroWrapPill}><MapPin size={12} /> Patna, Bihar</span>
                         <span className={styles.heroWrapPill}><Clock size={12} /> 10 AM - 6 PM</span>
                     </div>
-                    <h1>Unforgettable <span>Water Park</span> Fun</h1>
+                    <h1>Top Waterpark in Patna - <span>Tickets & Timings</span></h1>
                     <p>Escape the heat and dive into a world of excitement. Patna's largest wave pool and world-class water slides await your arrival.</p>
 
                     <div className={styles.heroBadges}>
@@ -312,14 +343,14 @@ export default function TicketPricing() {
                                         {pkg.highlights.map((h, i) => <li key={i}>{h}</li>)}
                                     </ul>
 
-                                    <div className={cottageStyles.pkgNote} style={{marginTop: "10px"}}>⚠️ Food charges extra as per menu</div>
+                                    <div className={cottageStyles.pkgNote} style={{ marginTop: "10px" }}>⚠️ Food charges extra as per menu</div>
 
                                     {isSelected && (
                                         <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
-                                            <span className={cottageStyles.daysLabel}>Select Date</span>
+                                            <span className={cottageStyles.daysLabel}>Visit Date</span>
                                             <div className={cottageStyles.daysControl} style={{ width: "100%", justifyContent: "flex-end" }}>
-                                                <input 
-                                                    type="date" 
+                                                <input
+                                                    type="date"
                                                     min={new Date().toISOString().split("T")[0]}
                                                     value={cottageDate}
                                                     onChange={handleDateChange}
