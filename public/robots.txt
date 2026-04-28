@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /checkout
+Disallow: /cart
 
 Sitemap: https://www.jungleresortpatna.in/sitemap.xml
