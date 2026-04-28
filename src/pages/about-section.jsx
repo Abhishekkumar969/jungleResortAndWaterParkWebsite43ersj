@@ -2,10 +2,9 @@ import React from "react";
 import { TreePine, Heart, Sparkles, Award } from "lucide-react";
 import { Helmet } from "react-helmet";
 
-import Navbar from "../components/navigation-temp";
-import Footer from "../components/footer-temp";
 import styles from "../styles/about-section.module.css";
 import Contact from "./contact/Contact"
+
 
 const features = [
   { icon: Heart, title: "Personalized Service", desc: "Tailored to your needs" },
@@ -29,18 +28,20 @@ export default function AboutSection() {
         />
         <link rel="canonical" href="https://www.jungleresortpatna.in/about-us" />
       </Helmet>
-      <Navbar />
+
       <section className={styles.aboutSection}>
         <div className={styles.container}>
-
           <div className={styles.aboutGrid}>
 
             <div className={styles.aboutContent}>
+
 
               <div className={styles.aboutLabel}>
                 <TreePine size={20} />
                 <span>About Us</span>
               </div>
+
+
 
               <h2 className={styles.aboutTitles}>
                 Where Nature Meets
@@ -221,8 +222,6 @@ export default function AboutSection() {
       </section>
 
       <Contact />
-
-      <Footer />
     </>
   );
 }

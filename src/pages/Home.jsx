@@ -1,10 +1,8 @@
 import React, { Suspense, lazy } from "react";
-import Navbar from "../components/navigation-temp";
 import styles from "../styles/home-page.module.css";
 import { Helmet } from "react-helmet";
 
 import HeroSection from "../components/home/hero-section";
-const Footer = lazy(() => import("../components/footer-temp"));
 const EventsSection = lazy(() => import("../components/home/events-section"));
 
 const BirthdayExploreBtn = lazy(() => import("../components/home/BirthdayExploreBtn"));
@@ -19,19 +17,18 @@ function HomePage() {
   return (
     <main className={styles.homePage}>
       <Helmet>
-        <title>Jungle Resort & Waterpark | Luxury Resort, Destination Wedding & Water Park in Patna</title>
+        <title>Jungle Resort Patna | Luxury Resort, Banquet Hall & Water Park</title>
         <meta
           name="description"
-          content="Experience luxury and nature at Jungle Resort & Waterpark, Patna's premier destination for weddings, family stays, and grand celebrations. Features luxury banquet halls, premium cottages, and a thrilling water park."
+          content="Experience luxury and nature at Jungle Resort Patna. The perfect destination for family stays, grand weddings, corporate events, and water park fun. Visit the best resort in Patna today!"
         />
         <meta
           name="keywords"
-          content="jungle resort patna, best destination wedding venue patna, luxury resort patna, premium banquet hall patna, water park patna"
+          content="jungle resort patna, best resort in patna, luxury stay patna, resort near me, family vacation patna"
         />
         <link rel="canonical" href="https://www.jungleresortpatna.in/" />
       </Helmet>
 
-      <Navbar />
 
       <HeroSection />
 
@@ -84,9 +81,6 @@ function HomePage() {
       </div>
 
 
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
 
     </main>
   );

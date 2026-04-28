@@ -6,36 +6,36 @@ export default function DestinationWeddingDetails() {
         <EventDetailPage
             formType="Destination Wedding"
             helmet={{
-                title: "Best Destination Wedding Venue in Patna | Jungle Resort & Waterpark",
-                description: "Experience the ultimate destination wedding at Jungle Resort & Waterpark Patna. Luxury banquet halls, scenic outdoor lawns, and personalized wedding packages for a magical love story.",
-                keywords: "destination wedding venue patna, best destination wedding in patna, luxury wedding resort patna, royal wedding venue patna, jungle resort wedding",
-                ogImage: "https://www.jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
+                title: "Best Destination Wedding in Patna | Luxury Wedding Venue - Jungle Resort",
+                description: "Plan your dream destination wedding in Patna at Jungle Resort. We offer luxury banquet halls, lush lawns, and premium wedding packages. Book the best wedding resort today!",
+                keywords: "destination wedding in patna, wedding in patna, best destination wedding venue patna, luxury wedding resort patna, destination wedding cost in patna",
+                ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
                 canonical: "/destination-wedding",
             }}
             hero={{
                 bg: "/eventPics/Wed/jungleresort.webp",
                 pill: "Destination Wedding",
-                title: "Best",
-                titleHighlight: "Destination Wedding Venue in Patna",
-                subtitle: "Escape the ordinary — celebrate your love story surrounded by lush greenery and timeless elegance at Jungle Resort & Waterpark.",
-                features: ["✨ Luxury Venue", "🏰 Luxury Suites", "🍾 All-Inclusive", "📸 Pre-Wedding Setup"],
+                title: "Magical",
+                titleHighlight: "Destination Wedding in Patna",
+                subtitle: "Escape the ordinary — celebrate your love story surrounded by lush jungle greenery and timeless elegance at Jungle Resort.",
+                features: ["🌿 Jungle Setting", "🏰 Luxury Suites", "🍾 All-Inclusive", "📸 Pre-Wedding Setup"],
             }}
             info={[
                 { icon: "👥", label: "Capacity", value: "Upto 2000 Guests" },
-                { icon: "🏰", label: "Venue", value: "Palace & Lawn" },
+                { icon: "🌿", label: "Setting", value: "Jungle & Lawn" },
                 { icon: "📍", label: "Location", value: "Patna, Bihar" },
                 { icon: "📞", label: "Enquiry", value: "+91 90653 83838" },
             ]}
             desc={{
                 label: "Destination Wedding",
-                title: "Your Love Story Deserves a Scenic Backdrop",
-                text: "Jungle Resort & Waterpark Patna offers an unparalleled destination wedding experience — beautiful architecture, serene ambiance, and world-class hospitality. From intimate ceremonies to grand celebrations, we make every moment truly majestic.",
+                title: "Your Love Story Deserves a Jungle Backdrop",
+                text: "Jungle Resort Patna offers a unique destination wedding experience — lush greenery, serene ambiance, and world-class hospitality all in one place. From intimate ceremonies to grand celebrations, we make every moment magical.",
                 highlights: [
-                    "Scenic outdoor lawns and royal banquet halls",
-                    "Premium designer décor & lighting",
-                    "Exquisite multi-cuisine catering",
+                    "Scenic outdoor lawns and indoor banquet halls",
+                    "Premium décor, floral & lighting arrangements",
+                    "Multi-cuisine catering with dedicated chefs",
                     "Pre-wedding shoot set-ups included",
-                    "Luxury accommodation for guests",
+                    "Accommodation for guests & family",
                 ],
                 image: "/eventPics/Wed/venue-wedding.webp",
             }}

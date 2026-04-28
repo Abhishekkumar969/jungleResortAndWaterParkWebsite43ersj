@@ -1,7 +1,6 @@
 import React from "react";
-import Navbar from "../../components/navigation-temp";
-import Footer from "../../components/footer-temp";
 import CottagePricing from "../../components/waterpark/cottage-pricing";
+
 import CottageInfo from "../../components/waterpark/CottageInfo";
 import styles from "../../styles/waterpark-page.module.css";
 import { Helmet } from "react-helmet";
@@ -10,17 +9,17 @@ export default function CottageInPatna() {
     return (
         <main className={styles.waterparkPage}>
             <Helmet>
-                <title>Luxury Cottage Stay in Patna - Book Now | Jungle Resort & Waterpark</title>
+                <title>Luxury Cottage Stay in Patna | Best Resort for Stay - Jungle Resort</title>
                 <meta
                     name="description"
-                    content="Book the finest luxury cottage stay in Patna at Jungle Resort & Waterpark. Enjoy private AC rooms, beautiful ambiance, and premium amenities. Perfect for families and couples."
+                    content="Experience the best luxury cottage stay in Patna at Jungle Resort. Perfect for families and couples with private AC rooms and a peaceful jungle vibe. Book your stay now!"
                 />
                 <meta
                     name="keywords"
-                    content="cottage stay in patna, best resort in patna for stay, luxury cottages patna, jungle resort rooms, couple friendly stay patna, resort room booking patna"
+                    content="cottage in patna, resort in patna for stay, best cottage in patna, luxury room in patna, jungle resort stay, couple friendly resort patna"
                 />
-                <meta property="og:title" content="Luxury Cottage Stay in Patna | Jungle Resort & Waterpark" />
-                <meta property="og:description" content="Private AC cottages, beautiful ambiance & premium luxury – experience the best stay in Patna at Jungle Resort & Waterpark." />
+                <meta property="og:title" content="Luxury Cottage Stay in Patna | Jungle Resort Patna" />
+                <meta property="og:description" content="Private AC cottages, peaceful jungle ambiance & water park access – enjoy the best stay in Patna at Jungle Resort." />
                 <meta property="og:image" content="https://www.jungleresortpatna.in/images/cottage-main.webp" />
                 <meta property="og:url" content="https://www.jungleresortpatna.in/cottage-in-patna" />
                 <meta property="og:type" content="website" />
@@ -41,7 +40,7 @@ export default function CottageInPatna() {
   {
    "@type": "ListItem",
    "position": 2,
-   "name": "Luxury Cottage Stay In Patna",
+   "name": "Cottage Stay",
    "item": "https://www.jungleresortpatna.in/cottage-in-patna"
   }
  ]
@@ -49,10 +48,9 @@ export default function CottageInPatna() {
 `}
                 </script>
             </Helmet>
-            <Navbar />
-            <CottagePricing style={{ marginTop: "70px" }} />
+            <CottagePricing />
+
             <CottageInfo />
-            <Footer />
         </main>
     );
 }

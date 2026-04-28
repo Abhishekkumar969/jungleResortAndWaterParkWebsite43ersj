@@ -1,5 +1,5 @@
 .blogContainer {
-    padding  : 100px 20px;
+    padding  : 30px 20px 100px;
     max-width: 1200px;
     margin   : auto;
 }
@@ -110,7 +110,7 @@
 
 /* Wrapper */
 .blogDetailsContainer {
-    padding  : 100px 20px;
+    padding  : 30px 20px 100px;
     max-width: 900px;
     margin   : auto;
 }

@@ -102,7 +102,8 @@ export default function UserDashboard() {
     return (
         <>
             <Navbar />
-            <div className={styles.dashboard} style={{ marginTop: "90px" }}>
+            <div className={styles.dashboard}>
+
                 {/* Header */}
                 <div className={styles.header}>
                     <div className={styles.userInfo}>

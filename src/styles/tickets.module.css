@@ -24,7 +24,7 @@
    HERO SECTION BACKGROUND
 ════════════════════════════════════════ */
 .ticketsSection {
-    margin-top : 70px;
+    margin-top : 0;
     padding    : 0;
     position   : relative;
     z-index    : 1;
@@ -41,10 +41,10 @@
     background : url("/public/eventPics/Pool Party/waterparkjungleresort.webp") center / cover no-repeat;
     display    : flex;
     align-items: flex-end;
-    padding    : 40px 24px 36px;
+    padding    : 20px 24px 36px;
     overflow   : hidden;
-    top        : 50px;
 }
+
 
 .heroWrapOverlay {
     position: absolute;
@@ -636,8 +636,9 @@
     .heroWrap {
         min-height: 220px;
         padding   : 28px 16px 28px;
-        margin    : 35px 0px;
+        margin    : 0;
     }
+
 
     .ticketsGrid {
         grid-template-columns: repeat(2, 1fr);

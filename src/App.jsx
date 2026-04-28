@@ -12,6 +12,10 @@ import useScrollReveal from "./hooks/useScrollReveal";
 import GlobalSchema from "./components/SEO/GlobalSchema";
 import ScrollProgress from "./components/ScrollProgress";
 import BookingModal from "./components/BookingModal";
+import Breadcrumb from "./components/Breadcrumb";
+import Navbar from "./components/navigation-temp";
+import Footer from "./components/footer-temp";
+
 
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogDetails = lazy(() => import("./pages/BlogDetails"));
@@ -67,69 +71,55 @@ function App() {
       <BookingModal />
       <Layout>
         <ScrollToTop />
+        <Navbar />
+        <Breadcrumb />
 
+        <div className="page-content">
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/auth" element={<AuthModal />} />
+              <Route path="/complete-profile" element={<CompleteProfile />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/dashboard" element={<UserDashboard />} />
+              <Route path="/my-tickets" element={<MyTickets />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/waterpark-in-patna" element={<Waterpark />} />
+              <Route path="/cottage-in-patna" element={<CottageInPatna />} />
+              <Route path="/cottage-booking" element={<Navigate to="/cottage-in-patna" replace />} />
+              <Route path="/fun-park" element={<FunPark />} />
+              <Route path="/birthday-ceremony" element={<BirthdayCeremony />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/destination-wedding" element={<DestinationWeddingDetails />} />
+              <Route path="/wedding" element={<WeddingDetails />} />
+              <Route path="/reception" element={<ReceptionDetails />} />
+              <Route path="/theme-party" element={<ThemePartyDetails />} />
+              <Route path="/birthday" element={<BirthdayDetails />} />
+              <Route path="/birthday-explore-btn" element={<BirthdayExploreBtn />} />
+              <Route path="/birthday-explore" element={<BirthdayExplore />} />
+              <Route path="/anniversary" element={<AnniversaryDetails />} />
+              <Route path="/ring-ceremony" element={<RingCeremonyDetails />} />
+              <Route path="/corporate-events" element={<CorporateEventsDetails />} />
+              <Route path="/pool-party" element={<PoolPartyDetails />} />
+              <Route path="/haldi" element={<HaldiDetails />} />
+              <Route path="/mehndi" element={<MehndiDetails />} />
+              <Route path="/sangeet" element={<SangeetDetails />} />
+              <Route path="/engagement" element={<EngagementDetails />} />
+              <Route path="/get-together" element={<GetTogetherDetails />} />
+              <Route path="/kitty-party" element={<KittyPartyDetails />} />
+              <Route path="/corporate-party" element={<CorporatePartyDetails />} />
+              <Route path="/corporate-pool-party" element={<CorporatePoolPartyDetails />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogDetails />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
+        </div>
 
-        <Routes>
-
-          <Route path="/" element={<Suspense fallback={<Loader />}>  <Home /> </Suspense>} />
-
-          <Route path="/auth" element={<AuthModal />} />
-          <Route path="/complete-profile" element={<CompleteProfile />} />
-
-          <Route path="/cart" element={<Suspense fallback={<Loader />}> <Cart /> </Suspense>} />
-          <Route path="/checkout" element={<Suspense fallback={<Loader />}>  <Checkout /> </Suspense>} />
-          <Route path="/dashboard" element={<Suspense fallback={<Loader />}>  <UserDashboard /> </Suspense>} />
-          <Route path="/my-tickets" element={<Suspense fallback={<Loader />}>  <MyTickets /> </Suspense>} />
-
-          <Route path="/about-us" element={<Suspense fallback={<Loader />}>  <AboutUs /> </Suspense>} />
-          <Route path="/services" element={<Suspense fallback={<Loader />}>  <Services /> </Suspense>} />
-
-          <Route path="/waterpark-in-patna" element={<Suspense fallback={<Loader />}>  <Waterpark /> </Suspense>} />
-          <Route path="/cottage-in-patna" element={<Suspense fallback={<Loader />}>  <CottageInPatna /> </Suspense>} />
-          <Route path="/cottage-booking" element={<Navigate to="/cottage-in-patna" replace />} />
-          <Route path="/fun-park" element={<Suspense fallback={<Loader />}>  <FunPark /> </Suspense>} />
-
-          <Route path="/birthday-ceremony" element={<Suspense fallback={<Loader />}>  <BirthdayCeremony /> </Suspense>} />
-
-
-          <Route path="/contact" element={<Suspense fallback={<Loader />}>  <Contact /> </Suspense>} />
-          <Route path="/gallery" element={<Suspense fallback={<Loader />}>  <Gallery /> </Suspense>} />
-
-          <Route path="/destination-wedding" element={<Suspense fallback={<Loader />}>  <DestinationWeddingDetails /> </Suspense>} />
-          <Route path="/wedding" element={<Suspense fallback={<Loader />}>  <WeddingDetails /> </Suspense>} />
-          <Route path="/reception" element={<Suspense fallback={<Loader />}>  <ReceptionDetails /> </Suspense>} />
-          <Route path="/theme-party" element={<Suspense fallback={<Loader />}>  <ThemePartyDetails /> </Suspense>} />
-
-          <Route path="/birthday" element={<Suspense fallback={<Loader />}>  <BirthdayDetails /> </Suspense>} />
-
-          <Route path="/birthday-explore-btn" element={<Suspense fallback={<Loader />}>  <BirthdayExploreBtn /> </Suspense>} />
-          <Route path="/birthday-explore" element={<Suspense fallback={<Loader />}>  <BirthdayExplore /> </Suspense>} />
-
-          <Route path="/anniversary" element={<Suspense fallback={<Loader />}>  <AnniversaryDetails /> </Suspense>} />
-          <Route path="/ring-ceremony" element={<Suspense fallback={<Loader />}>  <RingCeremonyDetails /> </Suspense>} />
-
-          <Route path="/corporate-events" element={<Suspense fallback={<Loader />}>  <CorporateEventsDetails /> </Suspense>} />
-          <Route path="/pool-party" element={<Suspense fallback={<Loader />}>  <PoolPartyDetails /> </Suspense>} />
-
-          <Route path="/haldi" element={<Suspense fallback={<Loader />}>  <HaldiDetails /> </Suspense>} />
-          <Route path="/mehndi" element={<Suspense fallback={<Loader />}>  <MehndiDetails /> </Suspense>} />
-          <Route path="/sangeet" element={<Suspense fallback={<Loader />}>  <SangeetDetails /> </Suspense>} />
-          <Route path="/engagement" element={<Suspense fallback={<Loader />}>  <EngagementDetails /> </Suspense>} />
-
-          <Route path="/get-together" element={<Suspense fallback={<Loader />}>  <GetTogetherDetails /> </Suspense>} />
-          <Route path="/kitty-party" element={<Suspense fallback={<Loader />}>  <KittyPartyDetails /> </Suspense>} />
-          <Route path="/corporate-party" element={<Suspense fallback={<Loader />}>  <CorporatePartyDetails /> </Suspense>} />
-          <Route path="/corporate-pool-party" element={<Suspense fallback={<Loader />}>  <CorporatePoolPartyDetails /> </Suspense>} />
-
-          <Route path="/blog" element={<Suspense fallback={<Loader />}> <Blog /> </Suspense>} />
-          <Route path="/blog/:slug" element={<Suspense fallback={<Loader />}> <BlogDetails /> </Suspense>} />
-
-          {/* Catch-all route to handle unknown paths */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-
-        </Routes>
-
-
+        <Footer />
         <FloatingContact />
         <FloatingCartPill />
       </Layout>

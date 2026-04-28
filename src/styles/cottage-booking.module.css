@@ -32,8 +32,8 @@
     background: url("/public/images/cottage-exterior.webp") center / cover no-repeat;
     display: flex;
     align-items: flex-end;
-    padding: 40px 24px 36px;
-    margin-top: 60px;
+    padding: 20px 24px 36px;
+    margin-top: 0;
 }
 
 .heroOverlay {
