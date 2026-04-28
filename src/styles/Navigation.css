@@ -465,3 +465,22 @@
   }
 
 }
+
+/* ── Helper Classes ── */
+.hide-mobile {
+  display: inline-flex !important;
+}
+
+.hide-desktop {
+  display: none !important;
+}
+
+@media (max-width: 992px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .hide-desktop {
+    display: inline-flex !important;
+  }
+}
