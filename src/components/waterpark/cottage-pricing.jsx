@@ -111,11 +111,11 @@ export default function CottagePricing() {
                             const data = snap.data();
                             for (const [bid, booking] of Object.entries(data)) {
                                 if (bookedIds.has(bid)) continue;
-                                
+
                                 // Normalize booking date comparison
                                 const bDate = booking.visitDate || "";
                                 const isPaid = booking.paymentStatus === "paid";
-                                
+
                                 if (isPaid && bDate === targetDate) {
                                     // Handle both structure types
                                     const roomCount = booking.cottagePackage?.rooms || booking.cottage?.rooms || 0;
@@ -423,7 +423,7 @@ export default function CottagePricing() {
                                         </div>
                                     )}
 
-                                    {pkg.id === "cottage1day" && isSelected && cottageDate && !isCheckingDate && (
+                                    {pkg.id === "cottage1day" && isSelected && cottageDate && (
                                         <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
                                             <span className={cottageStyles.daysLabel}>Number of Days</span>
                                             <div className={cottageStyles.daysControl}>
@@ -434,7 +434,7 @@ export default function CottagePricing() {
                                         </div>
                                     )}
 
-                                    {isSelected && cottageDate && !isCheckingDate && (
+                                    {isSelected && cottageDate && (
                                         <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
                                             <span className={cottageStyles.daysLabel}>Number of Rooms</span>
                                             <div className={cottageStyles.daysControl}>

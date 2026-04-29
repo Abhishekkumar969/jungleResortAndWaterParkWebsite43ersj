@@ -218,6 +218,21 @@ export default function TicketPricing() {
         }
     };
 
+    const updateCottageDays = (delta) => {
+        const newDays = Math.max(1, cottageDays + delta);
+        setCottageDays(newDays);
+        if (selectedCottage) {
+            const stored = JSON.parse(localStorage.getItem("cart")) || {};
+            const pkg = COTTAGE_PKGS.find(p => p.id === selectedCottage);
+            if (stored.cottage) {
+                stored.cottage.days = newDays;
+                stored.cottage.total = pkg.price * newDays * cottageRooms;
+            }
+            localStorage.setItem("cart", JSON.stringify(stored));
+            window.dispatchEvent(new Event("cartUpdated"));
+        }
+    };
+
     const handleDateChange = (e) => {
         const newDate = e.target.value;
         setCottageDate(newDate);
@@ -366,7 +381,18 @@ export default function TicketPricing() {
                                         </div>
                                     )}
 
-                                    {isSelected && cottageDate && !isCheckingDate && (
+                                    {pkg.id === "cottage1day" && isSelected && cottageDate && (
+                                        <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
+                                            <span className={cottageStyles.daysLabel}>Number of Days</span>
+                                            <div className={cottageStyles.daysControl}>
+                                                <button className={cottageStyles.daysBtn} onClick={() => updateCottageDays(-1)}>−</button>
+                                                <span className={cottageStyles.daysCount}>{cottageDays}</span>
+                                                <button className={cottageStyles.daysBtn} onClick={() => updateCottageDays(1)}>+</button>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {isSelected && cottageDate && (
                                         <div className={cottageStyles.daysStepper} onClick={(e) => e.stopPropagation()}>
                                             <span className={cottageStyles.daysLabel}>Rooms</span>
                                             <div className={cottageStyles.daysControl}>
