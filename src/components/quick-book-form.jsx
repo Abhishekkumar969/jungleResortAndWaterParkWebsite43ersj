@@ -192,7 +192,8 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
         toDate: ""
       });
 
-    } catch {
+    } catch (err) {
+      console.error("Submission error:", err);
       setMessage("❌ Failed to submit enquiry. Please try again.");
     } finally {
       setIsSubmitting(false);
