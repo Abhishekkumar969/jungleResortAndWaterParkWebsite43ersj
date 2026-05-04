@@ -122,56 +122,7 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
   }, [bookingType, defaultFunctionType]);
 
   // 🔍 DUPLICATE CHECKER + BUTTON LOADING CONTROL
-  const checkDuplicate = async (mobile, functionType, date) => {
-    setIsCheckingDuplicate(true); // ⭐ Start checking
-
-    if (!mobile || mobile.length !== 10 || !functionType || !date) {
-      setIsDuplicate(false);
-      setDuplicateMessage("");
-      setIsCheckingDuplicate(false);
-      return;
-    }
-
-    const collectionsToCheck = [
-      "enquiry",
-      "pastEnquiry",
-    ];
-
-    let duplicateFound = false;
-
-    for (let col of collectionsToCheck) {
-      const snap = await getDocs(collection(db, col));
-
-      for (let docSnap of snap.docs) {
-        const fields = docSnap.data();
-
-        for (let item of Object.values(fields)) {
-          const mob = item.mobile1 || item.mobile || item.mobile2;
-
-          if (
-            mob === mobile &&
-            item.functionType === functionType &&
-            item.functionDate === date
-          ) {
-            duplicateFound = true;
-            break;
-          }
-        }
-        if (duplicateFound) break;
-      }
-      if (duplicateFound) break;
-    }
-
-    if (duplicateFound) {
-      setIsDuplicate(true);
-      setDuplicateMessage("⚠️ Already registered! Our team will follow up soon.");
-    } else {
-      setIsDuplicate(false);
-      setDuplicateMessage("");
-    }
-
-    setIsCheckingDuplicate(false); // ⭐ Done checking
-  };
+  
 
   // SUBMIT HANDLER
   const handleSubmit = async (e) => {
