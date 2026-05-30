@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navigation from "../components/navigation-temp";
-import Footer from "../components/footer-temp";
 import QuickBookForm from "../components/quick-book-form";
 import { Play } from "lucide-react";
 import { Helmet } from "react-helmet";
@@ -105,7 +104,7 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
                 </section>
 
                 {/* ─── INFO STRIP ─── */}
-                {info && info.length > 0 && (
+                {/* {info && info.length > 0 && (
                     <div className={styles.infoStrip}>
                         {info.map((item, i) => (
                             <div key={i} className={styles.infoItem}>
@@ -115,7 +114,7 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
                             </div>
                         ))}
                     </div>
-                )}
+                )} */}
 
                 {/* ─── DESCRIPTION ─── */}
                 {desc && (
@@ -206,7 +205,6 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
                     </div>
                 )}
 
-                <Footer />
             </div>
         </>
     );
