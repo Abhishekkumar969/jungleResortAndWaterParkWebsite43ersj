@@ -54,7 +54,7 @@ export default function FloatingContact() {
 
             {/* WHATSAPP */}
             <a
-                href="https://wa.me/919031080903"
+                href="https://wa.me/919031080902"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bottom-item"
@@ -68,7 +68,7 @@ export default function FloatingContact() {
 
             {/* CALL */}
             <a
-                href="tel:+919031080903"
+                href="tel:+919031080902"
                 className="bottom-item"
                 aria-label="Call us"
             >
