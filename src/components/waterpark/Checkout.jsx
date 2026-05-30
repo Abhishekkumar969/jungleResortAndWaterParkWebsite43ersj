@@ -214,7 +214,13 @@ export default function Checkout({ isOpen, onClose, data }) {
     const [showDetails, setShowDetails] = useState(false);
     const [successData, setSuccessData] = useState(null);
     const [reservedDates, setReservedDates] = useState([]);
-    const [formData, setFormData] = useState({ name: "", phone: "", visitDate: "" });
+    const [formData, setFormData] = useState(() => {
+        const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+        return { name: "", phone: "", visitDate: `${year}-${month}-${day}` };
+    });
 
     useEffect(() => {
         const fetchReserved = async () => {
@@ -564,12 +570,10 @@ export default function Checkout({ isOpen, onClose, data }) {
 
                                         tileDisabled={({ date }) => {
                                             const formatted = formatDateIST(date);
-
-                                            const today = new Date();
-                                            today.setHours(0, 0, 0, 0);
+                                            const todayStr = formatDateIST(new Date());
 
                                             return (
-                                                date < today ||
+                                                formatted < todayStr ||
                                                 reservedDates.includes(formatted)
                                             );
                                         }}
