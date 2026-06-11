@@ -14,13 +14,15 @@ import { doc, getDoc } from "firebase/firestore";
 const ticketsWithIcons = tickets.map(t => {
     const iconMap = {
         kidsbelow10years: Baby,
+        above5years: Users,
+        above15years: Users,
         above10years: Users,
         groupof5: Star,
         groupof10: Crown,
         groupof15: Sparkles,
         groupof20: Sparkles
     };
-    return { ...t, icon: iconMap[t.id] };
+    return { ...t, icon: iconMap[t.id] || Ticket };
 });
 
 const HIGHLIGHTS = [
