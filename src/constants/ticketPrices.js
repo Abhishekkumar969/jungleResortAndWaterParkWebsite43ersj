@@ -31,7 +31,7 @@ export const COTTAGE_PKGS = [
         duration: "4 Hours",
         price: 1999,
         emoji: "⏰",
-        highlights: ["Private AC Cottage Room", "Peaceful Jungle Ambiance", "Ideal for Day Rest"],
+        highlights: ["Private AC Cottage Room", "Ideal for Day Rest"],
         waterIncluded: false,
     },
     {
@@ -40,7 +40,7 @@ export const COTTAGE_PKGS = [
         price: 2499,
         emoji: "🌅",
         popular: true,
-        highlights: ["Private AC Cottage Room", "Peaceful Jungle Ambiance", "Extended Day Outing"],
+        highlights: ["Private AC Cottage Room", "Extended Day Outing"],
         waterIncluded: false,
     },
     {
