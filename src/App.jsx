@@ -15,6 +15,7 @@ import BookingModal from "./components/BookingModal";
 import Breadcrumb from "./components/Breadcrumb";
 import Navbar from "./components/navigation-temp";
 import Footer from "./components/footer-temp";
+import { TicketPricesProvider } from "./context/TicketPricesContext";
 
 
 const Blog = lazy(() => import("./pages/Blog"));
@@ -65,14 +66,15 @@ function App() {
   useDisableInspect();
 
   return (
-    <Router>
-      <ScrollProgress />
-      <GlobalSchema />
-      <BookingModal />
-      <Layout>
-        <ScrollToTop />
-        <Navbar />
-        <Breadcrumb />
+    <TicketPricesProvider>
+      <Router>
+        <ScrollProgress />
+        <GlobalSchema />
+        <BookingModal />
+        <Layout>
+          <ScrollToTop />
+          <Navbar />
+          <Breadcrumb />
 
         <div className="page-content">
           <Suspense fallback={<Loader />}>
@@ -124,6 +126,7 @@ function App() {
         <FloatingCartPill />
       </Layout>
     </Router>
+    </TicketPricesProvider>
   )
 }
 

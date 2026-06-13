@@ -3,16 +3,18 @@ import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Cart.module.css";
 
-import { TICKET_MAP as ticketMap, WATERPARK_ADDONS } from "../constants/ticketPrices";
-
-const CROSS_SELL = [
-    { id: "cottage", emoji: "🏡", title: "Cottage Rooms", subtitle: "From ₹1,999 · Private AC Room", link: "/cottage-in-patna", color: "#e91e8c" },
-    { id: "waterpark", emoji: "🌊", title: "More Water Park Tickets", subtitle: `Kids FREE · Adults ₹${ticketMap['above10years']?.price || 199}`, link: "/waterpark-in-patna", color: "#0ea5e9" },
-];
+import { useTicketPrices } from "../context/TicketPricesContext";
 
 const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
 
 export default function Cart({ isOpen, onClose, onProceed }) {
+    const { ticketMap, waterparkAddons: WATERPARK_ADDONS } = useTicketPrices();
+
+    const CROSS_SELL = [
+        { id: "cottage", emoji: "🏡", title: "Cottage Rooms", subtitle: "From ₹1,999 · Private AC Room", link: "/cottage-in-patna", color: "#e91e8c" },
+        { id: "waterpark", emoji: "🌊", title: "More Water Park Tickets", subtitle: `Kids FREE · Adults ₹${ticketMap['above10years']?.price || 199}`, link: "/waterpark-in-patna", color: "#0ea5e9" },
+    ];
+
     const navigate = useNavigate();
     const [cartItems, setCartItems] = useState({});   // waterpark tickets
     const [cottage, setCottage] = useState(null); // cottage booking

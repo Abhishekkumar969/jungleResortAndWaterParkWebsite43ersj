@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { TICKET_MAP as ticketNames } from "../../constants/ticketPrices";
+import { useTicketPrices } from "../../context/TicketPricesContext";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { db, auth } from "../../firebaseConfig";
@@ -23,7 +23,7 @@ function loadRazorpay() {
 const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
 
 /* ─── Ticket PDF Generator ─── */
-function downloadTicket({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId }) {
+function downloadTicket({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId, ticketNames }) {
     const now = new Date();
     const formatDate = (date) => {
         const d = new Date(date);
@@ -137,22 +137,22 @@ function downloadTicket({ formData, selectedTickets, cottage, totalAmount, booki
 }
 
 /* ─── Success Screen ─── */
-function SuccessScreen({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId, onClose }) {
+function SuccessScreen({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId, onClose, ticketNames }) {
     const [downloaded, setDownloaded] = useState(false);
 
     const handleDownload = () => {
-        downloadTicket({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId });
+        downloadTicket({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId, ticketNames });
         setDownloaded(true);
     };
 
     useEffect(() => {
         // Direct download as requested by user
         const t = setTimeout(() => {
-            downloadTicket({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId });
+            downloadTicket({ formData, selectedTickets, cottage, totalAmount, bookingId, paymentId, ticketNames });
             setDownloaded(true);
         }, 800); // slightly reduced delay
         return () => clearTimeout(t);
-    }, [formData, selectedTickets, cottage, totalAmount, bookingId, paymentId]);
+    }, [formData, selectedTickets, cottage, totalAmount, bookingId, paymentId, ticketNames]);
 
     return ReactDOM.createPortal(
         <div className={styles.successOverlay}>
@@ -206,6 +206,7 @@ function SuccessScreen({ formData, selectedTickets, cottage, totalAmount, bookin
 
 /* ════════════════════════════════════════════════════════ */
 export default function Checkout({ isOpen, onClose, data }) {
+    const { ticketMap: ticketNames } = useTicketPrices();
 
     const { selectedTickets, cottage, totalAmount } = data || {};
     const [errors, setErrors] = useState({});
@@ -269,7 +270,7 @@ export default function Checkout({ isOpen, onClose, data }) {
 
     // Show success screen if payment done
     if (successData) {
-        return <SuccessScreen {...successData} onClose={() => { setSuccessData(null); onClose(); }} />;
+        return <SuccessScreen {...successData} ticketNames={ticketNames} onClose={() => { setSuccessData(null); onClose(); }} />;
     }
 
     const handleChange = (e) => {

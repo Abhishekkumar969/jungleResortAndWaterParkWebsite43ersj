@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Hotel, ArrowRight, Bed, Wind, Coffee, ShieldCheck } from "lucide-react";
 import styles from "../../styles/waterpark-preview.module.css";
-import { COTTAGE_PKGS } from "../../constants/ticketPrices";
+import { useTicketPrices } from "../../context/TicketPricesContext";
 
 const cottageFeatures = [
     { name: "King Bed", icon: Bed },
@@ -14,6 +14,7 @@ const cottageFeatures = [
 const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
 
 export default function CottagePreview() {
+    const { cottagePkgs: COTTAGE_PKGS } = useTicketPrices();
     return (
         <section className={styles.waterparkSection} style={{ background: "#0a0a1c", color: "#fff" }}>
 

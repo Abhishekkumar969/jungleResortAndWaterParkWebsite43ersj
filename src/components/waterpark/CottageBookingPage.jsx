@@ -7,7 +7,7 @@ import styles from "../../styles/cottage-booking.module.css";
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 /* ─── Cottage Packages ─── */
-import { COTTAGE_PKGS as PACKAGES, WATERPARK_ADDONS } from "../../constants/ticketPrices";
+import { useTicketPrices } from "../../context/TicketPricesContext";
 
 /* ─── YouTube video IDs for the resort ─── */
 const VIDEOS = [
@@ -20,6 +20,7 @@ const TOTAL_ROOMS = 5;
 
 /* ══════════════════════════════════════════════════════ */
 export default function CottageBookingPage() {
+    const { cottagePkgs: PACKAGES, waterparkAddons: WATERPARK_ADDONS } = useTicketPrices();
 
     const [selectedPkg, setSelectedPkg] = useState(null);
     const [days, setDays] = useState(1);

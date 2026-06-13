@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import styles from "../styles/TicketSearch.module.css";
 
 
-import { TICKET_MAP as ticketNames } from "../constants/ticketPrices";
+import { useTicketPrices } from "../context/TicketPricesContext";
 
 const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
 const formatDate = (date) => {
@@ -13,7 +13,7 @@ const formatDate = (date) => {
     return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
 };
 
-function downloadTicketHTML({ name, phone, visitDate, createdAt, tickets, cottage, total, bookingId, paymentId }) {
+function downloadTicketHTML({ name, phone, visitDate, createdAt, tickets, cottage, total, bookingId, paymentId, ticketNames }) {
     const ticketRows = Object.entries(tickets || {}).map(([id, qty]) => {
         const t = ticketNames[id];
         return `<tr>
@@ -118,6 +118,7 @@ function downloadTicketHTML({ name, phone, visitDate, createdAt, tickets, cottag
 }
 
 export default function TicketSearch() {
+    const { ticketMap: ticketNames } = useTicketPrices();
     const [phone, setPhone] = useState("");
     const [date, setDate] = useState("");
     const [results, setResults] = useState([]);
@@ -237,7 +238,8 @@ export default function TicketSearch() {
             cottage: ticket.cottage,
             total: ticket.total,
             bookingId: ticket.bookingId,
-            paymentId: ticket.paymentId
+            paymentId: ticket.paymentId,
+            ticketNames
         });
     };
 

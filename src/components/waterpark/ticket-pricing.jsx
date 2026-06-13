@@ -6,24 +6,9 @@ import cottageStyles from "../../styles/cottage-booking.module.css";
 import TicketSearch from "../TicketSearch";
 
 /* ─── Waterpark Tickets ─── */
-import { WATERPARK_TICKETS as tickets, COTTAGE_PKGS } from "../../constants/ticketPrices";
+import { useTicketPrices } from "../../context/TicketPricesContext";
 import { db } from "../../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
-
-// Add icons back to the tickets array for rendering
-const ticketsWithIcons = tickets.map(t => {
-    const iconMap = {
-        kidsbelow10years: Baby,
-        above5years: Users,
-        above15years: Users,
-        above10years: Users,
-        groupof5: Star,
-        groupof10: Crown,
-        groupof15: Sparkles,
-        groupof20: Sparkles
-    };
-    return { ...t, icon: iconMap[t.id] || Ticket };
-});
 
 const HIGHLIGHTS = [
     { title: "Gigantic Wave Pool", icon: Waves, color: "#0ea5e9", desc: "Experience ocean-like waves in Patna" },
@@ -36,6 +21,22 @@ const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
 const savings = (orig, price) => Math.round(((orig - price) / orig) * 100);
 
 export default function TicketPricing() {
+    const { tickets, cottagePkgs } = useTicketPrices();
+
+    const ticketsWithIcons = tickets.map(t => {
+        const iconMap = {
+            kidsbelow10years: Baby,
+            above5years: Users,
+            above15years: Users,
+            above10years: Users,
+            groupof5: Star,
+            groupof10: Crown,
+            groupof15: Sparkles,
+            groupof20: Sparkles
+        };
+        return { ...t, icon: iconMap[t.id] || Ticket };
+    });
+
     const [selectedTickets, setSelectedTickets] = useState(() => {
         const stored = JSON.parse(localStorage.getItem("cart")) || {};
         return stored.items || {};
@@ -186,7 +187,7 @@ export default function TicketPricing() {
         if (!newId) {
             delete stored.cottage;
         } else {
-            const pkg = COTTAGE_PKGS.find(p => p.id === id);
+            const pkg = cottagePkgs.find(p => p.id === id);
             const days = id === "cottage1day" ? cottageDays : 1;
             const rooms = cottageRooms;
             stored.cottage = {
@@ -210,7 +211,7 @@ export default function TicketPricing() {
         setCottageRooms(newRooms);
         if (selectedCottage) {
             const stored = JSON.parse(localStorage.getItem("cart")) || {};
-            const pkg = COTTAGE_PKGS.find(p => p.id === selectedCottage);
+            const pkg = cottagePkgs.find(p => p.id === selectedCottage);
             if (stored.cottage) {
                 stored.cottage.rooms = newRooms;
                 stored.cottage.total = pkg.price * (stored.cottage.days || 1) * newRooms;
@@ -225,7 +226,7 @@ export default function TicketPricing() {
         setCottageDays(newDays);
         if (selectedCottage) {
             const stored = JSON.parse(localStorage.getItem("cart")) || {};
-            const pkg = COTTAGE_PKGS.find(p => p.id === selectedCottage);
+            const pkg = cottagePkgs.find(p => p.id === selectedCottage);
             if (stored.cottage) {
                 stored.cottage.days = newDays;
                 stored.cottage.total = pkg.price * newDays * cottageRooms;
@@ -337,7 +338,7 @@ export default function TicketPricing() {
                     </div>
 
                     <div className={cottageStyles.packageGrid}>
-                        {COTTAGE_PKGS.map(pkg => {
+                        {cottagePkgs.map(pkg => {
                             const isSelected = selectedCottage === pkg.id;
                             return (
                                 <div

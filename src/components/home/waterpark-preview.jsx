@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Waves, ArrowRight, Ticket, Speaker, Music, Zap, ShieldCheck } from "lucide-react";
 import styles from "../../styles/waterpark-preview.module.css";
-import { WATERPARK_TICKETS } from "../../constants/ticketPrices";
+import { useTicketPrices } from "../../context/TicketPricesContext";
 
 const attractions = [
     { name: "Wave Pool", icon: Waves, color: "#0ea5e9" },
@@ -14,6 +14,7 @@ const attractions = [
 const fmt = (n) => new Intl.NumberFormat("en-IN").format(n);
 
 export default function WaterparkPreview() {
+    const { tickets: WATERPARK_TICKETS } = useTicketPrices();
     return (
         <section className={styles.waterparkSection} style={{ background: "#06102b", color: "#fff" }}>
 
