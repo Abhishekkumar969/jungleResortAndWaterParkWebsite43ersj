@@ -502,7 +502,7 @@
 
 @media (max-width: 600px) {
   .heroSection {
-    min-height: auto;
+    min-height: 100vh;
     padding-bottom: 90px;
   }
 
@@ -522,7 +522,7 @@
 
 @media (max-width: 480px) {
   .heroSection {
-    min-height: 90svh;
+    min-height: 100vh;
   }
 
   .heroBg {
@@ -620,7 +620,7 @@
 @media (max-width: 360px) {
   .heroContent {
     padding: 80px 12px 30px;
-    top: -40px;
+    top: 0px;
   }
 
   .heroTitleBreak {
