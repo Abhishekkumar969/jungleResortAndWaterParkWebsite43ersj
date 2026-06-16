@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 const categories = ["All", "Destination Weddings", "Cottage", "Waterpark", "Birthdays", "Corporate", "Resort"];
 
 const galleryImages = [
-    { src: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp", category: "Destination Weddings", title: "Garden Wedding Ceremony" },
+    // { src: "/eventPics/Wed/jungle-resort-kumhrar-patna.webp", category: "Destination Weddings", title: "Garden Wedding Ceremony" },
     { src: "/eventPics/Wed/venue-wedding.webp", category: "Destination Weddings", title: "Traditional Wedding Setup" },
     { src: "/eventPics/Wed/1565185162_FB_IMG_1565185053943.webp", category: "Destination Weddings", title: "Reception Dinner" },
     { src: "/eventPics/Wed/Mehendi-sangeet-and-haldi-decoration-ideas-at-home-1.webp", category: "Destination Weddings", title: "Elegant Reception Hall" },

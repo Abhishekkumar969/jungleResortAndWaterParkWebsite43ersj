@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Navigation from "../components/navigation-temp";
 import QuickBookForm from "../components/quick-book-form";
 import { Play } from "lucide-react";
-import { Helmet } from "react-helmet";
+
 import styles from "../styles/eventspages.module.css";
+import useSEO from "../hooks/useSEO";
 
 /**
  * Reusable Event Detail Page
@@ -16,6 +17,15 @@ import styles from "../styles/eventspages.module.css";
  *  - formType   : string for QuickBookForm
  */
 export default function EventDetailPage({ helmet, hero, info, desc, gallery, formType }) {
+    useSEO({
+        title: helmet?.title,
+        description: helmet?.description,
+        keywords: helmet?.keywords,
+        ogImage: helmet?.ogImage,
+        ogUrl: helmet?.canonical ? `https://www.jungleresortpatna.in${helmet.canonical}` : undefined,
+        canonical: helmet?.canonical ? `https://www.jungleresortpatna.in${helmet.canonical}` : undefined,
+    });
+
     const [selectedIndex, setSelectedIndex] = useState(null);
     const itemRefs = useRef([]);
 
@@ -46,17 +56,7 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
 
     return (
         <>
-            <Helmet>
-                <title>{helmet.title}</title>
-                <meta name="description" content={helmet.description} />
-                <meta name="keywords" content={helmet.keywords} />
-                <meta property="og:title" content={helmet.title} />
-                <meta property="og:description" content={helmet.description} />
-                <meta property="og:image" content={helmet.ogImage} />
-                <meta property="og:url" content={`https://www.jungleresortpatna.in${helmet.canonical}`} />
-                <meta property="og:type" content="website" />
-                <link rel="canonical" href={`https://www.jungleresortpatna.in${helmet.canonical}`} />
-            </Helmet>
+
 
             <div className={styles.eventPage}>
                 <Navigation />

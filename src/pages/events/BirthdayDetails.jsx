@@ -8,7 +8,7 @@ export default function BirthdayDetails() {
             helmet={{
                 title: "Best Birthday Party Venue in Patna | Birthday Celebration - Jungle Resort",
                 description: "Celebrate the best birthday party in Patna at Jungle Resort. We offer pool parties, DJ, custom décor, and delicious food. Book your birthday venue in Patna now!",
-                keywords: "birthday party venue in patna, birthday in patna, best birthday celebration in patna, pool party for birthday patna, birthday party hall patna",
+                keywords: "Birthday Party Venue in Patna, Best Resort in Patna, Resort in Patna, Banquet Hall in Patna, Luxury Resort in Patna, Corporate Event Venue in Patna, Wedding Venue in Patna",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/jungleresort.webp",
                 canonical: "/birthday",
             }}

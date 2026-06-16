@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import styles from "../styles/home-page.module.css";
-import { Helmet } from "react-helmet";
+import useSEO from "../hooks/useSEO";
 
 import HeroSection from "../components/home/hero-section";
 const EventsSection = lazy(() => import("../components/home/events-section"));
@@ -14,21 +14,16 @@ const GalleryGrid = lazy(() => import("../components/gallery/gallery-grid"));
 const Contact = lazy(() => import("./contact/Contact"));
 
 function HomePage() {
+  useSEO({
+    title: "Best Resort in Patna | Banquet Hall & Wedding Venue in Patna - Jungle Resort & Waterpark",
+    description: "Jungle Resort & Waterpark is the best resort in Patna offering luxury banquet hall in Patna, wedding venue in Patna, destination wedding in Patna, marriage hall in Patna, birthday party venue & corporate event venue in Patna.",
+    keywords: "Resort in Patna, Best Resort in Patna, Banquet Hall in Patna, Wedding Venue in Patna, Destination Wedding in Patna, Marriage Hall in Patna, Luxury Resort in Patna, Wedding Lawn in Patna, Resort for Wedding in Patna, Wedding Resort in Patna, Birthday Party Venue in Patna, Corporate Event Venue in Patna",
+    canonical: "https://www.jungleresortpatna.in/",
+    ogImage: "https://www.jungleresortpatna.in/videos/hero.webp",
+  });
+
   return (
     <main className={styles.homePage}>
-      <Helmet>
-        <title>Jungle Resort Patna | Luxury Resort, Banquet Hall & Water Park</title>
-        <meta
-          name="description"
-          content="Experience luxury and nature at Jungle Resort Patna. The perfect destination for family stays, grand weddings, corporate events, and water park fun. Visit the best resort in Patna today!"
-        />
-        <meta
-          name="keywords"
-          content="jungle resort patna, best resort in patna, luxury stay patna, resort near me, family vacation patna"
-        />
-        <link rel="canonical" href="https://www.jungleresortpatna.in/" />
-      </Helmet>
-
 
       <HeroSection />
 

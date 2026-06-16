@@ -8,7 +8,7 @@ export default function DestinationWeddingDetails() {
             helmet={{
                 title: "Best Destination Wedding in Patna | Luxury Wedding Venue - Jungle Resort",
                 description: "Plan your dream destination wedding in Patna at Jungle Resort. We offer luxury banquet halls, lush lawns, and premium wedding packages. Book the best wedding resort today!",
-                keywords: "destination wedding in patna, wedding in patna, best destination wedding venue patna, luxury wedding resort patna, destination wedding cost in patna",
+                keywords: "Destination Wedding in Patna, Wedding Venue in Patna, Best Resort in Patna, Marriage Hall in Patna, Banquet Hall in Patna, Luxury Resort in Patna, Wedding Lawn in Patna, Resort for Wedding in Patna, Wedding Resort in Patna",
                 ogImage: "https://jungleresortpatna.in/eventPics/Wed/venue-wedding.webp",
                 canonical: "/destination-wedding",
             }}

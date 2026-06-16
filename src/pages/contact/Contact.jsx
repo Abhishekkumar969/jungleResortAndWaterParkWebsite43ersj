@@ -4,20 +4,20 @@ import React from "react";
 import ContactMap from "../../components/contact/contact-map";
 
 import styles from "../../styles/contact-page.module.css";
+import useSEO from "../../hooks/useSEO";
 
-import { Helmet } from "react-helmet";
 
 export default function ContactPage() {
+    useSEO({
+        title: "Contact Us | Best Resort in Patna - Jungle Resort & Water Park",
+        description: "Contact Jungle Resort & Waterpark Patna — the best resort in Patna for weddings, banquet hall bookings, destination weddings, birthday parties & corporate events. Get directions, enquiry & booking details.",
+        keywords: "Resort in Patna, Best Resort in Patna, Banquet Hall in Patna, Wedding Venue in Patna, Destination Wedding in Patna, Marriage Hall in Patna, Contact Jungle Resort Patna",
+        canonical: "https://www.jungleresortpatna.in/contact",
+    });
+
     return (
         <main className={styles.page}>
-            <Helmet>
-                <title>Contact Us | Jungle Resort & Water Park Patna</title>
-                <meta
-                    name="description"
-                    content="Contact Jungle Resort & Waterpark Patna for bookings, enquiries, and location details. We are here to help you plan your perfect event."
-                />
-                <link rel="canonical" href="https://www.jungleresortpatna.in/contact" />
-            </Helmet>
+
             {/* <ContactHero /> */}
             <ContactMap />
         </main>

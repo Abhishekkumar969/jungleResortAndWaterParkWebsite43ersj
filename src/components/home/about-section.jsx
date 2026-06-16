@@ -13,7 +13,7 @@ const features = [
 const faqs = [
   {
     q: "Q1. Which is the best resort in Patna?",
-    a: "We also offer options for pool party in Patna, picnic outings, social and large gatherings."
+    a: "Jungle Resort is widely recognized as the best resort in Patna, offering a luxury resort experience with premium banquet hall, wedding lawn, and waterpark facilities."
   },
   {
     q: "Q2. What is the price of resort in Patna?",
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Q3. Is Jungle Resort good for destination wedding in Patna?",
-    a: "Yes, it is one of the top venues for destination weddings with lawn and Cottage rooms."
+    a: "Yes, Jungle Resort is one of the top venues for destination wedding in Patna, with a luxurious wedding lawn, banquet hall, and cottage rooms for guests."
   },
   {
     q: "Q4. Do you provide open lawn wedding in Patna?",
@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "Q6. Which is the best Banquet hall in Patna?",
-    a: "Jungle Resort, Patna has the best Banquet hall with a big dedicated lawn."
+    a: "Jungle Resort has the best banquet hall in Patna — a spacious marriage hall with a large dedicated wedding lawn for grand celebrations."
   }
 ];
 
@@ -55,18 +55,19 @@ export default function AboutSection() {
               </div>
 
               <h2 className={styles.aboutTitles}>
-                Where Nature Meets
-                <span> Luxury Celebrations</span>
+                Best Resort in Patna —
+                <span> Where Nature Meets Luxury Celebrations</span>
               </h2>
 
               <p className={styles.aboutTexts}>
-                Nestled in the heart of nature, Jungle Resort & Water Park offers an
-                unparalleled experience for your most precious moments.
+                Nestled in the heart of nature, Jungle Resort & Water Park is the best resort in Patna offering an
+                unparalleled experience as a luxury resort, banquet hall, and wedding venue in Patna.
               </p>
 
               <p className={styles.aboutTexts}>
-                With state-of-the-art facilities, personalized service, and a team dedicated to
-                perfection, we transform your dreams into reality.
+                Whether you are planning a destination wedding in Patna, searching for a marriage hall in Patna,
+                or booking a birthday party venue or corporate event venue in Patna, we transform your dreams into reality
+                with personalized service and state-of-the-art facilities.
               </p>
 
               <div className={styles.aboutFeatures}>
@@ -109,14 +110,16 @@ export default function AboutSection() {
 
             <div>
               <div className={styles.aboutTexts}>
-                <strong>Why Jungle Resort is the Best Resort in Patna:</strong>
+                <strong>Why Jungle Resort is the Best Resort in Patna for Weddings & Events:</strong>
               </div>
               <ul className={styles.aboutList}>
-                  <li>One of the largest resorts in Patna</li>
-                  <li>Perfect for Weddings, parties, birthday, reception, anniversary, pool party and day outing.</li>
-                  <li>Prime location near Patna City and Kankarbagh</li>
-                  <li>Affordable pricing options</li>
-                  <li>Safe & family friendly environment</li>
+                  <li>The best resort in Patna with luxury resort facilities</li>
+                  <li>Premium banquet hall in Patna and spacious wedding lawn in Patna</li>
+                  <li>Top wedding venue in Patna and marriage hall in Patna for grand celebrations</li>
+                  <li>Ideal destination wedding venue in Patna with cottage rooms</li>
+                  <li>Best birthday party venue and corporate event venue in Patna</li>
+                  <li>Prime location near Patna City and Kankarbagh with ample parking</li>
+                  <li>Safe & family-friendly environment with affordable pricing</li>
               </ul>
             </div>
 

@@ -26,8 +26,8 @@ export default function Footer() {
       <div className="footer-top-links">
         <div className="footer-top-container">
           <Link to="/">HOME</Link>
-          <Link to="/destination-wedding">DESTINATION WEDDING</Link>
-          <Link to="/wedding">WEDDING</Link>
+          <Link to="/destination-wedding-venue-in-patna">DESTINATION WEDDING</Link>
+          <Link to="/wedding-venue-in-patna">WEDDING</Link>
           <Link to="/waterpark-in-patna">WATER PARK TICKETS</Link>
           <Link to="/cottage-in-patna">COTTAGE BOOKINGS</Link>
           <Link to="/about-us">ABOUT US</Link>
@@ -86,15 +86,15 @@ export default function Footer() {
           <div className="footer-section">
             <p className="footer-title">Events & Venues</p>
             <ul className="footer-links">
-              <li><Link to="/destination-wedding">Destination Wedding</Link></li>
-              <li><Link to="/wedding">Wedding</Link></li>
-              <li><Link to="/reception">Reception</Link></li>
-              <li><Link to="/theme-party">Theme Party</Link></li>
-              <li><Link to="/birthday">Birthday Party</Link></li>
-              <li><Link to="/anniversary">Anniversary</Link></li>
-              <li><Link to="/ring-ceremony">Ring Ceremony</Link></li>
-              <li><Link to="/corporate-events">Corporate Events</Link></li>
-              <li><Link to="/pool-party">Pool Party</Link></li>
+              <li><Link to="/destination-wedding-venue-in-patna">Destination Wedding</Link></li>
+              <li><Link to="/wedding-venue-in-patna">Wedding</Link></li>
+              <li><Link to="/reception-venue-in-patna">Reception</Link></li>
+              <li><Link to="/theme-party-venue-in-patna">Theme Party</Link></li>
+              <li><Link to="/birthday-party-venue-in-patna">Birthday Party</Link></li>
+              <li><Link to="/anniversary-venue-in-patna">Anniversary</Link></li>
+              <li><Link to="/ring-ceremony-venue-in-patna">Ring Ceremony</Link></li>
+              <li><Link to="/corporate-event-venue-in-patna">Corporate Events</Link></li>
+              <li><Link to="/pool-party-venue-in-patna">Pool Party</Link></li>
             </ul>
           </div>
 
@@ -102,15 +102,15 @@ export default function Footer() {
           <div className="footer-section">
             <p className="footer-title">Special Occasions</p>
             <ul className="footer-links">
-              <li><Link to="/haldi">Haldi Ceremony</Link></li>
-              <li><Link to="/mehndi">Mehndi Ceremony</Link></li>
-              <li><Link to="/sangeet">Sangeet Ceremony</Link></li>
-              <li><Link to="/engagement">Engagement</Link></li>
-              <li><Link to="/get-together">Get Together</Link></li>
-              <li><Link to="/kitty-party">Kitty Party</Link></li>
-              <li><Link to="/corporate-party">Corporate Party</Link></li>
-              <li><Link to="/corporate-pool-party">Corporate Pool Party</Link></li>
-              <li><Link to="/birthday-ceremony">Birthday Ceremony</Link></li>
+              <li><Link to="/haldi-venue-in-patna">Haldi Ceremony</Link></li>
+              <li><Link to="/mehndi-venue-in-patna">Mehndi Ceremony</Link></li>
+              <li><Link to="/sangeet-venue-in-patna">Sangeet Ceremony</Link></li>
+              <li><Link to="/engagement-venue-in-patna">Engagement</Link></li>
+              <li><Link to="/get-together-venue-in-patna">Get Together</Link></li>
+              <li><Link to="/kitty-party-venue-in-patna">Kitty Party</Link></li>
+              <li><Link to="/corporate-party-venue-in-patna">Corporate Party</Link></li>
+              <li><Link to="/corporate-pool-party-venue-in-patna">Corporate Pool Party</Link></li>
+              <li><Link to="/birthday-ceremony-venue-in-patna">Birthday Ceremony</Link></li>
             </ul>
           </div>
 

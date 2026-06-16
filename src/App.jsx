@@ -95,25 +95,25 @@ function App() {
               <Route path="/birthday-ceremony" element={<BirthdayCeremony />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/gallery" element={<Gallery />} />
-              <Route path="/destination-wedding" element={<DestinationWeddingDetails />} />
-              <Route path="/wedding" element={<WeddingDetails />} />
-              <Route path="/reception" element={<ReceptionDetails />} />
-              <Route path="/theme-party" element={<ThemePartyDetails />} />
-              <Route path="/birthday" element={<BirthdayDetails />} />
+              <Route path="/destination-wedding-venue-in-patna" element={<DestinationWeddingDetails />} />
+              <Route path="/wedding-venue-in-patna" element={<WeddingDetails />} />
+              <Route path="/reception-venue-in-patna" element={<ReceptionDetails />} />
+              <Route path="/theme-party-venue-in-patna" element={<ThemePartyDetails />} />
+              <Route path="/birthday-party-venue-in-patna" element={<BirthdayDetails />} />
               <Route path="/birthday-explore-btn" element={<BirthdayExploreBtn />} />
               <Route path="/birthday-explore" element={<BirthdayExplore />} />
-              <Route path="/anniversary" element={<AnniversaryDetails />} />
-              <Route path="/ring-ceremony" element={<RingCeremonyDetails />} />
-              <Route path="/corporate-events" element={<CorporateEventsDetails />} />
-              <Route path="/pool-party" element={<PoolPartyDetails />} />
-              <Route path="/haldi" element={<HaldiDetails />} />
-              <Route path="/mehndi" element={<MehndiDetails />} />
-              <Route path="/sangeet" element={<SangeetDetails />} />
-              <Route path="/engagement" element={<EngagementDetails />} />
-              <Route path="/get-together" element={<GetTogetherDetails />} />
-              <Route path="/kitty-party" element={<KittyPartyDetails />} />
-              <Route path="/corporate-party" element={<CorporatePartyDetails />} />
-              <Route path="/corporate-pool-party" element={<CorporatePoolPartyDetails />} />
+              <Route path="/anniversary-venue-in-patna" element={<AnniversaryDetails />} />
+              <Route path="/ring-ceremony-venue-in-patna" element={<RingCeremonyDetails />} />
+              <Route path="/corporate-event-venue-in-patna" element={<CorporateEventsDetails />} />
+              <Route path="/pool-party-venue-in-patna" element={<PoolPartyDetails />} />
+              <Route path="/haldi-venue-in-patna" element={<HaldiDetails />} />
+              <Route path="/mehndi-venue-in-patna" element={<MehndiDetails />} />
+              <Route path="/sangeet-venue-in-patna" element={<SangeetDetails />} />
+              <Route path="/engagement-venue-in-patna" element={<EngagementDetails />} />
+              <Route path="/get-together-venue-in-patna" element={<GetTogetherDetails />} />
+              <Route path="/kitty-party-venue-in-patna" element={<KittyPartyDetails />} />
+              <Route path="/corporate-party-venue-in-patna" element={<CorporatePartyDetails />} />
+              <Route path="/corporate-pool-party-venue-in-patna" element={<CorporatePoolPartyDetails />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogDetails />} />
               <Route path="*" element={<Navigate to="/" replace />} />

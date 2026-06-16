@@ -1,12 +1,11 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 export default function GlobalSchema() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Jungle Resort and Waterpark Patna",
-    "alternateName": "Jungle Resort Patna",
+    "alternateName": ["Best Resort in Patna", "Banquet Hall in Patna", "Wedding Venue in Patna", "Marriage Hall in Patna", "Jungle Resort Patna"],
     "url": "https://www.jungleresortpatna.in",
     "logo": "https://www.jungleresortpatna.in/images/logo.png",
     "image": [
@@ -14,7 +13,7 @@ export default function GlobalSchema() {
       "https://www.jungleresortpatna.in/images/venue-wedding.webp",
       "https://www.jungleresortpatna.in/eventPics/Pool%20Party/waterparkjungleresort.webp"
     ],
-    "description": "Jungle Resort and Waterpark in Patna offers the best wedding venue, luxury banquet hall, birthday party packages, and a thrilling waterpark. Book now for an unforgettable experience.",
+    "description": "Jungle Resort & Waterpark is the best resort in Patna offering luxury banquet hall, wedding venue, destination wedding, marriage hall, birthday party venue, corporate event venue & wedding lawn in Patna, Bihar.",
     "telephone": "+919031080903",
     "priceRange": "$$",
     "address": {
@@ -41,7 +40,20 @@ export default function GlobalSchema() {
     "sameAs": [
       "https://www.instagram.com/jungleresort.patna",
       "https://www.facebook.com/jungleresortpatna"
-    ]
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Event Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Destination Wedding in Patna"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Wedding Venue & Marriage Hall in Patna"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Banquet Hall in Patna"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Birthday Party Venue in Patna"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corporate Event Venue in Patna"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Water Park in Patna"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Resort for Wedding in Patna"}}
+      ]
+    }
   };
 
   const websiteSchema = {
@@ -97,16 +109,10 @@ export default function GlobalSchema() {
   };
 
   return (
-    <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(organizationSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(websiteSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema)}
-      </script>
-    </Helmet>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    </>
   );
 }

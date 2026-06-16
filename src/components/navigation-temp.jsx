@@ -9,8 +9,8 @@ const Cart = lazy(() => import("./Cart"));
 
 const navLinks = [
   { href: "/", label: "HOME" },
-  { href: "/destination-wedding", label: "DESTINATION WEDDING" },
-  { href: "/wedding", label: "WEDDING" },
+  { href: "/destination-wedding-venue-in-patna", label: "DESTINATION WEDDING" },
+  { href: "/wedding-venue-in-patna", label: "WEDDING" },
   { href: "/waterpark-in-patna", label: "WATER PARK TICKETS", className: "hide-mobile" },
   { href: "/cottage-in-patna", label: "COTTAGE BOOKINGS", className: "hide-mobile" },
   { href: "/about-us", label: "ABOUT US" },
@@ -21,8 +21,8 @@ const navLinks = [
 
 const mobileNavLinks = [
   { href: "/", label: "HOME" },
-  { href: "/destination-wedding", label: "DESTINATION WEDDING" },
-  { href: "/wedding", label: "WEDDING" },
+  { href: "/destination-wedding-venue-in-patna", label: "DESTINATION WEDDING" },
+  { href: "/wedding-venue-in-patna", label: "WEDDING" },
   { href: "/waterpark-in-patna", label: "WATER PARK TICKETS" },
   { href: "/cottage-in-patna", label: "COTTAGE BOOKINGS" },
   { href: "/about-us", label: "ABOUT US" },

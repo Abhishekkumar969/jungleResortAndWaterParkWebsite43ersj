@@ -1,11 +1,12 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+
 import { Utensils, Car, Wifi, Camera, Music, Flower, Users, Shield } from "lucide-react";
 
 import Navbar from "../components/navigation-temp";
 import Footer from "../components/footer-temp";
 import styles from "../styles/services-section.module.css";
 import { Link } from "react-router-dom";
+import useSEO from "../hooks/useSEO";
 
 const services = [
     {
@@ -51,20 +52,16 @@ const services = [
 ];
 
 export default function ServicesSection() {
+    useSEO({
+        title: "Resort Services in Patna | Wedding Venue, Banquet Hall & Event Services - Jungle Resort",
+        description: "Explore premium services at the best resort in Patna — Jungle Resort. Wedding venue in Patna, banquet hall in Patna, destination wedding planning, birthday party venue, corporate event venue, catering & décor.",
+        keywords: "Resort in Patna, Best Resort in Patna, Wedding Venue in Patna, Banquet Hall in Patna, Birthday Party Venue in Patna, Corporate Event Venue in Patna, Resort for Wedding in Patna, Marriage Hall in Patna",
+        canonical: "https://www.jungleresortpatna.in/services",
+    });
+
     return (
         <>
-            <Helmet>
-                <title>Premium Resort Services in Patna | Catering, Decor & Events - Jungle Resort</title>
-                <meta
-                    name="description"
-                    content="Explore the wide range of services at Jungle Resort Patna. From gourmet catering and professional photography to event management and luxury decor. Everything for your perfect event!"
-                />
-                <meta
-                    name="keywords"
-                    content="resort services patna, wedding catering patna, event management patna, wedding photographer patna, banquet hall services bihar"
-                />
-                <link rel="canonical" href="https://www.jungleresortpatna.in/services" />
-            </Helmet>
+
             <Navbar />
             <section className={styles.servicesSection}>
 

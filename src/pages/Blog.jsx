@@ -6,8 +6,15 @@ import { getAllBlogs } from "../services/blogService";
 import BlogCard from "../components/BlogCard";
 
 import styles from "../styles/blog.module.css";
+import useSEO from "../hooks/useSEO";
 
 export default function Blog() {
+    useSEO({
+        title: "Blog | Best Resort in Patna - Wedding Tips, Events & Venues - Jungle Resort",
+        description: "Read expert guides on weddings, destination weddings in Patna, best resort tips, banquet hall events, birthday party ideas & corporate event planning at Jungle Resort Patna.",
+        keywords: "Resort in Patna, Best Resort in Patna, Wedding Venue in Patna, Destination Wedding in Patna, Banquet Hall in Patna, Marriage Hall in Patna, Birthday Party Venue in Patna",
+        canonical: "https://www.jungleresortpatna.in/blog",
+    });
 
     const [blogs, setBlogs] = useState([]);
 

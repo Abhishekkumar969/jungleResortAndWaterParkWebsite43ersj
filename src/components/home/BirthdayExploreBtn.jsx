@@ -25,14 +25,14 @@ export default function BirthdayHero() {
                 <div className={styles.content}>
                     <div className={styles.badge}>
                         <PartyPopper size={16} />
-                        <span>Multiple Themed Stages</span>
+                        <span>Birthday Party Resort In Patna With Water Park</span>
                     </div>
 
                     <h2 className={styles.title}>
-                        Birthday <span>celebration</span>
+                        Birthday <span>Celebration</span>
                     </h2>
 
-                    <h2>Best Place for Birthday Party in Patna</h2>
+                    <h2>Best Birthday Party Venue in Patna</h2>
 
                     <p className={styles.description}>
                         Make every birthday unforgettable with our themed stages, waterpark

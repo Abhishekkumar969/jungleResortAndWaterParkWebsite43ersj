@@ -56,7 +56,7 @@ export default function HeroSection() {
         <div className={styles.heroBg}>
           <img
             src="/videos/hero.webp"
-            alt="Jungle Resort Patna — Luxury Wedding Venue, Waterpark &amp; Banquet Hall"
+            alt="Jungle Resort Patna — Best Resort in Patna | Wedding Venue, Banquet Hall &amp; Destination Wedding"
             className={styles.heroVideo}
             loading="eager"
             fetchPriority="high"
@@ -79,7 +79,7 @@ export default function HeroSection() {
               <span className={styles.heroTitleBreak}>Waterpark, Patna</span>
             </h1>
             <p className={styles.heroSubtitle}>
-              Patna's Premier Destination for Weddings, Events &amp; Water Park
+              Best Wedding Resort in Patna for Destination Weddings, Banquet Hall in Patna, Water Park In Patna
             </p>
           </div>
 
@@ -95,9 +95,9 @@ export default function HeroSection() {
 
           {/* Trust badges – pure static HTML */}
           <div className={styles.heroBadges}>
-            <span className={styles.heroBadge}>🏘️ Cottage Rooms</span>
-            <span className={styles.heroBadge}>💧 Water Park</span>
-            <span className={styles.heroBadge}>📍 Patna, Bihar</span>
+            <span className={styles.heroBadge} >💒 Wedding Venue In Patna</span>
+            <span className={styles.heroBadge} >🏛️ Banquet Hall In Patna</span>
+            <span className={styles.heroBadge} >💧 Water Park In Patna</span>
           </div>
 
         </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import { TreePine, Heart, Sparkles, Award } from "lucide-react";
-import { Helmet } from "react-helmet";
 
 import styles from "../styles/about-section.module.css";
 import Contact from "./contact/Contact"
+import useSEO from "../hooks/useSEO";
 
 
 const features = [
@@ -14,20 +14,16 @@ const features = [
 ];
 
 export default function AboutSection() {
+  useSEO({
+    title: "About Jungle Resort Patna | Best Resort & Banquet Hall in Patna",
+    description: "Discover Jungle Resort Patna — the best resort in Patna for luxury weddings, banquet hall events, destination weddings, and family staycations. Luxury resort in Patna with wedding lawn and marriage hall.",
+    keywords: "Resort in Patna, Best Resort in Patna, Banquet Hall in Patna, Luxury Resort in Patna, Wedding Venue in Patna, Marriage Hall in Patna, Destination Wedding in Patna, Wedding Lawn in Patna",
+    canonical: "https://www.jungleresortpatna.in/about-us",
+  });
+
   return (
     <>
-      <Helmet>
-        <title>About Jungle Resort Patna | Best Luxury Resort & Banquet Hall</title>
-        <meta
-          name="description"
-          content="Discover the story of Jungle Resort Patna. We are the premier destination for luxury weddings, water park fun, and family staycations in Patna, Bihar. Learn more about our mission!"
-        />
-        <meta
-          name="keywords"
-          content="about jungle resort patna, best resort in bihar, luxury banquet hall history, water park patna about"
-        />
-        <link rel="canonical" href="https://www.jungleresortpatna.in/about-us" />
-      </Helmet>
+
 
       <section className={styles.aboutSection}>
         <div className={styles.container}>
