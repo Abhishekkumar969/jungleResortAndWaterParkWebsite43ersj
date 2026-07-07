@@ -17,7 +17,6 @@ import Navbar from "./components/navigation-temp";
 import Footer from "./components/footer-temp";
 import { TicketPricesProvider } from "./context/TicketPricesContext";
 
-
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogDetails = lazy(() => import("./pages/BlogDetails"));
 const Home = lazy(() => import("./pages/Home"));
@@ -77,57 +76,57 @@ function App() {
           <Navbar />
           <Breadcrumb />
 
-        <div className="page-content">
-          <Suspense fallback={<Loader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/auth" element={<AuthModal />} />
-              <Route path="/complete-profile" element={<CompleteProfile />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/dashboard" element={<UserDashboard />} />
-              <Route path="/my-tickets" element={<MyTickets />} />
-              <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/waterpark-in-patna" element={<Waterpark />} />
-              <Route path="/cottage-in-patna" element={<CottageInPatna />} />
-              <Route path="/cottage-booking" element={<Navigate to="/cottage-in-patna" replace />} />
-              <Route path="/fun-park" element={<FunPark />} />
-              <Route path="/birthday-ceremony" element={<BirthdayCeremony />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/destination-wedding-venue-in-patna" element={<DestinationWeddingDetails />} />
-              <Route path="/wedding-venue-in-patna" element={<WeddingDetails />} />
-              <Route path="/reception-venue-in-patna" element={<ReceptionDetails />} />
-              <Route path="/theme-party-venue-in-patna" element={<ThemePartyDetails />} />
-              <Route path="/birthday-party-venue-in-patna" element={<BirthdayDetails />} />
-              <Route path="/birthday-explore-btn" element={<BirthdayExploreBtn />} />
-              <Route path="/birthday-explore" element={<BirthdayExplore />} />
-              <Route path="/anniversary-venue-in-patna" element={<AnniversaryDetails />} />
-              <Route path="/ring-ceremony-venue-in-patna" element={<RingCeremonyDetails />} />
-              <Route path="/corporate-event-venue-in-patna" element={<CorporateEventsDetails />} />
-              <Route path="/pool-party-venue-in-patna" element={<PoolPartyDetails />} />
-              <Route path="/haldi-venue-in-patna" element={<HaldiDetails />} />
-              <Route path="/mehndi-venue-in-patna" element={<MehndiDetails />} />
-              <Route path="/sangeet-venue-in-patna" element={<SangeetDetails />} />
-              <Route path="/engagement-venue-in-patna" element={<EngagementDetails />} />
-              <Route path="/get-together-venue-in-patna" element={<GetTogetherDetails />} />
-              <Route path="/kitty-party-venue-in-patna" element={<KittyPartyDetails />} />
-              <Route path="/corporate-party-venue-in-patna" element={<CorporatePartyDetails />} />
-              <Route path="/corporate-pool-party-venue-in-patna" element={<CorporatePoolPartyDetails />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogDetails />} />
-              <Route path="/pool-party" element={<PoolParty />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </Suspense>
-        </div>
+          <div className="page-content">
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/auth" element={<AuthModal />} />
+                <Route path="/complete-profile" element={<CompleteProfile />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/dashboard" element={<UserDashboard />} />
+                <Route path="/my-tickets" element={<MyTickets />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/waterpark-in-patna" element={<Waterpark />} />
+                <Route path="/cottage-in-patna" element={<CottageInPatna />} />
+                <Route path="/cottage-booking" element={<Navigate to="/cottage-in-patna" replace />} />
+                <Route path="/fun-park" element={<FunPark />} />
+                <Route path="/birthday-ceremony" element={<BirthdayCeremony />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/destination-wedding-venue-in-patna" element={<DestinationWeddingDetails />} />
+                <Route path="/wedding-venue-in-patna" element={<WeddingDetails />} />
+                <Route path="/reception-venue-in-patna" element={<ReceptionDetails />} />
+                <Route path="/theme-party-venue-in-patna" element={<ThemePartyDetails />} />
+                <Route path="/birthday-party-venue-in-patna" element={<BirthdayDetails />} />
+                <Route path="/birthday-explore-btn" element={<BirthdayExploreBtn />} />
+                <Route path="/birthday-explore" element={<BirthdayExplore />} />
+                <Route path="/anniversary-venue-in-patna" element={<AnniversaryDetails />} />
+                <Route path="/ring-ceremony-venue-in-patna" element={<RingCeremonyDetails />} />
+                <Route path="/corporate-event-venue-in-patna" element={<CorporateEventsDetails />} />
+                <Route path="/pool-party-venue-in-patna" element={<PoolPartyDetails />} />
+                <Route path="/haldi-venue-in-patna" element={<HaldiDetails />} />
+                <Route path="/mehndi-venue-in-patna" element={<MehndiDetails />} />
+                <Route path="/sangeet-venue-in-patna" element={<SangeetDetails />} />
+                <Route path="/engagement-venue-in-patna" element={<EngagementDetails />} />
+                <Route path="/get-together-venue-in-patna" element={<GetTogetherDetails />} />
+                <Route path="/kitty-party-venue-in-patna" element={<KittyPartyDetails />} />
+                <Route path="/corporate-party-venue-in-patna" element={<CorporatePartyDetails />} />
+                <Route path="/corporate-pool-party-venue-in-patna" element={<CorporatePoolPartyDetails />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogDetails />} />
+                <Route path="/pool-party" element={<PoolParty />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Suspense>
+          </div>
 
-        <Footer />
-        <FloatingContact />
-        <FloatingCartPill />
-      </Layout>
-    </Router>
+          <Footer />
+          <FloatingContact />
+          <FloatingCartPill />
+        </Layout>
+      </Router>
     </TicketPricesProvider>
   )
 }
