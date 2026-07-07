@@ -1,99 +1,99 @@
 /* ===== OVERLAY ===== */
 .overlayBody {
     position: fixed;
-    inset   : 0;
-    z-index : 9100;
+    inset: 0;
+    z-index: 9100;
 }
 
 .overlay {
-    position       : absolute;
-    inset          : 0;
-    background     : #016d801e;
+    position: absolute;
+    inset: 0;
+    background: #016d801e;
     backdrop-filter: blur(3px);
 }
 
 /* ===== MODAL ===== */
 .modal {
-    position       : absolute;
-    inset          : 0;
-    display        : flex;
+    position: absolute;
+    inset: 0;
+    display: flex;
     justify-content: center;
-    align-items    : center;
-    padding        : 15px;
+    align-items: center;
+    padding: 15px;
 }
 
 /* ===== CARD ===== */
 .card {
-    width        : 100%;
-    max-width    : 500px;
-    max-height   : 90vh;
-    overflow-y   : auto;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
     border-radius: 18px;
-    background   : white;
-    box-shadow   : 0 25px 70px rgba(0, 0, 0, 0.3);
-    animation    : popup 0.3s ease;
+    background: white;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+    animation: popup 0.3s ease;
 }
 
 
 /* ===== LEFT ===== */
 .left {
     background: linear-gradient(-35deg, #a7e2ff, #0082c3, #a7e2ff);
-    padding   : 20px;
-    color     : white;
+    padding: 20px;
+    color: white;
     overflow-y: auto;
 }
 
 .left h3 {
-    text-align   : center;
+    text-align: center;
     margin-bottom: 15px;
-    color        : #000000;
+    color: #000000;
 }
 
 /* TICKET */
 .ticketItem {
-    background     : rgb(255, 255, 255);
-    padding        : 10px;
-    border-radius  : 10px;
-    margin-bottom  : 8px;
-    display        : flex;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    display: flex;
     justify-content: space-between;
-    font-size      : 15px;
-    color          : #000000;
-    font-weight    : 600;
+    font-size: 15px;
+    color: #000000;
+    font-weight: 600;
 }
 
 /* TOTAL */
 .total {
-    margin-top : 15px;
+    margin-top: 15px;
     padding-top: 10px;
-    border-top : 1px dashed #000000;
+    border-top: 1px dashed #000000;
     font-weight: 700;
-    font-size  : 17px;
-    text-align : right;
-    color      : #000000;
+    font-size: 17px;
+    text-align: right;
+    color: #000000;
 }
 
 /* ===== RIGHT ===== */
 .right {
-    padding       : 20px;
-    display       : flex;
+    padding: 20px;
+    display: flex;
     flex-direction: column;
 }
 
 /* CLOSE */
 .close {
-    margin-top   : 0px;
-    background   : linear-gradient(35deg, red, pink);
-    color        : #fff;
-    border       : none;
+    margin-top: 0px;
+    background: linear-gradient(35deg, red, pink);
+    color: #fff;
+    border: none;
     border-radius: 6px;
-    cursor       : pointer;
+    cursor: pointer;
     border-radius: 80px;
-    padding      : 0px;
-    font-weight  : 800 !important;
-    font-size    : 20px !important;
-    width        : 40px !important;
-    height       : 40px;
+    padding: 0px;
+    font-weight: 800 !important;
+    font-size: 20px !important;
+    width: 40px !important;
+    height: 40px;
 }
 
 /* FORM */
@@ -102,31 +102,31 @@
 }
 
 .inputGroup label {
-    font-size : 14px;
+    font-size: 14px;
     text-align: left;
-    margin    : 0px;
-    color     : black;
+    margin: 0px;
+    color: black;
 }
 
 .inputGroup input {
-    padding      : 12px;
+    padding: 12px;
     margin-bottom: 10px;
     border-radius: 10px;
-    border       : 1px solid #00a8ff;
-    width        : 93%;
+    border: 1px solid #00a8ff;
+    width: 93%;
 }
 
 /* BUTTON */
 .button {
-    margin-top   : 15px;
-    padding      : 5px;
+    margin-top: 15px;
+    padding: 5px;
     border-radius: 12px;
-    border       : none;
-    background   : linear-gradient(180deg, #a7e2ff, #0082c3, #a7e2ff);
-    color        : white;
-    font-weight  : 800;
-    cursor       : pointer;
-    font-size    : 18px;
+    border: none;
+    background: linear-gradient(180deg, #a7e2ff, #0082c3, #a7e2ff);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 18px;
 }
 
 /* ===== SCROLLBAR ===== */
@@ -141,12 +141,12 @@
 /* ===== ANIMATION ===== */
 @keyframes popup {
     from {
-        opacity  : 0;
+        opacity: 0;
         transform: scale(0.9);
     }
 
     to {
-        opacity  : 1;
+        opacity: 1;
         transform: scale(1);
     }
 }
@@ -155,9 +155,9 @@
 @media (max-width: 900px) {
     .card {
         grid-template-columns: 1fr;
-        height               : auto;
-        max-height           : 90vh;
-        width                : 600px;
+        height: auto;
+        max-height: 90vh;
+        width: 600px;
     }
 
     .left {
@@ -173,7 +173,7 @@
 /* ===== MOBILE ===== */
 @media (max-width: 480px) {
     .card {
-        width        : 90vw;
+        width: 90vw;
         border-radius: 12px;
     }
 
@@ -191,7 +191,7 @@
 
     .button {
         font-size: 13px;
-        padding  : 12px;
+        padding: 12px;
     }
 }
 
@@ -201,19 +201,19 @@
 
 
 .error {
-    color     : red;
-    font-size : 12px;
+    color: red;
+    font-size: 12px;
     margin-top: -5px;
 }
 
 .loader {
-    width        : 18px;
-    height       : 18px;
-    border       : 3px solid white;
-    border-top   : 3px solid transparent;
+    width: 18px;
+    height: 18px;
+    border: 3px solid white;
+    border-top: 3px solid transparent;
     border-radius: 50%;
-    display      : inline-block;
-    animation    : spin 0.8s linear infinite;
+    display: inline-block;
+    animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -243,86 +243,86 @@
 
 /* 🔥 View Details Overlay */
 .detailsOverlay {
-    position       : fixed;
-    top            : 0;
-    left           : 0;
-    width          : 100%;
-    height         : 100%;
-    z-index        : 9999;
-    background     : #016d8000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: #016d8000;
     backdrop-filter: blur(3px);
-    display        : flex;
-    align-items    : center;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 /* 🔥 Popup Box */
 .detailsPopup {
-    background   : #fff;
-    width        : 320px;
-    max-height   : 80vh;
-    overflow-y   : auto;
-    padding      : 20px;
+    background: #fff;
+    width: 320px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
     border-radius: 12px;
-    box-shadow   : 0 10px 30px rgba(0, 0, 0, 0.2);
-    animation    : popupFade 0.25s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: popupFade 0.25s ease;
 }
 
 /* 🔥 Item Row */
 .detailsItem {
-    display       : flex;
+    display: flex;
     flex-direction: column;
-    margin-bottom : 10px;
-    border-bottom : 1px dashed #242424;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #242424;
     padding-bottom: 6px;
 }
 
 /* 🔥 Top row (name + price × qty) */
 .detailsRow {
-    display        : flex;
+    display: flex;
     justify-content: space-between;
 }
 
 /* 🔥 Subtotal */
 .detailsSub {
-    text-align : right;
-    font-size  : 15px;
+    text-align: right;
+    font-size: 15px;
     font-weight: 700;
-    color      : #0094d3;
+    color: #0094d3;
 }
 
 /* 🔥 Total */
 .detailsTotal {
-    margin-top : 12px;
+    margin-top: 12px;
     font-weight: bold;
-    text-align : right;
+    text-align: right;
 }
 
 /* 🔥 Close button */
 .detailsClose {
-    margin-top   : 0px;
-    background   : linear-gradient(35deg, red, pink);
-    color        : #fff;
-    border       : none;
+    margin-top: 0px;
+    background: linear-gradient(35deg, red, pink);
+    color: #fff;
+    border: none;
     border-radius: 6px;
-    cursor       : pointer;
+    cursor: pointer;
     border-radius: 80px;
-    padding      : 0px;
-    font-weight  : 700;
-    font-size    : 22px !important;
-    width        : 40px !important;
-    height       : 40px;
+    padding: 0px;
+    font-weight: 700;
+    font-size: 22px !important;
+    width: 40px !important;
+    height: 40px;
 }
 
 /* 🔥 Animation */
 @keyframes popupFade {
     from {
-        opacity  : 0;
+        opacity: 0;
         transform: scale(0.95);
     }
 
     to {
-        opacity  : 1;
+        opacity: 1;
         transform: scale(1);
     }
 }
@@ -336,24 +336,24 @@
 
 /* TABLE STYLE */
 .detailsTable {
-    width          : 100%;
+    width: 100%;
     border-collapse: collapse;
-    margin-top     : 10px;
-    font-size      : 14px;
+    margin-top: 10px;
+    font-size: 14px;
 }
 
 .detailsTable th,
 .detailsTable td {
-    padding      : 8px;
-    text-align   : center;
+    padding: 8px;
+    text-align: center;
     border-bottom: 1px dashed #ccc;
 }
 
 .detailsTable th {
-    background : #00aaff;
-    color      : #fff;
+    background: #00aaff;
+    color: #fff;
     font-weight: 700;
-    font-size  : 16px;
+    font-size: 16px;
 }
 
 .detailsTable td {
@@ -361,35 +361,35 @@
 }
 
 .detailsTable td:first-child {
-    text-align : left;
+    text-align: left;
     font-weight: 600;
 }
 
 /* TOTAL */
 .detailsTotal {
-    margin-top : 12px;
+    margin-top: 12px;
     font-weight: bold;
-    text-align : right;
-    font-size  : 16px;
+    text-align: right;
+    font-size: 16px;
 }
 
 /* ===== ORDER SUMMARY BOX ===== */
 .orderSummaryBox {
-    background   : #f8f9fc;
-    border       : 1px solid #e8ecf0;
+    background: #f8f9fc;
+    border: 1px solid #e8ecf0;
     border-radius: 12px;
-    padding      : 12px 16px;
+    padding: 12px 16px;
     margin-bottom: 18px;
 }
 
 .summaryRow {
-    display        : flex;
+    display: flex;
     justify-content: space-between;
-    align-items    : center;
-    padding        : 6px 0;
-    font-size      : 13px;
-    color          : #4a5568;
-    border-bottom  : 1px solid #f0f2f5;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 13px;
+    color: #4a5568;
+    border-bottom: 1px solid #f0f2f5;
 }
 
 .summaryRow:last-of-type {
@@ -398,39 +398,39 @@
 
 .summaryRow strong {
     font-weight: 800;
-    color      : #1a1a2e;
+    color: #1a1a2e;
 }
 
 .summaryTotal {
-    display        : flex;
+    display: flex;
     justify-content: space-between;
-    align-items    : center;
-    margin-top     : 10px;
-    padding-top    : 10px;
-    border-top     : 2px solid #e8ecf0;
-    font-size      : 14px;
-    color          : #6b7a8d;
-    font-weight    : 700;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px solid #e8ecf0;
+    font-size: 14px;
+    color: #6b7a8d;
+    font-weight: 700;
 }
 
 .summaryTotal strong {
-    font-size  : 20px;
+    font-size: 20px;
     font-weight: 900;
-    color      : #e91e8c;
+    color: #e91e8c;
 }
 
 /* ===== SUCCESS SCREEN ===== */
 .successOverlay {
-    position       : fixed;
-    inset          : 0;
-    z-index        : 9200;
-    background     : rgba(0, 0, 0, 0.65);
+    position: fixed;
+    inset: 0;
+    z-index: 9200;
+    background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(8px);
-    display        : flex;
-    align-items    : center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    padding        : 20px;
-    animation      : fadeIn 0.3s ease;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -444,32 +444,43 @@
 }
 
 .successCard {
-    background   : #fff;
+    background: #fff;
     border-radius: 24px;
-    padding      : 36px 32px;
-    max-width    : 440px;
-    width        : 100%;
-    text-align   : center;
-    box-shadow   : 0 30px 80px rgba(0, 0, 0, 0.3);
-    animation    : scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 36px 32px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.successCard::-webkit-scrollbar {
+    width: 6px;
+}
+
+.successCard::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 @keyframes scaleIn {
     from {
-        opacity  : 0;
+        opacity: 0;
         transform: scale(0.85);
     }
 
     to {
-        opacity  : 1;
+        opacity: 1;
         transform: scale(1);
     }
 }
 
 .successIcon {
-    font-size    : 60px;
+    font-size: 60px;
     margin-bottom: 14px;
-    animation    : bounce 0.6s ease;
+    animation: bounce 0.6s ease;
 }
 
 @keyframes bounce {
@@ -489,34 +500,34 @@
 }
 
 .successTitle {
-    font-size  : 26px;
+    font-size: 26px;
     font-weight: 900;
-    color      : #1a1a2e;
-    margin     : 0 0 8px;
+    color: #1a1a2e;
+    margin: 0 0 8px;
 }
 
 .successSub {
     font-size: 14px;
-    color    : #6b7a8d;
-    margin   : 0 0 22px;
+    color: #6b7a8d;
+    margin: 0 0 22px;
 }
 
 .successInfo {
-    background   : #f8f9fc;
+    background: #f8f9fc;
     border-radius: 14px;
-    padding      : 16px;
+    padding: 16px;
     margin-bottom: 20px;
-    text-align   : left;
+    text-align: left;
 }
 
 .successRow {
-    display        : flex;
+    display: flex;
     justify-content: space-between;
-    align-items    : center;
-    padding        : 8px 0;
-    font-size      : 13px;
-    color          : #6b7a8d;
-    border-bottom  : 1px solid #f0f2f5;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 13px;
+    color: #6b7a8d;
+    border-bottom: 1px solid #f0f2f5;
 }
 
 .successRow:last-child {
@@ -525,35 +536,35 @@
 
 .successRow strong {
     font-weight: 800;
-    color      : #1a1a2e;
+    color: #1a1a2e;
 }
 
 .downloadedBanner {
-    background   : #dcfce7;
-    color        : #16a34a;
-    border       : 1px solid #bbf7d0;
+    background: #dcfce7;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
     border-radius: 10px;
-    padding      : 10px 14px;
-    font-size    : 13px;
-    font-weight  : 700;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 700;
     margin-bottom: 16px;
-    animation    : fadeIn 0.4s ease;
+    animation: fadeIn 0.4s ease;
 }
 
 .downloadBtn {
-    width        : 100%;
-    padding      : 14px;
-    background   : linear-gradient(135deg, #e91e8c, #ff6b35);
-    color        : #fff;
-    border       : none;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #e91e8c, #ff6b35);
+    color: #fff;
+    border: none;
     border-radius: 14px;
-    font-size    : 15px;
-    font-weight  : 800;
-    cursor       : pointer;
-    font-family  : inherit;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
     margin-bottom: 10px;
-    box-shadow   : 0 6px 20px rgba(233, 30, 140, 0.35);
-    transition   : transform 0.18s;
+    box-shadow: 0 6px 20px rgba(233, 30, 140, 0.35);
+    transition: transform 0.18s;
 }
 
 .downloadBtn:hover {
@@ -561,22 +572,22 @@
 }
 
 .doneBtn {
-    width        : 100%;
-    padding      : 12px;
-    background   : #f1f5f9;
-    color        : #64748b;
-    border       : none;
+    width: 100%;
+    padding: 12px;
+    background: #f1f5f9;
+    color: #64748b;
+    border: none;
     border-radius: 14px;
-    font-size    : 14px;
-    font-weight  : 700;
-    cursor       : pointer;
-    font-family  : inherit;
-    transition   : background 0.2s;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
 }
 
 .doneBtn:hover {
     background: #e2e8f0;
-    color     : #1a1a2e;
+    color: #1a1a2e;
 }
 
 
@@ -602,48 +613,9 @@
 
 
 .right>div:first-child {
-    position  : sticky;
-    top       : 0;
+    position: sticky;
+    top: 0;
     background: white;
-    z-index   : 2;
-    padding   : 10px 0px;
+    z-index: 2;
+    padding: 10px 0px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

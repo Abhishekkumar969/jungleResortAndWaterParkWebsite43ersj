@@ -8,7 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingContact from "./components/FloatingContact";
 import FloatingCartPill from "./components/FloatingCartPill";
 import useScrollReveal from "./hooks/useScrollReveal";
-import useDisableInspect from "./hooks/useDisableInspect";
+// import useDisableInspect from "./hooks/useDisableInspect";
 import GlobalSchema from "./components/SEO/GlobalSchema";
 import ScrollProgress from "./components/ScrollProgress";
 import BookingModal from "./components/BookingModal";
@@ -54,6 +54,7 @@ const CorporatePartyDetails = lazy(() => import("./pages/events/CorporatePartyDe
 const CorporatePoolPartyDetails = lazy(() => import("./pages/events/CorporatePoolPartyDetails"));
 const BirthdayExplore = lazy(() => import("./components/home/BirthdayExplore"));
 const BirthdayExploreBtn = lazy(() => import("./components/home/BirthdayExploreBtn"));
+const PoolParty = lazy(() => import("./pages/PoolParty"));
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -63,7 +64,7 @@ if ("serviceWorker" in navigator) {
 
 function App() {
   useScrollReveal();
-  useDisableInspect();
+  // useDisableInspect();
 
   return (
     <TicketPricesProvider>
@@ -116,6 +117,7 @@ function App() {
               <Route path="/corporate-pool-party-venue-in-patna" element={<CorporatePoolPartyDetails />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogDetails />} />
+              <Route path="/pool-party" element={<PoolParty />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

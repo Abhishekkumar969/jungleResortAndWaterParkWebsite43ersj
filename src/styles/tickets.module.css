@@ -188,7 +188,7 @@
 ════════════════════════════════════════ */
 .ticketsGrid {
     display              : grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap                  : 24px;
     margin-bottom        : 40px;
 }
@@ -612,8 +612,8 @@
 ════════════════════════════════════════ */
 @media (max-width: 900px) {
     .ticketsGrid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap                  : 14px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap                  : 16px;
     }
 
     .cartBox {
@@ -641,8 +641,8 @@
 
 
     .ticketsGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap                  : 10px;
+        grid-template-columns: 1fr;
+        gap                  : 16px;
     }
 
     .ticketCard {
@@ -669,8 +669,4 @@
     }
 }
 
-@media (max-width: 380px) {
-    .ticketsGrid {
-        grid-template-columns: 1fr;
-    }
-}
+/* Removed 380px media query as 1fr handles it now */

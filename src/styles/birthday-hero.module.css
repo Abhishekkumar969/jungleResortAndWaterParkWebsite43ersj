@@ -14,6 +14,7 @@
     border-radius: 40px;
     position     : relative;
     padding      : 10px;
+    background   : #e72e77;
 }
 
 .heroBorder>* {
@@ -148,7 +149,10 @@
     }
 
     .hero {
-        height: 80vh;
+        height: auto;
+        min-height: 80vh;
+        padding-top: 80px;
+        padding-bottom: 40px;
     }
 
 }

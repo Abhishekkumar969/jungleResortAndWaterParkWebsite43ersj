@@ -6,6 +6,7 @@ import HeroSection from "../components/home/hero-section";
 const EventsSection = lazy(() => import("../components/home/events-section"));
 
 const BirthdayExploreBtn = lazy(() => import("../components/home/BirthdayExploreBtn"));
+const PoolPartyExploreBtn = lazy(() => import("../components/home/PoolPartyExploreBtn"));
 const CottagePreview = lazy(() => import("../components/home/cottage-preview"));
 const WaterparkPreview = lazy(() => import("../components/home/waterpark-preview"));
 const TestimonialsSection = lazy(() => import("../components/home/testimonials-section"));
@@ -33,6 +34,12 @@ function HomePage() {
         </Suspense>
       </div>
 
+      <div data-animate="zoom-up">
+        <Suspense fallback={null}>
+          <PoolPartyExploreBtn />
+        </Suspense>
+      </div>
+
       <div data-animate="zoom-in" data-delay="200">
         <Suspense fallback={null}>
           <BirthdayExploreBtn />
@@ -57,6 +64,8 @@ function HomePage() {
         </Suspense>
       </div>
 
+
+
       <div data-animate="zoom-up">
         <Suspense fallback={null}>
           <WaterparkPreview />
@@ -74,8 +83,6 @@ function HomePage() {
           <Contact />
         </Suspense>
       </div>
-
-
 
     </main>
   );
