@@ -16,7 +16,7 @@ import useSEO from "../hooks/useSEO";
  *  - gallery    : [{ type:"image"|"video", url, alt }]
  *  - formType   : string for QuickBookForm
  */
-export default function EventDetailPage({ helmet, hero, info, desc, gallery, formType }) {
+export default function EventDetailPage({ helmet, hero, info, desc, gallery, formType, hideForm, theme, children }) {
     useSEO({
         title: helmet?.title,
         description: helmet?.description,
@@ -58,7 +58,7 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
         <>
 
 
-            <div className={styles.eventPage}>
+            <div className={`${styles.eventPage} ${theme === 'gold' ? styles.themeGold : ''}`}>
                 <Navigation />
 
                 {/* ─── HERO ─── */}
@@ -69,17 +69,23 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
                     />
                     <div className={styles.heroOverlay} />
 
-                    <div className={styles.heroContent}>
+                    <div className={`${styles.heroContent} ${hideForm ? styles.heroContentCenter : ''}`}>
                         <div className={styles.heroLeft}>
                             {hero.pill && (
                                 <span className={styles.heroPill}>✨ {hero.pill}</span>
                             )}
                             <h1 className={styles.heroTitle}>
-                                {hero.title}{" "}
+                                {hero.title}
                                 {hero.titleHighlight && (
-                                    <span>{hero.titleHighlight}</span>
+                                    <>
+                                        <br />
+                                        <span>{hero.titleHighlight}</span>
+                                    </>
                                 )}
                             </h1>
+                            {hero.date && (
+                                <div className={styles.heroDate}>{hero.date}</div>
+                            )}
                             {hero.subtitle && (
                                 <p className={styles.heroSubtitle}>{hero.subtitle}</p>
                             )}
@@ -90,18 +96,31 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
                                     ))}
                                 </div>
                             )}
+                            {hero.buttons && hero.buttons.length > 0 && (
+                                <div className={styles.heroButtons}>
+                                    {hero.buttons.map((b, i) => (
+                                        <a key={i} href={b.action} className={b.primary ? styles.heroBtnPrimary : styles.heroBtnSecondary}>
+                                            {b.text}
+                                        </a>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
-                        <div className={styles.heroRight}>
-                            <QuickBookForm defaultFunctionType={formType} />
-                        </div>
+                        {!hideForm && (
+                            <div className={styles.heroRight}>
+                                <QuickBookForm defaultFunctionType={formType} />
+                            </div>
+                        )}
                     </div>
                 </section>
 
                 {/* Mobile form */}
-                <section className={styles.mobileBook}>
-                    <QuickBookForm defaultFunctionType={formType} />
-                </section>
+                {!hideForm && (
+                    <section className={styles.mobileBook}>
+                        <QuickBookForm defaultFunctionType={formType} />
+                    </section>
+                )}
 
                 {/* ─── INFO STRIP ─── */}
                 {/* {info && info.length > 0 && (
@@ -142,6 +161,13 @@ export default function EventDetailPage({ helmet, hero, info, desc, gallery, for
                                 loading="lazy"
                             />
                         </div>
+                    </section>
+                )}
+
+                {/* ─── CUSTOM CONTENT ─── */}
+                {children && (
+                    <section className={styles.customContentSection}>
+                        {children}
                     </section>
                 )}
 

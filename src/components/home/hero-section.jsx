@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
-import { ChevronDown, X, Calendar } from "lucide-react";
+import { ChevronDown, Calendar } from "lucide-react";
 import styles from "../../styles/hero-section.module.css";
 
 const heroMenus = [
@@ -36,12 +36,10 @@ const heroMenus = [
   },
   { title: "Cottage Rooms", link: "/cottage-in-patna" },
   { title: "WaterPark Tickets", link: "/waterpark-in-patna" },
-  { title: "FunPark Tickets", link: "/fun-park" },
+  { title: "Pool Party Ticket", link: "/pool-party" },
 ];
 
 export default function HeroSection() {
-  // FunPark coming-soon popup
-  const [showFunPark, setShowFunPark] = useState(false);
 
   const openBooking = () => {
     window.dispatchEvent(new CustomEvent("openBooking"));
@@ -125,14 +123,6 @@ export default function HeroSection() {
                     ))}
                   </div>
                 </>
-              ) : menu.title === "FunPark Tickets" ? (
-                <button
-                  className={styles.heroBtnOutline}
-                  onClick={() => setShowFunPark(true)}
-                  aria-label="FunPark Tickets — Coming Soon"
-                >
-                  {menu.title}
-                </button>
               ) : (
                 <Link to={menu.link} className={styles.heroBtnOutline}>
                   {menu.title}
@@ -143,32 +133,6 @@ export default function HeroSection() {
         </nav>
 
       </section>
-
-      {/* ── FUNPARK POPUP ── */}
-      {showFunPark && (
-        <div
-          className={styles.bookingOverlay}
-          onClick={() => setShowFunPark(false)}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="funpark-title"
-        >
-          <div
-            className={styles.popupBox}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className={styles.popupClose}
-              onClick={() => setShowFunPark(false)}
-              aria-label="Close popup"
-            >
-              <X size={18} aria-hidden="true" />
-            </button>
-            <h2 id="funpark-title">🎡 FunPark Coming Soon!</h2>
-            <p>Thrilling rides and entertainment are on the way 🚀 Stay tuned!</p>
-          </div>
-        </div>
-      )}
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import { WATERPARK_TICKETS, COTTAGE_PKGS } from "../constants/ticketPrices";
+import { WATERPARK_TICKETS, COTTAGE_PKGS, POOL_PARTY_TICKETS } from "../constants/ticketPrices";
 
 const TicketPricesContext = createContext(null);
 
@@ -37,7 +37,7 @@ export function TicketPricesProvider({ children }) {
     }, []);
 
     // Helper: TICKET_MAP equivalent
-    const ticketMap = tickets.reduce((acc, ticket) => {
+    const ticketMap = [...tickets, ...POOL_PARTY_TICKETS].reduce((acc, ticket) => {
         acc[ticket.id] = { name: ticket.name, price: ticket.price };
         return acc;
     }, {});

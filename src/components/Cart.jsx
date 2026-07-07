@@ -84,10 +84,10 @@ export default function Cart({ isOpen, onClose, onProceed }) {
                         </div>
                     ) : (
                         <>
-                            {/* ═══ WATERPARK TICKETS SECTION ═══ */}
+                            {/* ═══ TICKETS SECTION ═══ */}
                             {hasWaterpark && (
                                 <div className={styles.cartSection}>
-                                    <div className={styles.sectionLabel}>🌊 Water Park Tickets</div>
+                                    <div className={styles.sectionLabel}>🎟️ Tickets & Passes</div>
                                     {Object.entries(cartItems).map(([id, qty]) => {
                                         const ticket = ticketMap[id];
                                         return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Calendar, Home, Waves, ChevronRight } from "lucide-react";
+import { Calendar, Home, Waves, ChevronRight, PartyPopper } from "lucide-react";
 import styles from "../styles/booking-options.module.css";
 
 const options = [
@@ -11,6 +11,15 @@ const options = [
         image: "/images/venue-wedding.webp",
         icon: Calendar,
         color: "#e72e77"
+    },
+    {
+        id: "pool-party",
+        title: "Pool Party",
+        subtitle: "Premium Pool Experience",
+        image: "/images/pool.webp",
+        icon: PartyPopper,
+        color: "#d4af37",
+        link: "/pool-party"
     },
     {
         id: "cottage",

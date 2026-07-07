@@ -9,8 +9,16 @@ export const WATERPARK_TICKETS = [
     { id: "groupof20", name: "Group of 20", price: 5980, originalPrice: 10980, features: ["Wave Pool", "Rain Dance", "DJ", "Water Slides"] },
 ];
 
+/* ─── Pool Party Tickets Configuration ─── */
+export const POOL_PARTY_TICKETS = [
+    { id: "pp_stag", name: "STAG ENTRY", price: 799, originalPrice: 999 },
+    { id: "pp_couple", name: "COUPLE ENTRY", price: 1499, originalPrice: 1999 },
+    { id: "pp_vip_stag", name: "VIP STAG PASS 👑", price: 1999, originalPrice: 2499 },
+    { id: "pp_vip_couple", name: "VIP COUPLE PASS 👑", price: 1999, originalPrice: 2499 },
+];
+
 /* ─── Helper for quick lookups by ID ─── */
-export const TICKET_MAP = WATERPARK_TICKETS.reduce((acc, ticket) => {
+export const TICKET_MAP = [...WATERPARK_TICKETS, ...POOL_PARTY_TICKETS].reduce((acc, ticket) => {
     acc[ticket.id] = { name: ticket.name, price: ticket.price };
     return acc;
 }, {});

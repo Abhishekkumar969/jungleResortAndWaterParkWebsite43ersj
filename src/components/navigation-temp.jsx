@@ -11,7 +11,7 @@ const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/destination-wedding-venue-in-patna", label: "DESTINATION WEDDING" },
   { href: "/wedding-venue-in-patna", label: "WEDDING" },
-  { href: "/waterpark-in-patna", label: "WATER PARK TICKETS", className: "hide-mobile" },
+  { href: "/pool-party", label: "POOL PARTY TICKET", className: "hide-mobile" },
   { href: "/cottage-in-patna", label: "COTTAGE BOOKINGS", className: "hide-mobile" },
   { href: "/about-us", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
@@ -23,7 +23,7 @@ const mobileNavLinks = [
   { href: "/", label: "HOME" },
   { href: "/destination-wedding-venue-in-patna", label: "DESTINATION WEDDING" },
   { href: "/wedding-venue-in-patna", label: "WEDDING" },
-  { href: "/waterpark-in-patna", label: "WATER PARK TICKETS" },
+  { href: "/pool-party", label: "POOL PARTY TICKET" },
   { href: "/cottage-in-patna", label: "COTTAGE BOOKINGS" },
   { href: "/about-us", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
@@ -162,12 +162,12 @@ export default function Navbar() {
           </div>
 
           <div className="nav-right">
-            {/* Waterpark Button - Mobile Only */}
+            {/* Pool Party Button - Mobile Only */}
             <Link
-              to="/waterpark-in-patna"
+              to="/pool-party"
               className="waterpark-btn-outlines hide-desktop"
             >
-              WATER PARK TICKETS
+              POOL PARTY TICKET
             </Link>
 
 

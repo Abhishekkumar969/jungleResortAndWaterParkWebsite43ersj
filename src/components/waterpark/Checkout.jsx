@@ -7,6 +7,7 @@ import { db, auth } from "../../firebaseConfig";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 import styles from "../../styles/Checkout.module.css";
 import "../../styles/Calendar.css"
+import { QRCodeCanvas } from "qrcode.react";
 
 function loadRazorpay() {
     return new Promise((resolve) => {
@@ -114,6 +115,10 @@ function downloadTicket({ formData, selectedTickets, cottage, totalAmount, booki
             </tbody>
         </table>
         <hr class="divider" />
+        <div style="text-align:center; margin: 15px 0;">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(bookingId)}" alt="QR Code" width="120" height="120" style="border: 2px solid #ddd; border-radius: 8px; padding: 4px;" />
+            <p style="font-size: 11px; color: #555; margin-top: 5px;">Scan at Entrance</p>
+        </div>
         <p style="font-size:12px;color:#6b7a8d;text-align:center">
             Please show this ticket at the entrance. Food charges are extra.<br>
             This ticket is non-transferable and non-refundable.
@@ -163,25 +168,46 @@ function SuccessScreen({ formData, selectedTickets, cottage, totalAmount, bookin
                     Thank you for choosing <strong>Jungle Resort &amp; Water Park</strong>
                 </p>
 
-                <div className={styles.successInfo}>
-                    <div className={styles.successRow}>
-                        <span>👤 Name</span><strong>{formData.name}</strong>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'center', justifyContent: 'space-between', marginTop: '15px', background: '#f8fafd', padding: '15px', borderRadius: '12px', border: '1px solid #e1e8ed' }}>
+                    <div className={styles.successInfo} style={{ flex: '1 1 240px', background: 'transparent', padding: 0, margin: 0, boxShadow: 'none', border: 'none' }}>
+                        <div className={styles.successRow}>
+                            <span>👤 Name</span><strong>{formData.name}</strong>
+                        </div>
+                        <div className={styles.successRow}>
+                            <span>📅 Visit Date</span><strong>{(() => {
+                                const d = new Date(formData.visitDate);
+                                return isNaN(d) ? formData.visitDate : `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}/${d.getFullYear()}`;
+                            })()}</strong>
+                        </div>
+                        
+                        <div className={styles.successRow}>
+                            <span>🎟️ Tickets</span>
+                            <div style={{ textAlign: "right", fontSize: "14px", lineHeight: "1.5" }}>
+                                {Object.entries(selectedTickets || {}).map(([id, qty]) => {
+                                    const name = ticketNames?.[id]?.name || id;
+                                    return <div key={id}><strong>{name}</strong> &times; {qty}</div>
+                                })}
+                                {cottage && (
+                                    <div><strong>Cottage ({cottage.duration})</strong> &times; {cottage.rooms || 1}</div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className={styles.successRow}>
+                            <span>💰 Amount Paid</span>
+                            <strong style={{ color: "#e91e8c", fontSize: "16px" }}>₹{fmt(totalAmount)}</strong>
+                        </div>
+                        <div className={styles.successRow}>
+                            <span>🔖 Booking ID</span>
+                            <strong style={{ fontFamily: "monospace", fontSize: "12px", background: "#eee", padding: "2px 6px", borderRadius: "4px" }}>
+                                {bookingId.slice(0, 12).toUpperCase()}
+                            </strong>
+                        </div>
                     </div>
-                    <div className={styles.successRow}>
-                        <span>📅 Visit Date</span><strong>{(() => {
-                            const d = new Date(formData.visitDate);
-                            return isNaN(d) ? formData.visitDate : `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}/${d.getFullYear()}`;
-                        })()}</strong>
-                    </div>
-                    <div className={styles.successRow}>
-                        <span>💰 Amount Paid</span>
-                        <strong style={{ color: "#e91e8c" }}>₹{fmt(totalAmount)}</strong>
-                    </div>
-                    <div className={styles.successRow}>
-                        <span>🔖 Booking ID</span>
-                        <strong style={{ fontFamily: "monospace", fontSize: "12px" }}>
-                            {bookingId.slice(0, 12).toUpperCase()}
-                        </strong>
+
+                    <div style={{ flex: '0 0 auto', margin: '0 auto', textAlign: "center", background: "#fff", padding: "12px", borderRadius: "10px", boxShadow: "0 2px 8px rgba(0,0,0,0.15)", border: '1px solid #eaeaea' }}>
+                        <QRCodeCanvas value={bookingId} size={140} level={"H"} />
+                        <div style={{ fontSize: "11px", color: "#555", marginTop: "8px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.5px" }}>Scan at Entrance</div>
                     </div>
                 </div>
 
@@ -209,6 +235,7 @@ export default function Checkout({ isOpen, onClose, data }) {
     const { ticketMap: ticketNames } = useTicketPrices();
 
     const { selectedTickets, cottage, totalAmount } = data || {};
+    const hasPoolParty = Object.keys(selectedTickets || {}).some(k => k.startsWith('pp_'));
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [paymentError, setPaymentError] = useState("");
@@ -216,6 +243,9 @@ export default function Checkout({ isOpen, onClose, data }) {
     const [successData, setSuccessData] = useState(null);
     const [reservedDates, setReservedDates] = useState([]);
     const [formData, setFormData] = useState(() => {
+        if (hasPoolParty) {
+            return { name: "", phone: "", visitDate: "2026-07-17" };
+        }
         const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
         const year = d.getFullYear();
         const month = String(d.getMonth() + 1).padStart(2, "0");
@@ -261,10 +291,20 @@ export default function Checkout({ isOpen, onClose, data }) {
     }, []);
 
     useEffect(() => {
-        if (isOpen && cottage?.date) {
-            setFormData(prev => ({ ...prev, visitDate: cottage.date }));
+        if (isOpen) {
+            if (hasPoolParty) {
+                setFormData(prev => ({ ...prev, visitDate: "2026-07-17" }));
+            } else if (cottage?.date) {
+                setFormData(prev => ({ ...prev, visitDate: cottage.date }));
+            } else {
+                const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+                const year = d.getFullYear();
+                const month = String(d.getMonth() + 1).padStart(2, "0");
+                const day = String(d.getDate()).padStart(2, "0");
+                setFormData(prev => ({ ...prev, visitDate: `${year}-${month}-${day}` }));
+            }
         }
-    }, [isOpen, cottage?.date]);
+    }, [isOpen, cottage?.date, hasPoolParty]);
 
     if (!isOpen && !successData) return null;
 
@@ -350,33 +390,14 @@ export default function Checkout({ isOpen, onClose, data }) {
                 createdAt: new Date().toLocaleString("en-IN"),
             };
 
-            const cottageBookingData = cottage ? {
-                bookingId,
-                userId: auth.currentUser?.uid || "guest",
-                name: formData.name || "",
-                phone: formData.phone || "",
-                visitDate: formData.visitDate || "",
-                cottagePackage: {
-                    id: cottage.id,
-                    duration: cottage.duration,
-                    price: cottage.basePrice || 0,
-                    days: cottage.days || 1,
-                    rooms: cottage.rooms || 1
-                },
-                waterParkAddons: cottage.addons || {},
-                total: cottage.total || 0,
-                orderId: order.id,
-                verification: false,
-                paymentStatus: "pending",
-                createdAt: new Date().toLocaleString("en-IN"),
-            } : null;
+
 
             const options = {
                 key: process.env.REACT_APP_RAZORPAY_KEY_ID,
                 amount: order.amount,
                 order_id: order.id,
                 currency: "INR",
-                name: cottage ? "Jungle Resort Cottage Booking" : "Jungle Resort Water Park",
+                name: cottage ? "Jungle Resort Cottage Booking" : (Object.keys(selectedTickets || {}).some(k => k.startsWith('pp_')) ? "Jungle Resort Pool Party" : "Jungle Resort Water Park"),
                 description: (() => {
                     const ticketSummary = Object.entries(selectedTickets || {})
                         .map(([k, v]) => `${k}×${v}`)
@@ -386,10 +407,12 @@ export default function Checkout({ isOpen, onClose, data }) {
                         ? `${cottage.duration}${cottage.days > 1 ? `×${cottage.days}` : ""}`
                         : "";
 
+                    const ticketTypeStr = hasPoolParty ? "Pool Party" : "Water Park";
+
                     let desc = "";
                     if (cottage && ticketSummary) desc = `Combo: ${ticketSummary} + ${cottageSummary}`;
                     else if (cottage) desc = `Cottage: ${cottageSummary}`;
-                    else desc = `Water Park: ${ticketSummary}`;
+                    else desc = `${ticketTypeStr}: ${ticketSummary}`;
 
                     return desc.substring(0, 250); // Trim to avoid Razorpay SDK issues
                 })(),
@@ -405,17 +428,10 @@ export default function Checkout({ isOpen, onClose, data }) {
                     };
 
                     try {
-                        // Sync with WaterPark collection
+                        // Sync with WaterPark collection (all bookings)
                         if (Object.keys(selectedTickets || {}).length > 0 || cottage) {
                             await setDoc(doc(db, "WaterPark", monthYear),
                                 { [bookingId]: { ...wpBookingData, ...paymentFields } },
-                                { merge: true }
-                            );
-                        }
-
-                        if (cottage) {
-                            await setDoc(doc(db, "CottageBookings", monthYear),
-                                { [bookingId]: { ...cottageBookingData, ...paymentFields } },
                                 { merge: true }
                             );
                         }
@@ -507,7 +523,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                             <div className={styles.inputGroup}>
 
                                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                    <label>Choose Visit Date</label>
+                                    <label>{hasPoolParty ? "Event Date" : "Choose Visit Date"}</label>
 
                                     {formData.visitDate && (
                                         <span
@@ -525,69 +541,71 @@ export default function Checkout({ isOpen, onClose, data }) {
                                     )}
                                 </div>
 
-                                <div className={styles.calendarWrapper}>
-                                    <Calendar
+                                {!hasPoolParty && (
+                                    <div className={styles.calendarWrapper}>
+                                        <Calendar
 
-                                        prev2Label={null}   // ❌ remove <<
-                                        next2Label={null}   // ❌ remove >>
+                                            prev2Label={null}   // ❌ remove <<
+                                            next2Label={null}   // ❌ remove >>
 
-                                        minDetail="month"   // ❌ disable year view
-                                        maxDetail="month"   // ❌ disable drill up
+                                            minDetail="month"   // ❌ disable year view
+                                            maxDetail="month"   // ❌ disable drill up
 
-                                        navigationLabel={({ date }) =>
-                                            date.toLocaleDateString("en-US", {
-                                                month: "long",
-                                                year: "numeric",
-                                            })
-                                        }
-
-                                        formatMonthYear={(locale, date) =>
-                                            date.toLocaleDateString("en-US", {
-                                                month: "long",
-                                                year: "numeric",
-                                            })
-                                        }
-
-                                        value={
-                                            formData.visitDate
-                                                ? parseISTDate(formData.visitDate)
-                                                : null
-                                        }
-
-                                        onChange={(date) => {
-                                            const formatted = formatDateIST(date);
-
-                                            setFormData(prev => ({
-                                                ...prev,
-                                                visitDate: formatted
-                                            }));
-
-                                            setErrors(prev => {
-                                                const n = { ...prev };
-                                                delete n.visitDate;
-                                                return n;
-                                            });
-                                        }}
-
-                                        tileDisabled={({ date }) => {
-                                            const formatted = formatDateIST(date);
-                                            const todayStr = formatDateIST(new Date());
-
-                                            return (
-                                                formatted < todayStr ||
-                                                reservedDates.includes(formatted)
-                                            );
-                                        }}
-
-                                        tileClassName={({ date }) => {
-                                            const formatted = formatDateIST(date);
-
-                                            if (reservedDates.includes(formatted)) {
-                                                return "reserved-date";
+                                            navigationLabel={({ date }) =>
+                                                date.toLocaleDateString("en-US", {
+                                                    month: "long",
+                                                    year: "numeric",
+                                                })
                                             }
-                                        }}
-                                    />
-                                </div>
+
+                                            formatMonthYear={(locale, date) =>
+                                                date.toLocaleDateString("en-US", {
+                                                    month: "long",
+                                                    year: "numeric",
+                                                })
+                                            }
+
+                                            value={
+                                                formData.visitDate
+                                                    ? parseISTDate(formData.visitDate)
+                                                    : null
+                                            }
+
+                                            onChange={(date) => {
+                                                const formatted = formatDateIST(date);
+
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    visitDate: formatted
+                                                }));
+
+                                                setErrors(prev => {
+                                                    const n = { ...prev };
+                                                    delete n.visitDate;
+                                                    return n;
+                                                });
+                                            }}
+
+                                            tileDisabled={({ date }) => {
+                                                const formatted = formatDateIST(date);
+                                                const todayStr = formatDateIST(new Date());
+
+                                                return (
+                                                    formatted < todayStr ||
+                                                    reservedDates.includes(formatted)
+                                                );
+                                            }}
+
+                                            tileClassName={({ date }) => {
+                                                const formatted = formatDateIST(date);
+
+                                                if (reservedDates.includes(formatted)) {
+                                                    return "reserved-date";
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                )}
 
                                 {errors.visitDate && <p className={styles.error}>{errors.visitDate}</p>}
 
