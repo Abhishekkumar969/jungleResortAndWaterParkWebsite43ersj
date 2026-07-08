@@ -5,6 +5,7 @@ import ticketStyles from "../styles/tickets.module.css";
 import { Check, User, Users, Crown, Ticket } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 import TicketSearch from "../components/TicketSearch";
+import InfluencerForm from "../components/waterpark/InfluencerForm";
 
 const poolPartyTickets = [
   {
@@ -92,6 +93,8 @@ export default function PoolParty() {
     const stored = JSON.parse(localStorage.getItem("cart")) || {};
     return stored.items || {};
   });
+
+  const [showInfluencerForm, setShowInfluencerForm] = useState(false);
 
   useEffect(() => {
     const onCartUpdated = () => {
@@ -339,13 +342,52 @@ export default function PoolParty() {
             </div>
           )}
 
+          {/* INFLUENCER BANNER */}
+          <div style={{
+            background: "#de3a942e",
+            borderRadius: "15px",
+            padding: "2rem",
+            marginTop: "4rem",
+            textAlign: "center",
+            color: "#fff",
+            boxShadow: "0 8px 32px rgba(233, 30, 142, 0.3)",
+            position: "relative",
+            overflow: "hidden",
+            border: "2px solid #de3a946a"
+          }}>
+            <h2 style={{ fontSize: "1.8rem", fontWeight: "900", marginBottom: "10px", textTransform: "uppercase", letterSpacing: "1px" }}>Are You an Influencer?</h2>
+            <p style={{ fontSize: "1.1rem", marginBottom: "20px", maxWidth: "600px", margin: "0 auto 20px" }}>
+              Are you a female influencer with 5K+ followers? Apply here for a FREE Pool Party Ticket! Only female influencers are eligible.
+            </p>
+            <button
+              onClick={() => setShowInfluencerForm(true)}
+              style={{
+                background: "#fff",
+                color: "#e91e8c",
+                border: "none",
+                padding: "12px 24px",
+                fontSize: "1.1rem",
+                fontWeight: "bold",
+                borderRadius: "30px",
+                cursor: "pointer",
+                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)"
+              }}
+            >
+              Apply Now
+            </button>
+          </div>
+
+          {showInfluencerForm && (
+            <InfluencerForm onClose={() => setShowInfluencerForm(false)} />
+          )}
+
           {/* DOWNLOAD TICKET SECTION */}
           <div className={ticketStyles.ticketsHeader} style={{ marginTop: "4rem", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "3rem" }}>
             <div className={ticketStyles.sectionIcon}><Ticket size={24} color="#e91e8c" /></div>
             <h2 style={{ color: "#fff" }}>Already have a <span style={{ color: "#e91e8c" }}>Booking?</span></h2>
             <p style={{ color: "#ccc" }}>Download your Pool Party passes here.</p>
             <div className={ticketStyles.searchWrap} data-booking-form="true">
-              <TicketSearch />
+              <TicketSearch fixedDate="2026-07-17" />
             </div>
           </div>
         </div>

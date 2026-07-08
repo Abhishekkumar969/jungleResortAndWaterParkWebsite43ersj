@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import styles from "../styles/TicketSearch.module.css";
 
 
@@ -95,10 +95,6 @@ function downloadTicketHTML({ name, phone, visitDate, createdAt, tickets, cottag
             </tbody>
         </table>
         <hr class="divider" />
-        <div style="text-align:center; margin: 15px 0;">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(JSON.stringify({ ticketId: bookingId }))}" alt="QR Code" width="250" height="250" style="border: 2px solid #ddd; border-radius: 8px; padding: 4px;" />
-            <p style="font-size: 11px; color: #555; margin-top: 5px;">Scan at Entrance</p>
-        </div>
         <p style="font-size:12px;color:#6b7a8d;text-align:center">
             Please show this ticket at the entrance. Food charges are extra.<br>
             This ticket is non-transferable and non-refundable.
@@ -121,16 +117,17 @@ function downloadTicketHTML({ name, phone, visitDate, createdAt, tickets, cottag
     URL.revokeObjectURL(url);
 }
 
-export default function TicketSearch() {
+export default function TicketSearch({ fixedDate }) {
     const { ticketMap: ticketNames } = useTicketPrices();
     const [phone, setPhone] = useState("");
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState(fixedDate || "");
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
     const [searched, setSearched] = useState(false);
     const [resultOpen, setResultOpen] = useState(false);
     const [isCancelled, setIsCancelled] = useState(false);
+    const [notEligible, setNotEligible] = useState(false);
     useEffect(() => {
         const handleOpen = () => setOpen(true);
         window.addEventListener("openTicketSearchModal", handleOpen);
@@ -140,8 +137,8 @@ export default function TicketSearch() {
 
 
     const handleSearch = async () => {
-        if (!phone || !date) {
-            alert("Enter phone & date");
+        if (!phone) {
+            alert("Enter phone number");
             return;
         }
 
@@ -150,8 +147,15 @@ export default function TicketSearch() {
             return;
         }
 
+        const searchDate = fixedDate || date;
+        if (!searchDate) {
+            alert("Enter visit date");
+            return;
+        }
+
         setSearched(true);
         setIsCancelled(false);
+        setNotEligible(false);
 
         try {
             setLoading(true);
@@ -170,8 +174,9 @@ export default function TicketSearch() {
             });
 
             // ✅ filter by phone + date
+            const searchDate = fixedDate || date;
             const filtered = allBookings.filter(
-                (b) => b.phone === phone && b.visitDate === date
+                (b) => b.phone === phone && b.visitDate === searchDate
             );
 
             // ✅ Only include 'paid' tickets with a valid paymentId
@@ -193,8 +198,21 @@ export default function TicketSearch() {
                 setResultOpen(true);
             }
 
-            // 🔥 CASE 3: No ticket
+            // 🔥 CASE 3: No ticket - Check if influencer
             if (filtered.length === 0) {
+                const infQ = query(collection(db, "influencers"), where("phone", "==", phone));
+                const infSnap = await getDocs(infQ);
+                let isDeniedInfluencer = false;
+                infSnap.forEach(doc => {
+                    const data = doc.data();
+                    if (data.status !== "accepted") {
+                        isDeniedInfluencer = true;
+                    }
+                });
+
+                if (isDeniedInfluencer) {
+                    setNotEligible(true);
+                }
                 setResults([]);
             }
 
@@ -276,16 +294,27 @@ export default function TicketSearch() {
                                 </button>
                             </div>
 
-                            <div className={styles.field}>
-                                <label htmlFor="ticket-visit-date" className={styles.label}>Visit Date:</label>
-                                <input
-                                    id="ticket-visit-date"
-                                    type="date"
-                                    value={date}
-                                    onChange={(e) => setDate(e.target.value)}
-                                    className={styles.input}
-                                />
-                            </div>
+                            {!fixedDate && (
+                                <div className={styles.field}>
+                                    <label htmlFor="ticket-visit-date" className={styles.label}>Visit Date:</label>
+                                    <input
+                                        id="ticket-visit-date"
+                                        type="date"
+                                        value={date}
+                                        onChange={(e) => setDate(e.target.value)}
+                                        className={styles.input}
+                                    />
+                                </div>
+                            )}
+
+                            {fixedDate && (
+                                <div className={styles.field} style={{ textAlign: "center" }}>
+                                    <span style={{ fontSize: "13px", color: "#6b7a8d", fontWeight: "600" }}>📅 Visit Date: </span>
+                                    <span style={{ fontSize: "14px", fontWeight: "700", color: "#1a1a2e" }}>
+                                        {new Date(fixedDate).toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" })}
+                                    </span>
+                                </div>
+                            )}
 
                             <div className={styles.field}>
                                 <label htmlFor="ticket-phone" className={styles.label}>Phone Number: (10 Digits)</label>
@@ -308,13 +337,15 @@ export default function TicketSearch() {
                             {searched && results.length === 0 && !loading && (
                                 <div className={styles.noDataBox}>
                                     <p className={styles.noData}>
-                                        {isCancelled ? "⚠️ Ticket Cancelled" : "❌ No tickets found"}
+                                        {notEligible ? "⚠️ Not Eligible" : (isCancelled ? "⚠️ Ticket Cancelled" : "❌ No tickets found")}
                                     </p>
 
                                     <p className={styles.helpText}>
-                                        {isCancelled
-                                            ? "This ticket has been cancelled. Please contact support."
-                                            : "No ticket found. Please book your ticket or reach out to admin."}
+                                        {notEligible
+                                            ? "Sorry, you are not eligible for this pass. Please buy your ticket now."
+                                            : (isCancelled
+                                                ? "This ticket has been cancelled. Please contact support."
+                                                : "No ticket found. Please book your ticket or reach out to admin.")}
                                     </p>
 
                                     <div className={styles.callBtns}>
