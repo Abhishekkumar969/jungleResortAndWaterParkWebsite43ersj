@@ -532,19 +532,20 @@
 
 /* ─── GOLD THEME ─── */
 .themeGold .heroOverlay {
-    background: rgba(0, 0, 0, 0.5); /* Lighter overlay so image is visible */
+    background: rgba(0, 0, 0, 0.5);
+    /* Lighter overlay so image is visible */
 }
 
 .themeGold .heroPill {
     background: transparent;
     border: 1px solid #dcb365;
-    color: #dcb365;
+    color: #ffa600;
 }
 
 .themeGold .heroTitle span {
     background: none;
     color: #dcb365;
-    -webkit-text-fill-color: #dcb365;
+    -webkit-text-fill-color: #ffa600;
 }
 
 .heroButtons {
@@ -553,7 +554,8 @@
     margin-top: 24px;
 }
 
-.heroBtnPrimary, .heroBtnSecondary {
+.heroBtnPrimary,
+.heroBtnSecondary {
     padding: 12px 24px;
     border-radius: 8px;
     font-size: 16px;
@@ -565,23 +567,21 @@
 }
 
 .heroBtnPrimary {
-    background: #dcb365;
+    background: #ffa600;
     color: #000;
-    border: 1px solid #dcb365;
+    border: 1px solid #ffa600;
 }
 
 .heroBtnPrimary:hover {
-    background: #c89e53;
+    background: #ffa600;
 }
 
 .heroBtnSecondary {
     background: transparent;
-    color: #dcb365;
-    border: 1px solid #dcb365;
+    color: #ffa600;
+    border: 1px solid #ffa600;
 }
 
 .heroBtnSecondary:hover {
     background: rgba(220, 179, 101, 0.1);
 }
-
-
