@@ -116,7 +116,7 @@ function downloadTicket({ formData, selectedTickets, cottage, totalAmount, booki
         </table>
         <hr class="divider" />
         <div style="text-align:center; margin: 15px 0;">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(bookingId)}" alt="QR Code" width="120" height="120" style="border: 2px solid #ddd; border-radius: 8px; padding: 4px;" />
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(JSON.stringify({ ticketId: bookingId }))}" alt="QR Code" width="250" height="250" style="border: 2px solid #ddd; border-radius: 8px; padding: 4px;" />
             <p style="font-size: 11px; color: #555; margin-top: 5px;">Scan at Entrance</p>
         </div>
         <p style="font-size:12px;color:#6b7a8d;text-align:center">
@@ -206,7 +206,7 @@ function SuccessScreen({ formData, selectedTickets, cottage, totalAmount, bookin
                     </div>
 
                     <div style={{ flex: '0 0 auto', margin: '0 auto', textAlign: "center", background: "#fff", padding: "12px", borderRadius: "10px", boxShadow: "0 2px 8px rgba(0,0,0,0.15)", border: '1px solid #eaeaea' }}>
-                        <QRCodeCanvas value={bookingId} size={140} level={"H"} />
+                        <QRCodeCanvas value={JSON.stringify({ ticketId: bookingId })} size={140} level={"H"} />
                         <div style={{ fontSize: "11px", color: "#555", marginTop: "8px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.5px" }}>Scan at Entrance</div>
                     </div>
                 </div>

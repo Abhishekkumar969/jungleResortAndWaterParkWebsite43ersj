@@ -95,6 +95,10 @@ function downloadTicketHTML({ name, phone, visitDate, createdAt, tickets, cottag
             </tbody>
         </table>
         <hr class="divider" />
+        <div style="text-align:center; margin: 15px 0;">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(JSON.stringify({ ticketId: bookingId }))}" alt="QR Code" width="250" height="250" style="border: 2px solid #ddd; border-radius: 8px; padding: 4px;" />
+            <p style="font-size: 11px; color: #555; margin-top: 5px;">Scan at Entrance</p>
+        </div>
         <p style="font-size:12px;color:#6b7a8d;text-align:center">
             Please show this ticket at the entrance. Food charges are extra.<br>
             This ticket is non-transferable and non-refundable.

@@ -121,8 +121,24 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
     setIsSubmitting(true);
     setMessage("");
 
+    const mobileValue = formData.mobile.trim();
+    if (!/^\d{10}$/.test(mobileValue)) {
+      setMessage("❌ Phone number must be exactly 10 digits.");
+      setIsSubmitting(false);
+      return;
+    }
 
+    if (bookingType === "single" && !formData.date) {
+      setMessage("❌ Please select a Function Date.");
+      setIsSubmitting(false);
+      return;
+    }
 
+    if (bookingType === "multi" && (!formData.fromDate || !formData.toDate)) {
+      setMessage("❌ Please select both From and To Dates.");
+      setIsSubmitting(false);
+      return;
+    }
     try {
       const enquiryDateObj = new Date();
       const enquiryDate = enquiryDateObj.toISOString().split("T")[0];
