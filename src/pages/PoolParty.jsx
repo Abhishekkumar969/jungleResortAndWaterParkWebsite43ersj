@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navigation from "../components/navigation-temp";
 import styles from "./PoolParty.module.css";
 import ticketStyles from "../styles/tickets.module.css";
-import { Check, User, Users, Crown, Ticket } from "lucide-react";
+import { Check, User, Users, Crown, Ticket, Instagram } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 import TicketSearch from "../components/TicketSearch";
 import InfluencerForm from "../components/waterpark/InfluencerForm";
@@ -172,50 +172,14 @@ export default function PoolParty() {
               <span>SAVE THE DATE</span>
             </div>
             <div className={styles.discoDateNum}>17.07.26</div>
+
+            <div className={styles.jungleText}>
+              <h2>Timing - 5 P.M Onwards</h2>
+            </div>
+
             <div className={styles.discoLimitless}>One Night. Limitless Memories.</div>
           </div>
         </div>
-
-        {/* Left Floating Badge */}
-        <div className={styles.discoLeftBadge}>
-          <div className={styles.discoGoodVibes}>
-            <span className={styles.vibesPink}>Good Vibes</span>
-            <span className={styles.vibesBlue}>Only</span>
-          </div>
-          <div className={styles.discoRingBadge}>
-            <span>PREMIUM<br />VENUE</span>
-            <span className={styles.ringStar}>★</span>
-            <span>SECURE<br />ENVIRONMENT</span>
-            <span className={styles.ringStar}>★</span>
-            <span>CURATED<br />EXPERIENCE</span>
-          </div>
-        </div>
-
-        {/* Right Floating Badge */}
-        <div className={styles.discoRightBadge}>
-          <div className={styles.safetyItem}>
-            <div className={styles.safetyIconBlue}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" /></svg>
-            </div>
-            <div className={styles.safetyText}>SAFETY<br />FIRST</div>
-          </div>
-          <div className={styles.safetyItem}>
-            <div className={styles.safetyIconPink}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-            </div>
-            <div className={styles.safetyText}>TRAINED<br />STAFF</div>
-          </div>
-          <div className={styles.safetyItem}>
-            <div className={styles.safetyIconPinkOutline}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24"><rect x="3" y="8" width="18" height="12" rx="2" ry="2" /><path d="M16 8V6a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /><path d="M9 14h6" /><path d="M12 11v6" /></svg>
-            </div>
-            <div className={styles.safetyText}>FIRST AID<br />AVAILABLE</div>
-          </div>
-        </div>
-
-        {/* Big V background neon letter */}
-        <div className={styles.discoBigVLeft}>V</div>
-        <div className={styles.discoBigVRight}>V</div>
       </section>
 
       {/* ═══════════════════════════════════════════ */}
@@ -293,7 +257,7 @@ export default function PoolParty() {
               return (
                 <div
                   key={ticket.id}
-                  className={`${ticketStyles.ticketCard} ${styles.darkTicketCard} ${ticket.popular ? ticketStyles.popular : ""}`}
+                  className={`${ticketStyles.ticketCard} ${styles.darkTicketCard} ${ticket.popular ? ticketStyles.popular + " " + styles.popularCard : ""}`}
                 >
                   {ticket.popular && <div className={ticketStyles.cardBadge}>Popular Choice</div>}
                   <div className={ticketStyles.ticketTop}>
@@ -399,6 +363,17 @@ export default function PoolParty() {
       <section className={styles.partnersSection} style={{ backgroundImage: 'linear-gradient(#00000022, #000000ff), url(/images/velora4.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <h2 className={styles.partnersTitle}>OUR PARTNERS</h2>
         <div className={styles.partnerGrid}>
+
+          {/* Venue Aggregator Partner */}
+          <div className={styles.partnerCategory}>
+            <div className={styles.categoryLabel}>★ Venue Aggregator Partner</div>
+            <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
+              <a href="https://www.daytobook.com" target="_blank" rel="noopener noreferrer" className={styles.brandRowImageCentered} style={{ textDecoration: 'none' }}>
+                <img src="/images/daytobook1.png" alt="DayToBook" className={styles.partnerLogoLarge} />
+              </a>
+            </div>
+          </div>
+
           {/* FITNESS PARTNER */}
           <div className={styles.partnerCategory}>
             <div className={styles.categoryLabel}>★ FITNESS PARTNER</div>
@@ -453,19 +428,24 @@ export default function PoolParty() {
             </div>
           </div>
 
+          {/* advertising partner */}
+          <div className={styles.partnerCategory}>
+            <div className={styles.categoryLabel}>★ Advertising Partner</div>
+            <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
+              <div className={styles.brandRowImageCentered}>
+                <img src="/images/divyastuti.jpeg" alt="castabill" className={styles.partnerLogoLarge} />
+              </div>
+            </div>
+          </div>
+
         </div>
 
 
 
         {/* Bottom Footer */}
         <div className={styles.partnerFooter}>
-          <div className={styles.partnerProud}>
-            <span>PROUD PARTNER OF</span>
-            <img src="/images/velora.jpeg" alt="Velora" className={styles.veloraFooterLogo} />
-            <span className={styles.veloraFooterText}>VELORA<br /><small>EXPERIENCES</small></span>
-          </div>
           <div className={styles.partnerSocial}>
-            FOLLOW FOR MORE UPDATES &nbsp;|&nbsp; <span style={{ fontSize: '13px' }}>📷</span> @theveloraexperiences
+            &nbsp; <a href="https://www.instagram.com/jungleresort.patna" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><Instagram size={14} color="pink" /> @jungleresort.patna</a> |&nbsp; <a href="https://www.instagram.com/theveloraexperiences" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><Instagram size={14} color="pink" /> @theveloraexperiences</a>
           </div>
         </div>
       </section>
