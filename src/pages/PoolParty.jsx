@@ -419,9 +419,6 @@ export default function PoolParty() {
                 <img src="/images/fashionworld.jpg" alt="Reliance Fashion World" className={styles.partnerLogoWide} />
                 <div className={styles.brandLocationSide}>
                   <span>Main Road, Danapur Cantt.</span>
-                  <span>
-                    Opposite P&M Mall, Patliputra
-                  </span>
                 </div>
               </div>
               <div className={styles.brandDivider}></div>
