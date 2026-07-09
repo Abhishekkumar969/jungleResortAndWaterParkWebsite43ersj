@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { db } from "../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import styles from "../styles/TicketSearch.module.css";
@@ -242,13 +243,8 @@ export default function TicketSearch({ fixedDate }) {
     //     `;
     //     };
 
-    useEffect(() => {
-        if (open || resultOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-    }, [open, resultOpen]);
+    // User requested to not fix page scrolling when popup is open
+    // Removed the overflow hidden effect.
 
     const handleDownload = (ticket) => {
         downloadTicketHTML({
@@ -276,14 +272,14 @@ export default function TicketSearch({ fixedDate }) {
                 Download Booking Confirmations
             </button>
 
-            {open && (
+            {open && typeof document !== "undefined" && createPortal(
                 <div className={styles.overlay}>
                     <div className={styles.modal}>
 
                         {/* 🔥 TERA EXISTING CODE */}
                         <div className={styles.container}>
 
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div className={styles.headerRow}>
                                 <h3 className={styles.title}>Search Ticket</h3>
                                 <button
                                     className={styles.closeBtn}
@@ -362,17 +358,17 @@ export default function TicketSearch({ fixedDate }) {
 
                         </div>
                     </div>
-                </div >
+                </div >,
+                document.body
             )}
 
-            {resultOpen && (
+            {resultOpen && typeof document !== "undefined" && createPortal(
                 <div className={styles.overlay}>
                     <div className={styles.modal}>
 
                         <div className={styles.container}>
 
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                <div></div>
+                            <div className={styles.headerRow}>
                                 <h3 className={styles.title}>Your Tickets 🎟️</h3>
                                 <button
                                     className={styles.closeBtn}
@@ -408,7 +404,8 @@ export default function TicketSearch({ fixedDate }) {
                         </div>
 
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </>
     );
