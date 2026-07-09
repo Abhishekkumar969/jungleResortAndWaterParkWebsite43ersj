@@ -97,6 +97,24 @@ export default function PoolParty() {
   const [showInfluencerForm, setShowInfluencerForm] = useState(false);
 
   useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(styles.visible);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const hiddenElements = document.querySelectorAll(`.${styles.animateOnScroll}`);
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      hiddenElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
+  useEffect(() => {
     const onCartUpdated = () => {
       const stored = JSON.parse(localStorage.getItem("cart")) || {};
       setSelectedTickets(stored.items || {});
@@ -135,7 +153,7 @@ export default function PoolParty() {
       {/* ═══════════════════════════════════════════ */}
       {/* ─── DISCO HERO BANNER ─── */}
       {/* ═══════════════════════════════════════════ */}
-      <section className={styles.discoHero} style={{ backgroundImage: "url('/images/pool.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <section className={styles.discoHero} style={{ backgroundImage: "url('/images/pool.webp')", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" }}>
         <div className={styles.discoHeroOverlay}></div>
 
         <div className={styles.discoHeader}>
@@ -195,7 +213,7 @@ export default function PoolParty() {
         <div className={styles.floatingElement} style={{ top: '80%', right: '5%', animationDelay: '3s' }}>🌴</div>
         <div className={styles.floatingElement} style={{ top: '40%', left: '50%', animationDelay: '1.5s', opacity: 0.1, fontSize: '6rem' }}>🎉</div>
 
-        <div className={styles.discoCenterContent} style={{ position: "relative", zIndex: 2, marginTop: 0, marginBottom: "4rem" }}>
+        <div className={`${styles.discoCenterContent} ${styles.animateOnScroll} ${styles.animZoomIn}`} style={{ position: "relative", zIndex: 2, marginTop: 0, marginBottom: "4rem" }}>
           <p className={styles.discoGetReady}>DISCOVER</p>
           <h1 className={styles.discoUnforgettable} style={{ fontSize: "clamp(40px, 7vw, 70px)" }}>WHAT YOU'LL</h1>
           <h2 className={styles.discoNights} style={{ fontSize: "clamp(50px, 9vw, 85px)" }}>Experience</h2>
@@ -204,23 +222,23 @@ export default function PoolParty() {
           </p>
         </div>
         <div className={styles.expCards} style={{ position: "relative", zIndex: 2 }}>
-          <div className={styles.expCard}>
-            <div className={styles.expIcon}>🎧</div>
+          <div className={`${styles.expCard} ${styles.animateOnScroll} ${styles.animSlideLeft} ${styles.delay100}`}>
+            <div className={`${styles.expIcon} ${styles.continuousPulse}`}>🎧</div>
             <h3>Live DJ</h3>
             <p>Premium music, lighting, stage, and night energy.</p>
           </div>
-          <div className={styles.expCard}>
-            <div className={styles.expIcon}>🌴</div>
+          <div className={`${styles.expCard} ${styles.animateOnScroll} ${styles.animDropIn} ${styles.delay200}`}>
+            <div className={`${styles.expIcon} ${styles.continuousPulse}`}>🌴</div>
             <h3>Tropical Pool Night</h3>
             <p>Warm lights, pool reflections, lounge zones, and exclusive vibe.</p>
           </div>
-          <div className={styles.expCard}>
-            <div className={styles.expIcon}>🎫</div>
+          <div className={`${styles.expCard} ${styles.animateOnScroll} ${styles.animDropIn} ${styles.delay300}`}>
+            <div className={`${styles.expIcon} ${styles.continuousPulse}`}>🎫</div>
             <h3>Limited Entry</h3>
             <p>Curated crowd and controlled entry for a better experience.</p>
           </div>
-          <div className={styles.expCard}>
-            <div className={styles.expIcon}>✨</div>
+          <div className={`${styles.expCard} ${styles.animateOnScroll} ${styles.animSlideRight} ${styles.delay400}`}>
+            <div className={`${styles.expIcon} ${styles.continuousPulse}`}>✨</div>
             <h3>Partner Experience</h3>
             <p>Food, beverage, fashion, fitness, wellness, and lifestyle activations.</p>
           </div>
@@ -240,7 +258,7 @@ export default function PoolParty() {
         <div className={styles.floatingElement} style={{ top: '85%', left: '10%', animationDelay: '1.8s' }}>🥂</div>
         <div className={styles.floatingElement} style={{ top: '50%', right: '40%', animationDelay: '2.2s', opacity: 0.1, fontSize: '6rem' }}>🎵</div>
         <div className={ticketStyles.ticketsContainer} style={{ position: "relative", zIndex: 2 }}>
-          <div className={styles.discoCenterContent} style={{ marginTop: 0, marginBottom: "4rem" }}>
+          <div className={`${styles.discoCenterContent} ${styles.animateOnScroll} ${styles.animFlipIn}`} style={{ marginTop: 0, marginBottom: "4rem" }}>
             <p className={styles.discoGetReady}>SECURE ENTRY</p>
             <h1 className={styles.discoUnforgettable} style={{ fontSize: "clamp(40px, 7vw, 70px)" }}>BOOK YOUR</h1>
             <h2 className={styles.discoNights} style={{ fontSize: "clamp(50px, 9vw, 85px)" }}>Pass</h2>
@@ -250,14 +268,17 @@ export default function PoolParty() {
           </div>
 
           <div className={ticketStyles.ticketsGrid}>
-            {poolPartyTickets.map(ticket => {
+            {poolPartyTickets.map((ticket, index) => {
               const Icon = ticket.icon;
               const qty = selectedTickets[ticket.id] || 0;
               const save = savings(ticket.originalPrice, ticket.price);
+              const animClass = index === 0 ? styles.animRotateIn : index === 1 ? styles.animPop : index === 2 ? styles.animZoomIn : styles.animFlipIn;
+              const delayClass = index === 0 ? styles.delay100 : index === 1 ? styles.delay200 : index === 2 ? styles.delay300 : styles.delay400;
+
               return (
                 <div
                   key={ticket.id}
-                  className={`${ticketStyles.ticketCard} ${styles.darkTicketCard} ${ticket.popular ? ticketStyles.popular + " " + styles.popularCard : ""}`}
+                  className={`${ticketStyles.ticketCard} ${styles.darkTicketCard} ${ticket.popular ? ticketStyles.popular + " " + styles.popularCard : ""} ${styles.animateOnScroll} ${animClass} ${delayClass}`}
                 >
                   {ticket.popular && <div className={ticketStyles.cardBadge}>Popular Choice</div>}
                   <div className={ticketStyles.ticketTop}>
@@ -307,7 +328,7 @@ export default function PoolParty() {
           )}
 
           {/* INFLUENCER BANNER */}
-          <div style={{
+          <div className={`${styles.animateOnScroll} ${styles.animPop} ${styles.continuousFloat}`} style={{
             background: "#de3a942e",
             borderRadius: "15px",
             padding: "2rem",
@@ -346,7 +367,7 @@ export default function PoolParty() {
           )}
 
           {/* DOWNLOAD TICKET SECTION */}
-          <div className={ticketStyles.ticketsHeader} style={{ marginTop: "4rem", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "3rem" }}>
+          <div className={`${ticketStyles.ticketsHeader} ${styles.animateOnScroll} ${styles.animSlideLeft}`} style={{ marginTop: "4rem", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "3rem" }}>
             <div className={ticketStyles.sectionIcon}><Ticket size={24} color="#e91e8c" /></div>
             <h2 style={{ color: "#fff" }}>Already have a <span style={{ color: "#e91e8c" }}>Booking?</span></h2>
             <p style={{ color: "#ccc" }}>Download your Pool Party passes here.</p>
@@ -360,12 +381,12 @@ export default function PoolParty() {
       {/* ═══════════════════════════════════════════ */}
       {/* ─── OUR PARTNERS ─── */}
       {/* ═══════════════════════════════════════════ */}
-      <section className={styles.partnersSection} style={{ backgroundImage: 'linear-gradient(#00000022, #000000ff), url(/images/velora4.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <h2 className={styles.partnersTitle}>OUR PARTNERS</h2>
+      <section className={styles.partnersSection} style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85)), url(/images/velora4.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+        <h2 className={`${styles.partnersTitle} ${styles.animateOnScroll} ${styles.animZoomIn}`}>OUR PARTNERS</h2>
         <div className={styles.partnerGrid}>
 
           {/* Venue Aggregator Partner */}
-          <div className={styles.partnerCategory}>
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animFlipIn} ${styles.delay100}`}>
             <div className={styles.categoryLabel}>★ Venue Aggregator Partner</div>
             <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
               <a href="https://www.daytobook.com" target="_blank" rel="noopener noreferrer" className={styles.brandRowImageCentered} style={{ textDecoration: 'none' }}>
@@ -375,7 +396,7 @@ export default function PoolParty() {
           </div>
 
           {/* FITNESS PARTNER */}
-          <div className={styles.partnerCategory}>
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animFlipIn} ${styles.delay200}`}>
             <div className={styles.categoryLabel}>★ FITNESS PARTNER</div>
             <div className={styles.categoryBrands}>
               <div className={styles.brandRowImageCentered}>
@@ -391,11 +412,17 @@ export default function PoolParty() {
           </div>
 
           {/* FASHION & LIFESTYLE PARTNER */}
-          <div className={styles.partnerCategory}>
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animFlipIn} ${styles.delay300}`}>
             <div className={styles.categoryLabel}>★ FASHION & LIFESTYLE PARTNER</div>
             <div className={styles.categoryBrands}>
               <div className={styles.brandRowImageCentered}>
-                <img src="/images/reliance.png" alt="Reliance Fashion World" className={styles.partnerLogoWide} />
+                <img src="/images/fashionworld.jpg" alt="Reliance Fashion World" className={styles.partnerLogoWide} />
+                <div className={styles.brandLocationSide}>
+                  <span>Main Road, Danapur Cantt.</span>
+                  <span>
+                    Opposite P&M Mall, Patliputra
+                  </span>
+                </div>
               </div>
               <div className={styles.brandDivider}></div>
               <div className={styles.brandRowImageSide}>
@@ -409,17 +436,22 @@ export default function PoolParty() {
           </div>
 
           {/* WELLNESS PARTNER */}
-          <div className={styles.partnerCategory}>
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animFlipIn} ${styles.delay400}`}>
             <div className={styles.categoryLabel}>★ WELLNESS PARTNER</div>
             <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
               <div className={styles.brandRowImageCentered}>
                 <img src="/images/himalaya.jpeg" alt="Himalaya Since 1930" className={styles.partnerLogoLarge} />
               </div>
+              <div className={styles.brandLocationSide}>
+                <span>
+                  Opposite P&M Mall, Patliputra
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Waterpark & Fun zone Partner */}
-          <div className={styles.partnerCategory}>
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animFlipIn} ${styles.delay500}`}>
             <div className={styles.categoryLabel}>★ Water Park & Fun Zone Partner</div>
             <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
               <div className={styles.brandRowImageCentered}>
@@ -429,7 +461,7 @@ export default function PoolParty() {
           </div>
 
           {/* advertising partner */}
-          <div className={styles.partnerCategory}>
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animDropIn} ${styles.delay500}`}>
             <div className={styles.categoryLabel}>★ Advertising Partner</div>
             <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
               <div className={styles.brandRowImageCentered}>

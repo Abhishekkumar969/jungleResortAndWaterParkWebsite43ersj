@@ -49,9 +49,9 @@
     position: absolute;
     inset   : 0;
     background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.159),
-            rgba(0, 0, 0, 0.407),
-            rgba(0, 0, 0, 0.652));
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.65) 55%,
+      rgba(0, 0, 0, 0.85) 100%);
 }
 
 .content {
