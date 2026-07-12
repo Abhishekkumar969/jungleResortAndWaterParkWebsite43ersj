@@ -11,6 +11,7 @@ export const WATERPARK_TICKETS = [
 
 /* ─── Pool Party Tickets Configuration ─── */
 export const POOL_PARTY_TICKETS = [
+    { id: "pp_stagEntry", name: "STAG ENTRY (BASIC PASS)", price: 599, originalPrice: 799 },
     { id: "pp_stag", name: "STAG ENTRY", price: 799, originalPrice: 999 },
     { id: "pp_couple", name: "COUPLE ENTRY", price: 1499, originalPrice: 1999 },
     { id: "pp_vip_stag", name: "VIP STAG PASS 👑", price: 1999, originalPrice: 2499 },
