@@ -168,7 +168,7 @@ export default function PoolParty() {
             <div className={styles.jungleTextWrapper}>
               <div className={styles.jungleText}>
                 <h2>JUNGLE RESORT</h2>
-                <span>— VENUE PARTNER —</span>
+                <span>— Patna, Bihar —</span>
               </div>
             </div>
             <img src="/images/jungle-reosrt-logo.png" alt="Jungle Resort Patna" className={styles.jungleLogo} />
@@ -463,6 +463,36 @@ export default function PoolParty() {
             <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
               <div className={styles.brandRowImageCentered}>
                 <img src="/images/divyastuti.jpeg" alt="castabill" className={styles.partnerLogoLarge} />
+              </div>
+            </div>
+          </div>
+
+          {/* WELLNESS PARTNER */}
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animDropIn} ${styles.delay500}`}>
+            <div className={styles.categoryLabel}>★ WELLNESS PARTNER</div>
+            <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
+              <div className={styles.brandRowImageCentered}>
+                <img src="/images/ahesaas.jpeg" alt="castabill" className={styles.partnerLogoLarge} />
+              </div>
+            </div>
+          </div>
+
+          {/* Beverage partner */}
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animDropIn} ${styles.delay500}`}>
+            <div className={styles.categoryLabel}>★ Beverage Partner</div>
+            <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
+              <div className={styles.brandRowImageCentered}>
+                <img src="/images/actorchaiwala.png" alt="castabill" className={styles.partnerLogoLarge} />
+              </div>
+            </div>
+          </div>
+
+          {/* Desert partner */}
+          <div className={`${styles.partnerCategory} ${styles.animateOnScroll} ${styles.animDropIn} ${styles.delay500}`}>
+            <div className={styles.categoryLabel}>★ Desert Partner</div>
+            <div className={styles.categoryBrands} style={{ height: '100%', justifyContent: 'center', flex: 1 }}>
+              <div className={styles.brandRowImageCentered}>
+                <img src="/images/cakelo.png" alt="castabill" className={styles.partnerLogoLarge} />
               </div>
             </div>
           </div>
