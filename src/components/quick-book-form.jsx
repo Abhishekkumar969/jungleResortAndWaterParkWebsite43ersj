@@ -559,7 +559,7 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
 
             <p style={{ fontSize: "20px", color: "#546576", marginBottom: "25px", lineHeight: "1.6", fontFamily: "serif" }}>
               <span style={{ display: "inline-block", background: "#4ade80", color: "white", padding: "2px 5px", borderRadius: "4px", fontSize: "16px", verticalAlign: "middle", marginRight: "8px", marginBottom: "4px" }}>✓</span>
-              Thank You, Call Jungle Resort & WaterPark<br />Now
+              Thank You, <br /> Call Jungle Resort & WaterPark
             </p>
 
             <div style={{ display: "flex", gap: "15px", justifyContent: "center", flexWrap: "wrap" }}>
@@ -577,14 +577,14 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
                 flex: 1,
                 minWidth: "160px",
                 boxShadow: "0 4px 0 #b82b6b",
-                transition: "transform 0.1s"
+                transition: "transform 0.1s",
+                whiteSpace: "nowrap"
               }}
                 onMouseDown={(e) => e.currentTarget.style.transform = 'translateY(4px)'}
                 onMouseUp={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
               >
-                <Phone size={20} style={{ marginRight: "8px" }} />
-                +91 90310 80902
+                +919031080902
               </a>
               <a href="tel:+919065383838" style={{
                 background: "#e83e8c",
@@ -600,14 +600,14 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
                 flex: 1,
                 minWidth: "160px",
                 boxShadow: "0 4px 0 #b82b6b",
-                transition: "transform 0.1s"
+                transition: "transform 0.1s",
+                whiteSpace: "nowrap"
               }}
                 onMouseDown={(e) => e.currentTarget.style.transform = 'translateY(4px)'}
                 onMouseUp={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
               >
-                <Phone size={20} style={{ marginRight: "8px" }} />
-                +91 9065383838
+                +919065383838
               </a>
             </div>
           </div>
