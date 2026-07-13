@@ -193,11 +193,10 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
       const monthDocRef = doc(db, "enquiry", monthYear);
       await setDoc(monthDocRef, { [fieldId]: data }, { merge: true });
 
-      setMessage("✅ Our Representative Will Call You Shortly.");
+      setMessage("✅ Thank You, Call Jungle Resort & WaterPark Now");
 
-      setTimeout(() => {
-        onClose && onClose();
-      }, 1200);
+      // Removed auto-close so the user has time to click the calling buttons
+
 
       setFormData({
         name: "",
@@ -507,16 +506,113 @@ const QuickBookForm = React.memo(({ defaultFunctionType = "", onClose }) => {
             : "CHECK  AVAILABILITY"}
         </button>
 
-        {message && (
-          <p
-            className={`${styles.formMessage} ${message.includes("Thank") ? styles.success : styles.error
-              }`}
-          >
+        {message && !message.includes("Thank") && (
+          <p className={`${styles.formMessage} ${styles.error}`}>
             {message}
           </p>
         )}
 
       </form>
+
+      {/* SUCCESS POPUP MODAL */}
+      {message && message.includes("Thank") && (
+        <div style={{
+          position: "fixed",
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 99999
+        }}>
+          <div style={{
+            background: "#fff",
+            padding: "30px 20px",
+            borderRadius: "15px",
+            textAlign: "center",
+            maxWidth: "90%",
+            width: "450px",
+            position: "relative",
+            boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
+          }}>
+            {/* Close Button */}
+            <button
+              onClick={() => {
+                setMessage("");
+                onClose && onClose();
+              }}
+              style={{
+                position: "absolute",
+                top: "12px",
+                right: "15px",
+                background: "transparent",
+                border: "none",
+                fontSize: "24px",
+                cursor: "pointer",
+                color: "#ff0000ff",
+                lineHeight: "1"
+              }}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+
+            <p style={{ fontSize: "20px", color: "#546576", marginBottom: "25px", lineHeight: "1.6", fontFamily: "serif" }}>
+              <span style={{ display: "inline-block", background: "#4ade80", color: "white", padding: "2px 5px", borderRadius: "4px", fontSize: "16px", verticalAlign: "middle", marginRight: "8px", marginBottom: "4px" }}>✓</span>
+              Thank You, Call Jungle Resort & WaterPark<br />Now
+            </p>
+
+            <div style={{ display: "flex", gap: "15px", justifyContent: "center", flexWrap: "wrap" }}>
+              <a href="tel:+919031080902" style={{
+                background: "#e83e8c",
+                color: "white",
+                textDecoration: "none",
+                padding: "12px 10px",
+                borderRadius: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "18px",
+                fontWeight: "600",
+                flex: 1,
+                minWidth: "160px",
+                boxShadow: "0 4px 0 #b82b6b",
+                transition: "transform 0.1s"
+              }}
+                onMouseDown={(e) => e.currentTarget.style.transform = 'translateY(4px)'}
+                onMouseUp={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                <Phone size={20} style={{ marginRight: "8px" }} />
+                +91 90310 80902
+              </a>
+              <a href="tel:+919065383838" style={{
+                background: "#e83e8c",
+                color: "white",
+                textDecoration: "none",
+                padding: "12px 10px",
+                borderRadius: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "18px",
+                fontWeight: "600",
+                flex: 1,
+                minWidth: "160px",
+                boxShadow: "0 4px 0 #b82b6b",
+                transition: "transform 0.1s"
+              }}
+                onMouseDown={(e) => e.currentTarget.style.transform = 'translateY(4px)'}
+                onMouseUp={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                <Phone size={20} style={{ marginRight: "8px" }} />
+                +91 9065383838
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
