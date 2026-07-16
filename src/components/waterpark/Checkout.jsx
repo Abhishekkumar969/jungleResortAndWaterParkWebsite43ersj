@@ -236,12 +236,61 @@ export default function Checkout({ isOpen, onClose, data }) {
         if (hasPoolParty) {
             return { name: "", phone: "", visitDate: "2026-07-17" };
         }
-        const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+        return { name: "", phone: "", visitDate: "" }; // Will be set by useEffect
+    });
+
+    const [filteredTickets, setFilteredTickets] = useState(selectedTickets);
+    const [filteredCottage, setFilteredCottage] = useState(cottage);
+    const [filteredTotal, setFilteredTotal] = useState(totalAmount);
+    const [removedItems, setRemovedItems] = useState(false);
+
+    useEffect(() => {
+        if (formData.visitDate && reservedDates.includes(formData.visitDate)) {
+            const newTix = {};
+            let newTotal = 0;
+            let removed = false;
+            
+            Object.entries(selectedTickets || {}).forEach(([k, v]) => {
+                if (k.startsWith('pp_')) {
+                    newTix[k] = v;
+                    newTotal += (ticketNames[k]?.price || 0) * v;
+                } else {
+                    removed = true;
+                }
+            });
+            
+            if (cottage) removed = true;
+            
+            setFilteredTickets(newTix);
+            setFilteredCottage(null);
+            setFilteredTotal(newTotal);
+            setRemovedItems(removed);
+        } else {
+            setFilteredTickets(selectedTickets);
+            setFilteredCottage(cottage);
+            setFilteredTotal(totalAmount);
+            setRemovedItems(false);
+        }
+    }, [formData.visitDate, reservedDates, selectedTickets, cottage, totalAmount, ticketNames]);
+
+    const formatDateIST = (date) => {
+        const d = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
         const year = d.getFullYear();
         const month = String(d.getMonth() + 1).padStart(2, "0");
         const day = String(d.getDate()).padStart(2, "0");
-        return { name: "", phone: "", visitDate: `${year}-${month}-${day}` };
-    });
+        return `${year}-${month}-${day}`;
+    };
+
+    const getNextAvailableDate = (reservedList) => {
+        let d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+        while (true) {
+            const formatted = formatDateIST(d);
+            if (!reservedList.includes(formatted)) {
+                return formatted;
+            }
+            d.setDate(d.getDate() + 1);
+        }
+    };
 
     useEffect(() => {
         const fetchReserved = async () => {
@@ -287,14 +336,10 @@ export default function Checkout({ isOpen, onClose, data }) {
             } else if (cottage?.date) {
                 setFormData(prev => ({ ...prev, visitDate: cottage.date }));
             } else {
-                const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-                const year = d.getFullYear();
-                const month = String(d.getMonth() + 1).padStart(2, "0");
-                const day = String(d.getDate()).padStart(2, "0");
-                setFormData(prev => ({ ...prev, visitDate: `${year}-${month}-${day}` }));
+                setFormData(prev => ({ ...prev, visitDate: getNextAvailableDate(reservedDates) }));
             }
         }
-    }, [isOpen, cottage?.date, hasPoolParty]);
+    }, [isOpen, cottage?.date, hasPoolParty, reservedDates]);
 
     if (!isOpen && !successData) return null;
 
@@ -333,9 +378,9 @@ export default function Checkout({ isOpen, onClose, data }) {
 
         try {
             const payload = {
-                amount: totalAmount,
-                tickets: selectedTickets || {},
-                cottage: cottage || null,
+                amount: filteredTotal,
+                tickets: filteredTickets || {},
+                cottage: filteredCottage || null,
             };
 
             const res = await fetch(process.env.REACT_APP_API_URL, {
@@ -365,15 +410,15 @@ export default function Checkout({ isOpen, onClose, data }) {
                 name: formData.name || "",
                 phone: formData.phone || "",
                 visitDate: formData.visitDate || "",
-                tickets: selectedTickets || {},
-                cottage: cottage ? {
-                    id: cottage.id,
-                    duration: cottage.duration,
-                    total: cottage.total,
-                    rooms: cottage.rooms || 1,
-                    days: cottage.days || 1
+                tickets: filteredTickets || {},
+                cottage: filteredCottage ? {
+                    id: filteredCottage.id,
+                    duration: filteredCottage.duration,
+                    total: filteredCottage.total,
+                    rooms: filteredCottage.rooms || 1,
+                    days: filteredCottage.days || 1
                 } : null,
-                total: totalAmount || 0,
+                total: filteredTotal || 0,
                 orderId: order.id,
                 verification: false,
                 paymentStatus: "pending",
@@ -387,21 +432,21 @@ export default function Checkout({ isOpen, onClose, data }) {
                 amount: order.amount,
                 order_id: order.id,
                 currency: "INR",
-                name: cottage ? "Jungle Resort Cottage Booking" : (Object.keys(selectedTickets || {}).some(k => k.startsWith('pp_')) ? "Jungle Resort Pool Party" : "Jungle Resort Water Park"),
+                name: filteredCottage ? "Jungle Resort Cottage Booking" : (Object.keys(filteredTickets || {}).some(k => k.startsWith('pp_')) ? "Jungle Resort Pool Party" : "Jungle Resort Water Park"),
                 description: (() => {
-                    const ticketSummary = Object.entries(selectedTickets || {})
+                    const ticketSummary = Object.entries(filteredTickets || {})
                         .map(([k, v]) => `${k}×${v}`)
                         .join(",");
 
-                    const cottageSummary = cottage
-                        ? `${cottage.duration}${cottage.days > 1 ? `×${cottage.days}` : ""}`
+                    const cottageSummary = filteredCottage
+                        ? `${filteredCottage.duration}${filteredCottage.days > 1 ? `×${filteredCottage.days}` : ""}`
                         : "";
 
                     const ticketTypeStr = hasPoolParty ? "Pool Party" : "Water Park";
 
                     let desc = "";
-                    if (cottage && ticketSummary) desc = `Combo: ${ticketSummary} + ${cottageSummary}`;
-                    else if (cottage) desc = `Cottage: ${cottageSummary}`;
+                    if (filteredCottage && ticketSummary) desc = `Combo: ${ticketSummary} + ${cottageSummary}`;
+                    else if (filteredCottage) desc = `Cottage: ${cottageSummary}`;
                     else desc = `${ticketTypeStr}: ${ticketSummary}`;
 
                     return desc.substring(0, 250); // Trim to avoid Razorpay SDK issues
@@ -419,7 +464,7 @@ export default function Checkout({ isOpen, onClose, data }) {
 
                     try {
                         // Sync with WaterPark collection (all bookings)
-                        if (Object.keys(selectedTickets || {}).length > 0 || cottage) {
+                        if (Object.keys(filteredTickets || {}).length > 0 || filteredCottage) {
                             await setDoc(doc(db, "WaterPark", monthYear),
                                 { [bookingId]: { ...wpBookingData, ...paymentFields } },
                                 { merge: true }
@@ -437,9 +482,9 @@ export default function Checkout({ isOpen, onClose, data }) {
                     setLoading(false);
                     setSuccessData({
                         formData,
-                        selectedTickets,
-                        cottage,
-                        totalAmount,
+                        selectedTickets: filteredTickets,
+                        cottage: filteredCottage,
+                        totalAmount: filteredTotal,
                         bookingId,
                         paymentId: response.razorpay_payment_id,
                     });
@@ -471,13 +516,7 @@ export default function Checkout({ isOpen, onClose, data }) {
         return new Date(y, m - 1, d); // 👈 local date (IST safe)
     };
 
-    const formatDateIST = (date) => {
-        const d = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-        const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, "0");
-        const day = String(d.getDate()).padStart(2, "0");
-        return `${year}-${month}-${day}`;
-    };
+
 
     const formatDisplayDate = (dateStr) => {
         const [y, m, d] = dateStr.split("-");
@@ -632,6 +671,12 @@ export default function Checkout({ isOpen, onClose, data }) {
                                 {errors.phone && <p className={styles.error}>{errors.phone}</p>}
                             </div>
 
+                            {removedItems && (
+                                <div style={{ color: "#d9534f", fontSize: "12px", margin: "10px 0", padding: "10px", background: "#fdf2f2", borderRadius: "8px" }}>
+                                    ⚠️ Waterpark and Cottage bookings are closed on the selected date. These items have been automatically removed from checkout.
+                                </div>
+                            )}
+
                             {paymentError && (
                                 <p style={{ color: "red", fontSize: "12px", marginTop: "-8px", marginBottom: "10px" }}>
                                     {paymentError}
@@ -645,18 +690,18 @@ export default function Checkout({ isOpen, onClose, data }) {
                             <button
                                 className={styles.button}
                                 onClick={handlePayment}
-                                disabled={loading}
+                                disabled={loading || filteredTotal === 0}
                             >
                                 {loading ? (
                                     <span className={styles.loader}></span>
                                 ) : (
-                                    <>PAY NOW : ₹ {fmt(totalAmount)}</>
+                                    <>PAY NOW : ₹ {fmt(filteredTotal)}</>
                                 )}
                             </button>
 
                             {/* Order Summary */}
                             <div className={styles.orderSummaryBox} style={{ marginTop: "15px" }}>
-                                {Object.entries(selectedTickets || {}).map(([id, qty]) => {
+                                {Object.entries(filteredTickets || {}).map(([id, qty]) => {
                                     const t = ticketNames[id];
                                     return (
                                         <div key={id} className={styles.summaryRow}>
@@ -665,15 +710,15 @@ export default function Checkout({ isOpen, onClose, data }) {
                                         </div>
                                     );
                                 })}
-                                {cottage && (
+                                {filteredCottage && (
                                     <div className={styles.summaryRow}>
-                                        <span>🏡 Cottage {cottage.duration}{cottage.days > 1 ? ` × ${cottage.days}d` : ""}</span>
-                                        <strong>₹{fmt(cottage.total)}</strong>
+                                        <span>🏡 Cottage {filteredCottage.duration}{filteredCottage.days > 1 ? ` × ${filteredCottage.days}d` : ""}</span>
+                                        <strong>₹{fmt(filteredCottage.total)}</strong>
                                     </div>
                                 )}
                                 <div className={styles.summaryTotal}>
                                     <span>Grand Total</span>
-                                    <strong>₹{fmt(totalAmount)}</strong>
+                                    <strong>₹{fmt(filteredTotal)}</strong>
                                 </div>
                             </div>
 
@@ -693,7 +738,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                         <table className={styles.detailsTable}>
                             <thead><tr><th>Ticket</th><th>Price</th><th>Qty</th><th>Total</th></tr></thead>
                             <tbody>
-                                {Object.entries(selectedTickets || {}).map(([id, qty]) => {
+                                {Object.entries(filteredTickets || {}).map(([id, qty]) => {
                                     const price = ticketNames[id]?.price || 0;
                                     return (
                                         <tr key={id}>
@@ -704,17 +749,17 @@ export default function Checkout({ isOpen, onClose, data }) {
                                         </tr>
                                     );
                                 })}
-                                {cottage && (
+                                {filteredCottage && (
                                     <tr>
-                                        <td>🏡 Cottage {cottage.duration} {cottage.rooms > 1 ? `(${cottage.rooms} Rooms)` : ""}</td>
-                                        <td>₹{fmt(cottage.basePrice)}</td>
-                                        <td>{cottage.days || 1} {cottage.days > 1 ? "days" : "day"}</td>
-                                        <td>₹{fmt(cottage.total)}</td>
+                                        <td>🏡 Cottage {filteredCottage.duration} {filteredCottage.rooms > 1 ? `(${filteredCottage.rooms} Rooms)` : ""}</td>
+                                        <td>₹{fmt(filteredCottage.basePrice)}</td>
+                                        <td>{filteredCottage.days || 1} {filteredCottage.days > 1 ? "days" : "day"}</td>
+                                        <td>₹{fmt(filteredCottage.total)}</td>
                                     </tr>
                                 )}
                             </tbody>
                         </table>
-                        <div className={styles.detailsTotal}>Total = ₹ {fmt(totalAmount)}</div>
+                        <div className={styles.detailsTotal}>Total = ₹ {fmt(filteredTotal)}</div>
                     </div>
                 </div>
             )}

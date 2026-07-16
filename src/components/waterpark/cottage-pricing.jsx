@@ -86,6 +86,44 @@ export default function CottagePricing() {
     const [isCheckingDate, setIsCheckingDate] = useState(false);
 
     const initialized = useRef(false);
+    const [reservedDates, setReservedDates] = useState([]);
+
+    useEffect(() => {
+        const fetchReserved = async () => {
+            const ref = doc(db, "Reserved", "Dates");
+            const snap = await getDoc(ref);
+            if (snap.exists()) {
+                const dates = snap.data().dates || [];
+                setReservedDates(dates);
+                
+                // If current cottageDate is reserved, find next available
+                if (dates.includes(cottageDate)) {
+                    let d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+                    while (true) {
+                        const formatted = new Intl.DateTimeFormat("en-CA", {
+                            timeZone: "Asia/Kolkata",
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                        }).format(d);
+                        if (!dates.includes(formatted)) {
+                            setCottageDate(formatted);
+                            // Also update cart
+                            const stored = JSON.parse(localStorage.getItem("cart")) || {};
+                            if (stored.cottage) {
+                                stored.cottage.date = formatted;
+                                localStorage.setItem("cart", JSON.stringify(stored));
+                                window.dispatchEvent(new Event("cartUpdated"));
+                            }
+                            break;
+                        }
+                        d.setDate(d.getDate() + 1);
+                    }
+                }
+            }
+        };
+        fetchReserved();
+    }, [cottageDate]);
 
     /* ── Check Availability ── */
     useEffect(() => {
@@ -420,7 +458,13 @@ export default function CottagePricing() {
                                         </div>
                                     )}
 
-                                    {isSelected && cottageDate && (
+                                    {isSelected && cottageDate && reservedDates.includes(cottageDate) && (
+                                        <div style={{ textAlign: "right", fontSize: "12px", color: "#d9534f", fontWeight: "700", marginTop: "-5px", marginBottom: "10px" }}>
+                                            ⚠️ This date is reserved. Please select another date.
+                                        </div>
+                                    )}
+
+                                    {isSelected && cottageDate && !reservedDates.includes(cottageDate) && (
                                         <div style={{ textAlign: "right", fontSize: "12px", color: availableRooms <= 2 ? "#e91e8c" : "#2ecc71", fontWeight: "700", marginTop: "-5px", marginBottom: "10px" }}>
                                             {isCheckingDate ? "Checking availability..." : `${availableRooms} cottage${availableRooms !== 1 ? "s" : ""} available on this date`}
                                         </div>
@@ -448,9 +492,17 @@ export default function CottagePricing() {
                                         </div>
                                     )}
 
-                                    <div className={`${cottageStyles.pkgSelectBtn} ${isSelected ? cottageStyles.pkgSelectBtnActive : ""}`}>
-                                        {isSelected ? "✓ Package Selected" : "Select This Stay"}
-                                    </div>
+                                    {(() => {
+                                        const isReserved = isSelected && reservedDates.includes(cottageDate);
+                                        return (
+                                            <div 
+                                                className={`${cottageStyles.pkgSelectBtn} ${(isSelected && !isReserved) ? cottageStyles.pkgSelectBtnActive : ""}`}
+                                                style={isReserved ? { background: "#d9534f", borderColor: "#d9534f", color: "#fff" } : {}}
+                                            >
+                                                {isReserved ? "⚠️ Date Reserved" : (isSelected ? "✓ Package Selected" : "Select This Stay")}
+                                            </div>
+                                        );
+                                    })()}
                                 </div>
                             );
                         })}
