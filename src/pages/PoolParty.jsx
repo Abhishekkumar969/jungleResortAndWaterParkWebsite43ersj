@@ -274,8 +274,6 @@ export default function PoolParty() {
               const Icon = ticket.icon;
               const qty = selectedTickets[ticket.id] || 0;
               const save = savings(ticket.originalPrice, ticket.price);
-              const animClass = index === 0 ? styles.animRotateIn : index === 1 ? styles.animPop : index === 2 ? styles.animZoomIn : styles.animFlipIn;
-              const delayClass = index === 0 ? styles.delay100 : index === 1 ? styles.delay200 : index === 2 ? styles.delay300 : styles.delay400;
 
               return (
                 <div

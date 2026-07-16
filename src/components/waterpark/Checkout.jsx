@@ -339,6 +339,7 @@ export default function Checkout({ isOpen, onClose, data }) {
                 setFormData(prev => ({ ...prev, visitDate: getNextAvailableDate(reservedDates) }));
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOpen, cottage?.date, hasPoolParty, reservedDates]);
 
     if (!isOpen && !successData) return null;
