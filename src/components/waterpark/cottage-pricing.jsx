@@ -95,7 +95,7 @@ export default function CottagePricing() {
             if (snap.exists()) {
                 const dates = snap.data().dates || [];
                 setReservedDates(dates);
-                
+
                 // If current cottageDate is reserved, find next available
                 if (dates.includes(cottageDate)) {
                     let d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
@@ -495,7 +495,7 @@ export default function CottagePricing() {
                                     {(() => {
                                         const isReserved = isSelected && reservedDates.includes(cottageDate);
                                         return (
-                                            <div 
+                                            <div
                                                 className={`${cottageStyles.pkgSelectBtn} ${(isSelected && !isReserved) ? cottageStyles.pkgSelectBtnActive : ""}`}
                                                 style={isReserved ? { background: "#d9534f", borderColor: "#d9534f", color: "#fff" } : {}}
                                             >
@@ -517,7 +517,7 @@ export default function CottagePricing() {
                 <div className={styles.ticketsContainer}>
 
                     <div className={styles.ticketsHeader}>
-                        <div style={{ display: "inline-block", padding: "10px 20px", background: "#0ea5e915", borderRadius: "30px", color: "#0ea5e9", fontSize: "12px", fontWeight: "800", textTransform: "uppercase", marginBottom: "15px" }}>Add-on Experience</div>
+                        <div style={{ display: "inline-block", padding: "10px 20px", background: "#0ea5e915", borderRadius: "30px", color: "#0ea5e9", fontSize: "12px", fontWeight: "800", textTransform: "uppercase", marginBottom: "15px" }}>Water Park - Add-on Experience</div>
                     </div>
 
                     <div className={styles.ticketsGrid}>
