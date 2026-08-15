@@ -36,7 +36,7 @@ const heroMenus = [
   },
   { title: "Cottage Rooms", link: "/cottage-in-patna" },
   { title: "WaterPark Tickets", link: "/waterpark-in-patna" },
-  { title: "Pool Party Ticket", link: "/pool-party" },
+  // { title: "Pool Party Ticket", link: "/pool-party" },
 ];
 
 export default function HeroSection() {

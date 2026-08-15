@@ -12,15 +12,15 @@ const options = [
         icon: Calendar,
         color: "#e72e77"
     },
-    {
-        id: "pool-party",
-        title: "Pool Party",
-        subtitle: "Premium Pool Experience",
-        image: "/images/pool.webp",
-        icon: PartyPopper,
-        color: "#d4af37",
-        link: "/pool-party"
-    },
+    // {
+    //     id: "pool-party",
+    //     title: "Pool Party",
+    //     subtitle: "Premium Pool Experience",
+    //     image: "/images/pool.webp",
+    //     icon: PartyPopper,
+    //     color: "#d4af37",
+    //     link: "/pool-party"
+    // },
     {
         id: "cottage",
         title: "Cottage Stay",
