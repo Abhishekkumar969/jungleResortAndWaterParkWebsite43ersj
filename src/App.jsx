@@ -53,7 +53,7 @@ const CorporatePartyDetails = lazy(() => import("./pages/events/CorporatePartyDe
 const CorporatePoolPartyDetails = lazy(() => import("./pages/events/CorporatePoolPartyDetails"));
 const BirthdayExplore = lazy(() => import("./components/home/BirthdayExplore"));
 const BirthdayExploreBtn = lazy(() => import("./components/home/BirthdayExploreBtn"));
-const PoolParty = lazy(() => import("./pages/PoolParty"));
+// const PoolParty = lazy(() => import("./pages/PoolParty"));
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -116,7 +116,7 @@ function App() {
                 <Route path="/corporate-pool-party-venue-in-patna" element={<CorporatePoolPartyDetails />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogDetails />} />
-                <Route path="/pool-party" element={<PoolParty />} />
+                {/* <Route path="/pool-party" element={<PoolParty />} /> */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </Suspense>
