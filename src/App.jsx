@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import Layout from "./Layout"
 import { lazy, Suspense } from "react";
@@ -16,6 +16,8 @@ import Breadcrumb from "./components/Breadcrumb";
 import Navbar from "./components/navigation-temp";
 import Footer from "./components/footer-temp";
 import { TicketPricesProvider } from "./context/TicketPricesContext";
+import { db } from "./firebaseConfig";
+import { doc, onSnapshot } from "firebase/firestore";
 
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogDetails = lazy(() => import("./pages/BlogDetails"));
@@ -53,7 +55,7 @@ const CorporatePartyDetails = lazy(() => import("./pages/events/CorporatePartyDe
 const CorporatePoolPartyDetails = lazy(() => import("./pages/events/CorporatePoolPartyDetails"));
 const BirthdayExplore = lazy(() => import("./components/home/BirthdayExplore"));
 const BirthdayExploreBtn = lazy(() => import("./components/home/BirthdayExploreBtn"));
-const DandiyaCarnival = lazy(() => import("./pages/DandiyaCarnival"));
+// const PoolParty = lazy(() => import("./pages/PoolParty"));
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -64,6 +66,55 @@ if ("serviceWorker" in navigator) {
 function App() {
   useScrollReveal();
   useDisableInspect();
+
+  // 🔒 Payment Gate — block website if payment expired
+  const [paymentExpired, setPaymentExpired] = useState(false);
+  const [paymentChecked, setPaymentChecked] = useState(false);
+
+  useEffect(() => {
+    const ref = doc(db, "AppCost", "active");
+    const unsub = onSnapshot(ref, (snap) => {
+      if (snap.exists()) {
+        const data = snap.data();
+
+        if (data.isActive && data.enabledAt) {
+          const enabledDate = data.enabledAt.toDate
+            ? data.enabledAt.toDate()
+            : new Date(data.enabledAt);
+
+          // 15-hour expiry — matches "please pay before" date in PaymentPopup
+          const payBefore = new Date(enabledDate.getTime() + 15 * 60 * 60 * 1000);
+          setPaymentExpired(new Date() > payBefore);
+        } else {
+          setPaymentExpired(false);
+        }
+      } else {
+        setPaymentExpired(false);
+      }
+      setPaymentChecked(true);
+    }, () => {
+      // On error, don't block the website
+      setPaymentExpired(false);
+      setPaymentChecked(true);
+    });
+
+    return () => unsub();
+  }, []);
+
+  // ⏳ While checking payment status — show nothing (prevents content flash)
+  if (!paymentChecked) return null;
+
+  // 🚫 Payment expired — full black page, nothing renders
+  if (paymentExpired) {
+    return (
+      <div style={{
+        position: "fixed",
+        inset: 0,
+        backgroundColor: "#000",
+        zIndex: 99999,
+      }} />
+    );
+  }
 
   return (
     <TicketPricesProvider>
@@ -116,7 +167,7 @@ function App() {
                 <Route path="/corporate-pool-party-venue-in-patna" element={<CorporatePoolPartyDetails />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogDetails />} />
-                <Route path="/dandiya-carnival" element={<DandiyaCarnival />} />
+                {/* <Route path="/pool-party" element={<PoolParty />} /> */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </Suspense>
